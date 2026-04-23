@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>High Schooler's Tool — Welcome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Tokens ──────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #f5f7fb;
+      --surface:     rgba(255,255,255,.80);
+      --surface-s:   rgba(255,255,255,.76);
+      --border:      rgba(255,255,255,.86);
+      --border-hard: rgba(17,24,39,.07);
+      --text:        #111827;
+      --text-soft:   #526073;
+      --muted:       #8b95a7;
+      --blue:        #2563eb;
+      --blue-dark:   #1d4ed8;
+      --indigo:      #4f46e5;
+      --violet:      #7c3aed;
+      --green:       #10b981;
+      --orange:      #f97316;
+      --rose:        #e11d48;
+      --cyan:        #0891b2;
+      --shadow-sm:   0 8px 28px rgba(15,23,42,.08);
+      --shadow-md:   0 22px 70px rgba(15,23,42,.13);
+      --shadow-lg:   0 34px 110px rgba(37,99,235,.18);
+      --radius:      22px;
+      --radius-xl:   38px;
+      --t:           0.22s ease;
+    }
+
+    /* ── Base ────────────────────────────────────── */
+    html {
+      -webkit-font-smoothing: antialiased;
+      height: 100%;
+      height: -webkit-fill-available;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100%;
+      height: 100dvh;
+      min-height: -webkit-fill-available;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Radial color blobs behind everything */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -180px -120px auto -120px;
+      height: 700px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,.16),  transparent 34%),
+        radial-gradient(circle at 78% 14%, rgba(124,58,237,.14), transparent 30%),
+        radial-gradient(circle at 50% 40%, rgba(16,185,129,.09), transparent 30%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtle grid dot pattern */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(17,24,39,.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,24,39,.032) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Viewport ────────────────────────────────── */
+    .ob-viewport {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* ── Card (glass) ────────────────────────────── */
+    .ob-card {
+      background: var(--surface);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md), 0 0 0 0.5px rgba(255,255,255,.5) inset;
+      width: 100%;
+      max-width: 980px;
+      height: min(640px, calc(100dvh - 40px));
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      animation: cardIn .72s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(36px) scale(.975); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ── Progress bar ────────────────────────────── */
+    .ob-progress {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2.5px;
+      background: var(--border-hard);
+      z-index: 30;
+      overflow: hidden;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .ob-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--violet));
+      transition: width .55s cubic-bezier(.65,0,.35,1);
+      border-radius: inherit;
+    }
+
+    /* ── Slides container ────────────────────────── */
+    .ob-slides {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* ── Single slide ────────────────────────────── */
+    .ob-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: translateX(56px);
+      transition:
+        opacity  .52s cubic-bezier(.22,1,.36,1),
+        transform .52s cubic-bezier(.22,1,.36,1);
+      pointer-events: none;
+      will-change: opacity, transform;
+    }
+
+    .ob-slide.is-active  { opacity: 1; transform: none; pointer-events: auto; z-index: 5; }
+    .ob-slide.is-leaving { opacity: 0; transform: translateX(-56px); z-index: 4; }
+    .ob-slide.from-left  { transform: translateX(-56px); }
+
+    /* ── Image pane ──────────────────────────────── */
+    .ob-image-pane {
+      width: 42%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Per-slide gradient backgrounds */
+    .slide-0 .ob-image-pane { background: radial-gradient(circle at 20% 18%, rgba(255,255,255,.26), transparent 28%), linear-gradient(135deg, #1d4ed8, #4f46e5); }
+    .slide-1 .ob-image-pane { background: radial-gradient(circle at 20% 18%, rgba(255,255,255,.24), transparent 28%), linear-gradient(135deg, #6d28d9, #4f46e5); }
+    .slide-2 .ob-image-pane { background: radial-gradient(circle at 20% 18%, rgba(255,255,255,.22), transparent 28%), linear-gradient(135deg, #b45309, #d97706); }
+    .slide-3 .ob-image-pane { background: radial-gradient(circle at 20% 18%, rgba(255,255,255,.24), transparent 28%), linear-gradient(135deg, #065f46, #059669); }
+    .slide-4 .ob-image-pane { background: radial-gradient(circle at 20% 18%, rgba(255,255,255,.22), transparent 28%), linear-gradient(135deg, #9f1239, #e11d48); }
+
+    /* Decorative orb inside image pane */
+    .ob-image-pane::before {
+      content: '';
+      position: absolute;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      bottom: -80px; right: -60px;
+      pointer-events: none;
+    }
+
+    .ob-image-pane::after {
+      content: '';
+      position: absolute;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      top: -40px; left: -30px;
+      pointer-events: none;
+    }
+
+    /* ── Phone frame ─────────────────────────────── */
+    .ob-phone {
+      position: relative;
+      z-index: 2;
+      width: min(190px, 52%);
+      aspect-ratio: 9/18.5;
+      padding: 10px;
+      border-radius: 44px;
+      background: linear-gradient(145deg, #1f2937, #050816);
+      box-shadow:
+        0 44px 100px rgba(15,23,42,.42),
+        inset 0 0 0 1px rgba(255,255,255,.13);
+      transform: rotate(2deg);
+      flex-shrink: 0;
+    }
+
+    .ob-phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 35px;
+      overflow: hidden;
+      background: #f9fbff;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ob-island {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 68px; height: 22px;
+      border-radius: 999px;
+      background: #050816;
+      z-index: 5;
+    }
+
+    /* Image or placeholder inside phone */
+    .ob-phone-img {
+      flex: 1;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ob-phone-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      transition: opacity .35s;
+    }
+
+    .ob-phone-img img.loaded { opacity: 1; }
+
+    .ob-phone-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 24px 12px;
+    }
+
+    .ob-phone-placeholder svg { opacity: 0.22; }
+
+    .ob-phone-placeholder span {
+      font-size: 9px;
+      font-weight: 700;
+      color: #8b95a7;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    /* Floating badge beside phone */
+    .ob-float-badge {
+      position: absolute;
+      z-index: 3;
+      padding: 10px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.84);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.9);
+      box-shadow: 0 14px 40px rgba(15,23,42,.18);
+      animation: floatBadge 5s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .ob-float-badge b {
+      display: block;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      color: #111827;
+      font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+      line-height: 1.2;
+    }
+
+    .ob-float-badge strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -.01em;
+      margin-top: 3px;
+    }
+
+    .ob-float-badge span {
+      display: block;
+      margin-top: 1px;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #526073;
+      line-height: 1.35;
+    }
+
+    /* iOS emoji font for tags */
+    .ob-tag-emoji {
+      font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .ob-float-badge.pos-tl { top: 18%;  left: 10%; animation-delay: 0s; }
+    .ob-float-badge.pos-br { bottom: 18%; right: 8%; animation-delay: -2.2s; }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* Slide number badge */
+    .ob-slide-num {
+      position: absolute;
+      top: 16px; left: 16px;
+      z-index: 10;
+      background: rgba(255,255,255,.22);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,.88);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Content pane ────────────────────────────── */
+    .ob-content-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 38px 40px 32px;
+      position: relative;
+      min-width: 0;
+    }
+
+    /* Brand header */
+    .ob-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: auto;
+      padding-bottom: 20px;
+    }
+
+    .ob-logo-mark {
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(17,24,39,.08);
+      box-shadow: 0 4px 14px rgba(15,23,42,.14);
+      flex-shrink: 0;
+    }
+
+    .ob-logo-mark img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ob-brand-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -.02em;
+      line-height: 1;
+    }
+
+    .ob-brand-text span {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 3px;
+      letter-spacing: .01em;
+    }
+
+    /* Dot indicators */
+    .ob-dots {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+
+    .ob-dot {
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(17,24,39,.12);
+      transition: width .45s cubic-bezier(.65,0,.35,1), background .35s;
+    }
+
+    .ob-dot.is-active { width: 22px; background: var(--blue); }
+    .ob-dot:not(.is-active) { width: 6px; }
+
+    /* Eyebrow */
+    .ob-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .ob-eyebrow-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34,197,94,.15);
+    }
+
+    /* Headline with gradient text */
+    .ob-title {
+      font-size: clamp(1.75rem, 3.2vw, 2.55rem);
+      font-weight: 900;
+      letter-spacing: -.055em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      background: linear-gradient(115deg, #111827 0%, #2563eb 42%, #7c3aed 78%, #111827 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Description */
+    .ob-desc {
+      font-size: clamp(.9rem, 1.4vw, 1rem);
+      color: var(--text-soft);
+      line-height: 1.8;
+      flex: 1;
+    }
+
+    /* Feature tags */
+    .ob-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 20px;
+    }
+
+    .ob-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(17,24,39,.07);
+      box-shadow: 0 4px 12px rgba(15,23,42,.06);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-soft);
+    }
+
+    /* ob-tag-icon removed — emoji used instead */
+
+    /* Actions footer */
+    .ob-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(17,24,39,.07);
+      flex-shrink: 0;
+      gap: 12px;
+    }
+
+    .ob-skip {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--muted);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 10px 4px;
+      border-radius: 8px;
+      transition: color var(--t);
+      flex-shrink: 0;
+    }
+
+    .ob-skip:hover { color: var(--text); }
+
+    .ob-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 12px 28px rgba(37,99,235,.30);
+      transition: transform .18s, box-shadow .18s, background .18s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .ob-next:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(37,99,235,.38); background: var(--blue-dark); }
+    .ob-next:active { transform: scale(.97); }
+
+    .ob-next.is-final {
+      background: linear-gradient(135deg, #111827, #1d4ed8 55%, #7c3aed);
+      box-shadow: 0 12px 32px rgba(15,23,42,.28);
+      padding: 13px 32px;
+    }
+
+    .ob-next.is-final:hover { box-shadow: 0 18px 44px rgba(15,23,42,.36); }
+
+    .ob-next-arrow { display: flex; align-items: center; transition: transform .22s; }
+    .ob-next:hover .ob-next-arrow { transform: translateX(3px); }
+
+    /* ══════════════════════════════════════════════
+       RESPONSIVE — mobile-first stacked layout
+       ══════════════════════════════════════════════ */
+
+    /* ── MOBILE & TABLET  ( < 900px ) ──────────────
+       Full-screen card, image on top, content below  */
+    @media (max-width: 899px) {
+
+      /* Full-screen — no padding, no rounded corners */
+      .ob-viewport { padding: 0; align-items: stretch; }
+
+      .ob-card {
+        border-radius: 0;
+        max-width: 100%;
+        width: 100%;
+        /* Stack fallbacks for iOS Safari */
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+        height: -webkit-fill-available;
+        flex-direction: column; /* card itself stacks children */
+      }
+
+      /* ★ THE CORE FIX: slide must be column so panes stack */
+      .ob-slide { flex-direction: column; }
+
+      /* Image pane: fixed height strip at the top */
+      .ob-image-pane {
+        width: 100%;
+        height: 270px;
+        flex-shrink: 0;
+        flex-grow: 0;
+      }
+
+      /* Smaller phone frame on mobile */
+      .ob-phone { width: 120px; transform: rotate(1.5deg); }
+
+      /* Hide floating badges — not enough room */
+      .ob-float-badge { display: none; }
+
+      /* Content pane: takes remaining height, scrollable */
+      .ob-content-pane {
+        flex: 1 1 0;
+        min-height: 0;
+        padding: 22px 24px 20px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Tighten all vertical spacing */
+      .ob-brand     { margin-bottom: 0; padding-bottom: 12px; }
+      .ob-dots      { margin-bottom: 14px; }
+      .ob-eyebrow   { margin-bottom: 10px; }
+      .ob-title     { font-size: 1.85rem; line-height: 1.08; margin-bottom: 12px; }
+      .ob-desc      { flex: none; font-size: .92rem; line-height: 1.7; }
+      .ob-tags      { margin-top: 14px; }
+      .ob-actions   {
+        margin-top: 16px;
+        padding-top: 14px;
+        padding-bottom: env(safe-area-inset-bottom, 8px);
+      }
+    }
+
+    /* ── SMALL PHONE  ( < 480px ) ───────────────────
+       Further reduce image strip, clamp description   */
+    @media (max-width: 480px) {
+      .ob-image-pane { height: 230px; }
+      .ob-phone { width: 100px; transform: none; }
+      .ob-content-pane { padding: 18px 20px max(12px, env(safe-area-inset-bottom)) 20px; }
+      .ob-title { font-size: clamp(1.4rem, 6.5vw, 1.7rem); margin-bottom: 10px; }
+      .ob-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: .875rem;
+      }
+      .ob-tag  { font-size: 10.5px; padding: 4px 10px; }
+      .ob-next { padding: 12px 20px; font-size: 13px; }
+      .ob-skip { font-size: 12.5px; }
+    }
+
+    /* ── TINY SCREEN  ( < 360px )  ─────────────────
+       iPhone SE 1st gen, small Androids             */
+    @media (max-width: 360px) {
+      .ob-image-pane { height: 200px; }
+      .ob-title { font-size: 1.3rem; }
+      .ob-tags  { display: none; }
+      .ob-brand-text span { display: none; }
+    }
+
+    /* ── WIDE DESKTOP  ( ≥ 1100px ) ────────────────
+       Larger card, wider image pane                 */
+    @media (min-width: 1100px) {
+      .ob-card { max-width: 1040px; height: min(680px, calc(100dvh - 48px)); }
+      .ob-image-pane { width: 45%; }
+      .ob-phone { width: min(210px, 54%); }
+      .ob-content-pane { padding: 46px 50px 38px; }
+    }
+
+    /* ── DARK MODE ───────────────────────────────── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:          #0f172a;
+        --surface:     rgba(30,41,59,.90);
+        --surface-s:   rgba(30,41,59,.80);
+        --border:      rgba(255,255,255,.08);
+        --border-hard: rgba(255,255,255,.08);
+        --text:        #f1f5f9;
+        --text-soft:   #cbd5e1;
+        --muted:       #64748b;
+      }
+
+      body::before {
+        background:
+          radial-gradient(circle at 15% 20%, rgba(37,99,235,.20),  transparent 34%),
+          radial-gradient(circle at 78% 14%, rgba(124,58,237,.18), transparent 30%),
+          radial-gradient(circle at 50% 40%, rgba(16,185,129,.10), transparent 30%);
+      }
+
+      body::after {
+        background-image:
+          linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+      }
+
+      .ob-card {
+        box-shadow: var(--shadow-md), 0 0 0 0.5px rgba(255,255,255,.07) inset;
+      }
+
+      .ob-title {
+        background: linear-gradient(115deg, #f1f5f9 0%, #93c5fd 40%, #c4b5fd 75%, #f1f5f9 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .ob-dot:not(.is-active) { background: rgba(255,255,255,.14); }
+
+      .ob-tag {
+        background: rgba(255,255,255,.07);
+        border-color: rgba(255,255,255,.10);
+        color: #94a3b8;
+      }
+
+      .ob-actions { border-top-color: rgba(255,255,255,.08); }
+
+      .ob-float-badge {
+        background: rgba(15,23,42,.85);
+        border-color: rgba(255,255,255,.12);
+        color: #f1f5f9;
+      }
+      .ob-float-badge b { color: #f1f5f9; }
+      .ob-float-badge strong { color: #f1f5f9; }
+      .ob-float-badge span { color: #94a3b8; }
+
+      .ob-phone { box-shadow: 0 44px 100px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.10); }
+      .ob-phone-screen { background: #1e293b; }
+
+      .ob-progress { background: rgba(255,255,255,.08); }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .ob-card, .ob-float-badge { animation: none !important; }
+      .ob-slide { transition: opacity .2s !important; transform: none !important; }
+      .ob-slide.is-leaving { opacity: 0 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ob-viewport">
+  <div class="ob-card">
+
+    <!-- Progress bar -->
+    <div class="ob-progress">
+      <div class="ob-progress-fill" id="progressFill" style="width:20%"></div>
+    </div>
+
+    <div class="ob-slides" id="slidesContainer">
+
+      <!-- ═══ SLIDE 1 ═══ -->
+      <div class="ob-slide slide-0 is-active">
+        <div class="ob-image-pane">
+          <div class="ob-slide-num">1 of 5</div>
+          <!-- Phone mockup -->
+          <div class="ob-phone">
+            <div class="ob-phone-screen">
+              <div class="ob-island"></div>
+              <div class="ob-phone-img">
+                <!-- Replace src with your image: src="slide1.png" -->
+                <img src="slide1.png" alt="Welcome"
+                  onload="this.classList.add('loaded'); this.nextElementSibling.style.display='none'"
+                  onerror="this.style.display='none'">
+                <div class="ob-phone-placeholder">
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <rect x="4" y="7" width="30" height="24" rx="4" stroke="#8b95a7" stroke-width="1.8"/>
+                    <circle cx="13" cy="16" r="3" stroke="#8b95a7" stroke-width="1.8"/>
+                    <path d="M4 24l9-7 7 5 6-8 8 10" stroke="#8b95a7" stroke-width="1.8" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Add slide1.png</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-float-badge pos-tl">
+            <b>📚</b>
+            <strong>Smart Study</strong>
+            <span>Tools for every class</span>
+          </div>
+          <div class="ob-float-badge pos-br">
+            <b>🎓</b>
+            <strong>Grade Tracker</strong>
+            <span>All subjects</span>
+          </div>
+        </div>
+
+        <div class="ob-content-pane">
+          <div class="ob-brand">
+            <div class="ob-logo-mark">
+              <img src="hstlogo.jpg" alt="HST" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='linear-gradient(135deg,#2563eb,#7c3aed)';this.style.display='none'">
+            </div>
+            <div class="ob-brand-text">
+              <strong>High Schooler's Tool</strong>
+              <span>Your Academic Partner</span>
+            </div>
+          </div>
+
+          <div class="ob-dots">
+            <div class="ob-dot is-active"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+          </div>
+
+          <div class="ob-eyebrow"><span class="ob-eyebrow-dot"></span> Welcome</div>
+          <div class="ob-title">Your studies,<br>elevated.</div>
+          <div class="ob-desc">Everything you need to ace high school — organized, intelligent, and always in your pocket.</div>
+
+          <div class="ob-tags">
+            <span class="ob-tag"><span class="ob-tag-emoji">📒</span>Smart Notes</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">✨</span>AI Summaries</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">📊</span>Grade Tracker</span>
+          </div>
+
+          <div class="ob-actions">
+            <a class="ob-skip" href="hst.html">Skip</a>
+            <button class="ob-next" onclick="goTo(1)">
+              Next
+              <span class="ob-next-arrow">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SLIDE 2 ═══ -->
+      <div class="ob-slide slide-1">
+        <div class="ob-image-pane">
+          <div class="ob-slide-num">2 of 5</div>
+          <div class="ob-phone">
+            <div class="ob-phone-screen">
+              <div class="ob-island"></div>
+              <div class="ob-phone-img">
+                <img src="slide2.png" alt="Assignments"
+                  onload="this.classList.add('loaded'); this.nextElementSibling.style.display='none'"
+                  onerror="this.style.display='none'">
+                <div class="ob-phone-placeholder">
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <path d="M9 10h20M9 17h14M9 24h18M9 31h10" stroke="#8b95a7" stroke-width="1.8" stroke-linecap="round"/>
+                    <rect x="4" y="4" width="30" height="30" rx="5" stroke="#8b95a7" stroke-width="1.8"/>
+                  </svg>
+                  <span>Add slide2.png</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-float-badge pos-tl">
+            <b>✅</b>
+            <strong>8 Done Today</strong>
+            <span>Keep it up!</span>
+          </div>
+          <div class="ob-float-badge pos-br">
+            <b>⏰</b>
+            <strong>Due Tomorrow</strong>
+            <span>2 tasks pending</span>
+          </div>
+        </div>
+
+        <div class="ob-content-pane">
+          <div class="ob-brand">
+            <div class="ob-logo-mark">
+              <img src="hstlogo.jpg" alt="HST" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='linear-gradient(135deg,#2563eb,#7c3aed)';this.style.display='none'">
+            </div>
+            <div class="ob-brand-text">
+              <strong>High Schooler's Tool</strong>
+              <span>Your Academic Partner</span>
+            </div>
+          </div>
+
+          <div class="ob-dots">
+            <div class="ob-dot"></div>
+            <div class="ob-dot is-active"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+          </div>
+
+          <div class="ob-eyebrow"><span class="ob-eyebrow-dot"></span> Assignments</div>
+          <div class="ob-title">Track every<br>assignment.</div>
+          <div class="ob-desc">Never miss a deadline again. Manage homework, projects, and exams — all synced and prioritized automatically.</div>
+
+          <div class="ob-tags">
+            <span class="ob-tag"><span class="ob-tag-emoji">📋</span>Due Dates</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">🔔</span>Reminders</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">🏷️</span>Priority Tags</span>
+          </div>
+
+          <div class="ob-actions">
+            <a class="ob-skip" href="hst.html">Skip</a>
+            <button class="ob-next" onclick="goTo(2)">
+              Next
+              <span class="ob-next-arrow">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SLIDE 3 ═══ -->
+      <div class="ob-slide slide-2">
+        <div class="ob-image-pane">
+          <div class="ob-slide-num">3 of 5</div>
+          <div class="ob-phone">
+            <div class="ob-phone-screen">
+              <div class="ob-island"></div>
+              <div class="ob-phone-img">
+                <img src="slide3.png" alt="Schedule"
+                  onload="this.classList.add('loaded'); this.nextElementSibling.style.display='none'"
+                  onerror="this.style.display='none'">
+                <div class="ob-phone-placeholder">
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <circle cx="19" cy="19" r="14" stroke="#8b95a7" stroke-width="1.8"/>
+                    <path d="M19 10v9l6 4" stroke="#8b95a7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Add slide3.png</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-float-badge pos-tl">
+            <b>📅</b>
+            <strong>Mon – Fri</strong>
+            <span>Weekly plan ready</span>
+          </div>
+          <div class="ob-float-badge pos-br">
+            <b>🎯</b>
+            <strong>3 hrs today</strong>
+            <span>Study block set</span>
+          </div>
+        </div>
+
+        <div class="ob-content-pane">
+          <div class="ob-brand">
+            <div class="ob-logo-mark">
+              <img src="hstlogo.jpg" alt="HST" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='linear-gradient(135deg,#2563eb,#7c3aed)';this.style.display='none'">
+            </div>
+            <div class="ob-brand-text">
+              <strong>High Schooler's Tool</strong>
+              <span>Your Academic Partner</span>
+            </div>
+          </div>
+
+          <div class="ob-dots">
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot is-active"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+          </div>
+
+          <div class="ob-eyebrow"><span class="ob-eyebrow-dot"></span> Schedule</div>
+          <div class="ob-title">Plan your<br>week smartly.</div>
+          <div class="ob-desc">Build the perfect timetable. Balance classes, study blocks, and free time with an intelligent scheduler built for students.</div>
+
+          <div class="ob-tags">
+            <span class="ob-tag"><span class="ob-tag-emoji">📅</span>Weekly View</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">⏱️</span>Study Blocks</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">🔄</span>Calendar Sync</span>
+          </div>
+
+          <div class="ob-actions">
+            <a class="ob-skip" href="hst.html">Skip</a>
+            <button class="ob-next" onclick="goTo(3)">
+              Next
+              <span class="ob-next-arrow">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SLIDE 4 ═══ -->
+      <div class="ob-slide slide-3">
+        <div class="ob-image-pane">
+          <div class="ob-slide-num">4 of 5</div>
+          <div class="ob-phone">
+            <div class="ob-phone-screen">
+              <div class="ob-island"></div>
+              <div class="ob-phone-img">
+                <img src="slide4.png" alt="Grades"
+                  onload="this.classList.add('loaded'); this.nextElementSibling.style.display='none'"
+                  onerror="this.style.display='none'">
+                <div class="ob-phone-placeholder">
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <path d="M6 32l10-10 7 7 10-14 5 17H6z" stroke="#8b95a7" stroke-width="1.8" stroke-linejoin="round"/>
+                    <circle cx="30" cy="8" r="5" stroke="#8b95a7" stroke-width="1.8"/>
+                  </svg>
+                  <span>Add slide4.png</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-float-badge pos-tl">
+            <b>📈</b>
+            <strong>GPA 3.9</strong>
+            <span>This semester</span>
+          </div>
+          <div class="ob-float-badge pos-br">
+            <b>🔥</b>
+            <strong>Up 12%</strong>
+            <span>vs last month</span>
+          </div>
+        </div>
+
+        <div class="ob-content-pane">
+          <div class="ob-brand">
+            <div class="ob-logo-mark">
+              <img src="hstlogo.jpg" alt="HST" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='linear-gradient(135deg,#2563eb,#7c3aed)';this.style.display='none'">
+            </div>
+            <div class="ob-brand-text">
+              <strong>High Schooler's Tool</strong>
+              <span>Your Academic Partner</span>
+            </div>
+          </div>
+
+          <div class="ob-dots">
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot is-active"></div>
+            <div class="ob-dot"></div>
+          </div>
+
+          <div class="ob-eyebrow"><span class="ob-eyebrow-dot"></span> Grades</div>
+          <div class="ob-title">Watch your<br>grades grow.</div>
+          <div class="ob-desc">Monitor your GPA, track progress per subject, and get personalized insights to study smarter — not harder.</div>
+
+          <div class="ob-tags">
+            <span class="ob-tag"><span class="ob-tag-emoji">📈</span>GPA Tracker</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">📖</span>Per Subject</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">🤖</span>AI Insights</span>
+          </div>
+
+          <div class="ob-actions">
+            <a class="ob-skip" href="hst.html">Skip</a>
+            <button class="ob-next" onclick="goTo(4)">
+              Next
+              <span class="ob-next-arrow">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SLIDE 5 ═══ -->
+      <div class="ob-slide slide-4">
+        <div class="ob-image-pane">
+          <div class="ob-slide-num">5 of 5</div>
+          <div class="ob-phone">
+            <div class="ob-phone-screen">
+              <div class="ob-island"></div>
+              <div class="ob-phone-img">
+                <img src="slide5.png" alt="Get Started"
+                  onload="this.classList.add('loaded'); this.nextElementSibling.style.display='none'"
+                  onerror="this.style.display='none'">
+                <div class="ob-phone-placeholder">
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <path d="M19 5l4.4 9.1 10 1.4-7.2 7.1 1.7 9.9L19 28.2 10.1 32.5l1.7-9.9L4.6 15.5l10-1.4L19 5z" stroke="#8b95a7" stroke-width="1.8" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Add slide5.png</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-float-badge pos-tl">
+            <b>🚀</b>
+            <strong>Ready to go!</strong>
+            <span>Start your journey</span>
+          </div>
+          <div class="ob-float-badge pos-br">
+            <b>🎁</b>
+            <strong>Always Free</strong>
+            <span>No hidden costs</span>
+          </div>
+        </div>
+
+        <div class="ob-content-pane">
+          <div class="ob-brand">
+            <div class="ob-logo-mark">
+              <img src="hstlogo.jpg" alt="HST" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='linear-gradient(135deg,#2563eb,#7c3aed)';this.style.display='none'">
+            </div>
+            <div class="ob-brand-text">
+              <strong>High Schooler's Tool</strong>
+              <span>Your Academic Partner</span>
+            </div>
+          </div>
+
+          <div class="ob-dots">
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot"></div>
+            <div class="ob-dot is-active"></div>
+          </div>
+
+          <div class="ob-eyebrow"><span class="ob-eyebrow-dot"></span> Ready</div>
+          <div class="ob-title">Your success<br>starts here.</div>
+          <div class="ob-desc">Join thousands of students already crushing it with High Schooler's Tool. Let's build your future — together.</div>
+
+          <div class="ob-tags">
+            <span class="ob-tag"><span class="ob-tag-emoji">🎁</span>Free to start</span>
+            <span class="ob-tag"><span class="ob-tag-emoji">⚡</span>No sign-up needed</span>
+          </div>
+
+          <div class="ob-actions">
+            <div></div>
+            <a class="ob-next is-final" href="hst.html">
+              Get Started
+              <span class="ob-next-arrow">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /ob-slides -->
+  </div><!-- /ob-card -->
+</div><!-- /ob-viewport -->
+
+<script>
+  const TOTAL = 5;
+  let current = 0;
+  let isAnimating = false;
+
+  const slides = document.querySelectorAll('.ob-slide');
+  const progressFill = document.getElementById('progressFill');
+
+  function goTo(next, dir) {
+    if (next === current || next < 0 || next >= TOTAL || isAnimating) return;
+    isAnimating = true;
+
+    const direction = dir !== undefined ? dir : (next > current ? 1 : -1);
+    const prevIdx = current;
+    current = next;
+
+    const prevSlide = slides[prevIdx];
+    const nextSlide = slides[current];
+
+    /* ── Set incoming slide off-screen ── */
+    nextSlide.classList.remove('is-active', 'is-leaving', 'from-left');
+    nextSlide.style.transform = direction === 1 ? 'translateX(56px)' : 'translateX(-56px)';
+    nextSlide.style.opacity = '0';
+    nextSlide.style.pointerEvents = 'none';
+    nextSlide.style.zIndex = '6';
+
+    /* Force reflow */
+    nextSlide.getBoundingClientRect();
+
+    /* ── Animate in ── */
+    nextSlide.style.transform = '';
+    nextSlide.style.opacity = '';
+    nextSlide.classList.add('is-active');
+
+    /* ── Animate out ── */
+    prevSlide.classList.remove('is-active');
+    prevSlide.classList.add('is-leaving');
+    prevSlide.style.transform = direction === 1 ? 'translateX(-56px)' : 'translateX(56px)';
+    prevSlide.style.opacity = '0';
+
+    /* Progress bar */
+    progressFill.style.width = `${((current + 1) / TOTAL) * 100}%`;
+
+    /* Cleanup */
+    setTimeout(() => {
+      prevSlide.classList.remove('is-leaving', 'from-left');
+      prevSlide.style.transform = '';
+      prevSlide.style.opacity = '';
+      prevSlide.style.zIndex = '';
+      nextSlide.style.zIndex = '';
+      nextSlide.style.pointerEvents = '';
+      isAnimating = false;
+    }, 560);
+  }
+
+  /* ── Touch / swipe ── */
+  let tX = 0, tY = 0;
+  const container = document.getElementById('slidesContainer');
+
+  container.addEventListener('touchstart', e => {
+    tX = e.touches[0].clientX;
+    tY = e.touches[0].clientY;
+  }, { passive: true });
+
+  container.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tX;
+    const dy = e.changedTouches[0].clientY - tY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
+      if (dx < 0 && current < TOTAL - 1) goTo(current + 1, 1);
+      else if (dx > 0 && current > 0)    goTo(current - 1, -1);
+    }
+  }, { passive: true });
+
+  /* ── Mouse drag ── */
+  let mX = 0, dragging = false;
+  container.addEventListener('mousedown', e => { mX = e.clientX; dragging = true; });
+  document.addEventListener('mouseup', e => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = e.clientX - mX;
+    if (Math.abs(dx) > 60) {
+      if (dx < 0 && current < TOTAL - 1) goTo(current + 1, 1);
+      else if (dx > 0 && current > 0)    goTo(current - 1, -1);
+    }
+  });
+
+  /* ── Keyboard ── */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && current < TOTAL - 1) goTo(current + 1, 1);
+    if (e.key === 'ArrowLeft'  && current > 0)         goTo(current - 1, -1);
+  });
+</script>
+</body>
+</html>

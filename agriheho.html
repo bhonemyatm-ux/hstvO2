@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Heho - High Schooler's Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --green-900: #064e3b;
+            --green-800: #065f46;
+            --green-700: #047857;
+            --green-600: #059669;
+            --green-500: #10b981;
+            --green-400: #34d399;
+            --green-100: #d1fae5;
+            --green-50:  #ecfdf5;
+            --earth-700: #92400e;
+            --earth-500: #b45309;
+            --earth-100: #fef3c7;
+            --slate-900: #0f172a;
+            --slate-700: #334155;
+            --slate-500: #64748b;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50:  #f8fafc;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,.10), 0 4px 8px rgba(0,0,0,.05);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAVBAR ─────────────────────────────────── */
+        .navbar {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--white);
+            border-bottom: 1px solid var(--slate-200);
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-inner {
+            max-width: 1140px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-brand-badge {
+            background: var(--green-600); color: var(--white);
+            font-size: .75rem; font-weight: 800; letter-spacing: 1px;
+            padding: 4px 9px; border-radius: 6px;
+        }
+        .nav-brand-name { font-size: .95rem; font-weight: 600; color: var(--slate-700); }
+        .nav-links { list-style: none; display: flex; gap: 4px; }
+        .nav-links a {
+            text-decoration: none; font-size: .875rem; font-weight: 500;
+            color: var(--slate-500); padding: 7px 13px; border-radius: 8px;
+            transition: all .18s ease;
+        }
+        .nav-links a:hover { background: var(--slate-100); color: var(--slate-900); }
+        .nav-links a.active { background: var(--green-50); color: var(--green-700); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--slate-600); border-radius: 2px; transition: .3s; }
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+                background: var(--white); border-bottom: 1px solid var(--slate-200);
+                padding: 12px 16px 16px; gap: 2px; box-shadow: var(--shadow-md);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 10px 14px; }
+            .hamburger { display: flex; }
+        }
+
+        /* ── LAYOUT ──────────────────────────────────── */
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── HERO ────────────────────────────────────── */
+        .hero {
+            background: linear-gradient(135deg, var(--green-800) 0%, var(--green-600) 60%, var(--green-500) 100%);
+            padding: 60px 0 52px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .breadcrumb {
+            font-size: .8rem; color: rgba(255,255,255,.65);
+            margin-bottom: 28px; position: relative;
+        }
+        .breadcrumb a { color: rgba(255,255,255,.75); text-decoration: none; }
+        .breadcrumb a:hover { color: white; }
+        .breadcrumb span { color: rgba(255,255,255,.5); margin: 0 6px; }
+
+        .hero-content { display: flex; align-items: flex-start; gap: 28px; position: relative; }
+        .hero-logo {
+            flex-shrink: 0; width: 100px; height: 100px; border-radius: 20px;
+            background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.25);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+        .hero-logo-icon { font-size: 3rem; line-height: 1; }
+        .hero-logo-text { font-size: .65rem; font-weight: 700; color: rgba(255,255,255,.9); letter-spacing: 1px; margin-top: 4px; }
+        .hero-text { color: white; }
+        .hero-text h1 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+        .hero-subtitle { font-size: .95rem; color: rgba(255,255,255,.8); margin-bottom: 18px; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .hero-tag {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2);
+            color: white; font-size: .8rem; font-weight: 500;
+            padding: 5px 12px; border-radius: 20px; backdrop-filter: blur(4px);
+        }
+
+        /* ── STATS BAR ────────────────────────────────── */
+        .stats-bar {
+            background: var(--white); border-bottom: 1px solid var(--slate-200);
+            box-shadow: var(--shadow-sm);
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+        }
+        .stat-cell {
+            display: flex; align-items: center; gap: 14px;
+            padding: 22px 20px;
+            border-right: 1px solid var(--slate-200);
+        }
+        .stat-cell:last-child { border-right: none; }
+        .stat-emoji { font-size: 1.8rem; }
+        .stat-num { font-size: 1.4rem; font-weight: 800; color: var(--green-700); line-height: 1; }
+        .stat-label { font-size: .78rem; color: var(--slate-500); margin-top: 2px; font-weight: 500; }
+        @media (max-width: 640px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-cell:nth-child(2) { border-right: none; }
+            .stat-cell:nth-child(2), .stat-cell:nth-child(4) { }
+            .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 1px solid var(--slate-200); }
+        }
+
+        /* ── MAIN CONTENT LAYOUT ─────────────────────── */
+        .profile-layout {
+            display: grid; grid-template-columns: 300px 1fr; gap: 28px;
+            padding: 32px 0 64px;
+        }
+        @media (max-width: 900px) {
+            .profile-layout { grid-template-columns: 1fr; }
+        }
+
+        /* ── SIDEBAR ──────────────────────────────────── */
+        .sidebar { display: flex; flex-direction: column; gap: 18px; }
+        .card {
+            background: var(--white); border-radius: var(--radius-lg);
+            border: 1px solid var(--slate-200); box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 16px 20px 14px;
+            border-bottom: 1px solid var(--slate-100);
+            font-size: .85rem; font-weight: 700; color: var(--slate-700);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .card-header.green {
+            background: var(--green-700); color: white; border-bottom-color: rgba(255,255,255,.15);
+        }
+        .card-body { padding: 18px 20px; }
+        .info-row {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--slate-100);
+            font-size: .85rem;
+        }
+        .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .info-label { color: var(--slate-500); font-weight: 500; flex-shrink: 0; }
+        .info-value { color: var(--slate-800); font-weight: 600; text-align: right; }
+
+        .req-item { margin-bottom: 14px; }
+        .req-item:last-child { margin-bottom: 0; }
+        .req-label { font-size: .78rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase; letter-spacing: .5px; display: block; margin-bottom: 6px; }
+        .req-value {
+            display: inline-block; font-size: 1rem; font-weight: 700;
+            color: var(--green-800); background: var(--green-50);
+            border: 1px solid var(--green-100); padding: 4px 12px; border-radius: 8px;
+        }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+        .tag {
+            font-size: .78rem; font-weight: 600; padding: 3px 10px; border-radius: 6px;
+            background: var(--green-50); color: var(--green-700); border: 1px solid var(--green-100);
+        }
+
+        .contact-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: .85rem; color: var(--slate-600); }
+        .contact-row .icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+        .notice {
+            background: var(--earth-100); border: 1px solid #fcd34d; border-radius: var(--radius-md);
+            padding: 12px 16px; font-size: .82rem; color: var(--earth-700); line-height: 1.5;
+        }
+        .notice strong { display: block; margin-bottom: 3px; }
+
+        .cta-btn {
+            display: block; width: 100%; text-align: center;
+            background: var(--green-600); color: white; font-weight: 700; font-size: .9rem;
+            padding: 12px; border-radius: var(--radius-md); text-decoration: none;
+            transition: background .18s ease; margin-top: 14px;
+        }
+        .cta-btn:hover { background: var(--green-700); }
+
+        /* ── TABS ────────────────────────────────────── */
+        .tabs-wrapper { background: var(--white); border: 1px solid var(--slate-200); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
+        .tabs-nav {
+            display: flex; overflow-x: auto; padding: 0 8px;
+            border-bottom: 1px solid var(--slate-200);
+            scrollbar-width: none;
+        }
+        .tabs-nav::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            flex-shrink: 0; padding: 16px 20px; border: none; background: none; cursor: pointer;
+            font-size: .875rem; font-weight: 600; color: var(--slate-400);
+            border-bottom: 3px solid transparent; margin-bottom: -1px;
+            transition: all .18s ease; display: flex; align-items: center; gap: 7px;
+        }
+        .tab-btn:hover { color: var(--slate-700); }
+        .tab-btn.active { color: var(--green-700); border-bottom-color: var(--green-600); }
+        .tab-panel { display: none; padding: 28px; }
+        .tab-panel.active { display: block; }
+
+        /* ── SECTION HEADING ─────────────────────────── */
+        .section-heading { font-size: 1.1rem; font-weight: 800; color: var(--slate-800); margin-bottom: 6px; }
+        .section-sub { font-size: .85rem; color: var(--slate-400); margin-bottom: 24px; }
+
+        /* ── FEATURE CARDS ───────────────────────────── */
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 28px; }
+        .feature-card {
+            border: 1px solid var(--slate-200); border-radius: var(--radius-md);
+            padding: 18px 16px; background: var(--slate-50); transition: all .2s ease;
+            display: flex; gap: 14px; align-items: flex-start;
+        }
+        .feature-card:hover { background: var(--green-50); border-color: var(--green-200); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .feature-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .feature-title { font-size: .9rem; font-weight: 700; color: var(--slate-800); margin-bottom: 4px; }
+        .feature-desc { font-size: .8rem; color: var(--slate-500); }
+
+        /* ── ABOUT TEXT ──────────────────────────────── */
+        .about-text { font-size: .9rem; color: var(--slate-600); margin-bottom: 14px; line-height: 1.75; }
+        .about-text:last-child { margin-bottom: 0; }
+
+        /* ── GALLERY ─────────────────────────────────── */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 24px; }
+        .gallery-tile {
+            border-radius: var(--radius-md); overflow: hidden;
+            position: relative; cursor: pointer;
+            height: 140px; display: flex; align-items: center; justify-content: center;
+            font-size: 2.8rem; transition: transform .2s ease;
+        }
+        .gallery-tile:hover { transform: scale(1.03); }
+        .gallery-tile:hover .gallery-label { opacity: 1; }
+        .gallery-g1 { background: linear-gradient(135deg, #064e3b, #10b981); }
+        .gallery-g2 { background: linear-gradient(135deg, #b45309, #fcd34d); }
+        .gallery-g3 { background: linear-gradient(135deg, #5b21b6, #a78bfa); }
+        .gallery-g4 { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
+        .gallery-g5 { background: linear-gradient(135deg, #be123c, #fb7185); }
+        .gallery-g6 { background: linear-gradient(135deg, #0e7490, #22d3ee); }
+        .gallery-label {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: rgba(0,0,0,.7); color: white; font-size: .78rem; font-weight: 600;
+            padding: 7px 10px; opacity: 0; transition: opacity .2s ease;
+        }
+
+        /* ── PROGRAMS ────────────────────────────────── */
+        .program-card {
+            border: 1px solid var(--slate-200); border-radius: var(--radius-lg);
+            overflow: hidden; margin-bottom: 16px; background: var(--white);
+        }
+        .program-card:last-child { margin-bottom: 0; }
+        .program-head {
+            display: flex; align-items: center; gap: 16px;
+            padding: 20px 22px; border-bottom: 1px solid var(--slate-100);
+        }
+        .program-icon { font-size: 2rem; }
+        .program-name { font-size: 1rem; font-weight: 700; color: var(--slate-800); }
+        .program-badge {
+            font-size: .75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+            background: var(--green-50); color: var(--green-700); border: 1px solid var(--green-100);
+            display: inline-block; margin-top: 4px;
+        }
+        .program-body { padding: 18px 22px; }
+        .program-desc { font-size: .875rem; color: var(--slate-500); margin-bottom: 14px; }
+        .subject-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+        .chip {
+            font-size: .78rem; font-weight: 500; padding: 4px 11px; border-radius: 6px;
+            background: var(--slate-100); color: var(--slate-600); border: 1px solid var(--slate-200);
+        }
+
+        /* ── SCHEDULE ────────────────────────────────── */
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 20px; }
+        .schedule-cell {
+            background: var(--slate-50); border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md); padding: 16px; text-align: center;
+        }
+        .schedule-time { font-size: 1rem; font-weight: 800; color: var(--green-700); }
+        .schedule-activity { font-size: .8rem; color: var(--slate-600); margin-top: 5px; }
+
+        .campus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
+        .campus-tile {
+            border: 1px solid var(--slate-200); border-radius: var(--radius-lg); overflow: hidden;
+            background: var(--white); transition: all .2s ease;
+        }
+        .campus-tile:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .campus-thumb {
+            height: 110px; display: flex; align-items: center; justify-content: center; font-size: 3rem;
+        }
+        .campus-thumb.t1 { background: linear-gradient(135deg, #064e3b, #10b981); }
+        .campus-thumb.t2 { background: linear-gradient(135deg, #b45309, #fcd34d); }
+        .campus-thumb.t3 { background: linear-gradient(135deg, #5b21b6, #a78bfa); }
+        .campus-info { padding: 14px 16px; }
+        .campus-title { font-size: .9rem; font-weight: 700; color: var(--slate-800); margin-bottom: 4px; }
+        .campus-desc { font-size: .8rem; color: var(--slate-500); }
+
+        /* ── CAREERS ─────────────────────────────────── */
+        .career-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 28px; }
+        .career-tile {
+            background: var(--white); border: 1px solid var(--slate-200);
+            border-radius: var(--radius-lg); padding: 22px 18px; text-align: center;
+            transition: all .2s ease;
+        }
+        .career-tile:hover { box-shadow: var(--shadow-md); border-color: var(--green-200); transform: translateY(-2px); }
+        .career-emoji { font-size: 2.6rem; margin-bottom: 10px; }
+        .career-title { font-size: .95rem; font-weight: 700; color: var(--slate-800); margin-bottom: 6px; }
+        .career-desc { font-size: .8rem; color: var(--slate-500); line-height: 1.55; }
+
+        /* ── CTA BANNER ──────────────────────────────── */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--green-800), var(--green-600));
+            padding: 56px 0; text-align: center; color: white;
+        }
+        .cta-banner h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 10px; }
+        .cta-banner p { font-size: .95rem; color: rgba(255,255,255,.8); margin-bottom: 28px; }
+        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-outline-white {
+            padding: 13px 26px; border-radius: var(--radius-md); font-weight: 700; font-size: .9rem;
+            border: 2px solid rgba(255,255,255,.5); color: white; text-decoration: none;
+            transition: all .18s ease; background: transparent;
+        }
+        .btn-outline-white:hover { background: rgba(255,255,255,.12); border-color: white; }
+        .btn-white {
+            padding: 13px 26px; border-radius: var(--radius-md); font-weight: 700; font-size: .9rem;
+            background: white; color: var(--green-800); text-decoration: none; transition: all .18s ease;
+        }
+        .btn-white:hover { background: var(--green-50); }
+
+        /* ── FOOTER ──────────────────────────────────── */
+        footer {
+            background: var(--slate-900); color: rgba(255,255,255,.65);
+            padding: 48px 0 24px;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; margin-bottom: 36px;
+        }
+        .footer-brand { font-size: 1rem; font-weight: 800; color: white; margin-bottom: 10px; }
+        .footer-tagline { font-size: .85rem; line-height: 1.6; }
+        .footer-col-title { font-size: .85rem; font-weight: 700; color: white; margin-bottom: 14px; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-links a { font-size: .85rem; color: rgba(255,255,255,.55); text-decoration: none; transition: color .15s; }
+        .footer-links a:hover { color: white; }
+        .footer-contact-item { font-size: .85rem; margin-bottom: 8px; }
+        .footer-contact-item a { color: var(--green-400); text-decoration: none; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.08); padding-top: 18px;
+            font-size: .8rem; text-align: center; color: rgba(255,255,255,.3);
+        }
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        /* ── HERO MOBILE ─────────────────────────────── */
+        @media (max-width: 600px) {
+            .hero { padding: 40px 0 36px; }
+            .hero-content { flex-direction: column; gap: 16px; }
+            .hero-logo { width: 72px; height: 72px; border-radius: 14px; }
+            .hero-logo-icon { font-size: 2.2rem; }
+        }
+
+        /* ── DIVIDER ─────────────────────────────────── */
+        .divider { border: none; border-top: 1px solid var(--slate-200); margin: 24px 0; }
+
+        /* ── ACCORDION (Programs detail) ────────────── */
+        .highlight-box {
+            background: var(--green-50); border: 1px solid var(--green-100);
+            border-radius: var(--radius-md); padding: 16px 18px; margin-top: 20px;
+        }
+        .highlight-box p { font-size: .85rem; color: var(--green-800); line-height: 1.65; }
+        .highlight-box strong { font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────── -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a class="nav-brand" href="hst.html">
+            <span class="nav-brand-badge">HST</span>
+            <span class="nav-brand-name">High Schooler's Tool</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html" class="active">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────── -->
+<section class="hero">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="hst.html">Home</a>
+            <span>/</span>
+            <a href="uni.html">Universities</a>
+            <span>/</span>
+            Institute of Agriculture &amp; Livestock (Heho)
+        </div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <div class="hero-logo-icon">🌾</div>
+                <div class="hero-logo-text">IAL HEHO</div>
+            </div>
+            <div class="hero-text">
+                <h1>Institute of Agriculture &amp; Livestock (Heho)</h1>
+                <p class="hero-subtitle">Shan Highlands Agricultural Excellence — Kalaw Township, Shan State</p>
+                <div class="hero-tags">
+                    <span class="hero-tag">📍 Kalaw Township, Shan State</span>
+                    <span class="hero-tag">🎓 Diploma Programs (2–3 Yrs)</span>
+                    <span class="hero-tag">🚜 100+ Acre Training Farm</span>
+                    <span class="hero-tag">🏛️ Government Institute</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── STATS BAR ──────────────────────────────────────── -->
+<section class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-cell">
+                <div class="stat-emoji">🎓</div>
+                <div>
+                    <div class="stat-num">500+</div>
+                    <div class="stat-label">Students Enrolled</div>
+                </div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-emoji">📚</div>
+                <div>
+                    <div class="stat-num">3</div>
+                    <div class="stat-label">Diploma Programs</div>
+                </div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-emoji">🌿</div>
+                <div>
+                    <div class="stat-num">100+</div>
+                    <div class="stat-label">Acres Farm Campus</div>
+                </div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-emoji">👨‍🏫</div>
+                <div>
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label">Faculty Members</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── MAIN CONTENT ────────────────────────────────────── -->
+<div class="container">
+    <div class="profile-layout">
+
+        <!-- ── SIDEBAR ──────────────────────────────── -->
+        <aside class="sidebar">
+
+            <div class="card">
+                <div class="card-header green">🌱 Quick Info</div>
+                <div class="card-body">
+                    <div class="info-row">
+                        <span class="info-label">Type</span>
+                        <span class="info-value">Govt. Agricultural Institute</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Location</span>
+                        <span class="info-value">Kalaw, Shan State</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Farm Size</span>
+                        <span class="info-value">100+ Acres</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Award</span>
+                        <span class="info-value">Diploma Certificate</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Training Mode</span>
+                        <span class="info-value">70% Practical</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">📝 Entrance Requirements</div>
+                <div class="card-body">
+                    <div class="req-item">
+                        <span class="req-label">Minimum Marks</span>
+                        <span class="req-value">320+ marks</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Program Duration</span>
+                        <div class="tag-row">
+                            <span class="tag">2 Years</span>
+                            <span class="tag">Diploma</span>
+                        </div>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Eligible Subjects</span>
+                        <div class="tag-row">
+                            <span class="tag">Science</span>
+                            <span class="tag">Biology</span>
+                        </div>
+                    </div>
+                    <hr class="divider">
+                    <div class="notice">
+                        <strong>ℹ️ Note on Data</strong>
+                        This is a low-level government institute. Official entry marks may vary each year. Contact the regional agriculture office directly for the most up-to-date requirements.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">📞 Contact</div>
+                <div class="card-body">
+                    <div class="contact-row"><span class="icon">📍</span> Kalaw Township, Shan State, Myanmar</div>
+                    <div class="contact-row"><span class="icon">🏛️</span> Under Ministry of Agriculture, Livestock &amp; Irrigation</div>
+                    <div class="contact-row"><span class="icon">📧</span> Contact via regional agriculture office</div>
+                    <a href="uni.html" class="cta-btn">← Back to Universities</a>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- ── TABS AREA ─────────────────────────────── -->
+        <main>
+            <div class="tabs-wrapper">
+                <div class="tabs-nav" role="tablist">
+                    <button class="tab-btn active" data-tab="overview" role="tab">🌱 Overview</button>
+                    <button class="tab-btn" data-tab="programs" role="tab">📚 Programs</button>
+                    <button class="tab-btn" data-tab="farmlife" role="tab">🚜 Farm Life</button>
+                    <button class="tab-btn" data-tab="careers" role="tab">💼 Careers</button>
+                </div>
+
+                <!-- OVERVIEW ─────────────────────────── -->
+                <div class="tab-panel active" id="overview" role="tabpanel">
+                    <h2 class="section-heading">About IAL Heho</h2>
+                    <p class="section-sub">A practical agricultural training center serving the Shan Highlands</p>
+
+                    <p class="about-text">
+                        The Institute of Agriculture and Livestock (Heho) is a government-run agricultural diploma institute situated in Kalaw Township, Shan State. Located in the cool highlands of the Shan plateau, it offers practical diploma courses focused on highland crops, livestock raising, and plantation management.
+                    </p>
+                    <p class="about-text">
+                        Unlike large universities, IAL Heho focuses on producing job-ready agricultural technicians. Around <strong>70% of the curriculum</strong> is hands-on farm work across its 100+ acre training campus — making it one of the most practical agriculture programs in the country.
+                    </p>
+                    <p class="about-text">
+                        The institute is under the <strong>Ministry of Agriculture, Livestock &amp; Irrigation</strong> and produces graduates who are highly valued in rural development, government extension services, and commercial farming.
+                    </p>
+
+                    <hr class="divider">
+
+                    <h3 class="section-heading" style="margin-bottom:16px;">Why Choose IAL Heho?</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🚜</div>
+                            <div>
+                                <div class="feature-title">Real Farm Training</div>
+                                <div class="feature-desc">100+ acres of live working farms — you learn by doing, not just reading textbooks</div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌾</div>
+                            <div>
+                                <div class="feature-title">Highland Specialization</div>
+                                <div class="feature-desc">Cabbage, potato, coffee, tea — crops ideal for the Shan plateau climate</div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🐄</div>
+                            <div>
+                                <div class="feature-title">Livestock Expertise</div>
+                                <div class="feature-desc">Cattle, poultry, piggery units plus basic veterinary care training</div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌤️</div>
+                            <div>
+                                <div class="feature-title">Cool Climate Advantage</div>
+                                <div class="feature-desc">Ideal location for temperate-crop agriculture that most institutes cannot offer</div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">💰</div>
+                            <div>
+                                <div class="feature-title">Low Entry Barrier</div>
+                                <div class="feature-desc">320+ marks is accessible — a strong option if medicine or engineering is not your path</div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👷</div>
+                            <div>
+                                <div class="feature-title">Job-Ready Graduates</div>
+                                <div class="feature-desc">Employers in agriculture and government departments actively recruit from here</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-heading" style="margin-bottom:6px;">Farm Gallery</h3>
+                    <p style="font-size:.82rem;color:var(--slate-400);margin-bottom:0;">Hover to see more</p>
+                    <div class="gallery-grid">
+                        <div class="gallery-tile gallery-g1">🌾<div class="gallery-label">Crop Research Fields</div></div>
+                        <div class="gallery-tile gallery-g2">🐄<div class="gallery-label">Livestock Center</div></div>
+                        <div class="gallery-tile gallery-g3">🍵<div class="gallery-label">Tea Plantation</div></div>
+                        <div class="gallery-tile gallery-g4">🥬<div class="gallery-label">Vegetable Plots</div></div>
+                        <div class="gallery-tile gallery-g5">🍎<div class="gallery-label">Fruit Orchards</div></div>
+                        <div class="gallery-tile gallery-g6">🌱<div class="gallery-label">Greenhouse Nursery</div></div>
+                    </div>
+                </div>
+
+                <!-- PROGRAMS ─────────────────────────── -->
+                <div class="tab-panel" id="programs" role="tabpanel">
+                    <h2 class="section-heading">Agricultural Diploma Programs</h2>
+                    <p class="section-sub">2–3 year courses • 70% practical training on farm campus</p>
+
+                    <div class="program-card">
+                        <div class="program-head">
+                            <div class="program-icon">🌾</div>
+                            <div>
+                                <div class="program-name">Crop Production</div>
+                                <span class="program-badge">Diploma — 2 Years</span>
+                            </div>
+                        </div>
+                        <div class="program-body">
+                            <p class="program-desc">Covers cultivation of highland crops, rice, vegetables, and organic farming techniques. Students work directly on the institute's research farm throughout the course.</p>
+                            <div class="subject-chips">
+                                <span class="chip">🌾 Rice Cultivation</span>
+                                <span class="chip">🥬 Vegetable Farming</span>
+                                <span class="chip">🌱 Organic Methods</span>
+                                <span class="chip">💧 Irrigation Systems</span>
+                                <span class="chip">🧪 Soil Science</span>
+                                <span class="chip">🌡️ Climate Adaptation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-head">
+                            <div class="program-icon">🐄</div>
+                            <div>
+                                <div class="program-name">Livestock Management</div>
+                                <span class="program-badge">Diploma — 2 Years</span>
+                            </div>
+                        </div>
+                        <div class="program-body">
+                            <p class="program-desc">Focuses on animal husbandry, feed management, and basic veterinary care. Covers cattle, poultry, and piggery operations using the institute's dedicated livestock center.</p>
+                            <div class="subject-chips">
+                                <span class="chip">🐄 Cattle Husbandry</span>
+                                <span class="chip">🐔 Poultry Farming</span>
+                                <span class="chip">🐖 Piggery Operations</span>
+                                <span class="chip">🏥 Veterinary Basics</span>
+                                <span class="chip">🌾 Feed Management</span>
+                                <span class="chip">📋 Animal Health Records</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-head">
+                            <div class="program-icon">🌳</div>
+                            <div>
+                                <div class="program-name">Forestry &amp; Horticulture</div>
+                                <span class="program-badge">Diploma — 2 Years</span>
+                            </div>
+                        </div>
+                        <div class="program-body">
+                            <p class="program-desc">Covers tea and coffee cultivation, fruit orchards, and plantation management — skills uniquely suited to the cool Shan highland environment that most agricultural institutes cannot replicate.</p>
+                            <div class="subject-chips">
+                                <span class="chip">🍵 Tea Plantation</span>
+                                <span class="chip">☕ Coffee Cultivation</span>
+                                <span class="chip">🍎 Fruit Orchards</span>
+                                <span class="chip">🌲 Plantation Management</span>
+                                <span class="chip">🌱 Tree Nursery</span>
+                                <span class="chip">📦 Post-Harvest Handling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>ℹ️ A note for students:</strong> IAL Heho is a lower-level diploma institute — it does not award bachelor's degrees. However, graduates often join extension services, cooperatives, or continue to degree-level agriculture at universities like Yezin Agricultural University with added experience. This is a practical, career-first track.</p>
+                    </div>
+                </div>
+
+                <!-- FARM LIFE ─────────────────────────── -->
+                <div class="tab-panel" id="farmlife" role="tabpanel">
+                    <h2 class="section-heading">Farm Life at IAL Heho</h2>
+                    <p class="section-sub">70% hands-on training across 100+ acres of live working campus</p>
+
+                    <div class="campus-grid">
+                        <div class="campus-tile">
+                            <div class="campus-thumb t1">🌾</div>
+                            <div class="campus-info">
+                                <div class="campus-title">Crop Research Farm</div>
+                                <div class="campus-desc">Highland vegetables, rice trials, seed production plots, and soil test beds</div>
+                            </div>
+                        </div>
+                        <div class="campus-tile">
+                            <div class="campus-thumb t2">🐄</div>
+                            <div class="campus-info">
+                                <div class="campus-title">Livestock Center</div>
+                                <div class="campus-desc">Cattle breeding units, poultry hatchery, piggery, and basic vet care lab</div>
+                            </div>
+                        </div>
+                        <div class="campus-tile">
+                            <div class="campus-thumb t3">🌱</div>
+                            <div class="campus-info">
+                                <div class="campus-title">Plantation Nursery</div>
+                                <div class="campus-desc">Tea, coffee, temperate fruit tree nursery and greenhouse growing areas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-heading" style="margin-bottom:4px;">Typical Student Day</h3>
+                    <p style="font-size:.82rem;color:var(--slate-400);margin-bottom:0;">Farm life starts early — this is not a typical classroom degree</p>
+                    <div class="schedule-grid">
+                        <div class="schedule-cell">
+                            <div class="schedule-time">6:00 AM</div>
+                            <div class="schedule-activity">🌅 Morning Farm Duties</div>
+                        </div>
+                        <div class="schedule-cell">
+                            <div class="schedule-time">8:00 AM</div>
+                            <div class="schedule-activity">📚 Theory Classes</div>
+                        </div>
+                        <div class="schedule-cell">
+                            <div class="schedule-time">10:00 AM</div>
+                            <div class="schedule-activity">🚜 Field Practice</div>
+                        </div>
+                        <div class="schedule-cell">
+                            <div class="schedule-time">1:00 PM</div>
+                            <div class="schedule-activity">🍽️ Lunch Break</div>
+                        </div>
+                        <div class="schedule-cell">
+                            <div class="schedule-time">2:00 PM</div>
+                            <div class="schedule-activity">🔬 Lab / Livestock Work</div>
+                        </div>
+                        <div class="schedule-cell">
+                            <div class="schedule-time">5:00 PM</div>
+                            <div class="schedule-activity">📖 Self Study / Rest</div>
+                        </div>
+                    </div>
+
+                    <hr class="divider">
+                    <div class="highlight-box">
+                        <p><strong>What to expect:</strong> Life at IAL Heho is rural and practical. Students live on or near campus, wake up early for farm duties, and spend most of the day outdoors. If you are passionate about agriculture and prefer doing over sitting in lectures, this is the environment for you. The cool Shan highland climate is a bonus — no sweltering heat.</p>
+                    </div>
+                </div>
+
+                <!-- CAREERS ─────────────────────────── -->
+                <div class="tab-panel" id="careers" role="tabpanel">
+                    <h2 class="section-heading">Career Opportunities</h2>
+                    <p class="section-sub">Diploma graduates are in demand — especially in rural Myanmar</p>
+
+                    <div class="career-grid">
+                        <div class="career-tile">
+                            <div class="career-emoji">🌾</div>
+                            <div class="career-title">Farm Supervisor</div>
+                            <div class="career-desc">Manage large plantations, government demonstration farms, and export agriculture cooperatives</div>
+                        </div>
+                        <div class="career-tile">
+                            <div class="career-emoji">🐄</div>
+                            <div class="career-title">Livestock Technician</div>
+                            <div class="career-desc">Work in dairy farms, poultry companies, piggery operations, and commercial feed mills</div>
+                        </div>
+                        <div class="career-tile">
+                            <div class="career-emoji">🏛️</div>
+                            <div class="career-title">Government Agricultural Officer</div>
+                            <div class="career-desc">Join the agriculture department as an extension officer helping rural communities</div>
+                        </div>
+                        <div class="career-tile">
+                            <div class="career-emoji">☕</div>
+                            <div class="career-title">Plantation Specialist</div>
+                            <div class="career-desc">Tea, coffee, and fruit plantation management in Shan State and beyond</div>
+                        </div>
+                        <div class="career-tile">
+                            <div class="career-emoji">💰</div>
+                            <div class="career-title">Own Farm Business</div>
+                            <div class="career-desc">Start your own commercial farming operation with hands-on expertise from day one</div>
+                        </div>
+                        <div class="career-tile">
+                            <div class="career-emoji">🎓</div>
+                            <div class="career-title">Continue to Degree</div>
+                            <div class="career-desc">Use diploma experience to join Yezin Agricultural University or similar for a full degree</div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Honest career outlook:</strong> IAL Heho graduates do not typically enter high-paying corporate careers. But in a country where most people depend on agriculture, trained agricultural technicians are genuinely valuable. Government jobs, NGO agricultural projects, and commercial farms all actively hire diploma holders. If you want to work in Shan State and contribute to rural development — this is one of the most direct paths.</p>
+                    </div>
+                </div>
+
+            </div><!-- /tabs-wrapper -->
+        </main>
+
+    </div>
+</div>
+
+<!-- ── CTA BANNER ─────────────────────────────────────── -->
+<section class="cta-banner">
+    <div class="container">
+        <h2>Ready to Grow Your Future?</h2>
+        <p>Join IAL Heho and become a skilled agricultural professional for Myanmar's highlands</p>
+        <div class="cta-actions">
+            <a href="uni.html" class="btn-outline-white">← Explore More Universities</a>
+            <a href="career-journey.html" class="btn-white">View Career Paths</a>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">High Schooler's Tool</div>
+                <p class="footer-tagline">Empowering Myanmar students to make informed university and career choices.</p>
+            </div>
+            <div>
+                <div class="footer-col-title">Quick Links</div>
+                <ul class="footer-links">
+                    <li><a href="hst.html">Home</a></li>
+                    <li><a href="uni.html">Universities</a></li>
+                    <li><a href="career-journey.html">Career Journey</a></li>
+                    
+                    <li><a href="study-mode.html">Study Mode</a></li>
+                    <li><a href="scholarships.html">Scholarships</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Contact</div>
+                <p class="footer-contact-item">High Schooler's Tool</p>
+                <p class="footer-contact-item">Email: <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+                <p class="footer-contact-item">Facebook: <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">High Schooler's Tool ARP</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+</footer>
+
+<script>
+    // Navbar hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            const target = document.getElementById(btn.dataset.tab);
+            if (target) target.classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>

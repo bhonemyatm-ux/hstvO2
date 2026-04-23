@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HST Ambassador Space</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #a1a1a6;
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --border: #e5e5ea;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-hover: 0 6px 24px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+      --radius: 16px;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .navbar-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+    }
+
+    .logout-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 16px;
+      background: var(--text-primary);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.1px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .logout-btn:hover {
+      background: #3a3a3c;
+    }
+
+    /* ── Page header ── */
+    .page-header {
+      text-align: center;
+      padding: 56px 24px 40px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .page-header h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .page-header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ── Card grid ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    @media (min-width: 640px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 960px) {
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ── Article card ── */
+    .article-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .article-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #e5e5ea, #d1d1d6);
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      background: linear-gradient(135deg, #e8f4fd, #dbeafe);
+    }
+
+    .card-body {
+      padding: 22px 22px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .card-intro {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .card-full {
+      display: none;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-primary);
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      white-space: pre-line;
+    }
+
+    .card-full.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-actions {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--font);
+      letter-spacing: -0.1px;
+      transition: color 0.2s;
+    }
+
+    .read-more:hover {
+      color: var(--accent-hover);
+    }
+
+    .read-more .arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .read-more.expanded .arrow {
+      transform: rotate(90deg);
+    }
+
+    /* ── Special Burmese card ── */
+    .article-card.burmese-card .card-img-placeholder {
+      background: linear-gradient(135deg, #fef3e8, #fde8cc);
+    }
+
+    .article-card.burmese-card .card-title {
+      font-size: 20px;
+    }
+
+    .article-card.burmese-card .card-full {
+      font-size: 15px;
+      line-height: 2.0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="hstlogo.jpg" alt="HST Logo" class="logo-img">
+      <span class="navbar-title">HST Ambassador Space</span>
+    </div>
+    <a href="career-journey.html" class="logout-btn">Logout</a>
+  </nav>
+
+  <!-- Page header -->
+  <header class="page-header">
+    <h1>Ambassador Space</h1>
+    <p>Premium reading space for HST Ambassadors and curious students.<br>
+       Short educational articles, tips, and letters to read anytime.</p>
+  </header>
+
+  <!-- Card grid -->
+  <main class="card-grid">
+
+    <!-- Card 1: ဖြေးဖြေးနှေးနှေး (Burmese special card) -->
+    <article class="article-card burmese-card">
+      <div class="card-img-placeholder">✦</div>
+      <div class="card-body">
+        <div class="card-tag">Letter · မြန်မာဘာသာ</div>
+        <h3 class="card-title">ဖြေးဖြေးနှေးနှေး</h3>
+        <p class="card-intro">
+          ပညာသင်နေစဉ်မှာ မိမိကိုယ်ကို လျှော့မတွက်ပါနဲ့။ ဗဟုသုတကို ဖြေးဖြေးနဲ့ စုဆောင်းပြီး နှေးနှေးနဲ့ သုံးဖို့က အကောင်းဆုံးလမ်းကြောင်းပါ။ ဒီစာလေးဖတ်ပြီး သင့်ဘဝကို ဖြေးဖြေးနှေးနှေး တည်ဆောက်သွားပါ…
+        </p>
+        <div class="card-full" id="full-burmese">အောက်ပါစာလေးကို ဖတ်နေသော သင်၏ စိတ်နှလုံးသည် တိတ်ဆိတ်သော်လည်း ကြီးမားလှပါသည်။
+
+ဖြေးဖြေးနှေးနှေး ဆိုတာကို စဉ်းစားကြည့်လိုက်ပါ။
+ပြေးပြေးလွှားလို့ ရောက်တာလား၊ ဖြေးဖြေးလျှောက်ပြီး ရောက်တာလား။
+မေးခွန်းရဲ့ အဖြေတွေထဲက အလှဆုံးအဖြေကတော့ "ဖြေးဖြေးနှေးနှေး" ပါ။
+
+ကျွန်တော်တို့က အများကြီး ပြေးမိတယ်၊ အများကြီး ရှာမိတယ်၊ အများကြီး လုပ်မိတယ်။
+ဒါပေမဲ့ တကယ်တော့ အရေးကြီးဆုံးက ဘာလဲဆိုရင်
+"ငါ ဖြေးဖြေးနဲ့ ကြိုးစားလား၊ ဒါမှမဟုတ် တွန်းထုတ်လိုက်တဲ့အလားလားနဲ့ ဘာမှ မပေါ်ပဲ ပျောက်သွားလား" ဆိုတာပါ။
+
+ဖြေးဖြေးနှေးနှေးလုပ်ရင်
+· စိတ်က နေပြီး မပျက်
+· စွမ်းအင်က သက်သောင့်သက်သာ
+· ရလဒ်က တည်မြဲလာတယ်
+
+နေ့တိုင်း သင် လုပ်နေတဲ့ အလေးအနက်
+
+· ဖတ်ခြင်း
+· စေ့စပ်ချွေးနှုတ်ခြင်း
+· သူတစ်ပါးအား ကူညီခြင်း
+
+ဒီအလေးအနက်တွေကို ဖြေးဖြေးနှေးနှေး လုပ်ပေးလိုက်ပါ။
+နေ့တိုင်း ၅ မိနစ်၊ ၁၀ မိနစ်၊ ၃ မိနစ်လောက်တောင် အာရုံစိုက်လို့ရပါတယ်။
+
+ဖြေးဖြေးနှေးနှေး လမ်းကြောင်းမှာ အောင်မြင်မှုက
+· တစ်နေ့ထဲ မြင်ရတာ မဟုတ်ပါဘူး
+· တစ်ပတ်တာ မြင်ရတာလည်း မဟုတ်ပါဘူး
+· တိတ်တိတ်လေး လိုက်နေတဲ့ သင့်အလေ့အထကို တစ်လနေ၊ နှစ်လနေ၊ သုံးလနေ နောက်ကျောမှ လှည့်ကြည့်ရာမှာ ပေါ်လာပါလိမ့်မယ်။
+
+သင်ဟာ
+· ယနေ့ လုပ်နေတာကို မလျှော့တွက်ပါနှင့်
+· မိုဃ်းကောင်းနေတဲ့နေ့ရက်ကို မစောင့်ပါနှင့်
+အခု ထိုင်နေတဲ့ လေးစားဘွယ် နေရာလေးကနေ
+ဖြေးဖြေးနှေးနှေး တည်ဆောက်သွားပါ။
+
+HST အနေနဲ့ လည်း သင်လို ဖြေးဖြေး ဖြစ်နေတာကို နားလည်ပါတယ်။
+ဖြေးဖြေးနှေးနှေး လုပ်နေတိုင်း
+သင့်ကို မော်တော်မှုနဲ့ မထိန်းကိုင်ဘဲ
+ဖြေးဖြေးနှေးနှေး လျှောက်လှမ်းဝါး သွားကြမယ်။
+
+ဖြေးဖြေးနှေးနှေးလေးနဲ့
+ပညာ၊ စိတ်နှလုံး၊ အနာဂတ်
+သုံးခုစလုံးကို အတူ ဆောက်ပါ။</div>
+        <div class="card-actions">
+          <button class="read-more" onclick="toggleCard(this, 'full-burmese')">
+            Read More <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: Why Choosing the Right University Matters -->
+    <article class="article-card">
+      <img class="card-img" src="topic1.jpg" alt="University" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🎓</div>
+      <div class="card-body">
+        <div class="card-tag">Education · Guide</div>
+        <h3 class="card-title">Why Choosing the Right University Matters</h3>
+        <p class="card-intro">
+          The university you choose shapes more than just your degree. It shapes your habits, your circle, and your sense of self. Before you decide, take a quiet moment to think clearly about what you actually want from the next four years.
+        </p>
+        <div class="card-full" id="full-uni">
+It is easy to choose a university based on what sounds impressive or what your friends are doing.
+
+But the right university for you is the one that fits your pace, your goals, and your way of learning — not the one with the loudest reputation.
+
+Here are a few quiet things to consider:
+
+· What environment helps you think clearly?
+  Some people thrive in big, busy campuses. Others need smaller, calmer communities. Neither is wrong.
+
+· What do you actually want to study?
+  Not what your parents expect, not what seems safe. What genuinely pulls your curiosity?
+
+· Can you picture yourself there in year two?
+  Not just on the first day — but in the middle of an ordinary Tuesday, tired and still choosing to show up.
+
+There is no perfect choice. Every university has gaps. What matters is that you make the decision with care and awareness — and then commit to making the most of wherever you land.
+
+HST is here to help you think through those questions — slowly, honestly, and without pressure.</div>
+        <div class="card-actions">
+          <button class="read-more" onclick="toggleCard(this, 'full-uni')">
+            Read More <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: How to Share HST Properly -->
+    <article class="article-card">
+      <img class="card-img" src="topic2.jpg" alt="Sharing HST" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🤝</div>
+      <div class="card-body">
+        <div class="card-tag">Ambassador · Tips</div>
+        <h3 class="card-title">How to Share HST Properly</h3>
+        <p class="card-intro">
+          Sharing HST is not about convincing anyone. It is about opening a door calmly, clearly, and letting the other person decide if they want to walk through. Here is how to do it with care and confidence.
+        </p>
+        <div class="card-full" id="full-share">
+Sharing HST well comes down to one thing: sincerity.
+
+When you tell someone about HST, you are not selling a product. You are sharing something that helped you — or something you genuinely believe can help them.
+
+A few principles to guide you:
+
+· Start with a real observation
+  Notice what the person is actually dealing with — stress about university choices, confusion about next steps, pressure from family. Then share HST as something that addresses that specific thing.
+
+· Keep it short and honest
+  "HST helped me think more clearly about my path. I thought you might find it useful too." That is enough. You do not need a long pitch.
+
+· Do not pressure
+  The best ambassadors share once, clearly, and then let the other person decide. Pressure makes people close off. Calm confidence invites curiosity.
+
+· Lead with the experience, not the features
+  People remember how something made them feel, not a list of what it does. Share your experience. That is what resonates.
+
+· Follow up gently
+  A week later, check in. Not to push, but to see if they had any questions.
+
+You are not a recruiter. You are someone who cares. That is exactly what makes you a good ambassador.</div>
+        <div class="card-actions">
+          <button class="read-more" onclick="toggleCard(this, 'full-share')">
+            Read More <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4: 5 Simple Study Tips for Grade 10–12 -->
+    <article class="article-card">
+      <img class="card-img" src="topic3.jpg" alt="Study Tips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📚</div>
+      <div class="card-body">
+        <div class="card-tag">Study · Practical</div>
+        <h3 class="card-title">5 Simple Study Tips for Grade 10–12</h3>
+        <p class="card-intro">
+          You do not need to study 10 hours a day to do well. You need to study the right way — with intention, structure, and small daily habits that compound quietly over time. Here are five things that actually work.
+        </p>
+        <div class="card-full" id="full-study">
+These are not hacks. They are habits — small, steady, and genuinely effective.
+
+1. Study in short blocks, not long sessions
+   45 minutes of focused work beats 3 hours of distracted reading every time. Set a timer. Work fully. Then rest fully.
+
+2. Review your notes the same day
+   The night after a class, spend 10 minutes reviewing what you learned. You will remember it far longer. This single habit changes everything.
+
+3. Ask one question per day
+   In class, online, or to yourself in your notes. Curiosity keeps the brain engaged. Passive re-reading does not.
+
+4. Protect your sleep
+   Your brain consolidates memory during sleep. Staying up until 2am to study is borrowing from tomorrow's performance to pay today's anxiety.
+
+5. Teach what you learn
+   Explain a concept to a friend, even briefly. If you can teach it clearly, you understand it. If you stumble, you know exactly where to study more.
+
+None of these require extra time. They require intention. Start with just one this week.</div>
+        <div class="card-actions">
+          <button class="read-more" onclick="toggleCard(this, 'full-study')">
+            Read More <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5: Managing Stress During Exam Season -->
+    <article class="article-card">
+      <img class="card-img" src="topic4.jpg" alt="Exam Stress" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🌿</div>
+      <div class="card-body">
+        <div class="card-tag">Wellbeing · Calm</div>
+        <h3 class="card-title">Managing Stress During Exam Season</h3>
+        <p class="card-intro">
+          Exam stress is not a sign that something is wrong with you. It is a sign that you care. The question is not how to stop caring, but how to carry that care without letting it become weight that slows you down.
+        </p>
+        <div class="card-full" id="full-stress">
+Stress during exam season is almost universal. You are not alone, and you are not failing.
+
+What helps most is not eliminating stress — it is reducing the fear around it.
+
+A few honest approaches:
+
+· Name what you are actually afraid of
+  Often the stress is not about the exam itself, but about a story — disappointing someone, falling behind, not being enough. When you name the actual fear, it becomes smaller and more manageable.
+
+· Move your body once a day
+  A 15-minute walk. Stretching. Anything that gets you out of your head and into your body. This is not a break from studying. It makes your studying more effective.
+
+· Reduce decisions before exam week
+  Decide what you will eat, when you will study, and what you will wear in advance. Decision fatigue is real. Save your mental energy for the work.
+
+· Talk to someone
+  Not to fix anything. Just to say out loud what you are feeling. That alone reduces the pressure considerably.
+
+· Remember: one exam does not define you
+  It measures one thing, on one day, under specific conditions. You are far more than that.
+
+You have been preparing. Trust that. And be kind to yourself in the process.</div>
+        <div class="card-actions">
+          <button class="read-more" onclick="toggleCard(this, 'full-stress')">
+            Read More <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 6: Building Habits That Actually Stick -->
+    <article class="article-card">
+      <img class="card-img" src="topic5.jpg" alt="Habits" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">⚡</div>
+      <div class="card-body">
+        <div class="card-tag">Growth · Habits</div>
+        <h3 class="card-title">Building Habits That Actually Stick</h3>
+        <p class="card-intro">
+          Most habits fail not because you lack willpower, but because you tried to change too much at once. The habits that stick are the ones that are almost embarrassingly small at the start. That is not a weakness. That is strategy.
+        </p>
+        <div class="card-full" id="full-habits">
+You do not build a great life by making one massive change. You build it by making small changes every day for a long time.
+
+This is not motivational language. It is how behavior actually works.
+
+Why small habits work:
+
+· They are easy enough to do on your worst days
+  A habit you can only keep when you are motivated is not really a habit. It is a mood. True habits run on days when you are tired, distracted, and don't feel like it.
+
+· They reduce the friction of starting
+  The hardest part of any task is beginning. A small habit removes that barrier. "I will read one page" is easy to start. Once you start, you usually continue.
+
+· They stack into identity over time
+  After 60 days of reading every day — even just one page — you are someone who reads. That identity starts to guide future choices automatically.
+
+How to start one new habit this week:
+
+Step 1. Choose one thing only.
+Step 2. Make it smaller than you think you need to.
+Step 3. Attach it to something you already do every day.
+Step 4. Do it for 30 days without skipping.
+Step 5. Only then — add to it or start another.
+
+One habit, done consistently, changes more than ten habits done sporadically.
+
+Start today. Start small. Stay consistent.</div>
+        <div class="card-actions">
+          <button class="read-more" onclick="toggleCard(this, 'full-habits')">
+            Read More <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 High Schooler's Tool · Built with ❤️ for Myanmar students</p>
+  </footer>
+
+  <script>
+    function toggleCard(btn, contentId) {
+      const content = document.getElementById(contentId);
+      const isExpanded = content.classList.contains('visible');
+
+      if (isExpanded) {
+        content.classList.remove('visible');
+        btn.classList.remove('expanded');
+        btn.innerHTML = 'Read More <span class="arrow">→</span>';
+      } else {
+        content.classList.add('visible');
+        btn.classList.add('expanded');
+        btn.innerHTML = 'Show Less <span class="arrow">→</span>';
+
+        // Smooth scroll so the expanded content is visible
+        setTimeout(() => {
+          content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    }
+  </script>
+
+</body>
+</html>

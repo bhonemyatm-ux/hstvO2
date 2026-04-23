@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HST Student Ambassador – Shape the Future</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       HST Student Ambassador — Apple-style Premium Landing Page
+       Mobile-first responsive
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco',
+        'Helvetica Neue', sans-serif;
+      background: #ffffff;
+      color: #1d1d1f;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ---------- Scroll Animations ---------- */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    /* ---------- Navbar ---------- */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    .logo-img {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .logo-text-group { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text-hst   { font-size: 13px; font-weight: 800; color: #1d1d1f; letter-spacing: -0.01em; }
+    .logo-text       { font-size: 11px; font-weight: 500; color: #6e6e73; }
+
+    /* Desktop nav – hidden on mobile */
+    .nav-links { display: none; align-items: center; gap: 24px; }
+    .nav-links li a {
+      font-size: 13px; font-weight: 500; color: #3d3d3f;
+      white-space: nowrap; transition: color 0.2s;
+    }
+    .nav-links li a:hover { color: #2563eb; }
+
+    /* Hamburger – shown on mobile */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px; height: 18px;
+      background: none; border: none;
+      cursor: pointer; padding: 0;
+    }
+    .hamburger span {
+      display: block; height: 2px;
+      background: #1d1d1f; border-radius: 2px;
+      transform-origin: center;
+      transition: transform 0.28s ease, opacity 0.2s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-menu {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(0,0,0,0.07);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .mobile-menu.open { max-height: 480px; }
+    .mobile-menu ul { padding: 12px 0 20px; }
+    .mobile-menu ul li a {
+      display: block; padding: 13px 24px;
+      font-size: 16px; font-weight: 500; color: #1d1d1f;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-menu ul li a:hover { background: #f5f5f7; color: #2563eb; }
+
+    /* ---------- Shared Section ---------- */
+    .section-container { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+    .section-label {
+      font-size: 11.5px; font-weight: 700; letter-spacing: 0.13em;
+      text-transform: uppercase; color: #2563eb; margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      color: #1d1d1f; line-height: 1.12; margin-bottom: 14px;
+    }
+    .section-subtitle {
+      font-size: 16px; color: #6e6e73;
+      max-width: 560px; line-height: 1.68; margin-bottom: 44px;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #2563eb; color: #ffffff;
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      padding: 14px 28px; border-radius: 980px; border: none; cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.28);
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(37,99,235,0.38);
+    }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary--large { font-size: 16px; padding: 16px 36px; }
+
+    .btn-ghost { font-size: 15px; font-weight: 500; color: #2563eb; transition: opacity 0.2s; }
+    .btn-ghost:hover { opacity: 0.75; }
+
+    /* ============================================================
+       HERO  (mobile-first: stacked)
+    ============================================================ */
+    .hero {
+      padding: 88px 20px 72px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #2563eb; margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 10vw, 4.5rem);
+      font-weight: 900; letter-spacing: -0.04em;
+      line-height: 1.05; color: #1d1d1f; margin-bottom: 20px;
+    }
+
+    .hero-title-accent {
+      background: linear-gradient(135deg, #1a56db 0%, #2563eb 55%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-description {
+      font-size: 17px; color: #6e6e73;
+      line-height: 1.72; margin-bottom: 36px; max-width: 460px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 240px;
+    }
+
+    .hero-orb {
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle at 38% 38%, #eff6ff 0%, #dbeafe 55%, #bfdbfe 100%);
+      position: absolute;
+    }
+
+    .hero-card-float {
+      position: absolute;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.95);
+      border-radius: 16px;
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.05);
+      z-index: 1; white-space: nowrap;
+    }
+
+    .hero-card-float--1 { top: 14px; right: 0; animation: floatCard1 5s ease-in-out infinite; }
+    .hero-card-float--2 { bottom: 14px; left: 0; animation: floatCard2 6s ease-in-out infinite; }
+
+    @keyframes floatCard1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+    @keyframes floatCard2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)}  }
+
+    .float-card-icon  { font-size: 20px; line-height: 1; }
+    .float-card-label { font-size: 12.5px; font-weight: 600; color: #1d1d1f; }
+    .float-card-sub   { font-size: 11px; color: #6e6e73; margin-top: 2px; }
+
+    /* ---------- Benefit Pills (mobile only) ---------- */
+    .benefit-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px 56px;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    .pill {
+      background: #f5f5f7;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13.5px; font-weight: 500; color: #3d3d3f;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       FEATURES
+    ============================================================ */
+    .features-section { background: #f5f5f7; padding: 80px 0; }
+
+    .features-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+
+    .feature-card {
+      background: #ffffff; border-radius: 20px; padding: 32px 26px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.25s;
+    }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.09); }
+
+    .feature-icon-wrap {
+      width: 48px; height: 48px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .feature-icon-wrap--blue   { background: #eff6ff; color: #2563eb; }
+    .feature-icon-wrap--indigo { background: #eef2ff; color: #4f46e5; }
+    .feature-icon-wrap--sky    { background: #e0f2fe; color: #0284c7; }
+    .feature-icon-wrap svg { width: 22px; height: 22px; }
+
+    .feature-title { font-size: 17px; font-weight: 700; color: #1d1d1f; margin-bottom: 9px; }
+    .feature-desc  { font-size: 14.5px; color: #6e6e73; line-height: 1.65; }
+
+    /* ============================================================
+       STEPS
+    ============================================================ */
+    .steps-section { background: #ffffff; padding: 80px 0; }
+
+    .steps-grid { display: flex; flex-direction: column; gap: 16px; }
+
+    .step-card {
+      background: #f5f5f7; border-radius: 18px; padding: 30px 24px;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s;
+    }
+    .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+
+    .step-divider { display: none; } /* shown on desktop */
+
+    .step-number {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #2563eb; background: #eff6ff;
+      display: inline-block; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px;
+    }
+    .step-title { font-size: 16.5px; font-weight: 700; color: #1d1d1f; margin-bottom: 9px; }
+    .step-desc  { font-size: 14px; color: #6e6e73; line-height: 1.68; }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    .cta-section { background: #f5f5f7; padding: 80px 0; }
+
+    .cta-box {
+      background: #ffffff; border-radius: 24px;
+      padding: 48px 28px;
+      max-width: 680px; margin: 0 auto; text-align: center;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    .cta-badge {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase;
+      color: #2563eb; background: #eff6ff;
+      padding: 5px 14px; border-radius: 999px; margin-bottom: 20px;
+    }
+    .cta-title {
+      font-size: clamp(1.65rem, 5vw, 2.4rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      color: #1d1d1f; margin-bottom: 14px; line-height: 1.12;
+    }
+    .cta-desc { font-size: 16px; color: #6e6e73; line-height: 1.72; margin-bottom: 32px; max-width: 460px; }
+
+    .cta-box .btn-primary { width: 100%; max-width: 340px; }
+
+    .cta-back-link { margin-top: 16px; font-size: 14px; font-weight: 500; color: #2563eb; transition: opacity 0.2s; }
+    .cta-back-link:hover { opacity: 0.7; }
+
+    .cta-note { margin-top: 24px; font-size: 12px; color: #aeaeb2; line-height: 1.68; max-width: 400px; font-style: italic; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background: #1d1d1f; padding: 56px 0 28px; }
+
+    .footer-container { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 36px; margin-bottom: 40px; }
+
+    .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .footer-logo-mark {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: #fff; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.05em; padding: 4px 8px; border-radius: 7px;
+    }
+    .footer-brand span { font-size: 14px; font-weight: 600; color: #f5f5f7; }
+    .footer-brand-desc { font-size: 13.5px; color: #aeaeb2; line-height: 1.65; margin-bottom: 18px; }
+
+    .footer-social { display: flex; gap: 14px; }
+    .social-link { font-size: 13.5px; font-weight: 500; color: #98989d; transition: color 0.2s; }
+    .social-link:hover { color: #f5f5f7; }
+
+    .footer-heading { font-size: 12px; font-weight: 700; color: #f5f5f7; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-link-list { display: flex; flex-direction: column; gap: 10px; }
+    .footer-link-list li { font-size: 13.5px; color: #98989d; }
+    .footer-link-list li a { font-size: 13.5px; color: #98989d; transition: color 0.2s; }
+    .footer-link-list li a:hover { color: #f5f5f7; }
+
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; text-align: center; }
+    .footer-bottom p { font-size: 12.5px; color: #636366; }
+
+    /* ============================================================
+       TABLET  ≥ 640px
+    ============================================================ */
+    @media (min-width: 640px) {
+      .hero { padding-top: 108px; padding-left: 28px; padding-right: 28px; }
+      .hero-cta-group { flex-direction: row; align-items: center; width: auto; max-width: none; }
+      .hero-visual { height: 280px; }
+      .hero-orb { width: 230px; height: 230px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ============================================================
+       DESKTOP  ≥ 900px
+    ============================================================ */
+    @media (min-width: 900px) {
+      .nav-links  { display: flex; }
+      .hamburger  { display: none; }
+      .mobile-menu { display: none !important; }
+
+      .hero {
+        flex-direction: row;
+        align-items: center;
+        gap: 60px;
+        min-height: 88vh;
+        padding-top: 120px;
+        padding-bottom: 100px;
+      }
+      .hero-inner { flex: 1 1 480px; align-items: flex-start; text-align: left; }
+      .hero-description { max-width: 480px; }
+      .hero-cta-group { width: auto; max-width: none; }
+      .hero-visual { flex: 0 1 360px; height: 360px; }
+      .hero-orb { width: 270px; height: 270px; }
+      .hero-card-float--1 { top: 28px; right: -20px; }
+      .hero-card-float--2 { bottom: 28px; left: -20px; }
+
+      .benefit-pills { display: none; }
+
+      .features-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .steps-grid { flex-direction: row; align-items: flex-start; }
+      .step-divider {
+        display: flex; align-items: center; flex: 0 0 auto;
+        padding: 0 12px; margin-top: 30px; color: #c7c7cc;
+      }
+
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+      .cta-box { padding: 64px 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img">
+        <div class="logo-text-group">
+          <span class="logo-text-hst">HST</span>
+          <span class="logo-text">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow animate-on-scroll">Student Ambassador Program</div>
+      <h1 class="hero-title animate-on-scroll">
+        Shape the Future.<br>
+        <span class="hero-title-accent">Start Here.</span>
+      </h1>
+      <p class="hero-description animate-on-scroll">
+        Join a select group of student leaders who are helping peers navigate university
+        choices, career paths, and scholarships — while building credentials that matter.
+      </p>
+      <div class="hero-cta-group animate-on-scroll">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeqnQY6sPXA4r_m-kJ3JLcHDCxzTW8dtUSzE8tlUneClK7Z-Q/viewform?usp=publish-editor"
+           target="_blank" rel="noopener noreferrer" class="btn-primary">Apply Now</a>
+        <a href="#how-it-works" class="btn-ghost">Learn how it works</a>
+      </div>
+    </div>
+    <div class="hero-visual animate-on-scroll">
+      <div class="hero-orb"></div>
+      <div class="hero-card-float hero-card-float--1">
+        <span class="float-card-icon">🎓</span>
+        <div>
+          <div class="float-card-label">Certificate Issued</div>
+          <div class="float-card-sub">HST Ambassador · 2026</div>
+        </div>
+      </div>
+      <div class="hero-card-float hero-card-float--2">
+        <span class="float-card-icon">⭐</span>
+        <div>
+          <div class="float-card-label">Founding Cohort</div>
+          <div class="float-card-sub">Elite status · Limited spots</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefit Pills (mobile-only summary) -->
+  <div class="benefit-pills">
+    <span class="pill">🎓 Verified Certificate</span>
+    <span class="pill">⭐ Founding Status</span>
+    <span class="pill">⚡ Priority Access</span>
+  </div>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="section-container">
+      <div class="section-label animate-on-scroll">Benefits</div>
+      <h2 class="section-title animate-on-scroll">What you gain as an Ambassador</h2>
+      <p class="section-subtitle animate-on-scroll">Real credentials, real access, real impact — for students who want to lead.</p>
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon-wrap feature-icon-wrap--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Verified Certificate</h3>
+          <p class="feature-desc">Receive a QR-verifiable Ambassador Certificate to strengthen your CV and LinkedIn profile with a credential that stands out.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon-wrap feature-icon-wrap--indigo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Founding Member Status</h3>
+          <p class="feature-desc">Be part of the first cohort — a distinction that signals initiative, leadership, and early adoption to universities and future employers.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon-wrap feature-icon-wrap--sky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Priority Access</h3>
+          <p class="feature-desc">When HST launches new programs, partnerships, or scholarship opportunities, Ambassadors receive first access and exclusive benefits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="steps-section" id="how-it-works">
+    <div class="section-container">
+      <div class="section-label animate-on-scroll">Process</div>
+      <h2 class="section-title animate-on-scroll">How it works</h2>
+      <p class="section-subtitle animate-on-scroll">Getting started is straightforward. No interview and no prior experience required.</p>
+      <div class="steps-grid">
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Submit your application</h3>
+          <p class="step-desc">Complete a brief online form. The process takes under two minutes.</p>
+        </div>
+        <div class="step-divider" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Share HST with peers</h3>
+          <p class="step-desc">Introduce HST through conversations, social media, or your school network — in whatever way works for you.</p>
+        </div>
+        <div class="step-divider" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Earn lasting recognition</h3>
+          <p class="step-desc">Receive your certificate, exclusive perks, and priority access to future programs — tied to your active participation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="apply">
+    <div class="section-container">
+      <div class="cta-box animate-on-scroll">
+        <div class="cta-badge">Limited Spots Available</div>
+        <h2 class="cta-title">Ready to make an impact?</h2>
+        <p class="cta-desc">We are looking for students aged 16–22 who want to support their peers and grow alongside HST. No prior experience is required.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeqnQY6sPXA4r_m-kJ3JLcHDCxzTW8dtUSzE8tlUneClK7Z-Q/viewform?usp=publish-editor"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-primary btn-primary--large">Become an Ambassador</a>
+        <a href="hst.html" class="cta-back-link">← Back to HST</a>
+        <p class="cta-note">This is a voluntary, flexible role. Benefits — including your certificate, letters of recommendation, and priority program access — are guaranteed based on active participation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo-mark">HST</div>
+            <span>High Schooler's Tool</span>
+          </div>
+          <p class="footer-brand-desc">Empowering Myanmar students to make informed university and career choices.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer" class="social-link">Facebook</a>
+            <a href="mailto:highschoolertoolmm@gmail.com" class="social-link">Email</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-link-list">
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-link-list">
+            <li>High Schooler's Tool</li>
+            <li><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></li>
+            <li><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">facebook.com/HSTool</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 High Schooler's Tool · Built for Myanmar students</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll-triggered fade-in animations
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
