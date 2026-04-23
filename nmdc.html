@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NMDC — National Management Degree College | HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hst.css" />
+  <link rel="stylesheet" href="appleucsy.css" />
+</head>
+<body>
+
+  <!-- ── Navigation (hst.css controls this — do not modify) ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="u-hero" aria-label="University hero">
+    <div class="u-hero-bg" style="background-image:url('nmdc.jpg')"></div>
+    <div class="u-hero-overlay"></div>
+    <div class="u-hero-noise"></div>
+    <div class="container u-hero-inner">
+      <nav class="u-breadcrumb" aria-label="Breadcrumb">
+        <a href="hst.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="uni.html">Universities</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>NMDC</span>
+      </nav>
+      <div class="u-hero-body">
+        <div class="u-logo-wrap">
+          <img src="nmdclogo.png" alt="NMDC Logo" onerror="this.style.opacity='.15'">
+        </div>
+        <div class="u-hero-text">
+          <div class="u-hero-eyebrow">Myanmar's Business-Focused Private College</div>
+          <h1 class="u-hero-title">National Management<br class="desktop-br"> Degree College</h1>
+          <p class="u-hero-subtitle">Empowering Careers in Business, Tourism &amp; Media since 2004</p>
+          <div class="u-meta-row">
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Merchant Road, Botahtaung, Yangon
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+              Private · Degree College
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Est. 2004
+            </div>
+            <div class="u-meta-pill gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              S&amp;SEASUN Member
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats Bar ── -->
+  <section class="u-stats" aria-label="Key statistics">
+    <div class="container">
+      <div class="u-stats-grid">
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">500+</div>
+            <div class="u-stat-label">Students</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">9+</div>
+            <div class="u-stat-label">Programs</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">4</div>
+            <div class="u-stat-label">Bachelor Degrees</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">20</div>
+            <div class="u-stat-label">Years of Excellence</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">English</div>
+            <div class="u-stat-label">Medium Instruction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <section class="u-body">
+    <div class="container">
+      <div class="u-layout">
+
+        <!-- ── Sidebar ── -->
+        <aside class="u-sidebar" aria-label="University sidebar">
+
+          <!-- Quick Info -->
+          <div class="u-card">
+            <div class="u-card-title">Quick Info</div>
+            <div class="u-info-list">
+              <div class="u-info-row">
+                <span class="u-info-key">Type</span>
+                <span class="u-info-val">Private College</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Location</span>
+                <span class="u-info-val">273/279 Merchant Road</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Township</span>
+                <span class="u-info-val">Botahtaung, Yangon</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Language</span>
+                <span class="u-info-val">English</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Founded</span>
+                <span class="u-info-val">2004 (as NMC)</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">NMDC since</span>
+                <span class="u-info-val">2016</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Hours</span>
+                <span class="u-info-val">Mon–Fri 9AM–5PM · Sat 9AM–3PM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entrance -->
+          <div class="u-card u-card-accent">
+            <div class="u-card-title">Admission</div>
+            <div class="u-entrance-block">
+              <div class="u-entrance-score">
+                <div class="u-score-label">Intake</div>
+                <div class="u-score-num" style="font-size:1.6rem;">Open</div>
+                <div class="u-score-sub">High-school graduates &amp; working adults welcome</div>
+              </div>
+              <div class="u-entrance-subjects">
+                <div class="u-sub-label">Programs Available</div>
+                <div class="u-sub-tags">
+                  <span class="u-tag blue">Bachelor Degrees</span>
+                  <span class="u-tag blue">Diplomas</span>
+                  <span class="u-tag blue">Certificates</span>
+                </div>
+              </div>
+              <div class="u-entrance-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Open to high-achieving high-school graduates from across Myanmar. Lifelong learners and professionals also welcome.
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="u-card">
+            <div class="u-card-title">Key Milestones</div>
+            <div class="u-timeline">
+              <div class="u-tl-item">
+                <div class="u-tl-year">2004</div>
+                <div class="u-tl-text">Founded as National Management College (NMC) in central Yangon</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2016</div>
+                <div class="u-tl-text">Upgraded to degree-granting status as National Management Degree College (NMDC)</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2018</div>
+                <div class="u-tl-text">Launched new diploma &amp; certificate scheme covering business, tourism, journalism &amp; computing</div>
+              </div>
+              <div class="u-tl-item now">
+                <div class="u-tl-year">Now</div>
+                <div class="u-tl-text">Accepted as a member of S&amp;SEASUN; expanding industry partnerships and career fairs</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="u-card u-card-contact">
+            <div class="u-card-title">Contact</div>
+            <div class="u-contact-list">
+              <a href="tel:01292566" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 4.18 2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <span>01-292 566</span>
+              </a>
+              <a href="mailto:info@nmdc.edu.mm" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <span>info@nmdc.edu.mm</span>
+              </a>
+              <a href="https://www.nmdc.edu.mm" target="_blank" rel="noopener" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>www.nmdc.edu.mm</span>
+              </a>
+            </div>
+            <a href="mailto:info@nmdc.edu.mm" class="u-contact-btn">Get in Touch</a>
+          </div>
+
+        </aside>
+
+        <!-- ── Main Panel ── -->
+        <main class="u-main" aria-label="University details">
+
+          <!-- Tabs -->
+          <div class="u-tabs" role="tablist" aria-label="University sections">
+            <button class="u-tab active" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview">Overview</button>
+            <button class="u-tab"        data-tab="majors"    role="tab" aria-selected="false" aria-controls="tab-majors">Majors</button>
+            <button class="u-tab"        data-tab="projects"  role="tab" aria-selected="false" aria-controls="tab-projects">Projects</button>
+            <button class="u-tab"        data-tab="campus"    role="tab" aria-selected="false" aria-controls="tab-campus">Campus Life</button>
+            <button class="u-tab"        data-tab="careers"   role="tab" aria-selected="false" aria-controls="tab-careers">Career Paths</button>
+            <button class="u-tab"        data-tab="alumni"    role="tab" aria-selected="false" aria-controls="tab-alumni">Alumni</button>
+          </div>
+
+          <!-- ── Overview ── -->
+          <div class="u-panel active" id="tab-overview" role="tabpanel">
+
+            <!-- About bilingual -->
+            <div class="u-content-card">
+              <h2 class="u-section-h">About the College</h2>
+              <div class="u-about-lang-toggle" role="group" aria-label="Language toggle">
+                <button class="u-lang-btn active" data-lang="en">English</button>
+                <button class="u-lang-btn" data-lang="mm">မြန်မာ</button>
+              </div>
+
+              <div class="u-about-text" data-lang-content="en">
+                <p><strong>National Management Degree College (NMDC)</strong> is a private higher-education institution located on Merchant Road, Botahtaung Township, Yangon, Myanmar. Originally established in 2004 as <strong>National Management College (NMC)</strong>, it was upgraded to a degree-granting college in 2016, becoming NMDC.</p>
+                <p>NMDC focuses on <strong>management-oriented, job-ready programs</strong>, with an emphasis on practical skills rather than purely theoretical study. The college is known for its compact, student-friendly campus and its strong connection to the local business environment through partnerships with industry professionals and regular career fairs.</p>
+                <p>NMDC is recognised within Myanmar's private higher-education system and is a member of the <strong>South and Southeast Asian University Network (S&amp;SEASUN)</strong>, connecting it to higher-education institutions across the region. It promotes research, community service, and regional development as part of its long-term mission.</p>
+              </div>
+              <div class="u-about-text" data-lang-content="mm" hidden>
+                <p><strong>အမျိုးသားစီမံခန့်ခွဲမှုပညာဒီဂရီကောလိပ် (NMDC)</strong> သည် မြန်မာနိုင်ငံ၊ ရန်ကုန်မြို့၊ ဗိုလ်တထောင်မြို့နယ်ရှိ ကုန်သည်လမ်းပေါ်တွင် တည်ရှိသော ပုဂ္ဂလိကအဆင့်မြင့်ပညာရေးအဖွဲ့အစည်းတစ်ခုဖြစ်သည်။ ၂၀၀၄ ခုနှစ်တွင် အမျိုးသားစီမံခန့်ခွဲမှုပညာဒီဂရီကောလိပ် (NMDC) အဖြစ် မူလတည်ထောင်ခဲ့ပြီး ၂၀၁၆ ခုနှစ်တွင် ဘွဲ့ပေးသည့်ကောလိပ်အဖြစ် အဆင့်မြှင့်တင်ကာ NMDC ဖြစ်လာသည်။</p>
+                <p>NMDC သည် သီအိုရီသာဆန်သည့် ပညာသင်ကြားမှုထက် လက်တွေ့အသုံးချနိုင်သော ကျွမ်းကျင်မှုများကို အလေးထားသည့် <strong>စီမံခန့်ခွဲမှုဆိုင်ရာ၊ အလုပ်အကိုင်အဆင်သင့်ဖြစ်သော ပရိုဂရမ်များ</strong>ကို အဓိကထားဆောင်ရွက်သည်။ ကောလိပ်သည် ကျောင်းသားများနှင့် ရင်းနှီးသော ပတ်ဝန်းကျင်တွင် ဖြစ်ပြီး လုပ်ငန်းကျွမ်းကျင်သူများနှင့် ပူးပေါင်း၍ ကိုယ်တိုင်ကိုယ်ကျ သင်ကြားမှုနှင့် အလုပ်ရှာဖွေရေးပွဲများ ပုံမှန်ကျင်းပသည်။</p>
+                <p>NMDC သည် မြန်မာနိုင်ငံ ပုဂ္ဂလိကအဆင့်မြင့်ပညာရေးစနစ်အတွင်း အသိအမှတ်ပြုခံရပြီး တောင်နှင့်အရှေ့တောင်အာရှတက္ကသိုလ်ကွန်ယက် (S&amp;SEASUN) ၏ အဖွဲ့ဝင်တစ်ဦးဖြစ်သည်။</p>
+              </div>
+            </div>
+
+            <!-- Why NMDC -->
+            <div class="u-content-card">
+              <h2 class="u-section-h">Why Choose NMDC?</h2>
+              <div class="u-features-grid">
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+                  </div>
+                  <div>
+                    <h4>Central Yangon Location</h4>
+                    <p>Situated on Merchant Road, Botahtaung — right in the heart of Yangon's business district, making internships and job connections effortless.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div>
+                    <h4>School–Industry Partnership</h4>
+                    <p>Business professionals and managers regularly participate in teaching, workshops, and guest lectures — bridging classroom and workplace from day one.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                  <div>
+                    <h4>Job-Ready Focus</h4>
+                    <p>Programs designed around practical, employable skills — graduates step directly into roles in SMEs, tourism, media, and service industries.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  </div>
+                  <div>
+                    <h4>English-Medium Teaching</h4>
+                    <p>All bachelor programs taught in English — equipping students with professional language skills valued across Myanmar's private sector.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
+                  <div>
+                    <h4>Regional Network</h4>
+                    <p>Member of the South &amp; Southeast Asian University Network (S&amp;SEASUN) — connecting students and faculty to regional academic opportunities.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  <div>
+                    <h4>Lifelong Learning</h4>
+                    <p>Open to working adults and professionals seeking to upskill in business, English, computing, and tourism — flexible entry, real credentials.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery -->
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Gallery</h2>
+              <div class="u-gallery">
+                <div class="u-gallery-item span-2">
+                  <img src="images/nmdc-campus.jpg" alt="NMDC Campus" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">NMDC Campus — Merchant Road</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/nmdc-classroom.jpg" alt="Classroom" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Classroom</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/nmdc-careerfair.jpg" alt="Career Fair" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Career Fair</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/nmdc-events.jpg" alt="Events" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Student Events</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── Majors ── -->
+          <div class="u-panel" id="tab-majors" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Available Programs</h2>
+              <p class="u-section-sub">Bachelor degrees, diplomas, and certificates in management, media, tourism &amp; English</p>
+
+              <div class="u-programs">
+
+                <div class="u-program-card featured">
+                  <div class="u-prog-badge">Bachelor Degree</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <div>
+                      <h3>Business Management (BM)</h3>
+                      <div class="u-prog-degree">Bachelor of Business Management</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Core areas: general management, marketing, finance, human resources, operations, business accounting, and business English — designed to produce versatile business professionals.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Level</span><span class="u-dr-val">Bachelor Degree</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Language</span><span class="u-dr-val">English</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Entry</span><span class="u-dr-val">High-school graduate</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Areas</div>
+                    <div class="u-track-tags">
+                      <span>Marketing</span>
+                      <span>Finance</span>
+                      <span>Human Resources</span>
+                      <span>Operations</span>
+                      <span>Business English</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge violet-badge">Bachelor Degree</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon violet">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div>
+                      <h3>English for Professional Purposes (EPP)</h3>
+                      <div class="u-prog-degree violet-deg">Bachelor of English for Professional Purposes</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Business-oriented English communication: professional writing, presentations, workplace correspondence, and language skills essential for careers in any industry.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Level</span><span class="u-dr-val">Bachelor Degree</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Language</span><span class="u-dr-val">English</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Entry</span><span class="u-dr-val">High-school graduate</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Areas</div>
+                    <div class="u-track-tags violet-tracks">
+                      <span>Professional Writing</span>
+                      <span>Presentations</span>
+                      <span>Business Communication</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge amber-badge">Bachelor Degree</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon amber">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+                    </div>
+                    <div>
+                      <h3>Journalism</h3>
+                      <div class="u-prog-degree amber-deg">Bachelor of Arts (Journalism)</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Reporting, writing, media ethics, basic broadcast and print skills, and communication theory — preparing students for Myanmar's growing media landscape.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Level</span><span class="u-dr-val">Bachelor Degree</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Language</span><span class="u-dr-val">English</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Entry</span><span class="u-dr-val">High-school graduate</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Areas</div>
+                    <div class="u-track-tags amber-tracks">
+                      <span>Reporting</span>
+                      <span>Media Ethics</span>
+                      <span>Broadcast &amp; Print</span>
+                      <span>Communication Theory</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge green-badge">Bachelor Degree</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon green">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div>
+                      <h3>Tourism &amp; Hospitality Management (BTHM)</h3>
+                      <div class="u-prog-degree green-deg">Bachelor of Tourism and Hospitality Management</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Tourism operations, hotel management, tour-guiding, event planning, and service management — producing industry-ready graduates for Myanmar's tourism sector.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Level</span><span class="u-dr-val">Bachelor Degree</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Language</span><span class="u-dr-val">English</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Entry</span><span class="u-dr-val">High-school graduate</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Areas</div>
+                    <div class="u-track-tags">
+                      <span>Hotel Management</span>
+                      <span>Tour Operations</span>
+                      <span>Event Planning</span>
+                      <span>Service Management</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card postgrad">
+                  <div class="u-prog-badge teal-badge">Diplomas &amp; Certificates (2018 Scheme)</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon teal">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                      <h3>Short-Term Practical Programs</h3>
+                      <div class="u-prog-degree teal-deg">Diplomas &amp; Certificates</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focused short courses for high-school graduates and working adults looking to upskill quickly in computing, business, tourism, media, and English.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">DCADP</span><span class="u-dr-val">Diploma in Computer Application &amp; Desktop Publishing</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">CBM</span><span class="u-dr-val">Certificate in Business Management</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">CMC</span><span class="u-dr-val">Certificate in Mass Communication</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">CTM</span><span class="u-dr-val">Certificate in Tourism Management</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">CBE</span><span class="u-dr-val">Certificate in Business English</span></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Projects ── -->
+          <div class="u-panel" id="tab-projects" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Projects &amp; Achievements</h2>
+              <p class="u-section-sub">Industry partnerships, career events, and community initiatives</p>
+
+              <div class="u-projects">
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">2025</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type competition">Career Event</div>
+                    <h3>NMDC Career Fair — Connecting Students with Employers</h3>
+                    <p>On July 30, 2025, NMDC held a career fair connecting students directly with hiring companies. The event provided internship and first-job opportunities across business, tourism, and media sectors, reinforcing NMDC's strong school–industry partnership model.</p>
+                    <div class="u-proj-tags">
+                      <span>Career Fair</span><span>Industry Links</span><span>Internships</span><span>Job Placement</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type conference">Industry Guest Lectures</div>
+                    <h3>Business Professionals in the Classroom</h3>
+                    <p>NMDC regularly invites managers, business owners, and industry experts to co-teach, lead workshops, and deliver guest lectures — ensuring students learn from practitioners alongside their academic curriculum.</p>
+                    <div class="u-proj-tags">
+                      <span>Guest Lecturers</span><span>Workshops</span><span>Industry Mentors</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Regional</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">S&amp;SEASUN Membership</div>
+                    <h3>South &amp; Southeast Asian University Network</h3>
+                    <p>NMDC has been accepted as a member of S&amp;SEASUN, linking the college to higher-education institutions across the South and Southeast Asian region. This opens pathways for faculty exchange, collaborative research, and community development programmes.</p>
+                    <div class="u-proj-tags">
+                      <span>Regional Network</span><span>Academic Exchange</span><span>Community Development</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">Company Visits</div>
+                    <h3>Industry Exposure &amp; Company Visits</h3>
+                    <p>Students participate in organised company visits and on-site learning experiences at Yangon businesses — bringing real-world context to classroom theory and strengthening professional networks before graduation.</p>
+                    <div class="u-proj-tags">
+                      <span>Company Visits</span><span>Real-World Learning</span><span>Networking</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Campus Life ── -->
+          <div class="u-panel" id="tab-campus" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Life at NMDC</h2>
+              <p class="u-section-sub">A compact, student-friendly campus in central Yangon</p>
+
+              <div class="u-campus-grid">
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/nmdc-activities.jpg" alt="Student Activities" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Student Community</h3>
+                    <p>NMDC has a tight-knit, friendly student community. Small class sizes mean strong relationships with lecturers and classmates — an environment where every student is known, not just a number.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/nmdc-location.jpg" alt="Central Location" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Prime City Location</h3>
+                    <p>Located on Merchant Road in Botahtaung — one of Yangon's most accessible areas — students enjoy easy access to business districts, transport links, and internship and job opportunities across the city.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/nmdc-fair.jpg" alt="Career Fair" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Career &amp; Industry Events</h3>
+                    <p>From career fairs and company visits to guest lectures by business professionals, NMDC regularly brings the industry onto campus — giving students a head start in their professional lives.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-campus-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Additional campus details, photos, and student testimonials will be updated as official information becomes available from NMDC.
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Career Paths ── -->
+          <div class="u-panel" id="tab-careers" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Career Opportunities</h2>
+              <p class="u-section-sub">Typical pathways for NMDC graduates — entering Yangon's private and service sectors</p>
+
+              <div class="u-careers-grid">
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(37,99,235,.10); --ic-c: #2563eb;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  </div>
+                  <h3>Business &amp; Office Manager</h3>
+                  <p>Operations assistants, office managers, admin staff, and sales or marketing executives in SMEs and trading companies across Yangon.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(220,38,38,.08); --ic-c: #dc2626;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <h3>Customer Service &amp; Call-Centre</h3>
+                  <p>Customer-service representatives, call-centre agents, and front-desk staff in export/import, service, and travel firms — using professional English skills.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(16,185,129,.10); --ic-c: #059669;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </div>
+                  <h3>Hotel &amp; Tourism Staff</h3>
+                  <p>Hotel front-desk officers, reservations staff, guest-service roles, travel agency assistants, tour-operator staff, and event support across Myanmar's tourism sector.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(245,158,11,.10); --ic-c: #d97706;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>
+                  </div>
+                  <h3>Junior Reporter &amp; Content Writer</h3>
+                  <p>Online media reporters, social-media content creators, PR and content assistants in NGOs, media houses, and small agencies across Myanmar.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(124,58,237,.10); --ic-c: #7c3aed;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  </div>
+                  <h3>English Tutor &amp; Trainer</h3>
+                  <p>Teachers or tutors of business English at private language centres, tuition classes, and corporate training programmes throughout Myanmar.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(20,184,166,.10); --ic-c: #0d9488;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </div>
+                  <h3>HR &amp; Operations Assistant</h3>
+                  <p>Human resources assistants, finance support staff, and operations coordinators — paths that open into broader management and leadership roles over time.</p>
+                </div>
+              </div>
+
+              <div class="u-employers">
+                <h4 class="u-employers-title">Sectors Where Graduates Excel</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip">SMEs &amp; Trading Companies</div>
+                  <div class="u-emp-chip">Tourism &amp; Hospitality</div>
+                  <div class="u-emp-chip">Media &amp; Communications</div>
+                  <div class="u-emp-chip">Language &amp; Education</div>
+                  <div class="u-emp-chip">NGOs &amp; International Orgs</div>
+                  <div class="u-emp-chip">Export / Import Firms</div>
+                  <div class="u-emp-chip">Banking &amp; Finance</div>
+                  <div class="u-emp-chip">Event Management</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Alumni ── -->
+          <div class="u-panel" id="tab-alumni" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Alumni &amp; Graduate Paths</h2>
+              <p class="u-section-sub">NMDC graduates working across business, tourism, media, and education in Myanmar</p>
+
+              <div class="u-alumni-grid">
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Business Management Alumni</h4>
+                    <span class="u-alumni-role">Sales, Marketing &amp; Operations</span>
+                    <p>Office and assistant managers, marketing executives, admin staff in trading companies, SMEs, and service firms — some later moving into HR, finance, or small-business ownership.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>English for Professional Purposes Alumni</h4>
+                    <span class="u-alumni-role">Customer Service &amp; Language Teaching</span>
+                    <p>Customer-service representatives, call-centre agents, front-desk staff, admin assistants in export/import and travel firms, and English tutors at language centres.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Journalism Alumni</h4>
+                    <span class="u-alumni-role">Media &amp; Communications</span>
+                    <p>Junior reporters and writers in online media, social-media content roles, PR and content assistants in NGOs, media houses, and small agencies.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Tourism &amp; Hospitality Alumni</h4>
+                    <span class="u-alumni-role">Hotels, Travel &amp; Events</span>
+                    <p>Hotel front-desk staff, guest-service officers, reservations and travel-agency staff, tour-operator assistants, and event-support roles across Myanmar.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Diploma &amp; Certificate Alumni</h4>
+                    <span class="u-alumni-role">Lifelong Learners &amp; Upskilled Professionals</span>
+                    <p>Working adults who upskilled in computing, business English, tourism, or mass communication — improving career prospects without a multi-year commitment.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card arts">
+                  <div class="u-alumni-avatar arts-av" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Career Fair Placements</h4>
+                    <span class="u-alumni-role arts-role">Direct Employer Connections</span>
+                    <p>Many students receive internship offers and first-job placements directly from NMDC's career fairs and company visits — graduating with jobs already lined up.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-alumni-sectors">
+                <h4 class="u-employers-title">Alumni Active In</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip blue">Business &amp; Management</div>
+                  <div class="u-emp-chip green">Tourism &amp; Hospitality</div>
+                  <div class="u-emp-chip amber">Media &amp; Journalism</div>
+                  <div class="u-emp-chip violet">Education &amp; Training</div>
+                  <div class="u-emp-chip teal">NGOs &amp; International Orgs</div>
+                  <div class="u-emp-chip">Small Business</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="u-cta" aria-label="Call to action">
+    <div class="u-cta-orb u-cta-orb-1" aria-hidden="true"></div>
+    <div class="u-cta-orb u-cta-orb-2" aria-hidden="true"></div>
+    <div class="container u-cta-inner">
+      <div class="u-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <h2>Ready to Start Your Journey at NMDC?</h2>
+      <p>Explore more universities or reach out to NMDC admissions directly</p>
+      <div class="u-cta-btns">
+        <a href="uni.html"   class="u-btn-ghost">Explore More Universities</a>
+        <a href="https://www.nmdc.edu.mm" target="_blank" rel="noopener" class="u-btn-primary">Visit Official Site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="u-footer">
+    <div class="container">
+      <div class="u-footer-grid">
+        <div class="u-footer-brand">
+          <div class="u-footer-logo">HST</div>
+          <span>High Schooler's Tool</span>
+          <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+        </div>
+        <div class="u-footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="u-footer-col">
+          <h4>Contact HST</h4>
+          <p><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener">High Schooler's Tool ARP</a></p>
+        </div>
+      </div>
+      <div class="u-footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    /* ── Hamburger ── */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks  = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ── Tabs ── */
+    var tabs   = document.querySelectorAll('.u-tab');
+    var panels = document.querySelectorAll('.u-panel');
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        panels.forEach(function (p) { p.classList.remove('active'); p.hidden = true; });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById('tab-' + id);
+        if (panel) { panel.classList.add('active'); panel.hidden = false; }
+      });
+    });
+
+    /* ── Language Toggle ── */
+    document.querySelectorAll('.u-lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.dataset.lang;
+        var card = btn.closest('.u-content-card');
+        card.querySelectorAll('.u-lang-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        card.querySelectorAll('[data-lang-content]').forEach(function (el) {
+          el.hidden = el.dataset.langContent !== lang;
+        });
+      });
+    });
+
+    /* ── Parallax hero bg on scroll ── */
+    var heroBg = document.querySelector('.u-hero-bg');
+    if (heroBg) {
+      window.addEventListener('scroll', function () {
+        heroBg.style.transform = 'scale(1.04) translateY(' + (window.scrollY * 0.22) + 'px)';
+      }, { passive: true });
+    }
+
+    /* ── Intersection Observer — reveal stats ── */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.u-stat, .u-feature, .u-program-card, .u-project-item, .u-career-card, .u-alumni-card').forEach(function (el) {
+      io.observe(el);
+    });
+  })();
+  </script>
+</body>
+</html>
