@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TU Taunggyi — Technological University Taunggyi | HST</title>
+    <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+    <link rel="stylesheet" href="hst.css">
+    <link rel="stylesheet" href="ytunoti.css">
+    <link rel="stylesheet" href="ytu.css">
+</head>
+<body>
+     <!-- Shared blur overlay (darkens more when letter is open) -->
+  <div class="notify-overlay" id="notifyOverlay"></div>
+
+  <!-- ── Compact notification banner ── -->
+  <div class="notify-bar" id="notifyBar" role="alert" aria-live="polite">
+    <button class="notify-x" id="notifyDismiss" aria-label="Close">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M1 1l10 10M11 1L1 11"/>
+      </svg>
+    </button>
+
+    <div class="notify-row">
+      <div class="notify-icon">
+        <img src="hstlogo.jpg" alt="HST"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="notify-icon-fallback">HST</div>
+      </div>
+
+      <div class="notify-text">
+        <div class="notify-eyebrow">HST — Announcement</div>  <!-- EDIT eyebrow -->
+        <div class="notify-title">Polytechnic University Taunggyi</div>  <!-- EDIT title -->
+        <!-- Body is truncated; full text lives in the letter sheet below -->
+        <div class="notify-body">
+          <span class="notify-body-text">နည်းပညာတက္ကသိုလ်တောင်ကြီး သည် ၂၀၂၆-၂၀၂၇ ပညာသင်နှစ်တွင် Polytechnic University Taunggyi ဖြစ်လာနိုင်ချေရှိသည်။</span><button class="notify-more" id="notifyMore">more</button>
+        </div>
+      </div>
+
+      <button class="notify-action" id="notifyAction">Open</button>
+    </div>
+
+    <div class="notify-progress"><div class="notify-progress-fill" id="notifyProgress"></div></div>
+  </div>
+
+  <!-- ── Full letter sheet (slides up from bottom) ── -->
+  <div class="letter-sheet" id="letterSheet" role="dialog" aria-modal="true" aria-label="Full announcement">
+    <div class="letter-handle"></div>
+
+    <div class="letter-head">
+      <div class="letter-from">
+        <div class="letter-avatar">
+          <img src="hstlogo.jpg" alt="HST"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="letter-avatar-fallback">HST</div>
+        </div>
+        <div class="letter-from-text">
+          <div class="letter-sender">High Schooler's Tool</div>  <!-- EDIT sender name -->
+          <div class="letter-date" id="letterDate"></div>
+        </div>
+      </div>
+      <button class="letter-close" id="letterClose" aria-label="Close">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M1 1l12 12M13 1L1 13"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="letter-divider"></div>
+
+    <div class="letter-body">
+      <h2 class="letter-subject">Polytechnic University Taunggyi</h2>  <!-- EDIT subject / title -->
+
+      <!-- ════ EDIT the full message body below ════ -->
+      <div class="letter-content">
+        <p>နည်းပညာတက္ကသိုလ်တောင်ကြီး (TUTgi) သည် ၂၀၂၆-၂၀၂၇ ပညာသင်နှစ်တွင် <strong>Polytechnic University Taunggyi</strong> ဖြစ်လာနိုင်ချေရှိသည်ဟု ဆိုပါသည်။</p>
+
+         <p>ဤပြောင်းလဲမှုသည် ရှမ်းပြည်နယ်ရှိ နည်းပညာပညာရေးကို ပိုမိုကျယ်ပြန့်စေကာ CU TU ကျောင်းသားများအကြား နည်းပညာဆိုင်ရာပူးပေါင်းဆောင်ရွှက်မှုဆန်းသစ်တီထွင်မှုများနှင့်အတူ ကျောင်းသားများအတွက် ပိုမိုကောင်းမွန်သော အနာဂတ်ကို ဖော်ဆောင်ပေးမည်ဟု မျှော်လင့်ရသည်။</p>
+
+        <p>This change is expected to bring broader academic programs, improved infrastructure, and new opportunities for students across Shan State..</p>
+
+        <p>More official information will be released by the Ministry of Education. Stay tuned to the HST platform for updates.</p>
+      </div>
+      <!-- ════ end message body ════ -->
+    </div>
+
+    <div class="letter-footer">
+      <button class="letter-got-it" id="letterGotIt">Got it</button>
+    </div>
+  </div>
+  <!-- ══ end notification + letter ══ -->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="hstlogo.jpg" alt="HST Logo" class="logo-img">
+                <div class="logo-text">
+                    <h2>HST</h2>
+                    <span>High Schooler's Tool</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hst.html">Home</a></li>
+                <li><a href="uni.html" class="active">Universities</a></li>
+                <li><a href="career-journey.html">Career Journey</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="study-mode.html">Study Mode</a></li>
+                <li><a href="scholarships.html">Scholarships</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="uni-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-bg" style="background-image: url('TU\ Taunggyi.jpg');"></div>
+        <div class="hero-grid-overlay"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="hst.html">Home</a>
+                <span>/</span>
+                <a href="uni.html">Universities</a>
+                <span>/</span>
+                <span>Technological University, Taunggyi</span>
+            </div>
+            <div class="uni-hero-content">
+                <div class="uni-logo">
+                    <img src="Tu Taunggyi logo.jpg" alt="TU Taunggyi University Logo">
+                </div>
+                <div class="uni-title">
+                    <div class="uni-rank-badge">🏔️ Shan State's Premier Engineering University</div>
+                    <h1>Technological University, Taunggyi</h1>
+                    <p class="uni-subtitle">Engineering Excellence in the Heart of Shan State — Est. 2007</p>
+                    <div class="uni-meta">
+                        <span><i>📍</i> Ayetharyar Township, Taunggyi, Shan State</span>
+                        <span><i>🏛️</i> Engineering University</span>
+                        <span><i>📅</i> Founded 2007</span>
+                        <span><i>🎓</i> ~500 Graduates/Year</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Bar -->
+    <section class="quick-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">🎓</div>
+                    <div class="stat-info">
+                        <h3>~3,000</h3>
+                        <p>Students</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⚙️</div>
+                    <div class="stat-info">
+                        <h3>6</h3>
+                        <p>Engineering Programs</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🏗️</div>
+                    <div class="stat-info">
+                        <h3>84</h3>
+                        <p>Acres Campus</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">📜</div>
+                    <div class="stat-info">
+                        <h3>~500</h3>
+                        <p>Graduates/Year</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="profile-content">
+        <div class="container">
+            <div class="content-layout">
+
+                <!-- Sidebar -->
+                <aside class="profile-sidebar">
+
+                    <div class="sidebar-card">
+                        <h3>Quick Info</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <strong>Type</strong>
+                                <span>Public / Government</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Location</strong>
+                                <span>Ayetharyar Township, Taunggyi, Shan State</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Campus Size</strong>
+                                <span>84.482 Acres</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Language</strong>
+                                <span>Myanmar, English</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>As GTI</strong>
+                                <span>1992</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>As Technical College</strong>
+                                <span>1997</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>As TU Taunggyi</strong>
+                                <span>Since 2007</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Ministry</strong>
+                                <span>Ministry of Education</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Annual Graduates</strong>
+                                <span>~500 Engineers/Year</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Vision</strong>
+                                <span>Internationally Accredited Research University</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Entrance Requirements</h3>
+                        <div class="requirement-box">
+                            <div class="requirement-item">
+                                <span class="req-label">Competition Level</span>
+                                <span class="req-value-badge req-hard">Competitive</span>
+                            </div>
+                            <div class="requirement-item">
+                                <span class="req-label">Program Duration</span>
+                                <span class="req-value">6 Years (B.E.)</span>
+                            </div>
+                            <div class="requirement-item">
+                                <span class="req-label">Required Subjects</span>
+                                <div class="subject-tags">
+                                    <span class="subject-tag">Mathematics</span>
+                                    <span class="subject-tag">Physics</span>
+                                    <span class="subject-tag">Chemistry</span>
+                                    <span class="subject-tag">English</span>
+                                </div>
+                            </div>
+                            <div class="requirement-item">
+                                <span class="req-label">Selection Basis</span>
+                                <span class="req-value-note">University Entrance Exam (Science scores)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card contact-card">
+                        <h3>Contact</h3>
+                        <div class="contact-info">
+                            <p><i>🌐</i> tutaunggyi.edu.mm</p>
+                            <p><i>📍</i> Q273+H66, Ayetharyar, Taunggyi, Shan State</p>
+                        </div>
+                        <button class="contact-btn">Get in Touch</button>
+                    </div>
+
+                    <div class="sidebar-card achievement-card">
+                        <h3>Key Achievements</h3>
+                        <div class="achievement-list">
+                            <div class="achievement-item">
+                                <span class="achieve-icon">🏔️</span>
+                                <span>Shan State's Premier Engineering University</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achieve-icon">🎓</span>
+                                <span>~500 Qualified Engineers Produced Per Year</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achieve-icon">🔬</span>
+                                <span>Growing Research Culture &amp; Postgraduate Focus</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achieve-icon">🌏</span>
+                                <span>Vision: Internationally Accredited Research University</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achieve-icon">🤝</span>
+                                <span>Mission-Driven Engineering for Regional Development</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </aside>
+
+                <!-- Main Panel -->
+                <main class="profile-main">
+
+                    <!-- Navigation Tabs -->
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" data-tab="overview">Overview</button>
+                        <button class="tab-btn" data-tab="majors">Programs</button>
+                        <button class="tab-btn" data-tab="departments">Departments</button>
+                        <button class="tab-btn" data-tab="campus">Campus Life</button>
+                        <button class="tab-btn" data-tab="alumni">Alumni</button>
+                        <button class="tab-btn" data-tab="careers">Career Paths</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+
+                        <!-- Overview Tab -->
+                        <div class="tab-panel active" id="overview">
+
+                            <div class="content-card">
+                                <h2>About the University</h2>
+                                <p>Technological University, Taunggyi (TU Taunggyi) is a public engineering university located in Ayetharyar Township, Taunggyi — the capital of Shan State and the largest city in the eastern highlands of Myanmar. It stands as the principal engineering institution serving Shan State and the surrounding highland regions, playing a pivotal role in developing the technical workforce for eastern Myanmar.</p>
+                                <p>The university's origins trace back to 1992 as a Government Technical Institute (GTI), which was upgraded to a Technical College in 1997, and finally elevated to full university status as Technological University, Taunggyi in <strong>2007</strong>. This progression reflects Myanmar's commitment to expanding quality engineering education beyond major cities and into its diverse regions.</p>
+                                <p>With approximately <strong>~3,000 students</strong> and producing around <strong>500 qualified engineers per year</strong>, TU Taunggyi serves as an essential pipeline of engineering talent for regional infrastructure, mining, energy, and technology development. The university holds an ambitious vision of becoming an <strong>internationally accredited research university</strong> and pursues a mission centered on producing qualified engineers, advancing applied research, and building collaborative partnerships.</p>
+                            </div>
+
+                            <div class="content-card">
+                                <h2>Vision &amp; Mission</h2>
+                                <div class="features-list">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🌟</div>
+                                        <div>
+                                            <h4>Vision</h4>
+                                            <p>To become an internationally accredited research university that produces world-class engineers and advances scientific knowledge for the sustainable development of Myanmar and the region.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🎯</div>
+                                        <div>
+                                            <h4>Mission</h4>
+                                            <p>To provide quality engineering education, promote applied research and innovation, and foster meaningful collaborations with industry, government, and international partners — enabling graduates to contribute effectively to Myanmar's development.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <h2>History Timeline</h2>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">1992</div>
+                                        <div class="timeline-content">
+                                            <h4>Government Technical Institute (GTI)</h4>
+                                            <p>Established as the Government Technical Institute in Taunggyi — the first dedicated technical education institution in Shan State, providing foundational technical training to the region.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">1997</div>
+                                        <div class="timeline-content">
+                                            <h4>Upgraded to Technical College</h4>
+                                            <p>Elevated to Technical College status, expanding its scope, faculty, and curriculum to provide more comprehensive engineering and technical education to Shan State students.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-year">2007</div>
+                                        <div class="timeline-content">
+                                            <h4>Technological University, Taunggyi — Officially Established</h4>
+                                            <p>Granted full university status as Technological University, Taunggyi — becoming Myanmar's designated engineering university for Shan State and the eastern highland regions, offering Bachelor of Engineering degrees.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <h2>Why Choose TU Taunggyi?</h2>
+                                <div class="features-list">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🏔️</div>
+                                        <div>
+                                            <h4>Shan State's Engineering Hub</h4>
+                                            <p>The only full engineering university in Shan State — TU Taunggyi is the natural choice for students from Shan State, Kayah State, and surrounding highland areas seeking engineering education close to home.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">⛏️</div>
+                                        <div>
+                                            <h4>Resources-Rich Regional Context</h4>
+                                            <p>Located in a region rich with mining, hydropower, and agricultural resources — TU Taunggyi engineering graduates are directly positioned to contribute to the sustainable development of Shan State's abundant natural resources.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🎓</div>
+                                        <div>
+                                            <h4>Focused Engineering Curriculum</h4>
+                                            <p>A streamlined 6-year B.E. curriculum with strong foundations in engineering mathematics, physics, and chemistry before specialization — producing well-rounded and technically rigorous graduates.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🔬</div>
+                                        <div>
+                                            <h4>Research Ambition</h4>
+                                            <p>TU Taunggyi actively cultivates a research culture with postgraduate opportunities for B.E. graduates — connecting regional engineering challenges with academic inquiry and applied solutions.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🤝</div>
+                                        <div>
+                                            <h4>Industry Collaboration</h4>
+                                            <p>Strong links with regional industries including mining companies, infrastructure firms, and utility providers — offering practical training, internship opportunities, and employment pathways for graduates.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🌄</div>
+                                        <div>
+                                            <h4>Scenic Highland Campus</h4>
+                                            <p>Set in the cool highland climate of Taunggyi at approximately 1,430 metres elevation — TU Taunggyi offers a refreshing and focused study environment distinct from Myanmar's lowland cities.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <h2>Campus Gallery</h2>
+                                <div class="gallery-grid">
+                                    <div class="gallery-item">
+                                        <img src="tutaunggyi1.jpg" alt="TU Taunggyi Main Building">
+                                        <div class="gallery-label">Main Academic Building</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="tutaunggyi2.jpg" alt="TU Taunggyi Engineering Labs">
+                                        <div class="gallery-label">Engineering Laboratories</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="tutaunggyi3.jpg" alt="TU Taunggyi Campus">
+                                        <div class="gallery-label">84-Acre Highland Campus</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="tutaunggyi4.jpg" alt="TU Taunggyi Library">
+                                        <div class="gallery-label">University Library</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="tutaunggyi5.jpg" alt="TU Taunggyi Shan State View">
+                                        <div class="gallery-label">Taunggyi Highland Setting</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="tutaunggyi6.jpg" alt="TU Taunggyi Student Life">
+                                        <div class="gallery-label">Student Life</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Programs Tab -->
+                        <div class="tab-panel" id="majors">
+                            <div class="content-card">
+                                <h2>Academic Programs</h2>
+                                <p class="subtitle">6 engineering disciplines — Bachelor of Engineering (B.E.) — 5  Years</p>
+
+                                <div class="degree-section-title">Bachelor of Engineering (B.E.) — 5 Years</div>
+
+                                <div class="majors-list">
+
+                                    <div class="major-card">
+                                        <div class="major-header">
+                                            <div class="major-icon">🏗️</div>
+                                            <div>
+                                                <h3>Civil Engineering</h3>
+                                                <span class="major-degree">B.E. Civil</span>
+                                            </div>
+                                        </div>
+                                        <p class="major-desc">Design and construct the infrastructure backbone of society — roads, bridges, dams, buildings, and water systems. In Shan State's mountainous terrain, civil engineers tackle unique challenges in highland infrastructure and connectivity.</p>
+                                        <div class="major-details">
+                                            <div class="detail-row">
+                                                <strong>Duration</strong>
+                                                <span>5 Years</span>
+                                            </div>
+                                            <div class="detail-row">
+                                                <strong>Degree</strong>
+                                                <span>B.E. (Civil Engineering)</span>
+                                            </div>
+                                        </div>
+                                        <div class="major-subjects">
+                                            <span>Structural Engineering</span>
+                                            <span>Hydraulics</span>
+                                            <span>Geotechnics</span>
+                                            <span>Highway Engineering</span>
+                                            <span>Construction Management</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="major-card">
+                                        <div class="major-header">
+                                            <div class="major-icon">📡</div>
+                                            <div>
+                                                <h3>Electronics Engineering</h3>
+                                                <span class="major-degree">B.E. Electronics (EC)</span>
+                                            </div>
+                                        </div>
+                                        <p class="major-desc">Design electronic circuits, communication systems, and digital devices that form the backbone of modern technology. Electronics engineers bridge the physical and digital worlds.</p>
+                                        <div class="major-details">
+                                            <div class="detail-row">
+                                                <strong>Duration</strong>
+                                                <span>5 Years</span>
+                                            </div>
+                                            <div class="detail-row">
+                                                <strong>Degree</strong>
+                                                <span>B.E. (Electronics Engineering)</span>
+                                            </div>
+                                        </div>
+                                        <div class="major-subjects">
+                                            <span>Circuit Theory</span>
+                                            <span>Digital Electronics</span>
+                                            <span>Communication Systems</span>
+                                            <span>Microcontrollers</span>
+                                            <span>Signal Processing</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="major-card">
+                                        <div class="major-header">
+                                            <div class="major-icon">⚡</div>
+                                            <div>
+                                                <h3>Electrical Power Engineering</h3>
+                                                <span class="major-degree">B.E. Electrical Power (EP)</span>
+                                            </div>
+                                        </div>
+                                        <p class="major-desc">Generate, transmit, and distribute electrical power. Shan State's vast hydropower potential makes Electrical Power Engineering one of the most impactful career choices for students from this region.</p>
+                                        <div class="major-details">
+                                            <div class="detail-row">
+                                                <strong>Duration</strong>
+                                                <span>5 Years</span>
+                                            </div>
+                                            <div class="detail-row">
+                                                <strong>Degree</strong>
+                                                <span>B.E. (Electrical Power Engineering)</span>
+                                            </div>
+                                        </div>
+                                        <div class="major-subjects">
+                                            <span>Power Systems Analysis</span>
+                                            <span>Electrical Machines</span>
+                                            <span>Hydropower Engineering</span>
+                                            <span>Power Electronics</span>
+                                            <span>High Voltage Engineering</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="major-card">
+                                        <div class="major-header">
+                                            <div class="major-icon">⚙️</div>
+                                            <div>
+                                                <h3>Mechanical Engineering</h3>
+                                                <span class="major-degree">B.E. Mechanical</span>
+                                            </div>
+                                        </div>
+                                        <p class="major-desc">Design and manufacture mechanical systems — engines, turbines, manufacturing machinery, and thermal systems. Mechanical engineers support every sector of industry from mining to food processing.</p>
+                                        <div class="major-details">
+                                            <div class="detail-row">
+                                                <strong>Duration</strong>
+                                                <span>5 Years</span>
+                                            </div>
+                                            <div class="detail-row">
+                                                <strong>Degree</strong>
+                                                <span>B.E. (Mechanical Engineering)</span>
+                                            </div>
+                                        </div>
+                                        <div class="major-subjects">
+                                            <span>Thermodynamics</span>
+                                            <span>Fluid Mechanics</span>
+                                            <span>Machine Design</span>
+                                            <span>Manufacturing Processes</span>
+                                            <span>Engineering Materials</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="major-card">
+                                        <div class="major-header">
+                                            <div class="major-icon">⛏️</div>
+                                            <div>
+                                                <h3>Mining Engineering</h3>
+                                                <span class="major-degree">B.E. Mining</span>
+                                            </div>
+                                        </div>
+                                        <p class="major-desc">Extract mineral resources safely, efficiently, and responsibly. Shan State is among Myanmar's most mineral-rich regions — jade, rubies, silver, lead, tin, and antimony — making Mining Engineering one of TU Taunggyi's most strategically significant programs.</p>
+                                        <div class="major-details">
+                                            <div class="detail-row">
+                                                <strong>Duration</strong>
+                                                <span>5 Years</span>
+                                            </div>
+                                            <div class="detail-row">
+                                                <strong>Degree</strong>
+                                                <span>B.E. (Mining Engineering)</span>
+                                            </div>
+                                        </div>
+                                        <div class="major-subjects">
+                                            <span>Engineering Geology</span>
+                                            <span>Rock Mechanics</span>
+                                            <span>Mine Planning &amp; Design</span>
+                                            <span>Mineral Processing</span>
+                                            <span>Mine Safety &amp; Ventilation</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="major-card">
+                                        <div class="major-header">
+                                            <div class="major-icon">💻</div>
+                                            <div>
+                                                <h3>IT Engineering</h3>
+                                                <span class="major-degree">B.E. IT</span>
+                                            </div>
+                                        </div>
+                                        <p class="major-desc">Build software systems, manage networks, and develop the digital infrastructure that underpins modern society. IT Engineering is the fastest-growing field and essential for Myanmar's digital transformation — including in regional cities like Taunggyi.</p>
+                                        <div class="major-details">
+                                            <div class="detail-row">
+                                                <strong>Duration</strong>
+                                                <span>5 Years</span>
+                                            </div>
+                                            <div class="detail-row">
+                                                <strong>Degree</strong>
+                                                <span>B.E. (Information Technology Engineering)</span>
+                                            </div>
+                                        </div>
+                                        <div class="major-subjects">
+                                            <span>Programming Fundamentals</span>
+                                            <span>Database Systems</span>
+                                            <span>Computer Networks</span>
+                                            <span>Software Engineering</span>
+                                            <span>Web &amp; Mobile Development</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="degree-section-title" style="margin-top:2rem;">Supporting Departments</div>
+                                <p style="margin-bottom:1.2rem; color: var(--text-secondary, #555);">The following departments provide essential foundational education for all B.E. programs at TU Taunggyi:</p>
+                                <div class="dept-grid">
+                                    <div class="dept-card">
+                                        <div class="dept-icon">📐</div>
+                                        <h4>Engineering Mathematics</h4>
+                                        <p>Calculus, linear algebra, differential equations, and numerical methods — the mathematical backbone of all engineering disciplines.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">🔭</div>
+                                        <h4>Engineering Physics</h4>
+                                        <p>Mechanics, electromagnetism, optics, and modern physics applied to engineering problems and real-world applications.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">🧪</div>
+                                        <h4>Engineering Chemistry</h4>
+                                        <p>Applied chemistry principles for engineering materials, corrosion science, chemical processes, and environmental impact.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">🌐</div>
+                                        <h4>English Language</h4>
+                                        <p>Technical English communication, academic writing, and professional language skills for engineering practice.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">📝</div>
+                                        <h4>Myanmar Language</h4>
+                                        <p>Formal Myanmar communication, technical writing, and professional documentation skills.</p>
+                                    </div>
+                                </div>
+
+                                <div class="degree-section-title" style="margin-top:2rem;">Postgraduate Research</div>
+                                <div class="majors-list">
+                                    <div class="major-card">
+                                        <div class="major-header">
+                                            <div class="major-icon">🔬</div>
+                                            <div>
+                                                <h3>Postgraduate Research Programs</h3>
+                                                <span class="major-degree">Research-Focused</span>
+                                            </div>
+                                        </div>
+                                        <p class="major-desc">TU Taunggyi offers limited postgraduate research opportunities for B.E. graduates seeking to advance engineering knowledge through applied research relevant to Shan State and Myanmar's regional development needs. Postgraduate options are research-focused and aligned with the university's vision of becoming an internationally accredited research institution.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Departments Tab -->
+                        <div class="tab-panel" id="departments">
+                            <div class="content-card">
+                                <h2>Academic Departments</h2>
+                                <p class="subtitle">Engineering and foundational science departments</p>
+                                <div class="dept-grid">
+                                    <div class="dept-card">
+                                        <div class="dept-icon">🏗️</div>
+                                        <h4>Civil Engineering</h4>
+                                        <p>Infrastructure, structural, hydraulic, and transportation engineering for highland Myanmar's demanding terrain.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">📡</div>
+                                        <h4>Electronics Engineering (EC)</h4>
+                                        <p>Electronic circuits, communications, digital systems, and embedded technology design.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">⚡</div>
+                                        <h4>Electrical Power Engineering (EP)</h4>
+                                        <p>Power generation, transmission, distribution, and electrical machine design — including hydropower engineering.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">⚙️</div>
+                                        <h4>Mechanical Engineering</h4>
+                                        <p>Machinery design, thermal systems, manufacturing technology, and industrial mechanics.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">⛏️</div>
+                                        <h4>Mining Engineering</h4>
+                                        <p>Mineral extraction, mine planning, rock engineering, and sustainable resource management for Shan State's mineral wealth.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">💻</div>
+                                        <h4>IT Engineering</h4>
+                                        <p>Software development, computer networking, database systems, and digital infrastructure engineering.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">📐</div>
+                                        <h4>Engineering Mathematics</h4>
+                                        <p>Advanced mathematics supporting all engineering programs — calculus, algebra, statistics, and numerical methods.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">🔭</div>
+                                        <h4>Engineering Physics</h4>
+                                        <p>Applied physics for engineering applications — mechanics, waves, electromagnetism, and modern physics.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">🧪</div>
+                                        <h4>Engineering Chemistry</h4>
+                                        <p>Chemical principles applied to engineering materials, processes, environmental science, and industrial applications.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">🌐</div>
+                                        <h4>English Language</h4>
+                                        <p>Technical communication and academic English for professional engineering practice and international readiness.</p>
+                                    </div>
+                                    <div class="dept-card">
+                                        <div class="dept-icon">📝</div>
+                                        <h4>Myanmar Language</h4>
+                                        <p>Formal Myanmar language, technical writing, and professional communication skills.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campus Life Tab -->
+                        <div class="tab-panel" id="campus">
+                            <div class="content-card">
+                                <h2>Campus Life at TU Taunggyi</h2>
+                                <p>Life at TU Taunggyi is defined by the university's highland setting — situated in Taunggyi, the capital of Shan State, at an elevation of approximately 1,430 metres above sea level. The campus offers a focused, close-knit academic environment with a cool climate unlike any engineering university in Myanmar's lowland cities.</p>
+                                <div class="features-list">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🌄</div>
+                                        <div>
+                                            <h4>Highland Setting</h4>
+                                            <p>Taunggyi's cool mountain climate and scenic highland landscape create a unique and refreshing study environment. The 84-acre campus provides ample space for academic and student life activities.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🏠</div>
+                                        <div>
+                                            <h4>Student Hostels</h4>
+                                            <p>On-campus dormitories for students from across Shan State and other regions — creating a diverse community of future engineers and fostering peer support during the demanding 6-year program.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🔬</div>
+                                        <div>
+                                            <h4>Engineering Laboratories</h4>
+                                            <p>Dedicated laboratory facilities for each engineering department — providing hands-on experimental learning alongside theoretical coursework in a structured 6-year curriculum.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">📚</div>
+                                        <div>
+                                            <h4>University Library</h4>
+                                            <p>A growing technical library stocked with engineering textbooks, academic journals, and digital learning resources to support student research and study throughout the B.E. program.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">⚽</div>
+                                        <div>
+                                            <h4>Sports &amp; Recreation</h4>
+                                            <p>Sports facilities and grounds for football, badminton, and other recreational activities — offering students a healthy balance alongside their rigorous engineering coursework.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🏔️</div>
+                                        <div>
+                                            <h4>Cultural Diversity</h4>
+                                            <p>TU Taunggyi draws students from across Shan State's rich ethnic mosaic — Shan, Pa-O, Danu, Intha, Palaung, and many other communities — creating one of Myanmar's most culturally diverse engineering campuses.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alumni Tab -->
+                        <div class="tab-panel" id="alumni">
+                            <div class="content-card">
+                                <h2>Alumni &amp; Community</h2>
+                                <p>As a relatively young university established in 2007, TU Taunggyi's alumni network is rapidly growing — with graduates making meaningful contributions to Shan State's infrastructure, energy, mining, and technology sectors. The university produces approximately <strong>500 qualified engineers per year</strong>, building a steadily expanding community of engineering professionals rooted in the eastern highlands of Myanmar.</p>
+                                <div class="features-list">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">⛏️</div>
+                                        <div>
+                                            <h4>Mining &amp; Resources Sector</h4>
+                                            <p>TU Taunggyi graduates are in high demand across Shan State's extensive mining operations — jade, rubies, silver, lead, and tin — where locally educated mining engineers bring both technical expertise and deep regional knowledge.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">⚡</div>
+                                        <div>
+                                            <h4>Hydropower &amp; Energy</h4>
+                                            <p>Electrical Power Engineering graduates contribute to Shan State's hydropower development — one of Myanmar's most significant energy resources — supporting electrification and energy security for the region.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🏗️</div>
+                                        <div>
+                                            <h4>Infrastructure Development</h4>
+                                            <p>Civil and Mechanical Engineering graduates lead construction projects, road networks, and infrastructure development across Shan State's challenging highland terrain — improving connectivity and quality of life.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🎓</div>
+                                        <div>
+                                            <h4>TU Taunggyi Alumni Network</h4>
+                                            <p>A growing alumni association connects graduates with current students through career guidance, professional networking, and regional industry opportunities — building a strong engineering community across Shan State.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Career Paths Tab -->
+                        <div class="tab-panel" id="careers">
+                            <div class="content-card">
+                                <h2>Career Paths for TU Taunggyi Graduates</h2>
+                                <p class="subtitle">Engineering careers across Shan State's resource-rich and infrastructure-growing sectors</p>
+                                <div class="career-grid">
+                                    <div class="career-card">
+                                        <div class="career-icon">🏗️</div>
+                                        <h4>Civil &amp; Structural Engineer</h4>
+                                        <p>Design and supervise roads, bridges, tunnels, buildings, and highland infrastructure projects across Shan State and Myanmar.</p>
+                                    </div>
+                                    <div class="career-card">
+                                        <div class="career-icon">📡</div>
+                                        <h4>Electronics &amp; Telecom Engineer</h4>
+                                        <p>Design communication systems, expand telecom networks, and develop electronic devices advancing Myanmar's digital connectivity.</p>
+                                    </div>
+                                    <div class="career-card">
+                                        <div class="career-icon">⚡</div>
+                                        <h4>Electrical Power Engineer</h4>
+                                        <p>Design and manage electrical grids, hydropower stations, and distribution networks — critical for Shan State's energy development.</p>
+                                    </div>
+                                    <div class="career-card">
+                                        <div class="career-icon">⚙️</div>
+                                        <h4>Mechanical Engineer</h4>
+                                        <p>Maintain and design machinery, industrial equipment, and mechanical systems for manufacturing and industrial operations.</p>
+                                    </div>
+                                    <div class="career-card">
+                                        <div class="career-icon">⛏️</div>
+                                        <h4>Mining Engineer</h4>
+                                        <p>Plan and oversee safe, efficient mineral extraction operations across Shan State's jade, ruby, silver, tin, and antimony mining sectors.</p>
+                                    </div>
+                                    <div class="career-card">
+                                        <div class="career-icon">💻</div>
+                                        <h4>IT Engineer / Software Developer</h4>
+                                        <p>Build software systems, manage IT infrastructure, and drive Myanmar's digital transformation in both corporate and government sectors.</p>
+                                    </div>
+                                    <div class="career-card">
+                                        <div class="career-icon">🔬</div>
+                                        <h4>Engineering Researcher</h4>
+                                        <p>Pursue postgraduate research and contribute to applied engineering solutions for Myanmar's regional development challenges.</p>
+                                    </div>
+                                    <div class="career-card">
+                                        <div class="career-icon">🏫</div>
+                                        <h4>Engineering Educator</h4>
+                                        <p>Teach the next generation of Myanmar engineers as university lecturers, tutors, and technical education specialists at engineering universities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+ <!-- CTA Section -->
+    <section class="cta-profile">
+        <div class="cta-tech-lines"></div>
+        <div class="container">
+            <h2>Ready to Build Myanmar’s Future at TUTgi?</h2>
+            <p>Explore more universities or learn about the admission process</p>
+            <div class="cta-buttons">
+                <a href="uni.html" class="btn-secondary">Explore More Universities</a>
+                <a href="error.html" class="btn-primary">Apply Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>High Schooler's Tool</h3>
+                    <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="hst.html">Home</a></li>
+                        <li><a href="uni.html">Universities</a></li>
+                        <li><a href="career-journey.html">Career Journey</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="study-mode.html">Study Mode</a></li>
+                        <li><a href="scholarships.html">Scholarships</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>High Schooler's Tool</p>
+                    <p>Email: <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+                    <p>Facebook: <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">High Schooler's Tool ARP</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 High Schooler's Tool. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+   <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Hamburger menu
+            const hamburger = document.getElementById("hamburger");
+            const navLinks  = document.querySelector(".nav-links");
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener("click", function () {
+                    navLinks.classList.toggle("active");
+                    hamburger.classList.toggle("active");
+                });
+                navLinks.querySelectorAll("a").forEach(function (link) {
+                    link.addEventListener("click", function () {
+                        navLinks.classList.remove("active");
+                        hamburger.classList.remove("active");
+                    });
+                });
+            }
+
+            // Tabs
+            document.querySelectorAll(".tab-btn").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    document.querySelectorAll(".tab-btn").forEach(function (b) {
+                        b.classList.remove("active");
+                    });
+                    document.querySelectorAll(".tab-panel").forEach(function (p) {
+                        p.classList.remove("active");
+                    });
+                    btn.classList.add("active");
+                    document.getElementById(btn.dataset.tab).classList.add("active");
+                });
+            });
+
+        });
+    
+    (function () {
+      var AUTO_MS = 9000; // ms before bar auto-dismisses; 0 = stay
+
+      var bar      = document.getElementById('notifyBar');
+      var overlay  = document.getElementById('notifyOverlay');
+      var xBtn     = document.getElementById('notifyDismiss');
+      var actionBtn= document.getElementById('notifyAction');
+      var moreBtn  = document.getElementById('notifyMore');
+      var progress = document.getElementById('notifyProgress');
+      var sheet    = document.getElementById('letterSheet');
+      var closeBtn = document.getElementById('letterClose');
+      var gotItBtn = document.getElementById('letterGotIt');
+
+      // Stamp today's date in the letter
+      var d = new Date();
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      document.getElementById('letterDate').textContent =
+        months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+      var timer;
+      var barVisible = false;
+
+      /* ── Show notification bar ── */
+      function showBar() {
+        barVisible = true;
+        bar.classList.add('notify-visible');
+        overlay.classList.add('notify-visible');
+        if (AUTO_MS > 0 && progress) {
+          progress.style.transition = 'transform ' + AUTO_MS + 'ms linear';
+          progress.getBoundingClientRect();
+          progress.style.transform = 'scaleX(0)';
+          timer = setTimeout(dismissBar, AUTO_MS);
+        }
+      }
+
+      /* ── Dismiss notification bar ── */
+      function dismissBar() {
+        clearTimeout(timer);
+        barVisible = false;
+        bar.classList.remove('notify-visible');
+        bar.classList.add('notify-out');
+        overlay.classList.remove('notify-visible');
+        bar.addEventListener('transitionend', function done() {
+          bar.classList.remove('notify-out');
+          bar.removeEventListener('transitionend', done);
+        });
+      }
+
+      /* ── Open full letter sheet ── */
+      function openLetter() {
+        clearTimeout(timer); // stop auto-dismiss while reading
+        // Slide bar back up (without full dismiss animation noise)
+        bar.classList.remove('notify-visible');
+        bar.classList.add('notify-out');
+        bar.addEventListener('transitionend', function done() {
+          bar.classList.remove('notify-out');
+          bar.removeEventListener('transitionend', done);
+        });
+        // Deepen overlay, show sheet
+        overlay.classList.add('notify-visible', 'letter-open');
+        sheet.classList.add('letter-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      /* ── Close letter sheet ── */
+      function closeLetter() {
+        sheet.classList.remove('letter-open');
+        overlay.classList.remove('letter-open');
+        overlay.classList.remove('notify-visible');
+        document.body.style.overflow = '';
+      }
+
+      xBtn.addEventListener('click', dismissBar);
+      overlay.addEventListener('click', function () {
+        if (sheet.classList.contains('letter-open')) {
+          closeLetter();
+        } else {
+          dismissBar();
+        }
+      });
+      actionBtn.addEventListener('click', openLetter);
+      moreBtn.addEventListener('click', openLetter);
+      closeBtn.addEventListener('click', closeLetter);
+      gotItBtn.addEventListener('click', closeLetter);
+
+      setTimeout(showBar, 700);
+    })();
+
+    /* ─────────────────────────────────────────
+       HAMBURGER
+    ───────────────────────────────────────── */
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks  = document.getElementById('navLinks');
+      hamburger.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+        });
+      });
+    })();
+
+    /* ─────────────────────────────────────────
+       TABS
+    ───────────────────────────────────────── */
+    document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
+
