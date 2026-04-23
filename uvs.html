@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UVS — University of Veterinary Science, Yezin | HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hst.css" />
+  <link rel="stylesheet" href="appleucsy.css" />
+</head>
+<body>
+
+  <!-- ── Navigation (hst.css controls this — do not modify) ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="u-hero" aria-label="University hero">
+    <div class="u-hero-bg" style="background-image:url('uvs.jpg')"></div>
+    <div class="u-hero-overlay"></div>
+    <div class="u-hero-noise"></div>
+    <div class="container u-hero-inner">
+      <nav class="u-breadcrumb" aria-label="Breadcrumb">
+        <a href="hst.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="uni.html">Universities</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>UVS Yezin</span>
+      </nav>
+      <div class="u-hero-body">
+        <div class="u-logo-wrap">
+          <img src="vetlogo.jfif" alt="UVS Logo" onerror="this.style.opacity='.15'">
+        </div>
+        <div class="u-hero-text">
+          <div class="u-hero-eyebrow">Myanmar's Only Veterinary University</div>
+          <h1 class="u-hero-title">University of Veterinary Science,<br class="desktop-br"> Yezin</h1>
+          <p class="u-hero-subtitle">Training Veterinarians &amp; Animal Scientists Since 1957</p>
+          <div class="u-meta-row">
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Yezin, Nay Pyi Taw (Pyinmana)
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+              Government · Public
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Est. 1957 (University 1999)
+            </div>
+            <div class="u-meta-pill gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Myanmar's Only Vet University
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats Bar ── -->
+  <section class="u-stats" aria-label="Key statistics">
+    <div class="container">
+      <div class="u-stats-grid">
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">1000+</div>
+            <div class="u-stat-label">Students</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">180+</div>
+            <div class="u-stat-label">Academic Staff</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">5500+</div>
+            <div class="u-stat-label">Graduates Produced</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">68</div>
+            <div class="u-stat-label">Years of Excellence</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">1</div>
+            <div class="u-stat-label">Teaching Hospital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <section class="u-body">
+    <div class="container">
+      <div class="u-layout">
+
+        <!-- ── Sidebar ── -->
+        <aside class="u-sidebar" aria-label="University sidebar">
+
+          <!-- Quick Info -->
+          <div class="u-card">
+            <div class="u-card-title">Quick Info</div>
+            <div class="u-info-list">
+              <div class="u-info-row">
+                <span class="u-info-key">Type</span>
+                <span class="u-info-val">Public Government</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Ministry</span>
+                <span class="u-info-val">Livestock, Fisheries &amp; Rural Dev.</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Location</span>
+                <span class="u-info-val">Yezin, Pyinmana</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Region</span>
+                <span class="u-info-val">Nay Pyi Taw Union Territory</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Language</span>
+                <span class="u-info-val">English (primary)</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Founded</span>
+                <span class="u-info-val">1957 (as Faculty of Vet Med)</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">UVS since</span>
+                <span class="u-info-val">1999</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Rector</span>
+                <span class="u-info-val">Dr. Mar Mar Win</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entrance -->
+          <div class="u-card u-card-accent">
+            <div class="u-card-title">Entrance Requirements</div>
+            <div class="u-entrance-block">
+              <div class="u-entrance-score">
+                <div class="u-score-label">Minimum Marks</div>
+                <div class="u-score-num">440+</div>
+                <div class="u-score-sub">Extremely Competitive</div>
+              </div>
+              <div class="u-entrance-subjects">
+                <div class="u-sub-label">Required Subjects</div>
+                <div class="u-sub-tags">
+                  <span class="u-tag blue">Science Stream</span>
+                  <span class="u-tag blue">Biology</span>
+                  <span class="u-tag blue">Chemistry</span>
+                  <span class="u-tag blue">Physics / Maths</span>
+                </div>
+              </div>
+              <div class="u-entrance-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Age 17–25. Interview/viva required (since 2006). ~100 DVM places and ~100 BASc places per year — one of Myanmar's most selective universities.
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="u-card">
+            <div class="u-card-title">Key Milestones</div>
+            <div class="u-timeline">
+              <div class="u-tl-item">
+                <div class="u-tl-year">1957</div>
+                <div class="u-tl-text">Founded as Faculty of Veterinary Medicine under Rangoon University</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">1964</div>
+                <div class="u-tl-text">Upgraded to Institute of Animal Husbandry &amp; Veterinary Science (IAHVS), Insein</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">1981</div>
+                <div class="u-tl-text">Campus relocated to Yezin, Pyinmana — larger space with teaching hospital and farm facilities</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">1994</div>
+                <div class="u-tl-text">Transferred to Ministry of Livestock &amp; Fisheries — stronger national livestock links</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">1999</div>
+                <div class="u-tl-text">Established as University of Veterinary Science, Yezin — full university status</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2006</div>
+                <div class="u-tl-text">Interview/viva component introduced for DVM admission</div>
+              </div>
+              <div class="u-tl-item now">
+                <div class="u-tl-year">2020s</div>
+                <div class="u-tl-text">Modernised labs and digital systems; renewed One Health and epidemic preparedness focus</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="u-card u-card-contact">
+            <div class="u-card-title">Contact</div>
+            <div class="u-contact-list">
+              <a href="tel:+9567000000" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 4.18 2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <span>+95-67-XXX-XXXX (UVS main line)</span>
+              </a>
+              <a href="mailto:info@uvs.edu.mm" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <span>info@uvs.edu.mm</span>
+              </a>
+              <a href="https://www.uvs.edu.mm" target="_blank" rel="noopener" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>uvs.edu.mm</span>
+              </a>
+            </div>
+            <a href="mailto:info@uvs.edu.mm" class="u-contact-btn">Get in Touch</a>
+          </div>
+
+        </aside>
+
+        <!-- ── Main Panel ── -->
+        <main class="u-main" aria-label="University details">
+
+          <!-- Tabs -->
+          <div class="u-tabs" role="tablist" aria-label="University sections">
+            <button class="u-tab active" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview">Overview</button>
+            <button class="u-tab"        data-tab="majors"    role="tab" aria-selected="false" aria-controls="tab-majors">Programs</button>
+            <button class="u-tab"        data-tab="projects"  role="tab" aria-selected="false" aria-controls="tab-projects">Research</button>
+            <button class="u-tab"        data-tab="campus"    role="tab" aria-selected="false" aria-controls="tab-campus">Campus Life</button>
+            <button class="u-tab"        data-tab="careers"   role="tab" aria-selected="false" aria-controls="tab-careers">Career Paths</button>
+            <button class="u-tab"        data-tab="alumni"    role="tab" aria-selected="false" aria-controls="tab-alumni">Alumni</button>
+          </div>
+
+          <!-- ── Overview ── -->
+          <div class="u-panel active" id="tab-overview" role="tabpanel">
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">About the University</h2>
+              <div class="u-about-lang-toggle" role="group" aria-label="Language toggle">
+                <button class="u-lang-btn active" data-lang="en">English</button>
+                <button class="u-lang-btn" data-lang="mm">မြန်မာ</button>
+              </div>
+
+              <div class="u-about-text" data-lang-content="en">
+                <p>The <strong>University of Veterinary Science, Yezin (UVS Yezin)</strong> is Myanmar's only dedicated veterinary university and the national leader in training veterinarians and animal scientists. It began in 1957 as the Faculty of Veterinary Medicine under Rangoon University, was upgraded to the Institute of Animal Husbandry and Veterinary Science (IAHVS) in 1964, relocated to Yezin (Pyinmana) in 1981, and became UVS under the Ministry of Livestock and Fisheries in 1999.</p>
+                <p>UVS offers a 5-year Doctor of Veterinary Medicine (DVM) program, a 4-year Bachelor of Animal Science (BASc), and postgraduate degrees including MPhil, MVM, MVSc, and PhD in various veterinary and animal-science fields. Since 1957 it has produced over 5,500 graduates — including 5,446 DVM-equivalent doctors and 93 BASc — plus hundreds of postgraduates.</p>
+                <p>The university is located in Yezin, near the Nay Pyi Taw capital area, and includes a fully functioning veterinary teaching hospital, livestock teaching farms, and clinical-skills laboratories — providing one of the most hands-on veterinary education environments in Southeast Asia.</p>
+              </div>
+              <div class="u-about-text" data-lang-content="mm" hidden>
+                <p>မွေးမြူရေးဆိုင်ရာ ဆေးတက္ကသိုလ် (ရေဆင်း) သည် မြန်မာနိုင်ငံ၏ တစ်ခုတည်းသော မွေးမြူရေးဆိုင်ရာ ဆေးတက္ကသိုလ် ဖြစ်ပါသည်။ ၁၉၅၇ ခုနှစ်တွင် ရန်ကုန်တက္ကသိုလ်အောက်ရှိ မွေးမြူရေးဆိုင်ရာ ဆေးဖက်ဝင်းအဖြစ် စတင်တည်ထောင်ခဲ့ပြီး ၁၉၉၉ ခုနှစ်တွင် မွေးမြူရေးဆိုင်ရာ ဆေးတက္ကသိုလ် အဖြစ် အဆင့်မြှင့်တင်ခဲ့ပါသည်။</p>
+                <p>တက္ကသိုလ်သည် ၅ နှစ်ကြာ DVM ဆေးဘွဲ့သင်တန်း၊ ၄ နှစ်ကြာ BASc သင်တန်းနှင့် MPhil, MVM, MVSc, PhD ဘွဲ့လွန်သင်တန်းများ ပေးနေပါသည်။ ၁၉၅၇ ခုနှစ်မှ စတင်ကာ ဘွဲ့ရသူ ၅,၅၀၀ ကျော်ကို မြန်မာနိုင်ငံ၏ မွေးမြူရေးကဏ္ဍ၊ အစိုးရဌာနများ၊ NGO များနှင့် နိုင်ငံတကာ အဖွဲ့အစည်းများသို့ ထုတ်ပေးခဲ့ပါသည်။</p>
+                <p>ရေဆင်း၊ ပြည်သူ့ဒေသ (နေပြည်တော်) တွင် တည်ရှိပြီး မွေးမြူရေးဆိုင်ရာ ဆေးရုံ၊ မွေးမြူရေးခြံများနှင့် ဓာတ်ခွဲခန်းများ ပါဝင်သော ကျူပင်တက္ကသိုလ်တစ်ခုဖြစ်သည်။</p>
+              </div>
+            </div>
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">Why Choose UVS Yezin?</h2>
+              <div class="u-features-grid">
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </div>
+                  <div>
+                    <h4>Myanmar's Only Veterinary University</h4>
+                    <p>UVS is the sole institution in Myanmar that grants nationally recognised DVM degrees — graduates automatically qualify to register and practice as licensed veterinarians.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  </div>
+                  <div>
+                    <h4>Practice-Based DVM Curriculum</h4>
+                    <p>5-year program with strong clinical training in the on-campus veterinary teaching hospital and field clinics — students spend many hours in surgery, diagnostics, and farm visits.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  </div>
+                  <div>
+                    <h4>Two Undergraduate Streams</h4>
+                    <p>DVM for clinicians and BASc for animal-production, nutrition, and breeding specialists — giving students career flexibility across veterinary and agribusiness sectors.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  </div>
+                  <div>
+                    <h4>Graduate Research Culture</h4>
+                    <p>Active postgraduate programs (MPhil, MVM, MVSc, PhD) and research in infectious diseases, zoonoses, animal nutrition, and livestock production.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <h4>Yezin Location Advantage</h4>
+                    <p>Located in the capital region with easy access to national livestock farms, government agencies, and international development partners — strong job placement in the Department of Livestock &amp; Veterinary Services.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </div>
+                  <div>
+                    <h4>Extremely High Employability</h4>
+                    <p>Almost all DVM graduates secure government, private-practice, farm, agribusiness, or NGO positions. BASc graduates lead in feed companies, dairy farms, poultry industries, and research institutes.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Gallery</h2>
+              <div class="u-gallery">
+                <div class="u-gallery-item span-2">
+                  <img src="images/uvs-hospital.jpg" alt="Veterinary Teaching Hospital" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Veterinary Teaching Hospital</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/uvs-lab.jpg" alt="Diagnostic Laboratory" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Diagnostic Laboratory</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/uvs-farm.jpg" alt="Teaching Livestock Farm" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Teaching Livestock Farm</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/uvs-campus.jpg" alt="Yezin Campus" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Yezin Main Campus</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── Programs ── -->
+          <div class="u-panel" id="tab-majors" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Undergraduate Programs</h2>
+              <p class="u-section-sub">Five-year DVM and four-year BASc — the only paths to a veterinary or animal-science degree in Myanmar</p>
+
+              <div class="u-programs">
+
+                <div class="u-program-card featured">
+                  <div class="u-prog-badge">🌟 Flagship — DVM</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div>
+                      <h3>Doctor of Veterinary Medicine (DVM)</h3>
+                      <div class="u-prog-degree">5 Years · Formerly BVSc</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">UVS's core program — trains students to become fully licensed veterinarians. Covers basic veterinary sciences (anatomy, physiology, pathology, microbiology, pharmacology), clinical medicine and surgery, obstetrics, theriogenology, and public-health/food-safety topics.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">5 Years</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Min. Marks</span><span class="u-dr-val highlight">440+ / 600 (Extremely Competitive)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Annual Intake</span><span class="u-dr-val">~100 places</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Clinical Areas</span><span class="u-dr-val">Internal medicine, surgery, obstetrics, clinical pathology, radiology</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Anatomy &amp; Physiology</span>
+                      <span>Pathology &amp; Microbiology</span>
+                      <span>Surgery &amp; Medicine</span>
+                      <span>Pharmacology</span>
+                      <span>Public Health &amp; Food Safety</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge green-badge">Undergraduate</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon green">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div>
+                      <h3>Bachelor of Animal Science (BASc)</h3>
+                      <div class="u-prog-degree green-deg">4 Years</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focuses on animal-production systems (dairy, beef, swine, poultry, small ruminants), nutrition, breeding, reproduction management, and farm-business economics. Students learn husbandry, housing, feeding, and welfare at UVS's teaching livestock farms.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">4 Years</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Annual Intake</span><span class="u-dr-val">~100 places</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Career Paths</span><span class="u-dr-val">Production manager, farm technical officer, agribusiness manager, feed-company specialist</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Areas</div>
+                    <div class="u-track-tags">
+                      <span>Animal Nutrition</span>
+                      <span>Breeding &amp; Genetics</span>
+                      <span>Dairy &amp; Livestock Production</span>
+                      <span>Farm Management</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card postgrad">
+                  <div class="u-prog-badge violet-badge">Postgraduate</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon violet">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                      <h3>Master's &amp; Doctoral Programs</h3>
+                      <div class="u-prog-degree violet-deg">MPhil · MVM · MVSc · PhD</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Advanced research and coursework for graduates seeking specialised expertise or academic careers. PhD training covers infectious-disease modelling, antimicrobial-resistance surveillance, reproductive biotechnology, and dairy-cattle productivity.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">MPhil</span><span class="u-dr-val">Veterinary Science — Clinical Research &amp; Infectious Diseases</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">MVM</span><span class="u-dr-val">Master of Veterinary Medicine — Veterinary Therapeutics &amp; Clinical Practice</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">MVSc</span><span class="u-dr-val">Animal Science — Nutrition, Breeding &amp; Genetics</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">MVSc</span><span class="u-dr-val">Preventive &amp; Public Health — Epidemiology &amp; Zoonoses</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">PhD</span><span class="u-dr-val">Research degrees across veterinary and animal-science fields</span></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Research ── -->
+          <div class="u-panel" id="tab-projects" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Research &amp; Health Projects</h2>
+              <p class="u-section-sub">From zoonoses to national herd-health programs</p>
+
+              <div class="u-projects">
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type competition">Infectious Diseases</div>
+                    <h3>Zoonotic Disease Surveillance</h3>
+                    <p>Research on leptospirosis, brucellosis, anthrax, and rabies — UVS collaborates with national laboratories and the Ministry to monitor disease outbreaks and advise on control measures across Myanmar.</p>
+                    <div class="u-proj-tags">
+                      <span>Zoonoses</span><span>Outbreak Surveillance</span><span>One Health</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type conference">Dairy &amp; Livestock</div>
+                    <h3>Dairy-Cattle Improvement Program</h3>
+                    <p>Field trials and genetics work to improve milk yield and herd health in local and crossbred dairy cattle, supporting smallholder dairy farmers around Nay Pyi Taw and Yangon.</p>
+                    <div class="u-proj-tags">
+                      <span>Dairy Cattle</span><span>Genetics</span><span>Farmer Training</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Active</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">Teaching Hospital</div>
+                    <h3>On-Campus Veterinary Teaching Hospital</h3>
+                    <p>The teaching hospital receives sick animals from across the region, providing clinical material for teaching and generating cases for research on therapeutics and diagnostics — a full-service referral centre.</p>
+                    <div class="u-proj-tags">
+                      <span>Clinical Training</span><span>Referral Practice</span><span>Diagnostic Development</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Active</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">Community Outreach</div>
+                    <h3>Field Demonstrations &amp; Vaccination Campaigns</h3>
+                    <p>Faculty and students run disease-prevention and vaccination camps in surrounding villages — promoting improved husbandry, biosecurity, and animal-welfare practices across rural communities.</p>
+                    <div class="u-proj-tags">
+                      <span>Farmer Outreach</span><span>Vaccination Campaigns</span><span>Disease Prevention</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Campus Life ── -->
+          <div class="u-panel" id="tab-campus" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Life at UVS Yezin</h2>
+              <p class="u-section-sub">Yezin (near Nay Pyi Taw) — integrated farm, hospital, and laboratory campus</p>
+
+              <div class="u-campus-grid">
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/uvs-students.jpg" alt="Student Activities" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Student Union &amp; Veterinary Clubs</h3>
+                    <p>Organises pet-care campaigns, vaccination drives, and career talks with senior veterinarians and government officials — keeping students connected to the profession from day one.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/uvs-skills.jpg" alt="Clinical Skills" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Clinical Skill Competitions</h3>
+                    <p>Students practice suturing, injections, pregnancy diagnosis, and emergency-care drills — teams compete in clinical-case scenarios, sharpening the practical skills employers and patients depend on.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/uvs-workshop.jpg" alt="One Health Workshops" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>One-Health &amp; Zoonosis Workshops</h3>
+                    <p>Collaborations with health-ministry partners and international donors to train future veterinarians in anthropogenic-disease prevention and human-animal-environment health linkages.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-campus-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                The Yezin campus includes the teaching hospital, basic science and diagnostic labs, teaching livestock farms (dairy, beef, swine, poultry, small ruminants), and a veterinary-science library with international journals and digital resources.
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Career Paths ── -->
+          <div class="u-panel" id="tab-careers" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Career Opportunities</h2>
+              <p class="u-section-sub">DVM and BASc graduates in high demand across veterinary, livestock, and One-Health sectors</p>
+
+              <div class="u-careers-grid">
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(37,99,235,.10); --ic-c: #2563eb;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+                  </div>
+                  <h3>Government Veterinary Services</h3>
+                  <p>Join the Department of Livestock Breeding and Veterinary Services as field veterinarians, district-laboratory officers, and disease-control specialists.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(220,38,38,.08); --ic-c: #dc2626;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  </div>
+                  <h3>Private Practice &amp; Vet Clinics</h3>
+                  <p>Open or join companion-animal clinics in Yangon, Mandalay, or Nay Pyi Taw, or work at mixed-practice clinics serving both pets and farm animals.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(16,185,129,.10); --ic-c: #059669;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </div>
+                  <h3>Large-Scale Livestock Farms</h3>
+                  <p>Work as herd-health veterinarian or production manager at dairy farms, beef ranches, poultry complexes, and pig operations across Myanmar.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(245,158,11,.10); --ic-c: #d97706;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  </div>
+                  <h3>Agribusiness &amp; Feed Industry</h3>
+                  <p>Specialise in animal nutrition, technical support, and product development for feed companies, pharmaceutical distributors, and equipment suppliers.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(124,58,237,.10); --ic-c: #7c3aed;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
+                  <h3>International Organisations &amp; NGOs</h3>
+                  <p>Contribute to FAO, WOAH, WFP, and animal-welfare NGOs as veterinary advisors, project officers, and zoonosis-control specialists.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(20,184,166,.10); --ic-c: #0d9488;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </div>
+                  <h3>Academia &amp; Research</h3>
+                  <p>Teach or conduct research at UVS or other agricultural-science universities; PhD holders lead research groups in infectious diseases, animal reproduction, and nutrition.</p>
+                </div>
+              </div>
+
+              <div class="u-employers">
+                <h4 class="u-employers-title">Sectors Where Graduates Excel</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip">Government Vet Services</div>
+                  <div class="u-emp-chip">Private Animal Clinics</div>
+                  <div class="u-emp-chip">Livestock &amp; Dairy Farms</div>
+                  <div class="u-emp-chip">Feed &amp; Agribusiness</div>
+                  <div class="u-emp-chip">Poultry Industry</div>
+                  <div class="u-emp-chip">FAO / WOAH / NGOs</div>
+                  <div class="u-emp-chip">Academic &amp; Research</div>
+                  <div class="u-emp-chip">Food Safety &amp; Public Health</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Alumni ── -->
+          <div class="u-panel" id="tab-alumni" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Notable Alumni</h2>
+              <p class="u-section-sub">Over 5,500 UVS graduates shaping veterinary services, livestock, agribusiness, and international health</p>
+
+              <div class="u-alumni-grid">
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Dr. Aung Aung</h4>
+                    <span class="u-alumni-role">Director, Department of Livestock Breeding &amp; Veterinary Services</span>
+                    <p>Leading Myanmar's national livestock-health and disease-control operations at directorate level.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Dr. Mya Thwin</h4>
+                    <span class="u-alumni-role">Veterinary Advisor, FAO Myanmar</span>
+                    <p>Representing Myanmar's veterinary expertise within the UN's Food and Agriculture Organisation — advising on livestock and food-security policy.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Dr. Zaw Min Oo</h4>
+                    <span class="u-alumni-role">WOAH-Certified Veterinary Surgeon</span>
+                    <p>World Organisation for Animal Health (WOAH)-certified — one of Myanmar's internationally recognised veterinary specialists.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>DVM Graduates (5,446+)</h4>
+                    <span class="u-alumni-role">Licensed Veterinarians Nationwide</span>
+                    <p>Running government disease-control programs, managing private clinics, advising large livestock farms, and representing Myanmar in international veterinary forums.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>BASc Graduates (93+)</h4>
+                    <span class="u-alumni-role">Animal Scientists &amp; Agribusiness Leaders</span>
+                    <p>Leading technical roles in feed companies, dairy farms, poultry industries, and research institutes across Myanmar and the region.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Postgraduate Alumni</h4>
+                    <span class="u-alumni-role">MPhil · MVM · MVSc · PhD Holders</span>
+                    <p>Hundreds of postgraduate alumni leading veterinary research, academic departments, and government livestock-policy units at national and international levels.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-alumni-sectors">
+                <h4 class="u-employers-title">Alumni Active In</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip blue">Government Vet Services</div>
+                  <div class="u-emp-chip green">Livestock &amp; Farming</div>
+                  <div class="u-emp-chip amber">Agribusiness &amp; Feed</div>
+                  <div class="u-emp-chip violet">Academia &amp; Research</div>
+                  <div class="u-emp-chip teal">FAO / WOAH / NGOs</div>
+                  <div class="u-emp-chip">Private Practice</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="u-cta" aria-label="Call to action">
+    <div class="u-cta-orb u-cta-orb-1" aria-hidden="true"></div>
+    <div class="u-cta-orb u-cta-orb-2" aria-hidden="true"></div>
+    <div class="container u-cta-inner">
+      <div class="u-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <h2>Ready to Start Your Journey at UVS Yezin?</h2>
+      <p>Explore more universities or reach out to UVS admissions directly</p>
+      <div class="u-cta-btns">
+        <a href="uni.html" class="u-btn-ghost">Explore More Universities</a>
+        <a href="https://www.uvs.edu.mm" target="_blank" rel="noopener" class="u-btn-primary">Visit Official Site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="u-footer">
+    <div class="container">
+      <div class="u-footer-grid">
+        <div class="u-footer-brand">
+          <div class="u-footer-logo">HST</div>
+          <span>High Schooler's Tool</span>
+          <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+        </div>
+        <div class="u-footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="u-footer-col">
+          <h4>Contact HST</h4>
+          <p><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener">High Schooler's Tool ARP</a></p>
+        </div>
+      </div>
+      <div class="u-footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    /* ── Hamburger ── */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks  = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ── Tabs ── */
+    var tabs   = document.querySelectorAll('.u-tab');
+    var panels = document.querySelectorAll('.u-panel');
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        panels.forEach(function (p) { p.classList.remove('active'); p.hidden = true; });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById('tab-' + id);
+        if (panel) { panel.classList.add('active'); panel.hidden = false; }
+      });
+    });
+
+    /* ── Language Toggle ── */
+    document.querySelectorAll('.u-lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.dataset.lang;
+        var card = btn.closest('.u-content-card');
+        card.querySelectorAll('.u-lang-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        card.querySelectorAll('[data-lang-content]').forEach(function (el) {
+          el.hidden = el.dataset.langContent !== lang;
+        });
+      });
+    });
+
+    /* ── Parallax hero bg on scroll ── */
+    var heroBg = document.querySelector('.u-hero-bg');
+    if (heroBg) {
+      window.addEventListener('scroll', function () {
+        heroBg.style.transform = 'scale(1.04) translateY(' + (window.scrollY * 0.22) + 'px)';
+      }, { passive: true });
+    }
+
+    /* ── Intersection Observer — reveal stats ── */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.u-stat, .u-feature, .u-program-card, .u-project-item, .u-career-card, .u-alumni-card').forEach(function (el) {
+      io.observe(el);
+    });
+  })();
+  </script>
+</body>
+</html>

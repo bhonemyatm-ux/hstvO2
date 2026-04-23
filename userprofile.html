@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - HST 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.15);
+            overflow: hidden;
+            animation: fadeIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 70px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+            object-fit: cover;
+            background: white;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+        }
+
+        .profile-name {
+            color: white;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .profile-city {
+            color: rgba(255,255,255,0.95);
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .edit-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 12px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(15px);
+            z-index: 1;
+        }
+
+        .edit-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: rgba(255,71,87,0.3);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 12px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(15px);
+            z-index: 1;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255,71,87,0.9);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,71,87,0.4);
+        }
+
+        .profile-content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 12px;
+            border-bottom: 4px solid transparent;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .education-info {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            border-radius: 18px;
+            padding: 30px;
+            border-left: 6px solid #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .education-level {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .grade-list, .university-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .grade-item, .uni-item {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+        }
+
+        .grade-item:hover, .uni-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            border-color: #e2e8f0;
+        }
+
+        .grade-label, .uni-label {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .grade-value, .uni-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: #2d3748;
+            line-height: 1.4;
+        }
+
+        .major-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #e8ecff 0%, #dfe4ff 100%);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 12px;
+            border: 2px solid #cbd5e0;
+        }
+
+        .bio-box {
+            background: linear-gradient(135deg, #fff9f0 0%, #fff5e6 100%);
+            border-radius: 18px;
+            padding: 30px;
+            border-left: 6px solid #f39c12;
+            line-height: 1.9;
+            color: #4a5568;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.1);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.25);
+            border-color: #667eea;
+        }
+
+        .certificate-card::before {
+            content: '🏆';
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 35px;
+        }
+
+        .cert-icon {
+            font-size: 45px;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .cert-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .cert-issuer {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .cert-date {
+            color: #a0aec0;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .cert-gold { background: linear-gradient(135deg, #f39c12, #e74c3c); }
+        .cert-silver { background: linear-gradient(135deg, #95a5a6, #7f8c8d); }
+        .cert-bronze { background: linear-gradient(135deg, #cd7f32, #8b4513); }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 40px;
+            color: #a0aec0;
+            background: #f7fafc;
+            border-radius: 18px;
+        }
+
+        .no-data-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            opacity: 0.4;
+        }
+
+        .no-data p {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .no-data small {
+            font-size: 14px;
+            color: #cbd5e0;
+        }
+
+        .error-state {
+            text-align: center;
+            padding: 60px 40px;
+            color: #e53e3e;
+            background: #fff5f5;
+            border-radius: 18px;
+        }
+
+        .error-state-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 20px 15px; }
+            .profile-header { padding: 50px 25px; }
+            .profile-content { padding: 30px 25px; }
+            .profile-name { font-size: 28px; }
+            .edit-btn, .logout-btn { padding: 10px 20px; font-size: 13px; }
+            .certificates-grid { grid-template-columns: 1fr; }
+            .grade-list, .university-list { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .profile-header { padding: 40px 20px; }
+            .profile-avatar { width: 130px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="profile-container" id="profileContainer" style="display: none;">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+            <button class="edit-btn" onclick="editProfile()">✏️ Edit Profile</button>
+            <img src="https://via.placeholder.com/160/667eea/ffffff?text=👤" alt="Profile Picture" class="profile-avatar" id="userAvatar">
+            <h1 class="profile-name" id="userName">Loading...</h1>
+            <p class="profile-city">📍 <span id="userCity">Loading...</span></p>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Education Section -->
+            <div class="section">
+                <h2 class="section-title">🎓 Education</h2>
+                <div class="education-info">
+                    <span class="education-level" id="eduLevel">Loading...</span>
+                    
+                    <!-- University View -->
+                    <div id="universityView" class="university-list" style="display: none;">
+                        <div class="uni-item">
+                            <div class="uni-label">University</div>
+                            <div class="uni-value" id="universityName">-</div>
+                            <span class="major-tag" id="userMajor">-</span>
+                        </div>
+                        <div class="uni-item">
+                            <div class="uni-label">Year</div>
+                            <div class="uni-value" id="userYear">-</div>
+                        </div>
+                    </div>
+
+                    <!-- School View -->
+                    <div id="schoolView" class="grade-list" style="display: none;">
+                        <div class="grade-item">
+                            <div class="grade-label">Grade</div>
+                            <div class="grade-value" id="currentGrade">-</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="grade-label">School</div>
+                            <div class="grade-value" id="schoolName">-</div>
+                        </div>
+                        <div class="grade-item">
+                            <div class="grade-label">Stream</div>
+                            <div class="grade-value" id="stream">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bio Section -->
+            <div class="section">
+                <h2 class="section-title">📝 About Me</h2>
+                <div class="bio-box" id="userBio">
+                    No bio added yet.
+                </div>
+            </div>
+
+            <!-- Certificates Section -->
+            <div class="section">
+                <h2 class="section-title">🏆 Certificates & Achievements</h2>
+                <div class="certificates-grid" id="certificatesList">
+                    <!-- Dynamic certificates -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCqcET4vhCP-fRZi4AVDIbmh9J6__Ec8l0",
+            authDomain: "hst-mm.firebaseapp.com",
+            projectId: "hst-mm",
+            storageBucket: "hst-mm.appspot.com",
+            messagingSenderId: "261062104857",
+            appId: "1:261062104857:web:99da060e35650b69919788"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+
+        // Expose functions globally
+        window.editProfile = editProfile;
+        window.logout = logout;
+
+        // Initialize
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                currentUser = user;
+                await loadProfile();
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+        async function loadProfile() {
+            try {
+                const docRef = doc(db, "users", currentUser.uid);
+                const snap = await getDoc(docRef);
+
+                if (snap.exists()) {
+                    const data = snap.data();
+                    renderProfile(data);
+                } else {
+                    showError('Profile not found. Please complete your profile first.');
+                }
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                showError('Failed to load profile. Please try again.');
+            } finally {
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }
+        }
+
+       function renderProfile(data) {
+    // Safe getter helper
+    const get = (field, fallback = '') => {
+        return (data && data[field] !== undefined) ? data[field] : fallback;
+    };
+
+    // Basic info
+    document.getElementById('userAvatar').src = get('avatar', 'https://via.placeholder.com/160/667eea/ffffff?text=👤');
+    document.getElementById('userName').textContent = get('name', 'User');
+    document.getElementById('userCity').textContent = get('city', 'Not specified');
+
+    // Education level
+    const eduLevel = get('educationLevel', 'school');
+    const eduLevelText = eduLevel === 'university' ? '🎓 University Student' : '🏫 Grade 6-12';
+    document.getElementById('eduLevel').textContent = eduLevelText;
+
+    // University view
+    if (eduLevel === 'university') {
+        document.getElementById('universityView').style.display = 'grid';
+        document.getElementById('schoolView').style.display = 'none';
+        document.getElementById('universityName').textContent = get('university', 'Not specified');
+        document.getElementById('userMajor').textContent = get('major', 'Not specified');
+        document.getElementById('userYear').textContent = get('year') ? `Year ${get('year')}` : 'Not specified';
+    } else {
+        document.getElementById('universityView').style.display = 'none';
+        document.getElementById('schoolView').style.display = 'grid';
+        document.getElementById('currentGrade').textContent = get('grade', 'Not specified');
+        document.getElementById('schoolName').textContent = get('school', 'Not specified');
+        document.getElementById('stream').textContent = get('stream', 'Not specified');
+    }
+
+    // Bio
+    const bio = get('bio');
+    document.getElementById('userBio').textContent = bio ? bio : 'No bio added yet. Click Edit Profile to add one!';
+
+    // Certificates (SAFE)
+    renderCertificates(get('certificates', []));
+
+    // Show profile
+    document.getElementById('profileContainer').style.display = 'block';
+}
+
+function renderCertificates(certificates) {
+    const container = document.getElementById('certificatesList');
+    
+    if (!certificates || certificates.length === 0) {
+        container.innerHTML = `
+            <div class="no-data">
+                <div class="no-data-icon">🏆</div>
+                <p>No certificates yet</p>
+                <small>Click Edit Profile to add your achievements!</small>
+            </div>
+        `;
+        return;
+    }
+
+    const icons = ['💻', '🏥', '📊', '🌐', '🎯', '📜', '🏅', '🎓', '⚡', '🚀'];
+    const badges = ['cert-gold', 'cert-silver', 'cert-bronze', ''];
+
+    container.innerHTML = certificates.map((cert, index) => {
+        // SAFE date handling
+        let dateStr = 'Date not specified';
+        if (cert.date) {
+            try {
+                const dateObj = new Date(cert.date + '-01');
+                dateStr = dateObj.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            } catch (e) {
+                dateStr = cert.date;
+            }
+        }
+
+        const icon = icons[index % icons.length];
+        const badgeClass = badges[index % badges.length];
+        const badgeText = index === 0 ? 'Gold Level' : index === 1 ? 'Silver Level' : 'Verified';
+
+        return `
+            <div class="certificate-card">
+                <span class="cert-icon">${icon}</span>
+                <h3 class="cert-title">${escapeHtml(cert.title || 'Untitled')}</h3>
+                <p class="cert-issuer">${escapeHtml(cert.issuer || 'Unknown')}</p>
+                <p class="cert-date">Completed: ${dateStr}</p>
+                <span class="cert-badge ${badgeClass}">${badgeText}</span>
+            </div>
+        `;
+    }).join('');
+}
+
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showError(message) {
+            document.getElementById('loadingOverlay').innerHTML = `
+                <div class="error-state">
+                    <div class="error-state-icon">⚠️</div>
+                    <h2 style="color: #e53e3e; margin-bottom: 10px;">Oops!</h2>
+                    <p style="color: #718096; font-size: 16px;">${message}</p>
+                    <button onclick="window.location.href='edit-profile.html'" 
+                            style="margin-top: 20px; padding: 12px 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 25px; font-weight: 700; cursor: pointer; font-size: 15px;">
+                        Go to Edit Profile
+                    </button>
+                </div>
+            `;
+        }
+
+        function editProfile() {
+            window.location.href = 'edit-profile.html';
+        }
+
+        async function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await signOut(auth);
+                    window.location.href = 'login.html';
+                } catch (error) {
+                    alert('Failed to logout. Please try again.');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

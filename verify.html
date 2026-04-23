@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Certificate — HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       HST Certificate Verification — Apple-style, Mobile-first
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    .logo-img {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .logo-text-group { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text-hst   { font-size: 13px; font-weight: 800; color: #1d1d1f; letter-spacing: -0.01em; }
+    .logo-text       { font-size: 11px; font-weight: 500; color: #6e6e73; }
+
+    .nav-links { display: none; align-items: center; gap: 24px; }
+    .nav-links li a {
+      font-size: 13px; font-weight: 500; color: #3d3d3f;
+      white-space: nowrap; transition: color 0.2s;
+    }
+    .nav-links li a:hover { color: #2563eb; }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px; height: 18px;
+      background: none; border: none;
+      cursor: pointer; padding: 0;
+    }
+    .hamburger span {
+      display: block; height: 2px;
+      background: #1d1d1f; border-radius: 2px;
+      transform-origin: center;
+      transition: transform 0.28s ease, opacity 0.2s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-menu {
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .mobile-menu.open { max-height: 480px; }
+    .mobile-menu ul { padding: 12px 0 20px; }
+    .mobile-menu ul li a {
+      display: block; padding: 13px 24px;
+      font-size: 16px; font-weight: 500; color: #1d1d1f;
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-menu ul li a:hover { background: #f5f5f7; color: #2563eb; }
+
+    /* ============================================================
+       TOAST BANNER
+    ============================================================ */
+    .toast-bar {
+      position: fixed;
+      top: 52px; left: 0; right: 0;
+      z-index: 250;
+      transform: translateY(-110%);
+      transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .toast-bar.visible { transform: translateY(0); }
+
+    .toast-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 20px;
+      max-width: 100%;
+    }
+
+    .toast-bar--success .toast-inner { background: #eff6ff; border-bottom: 1px solid #bfdbfe; }
+    .toast-bar--error   .toast-inner { background: #fff1f2; border-bottom: 1px solid #fecdd3; }
+
+    .toast-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+
+    .toast-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+    }
+    .toast-bar--success .toast-icon { background: #2563eb; color: #fff; }
+    .toast-bar--error   .toast-icon { background: #e11d48; color: #fff; }
+
+    .toast-text { font-size: 13.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .toast-bar--success .toast-text { color: #1e40af; }
+    .toast-bar--error   .toast-text { color: #be123c; }
+
+    .toast-sub { font-size: 12px; font-weight: 400; opacity: 0.8; margin-left: 4px; }
+
+    .toast-close {
+      flex-shrink: 0;
+      background: none; border: none; cursor: pointer;
+      font-size: 16px; line-height: 1;
+      opacity: 0.5; transition: opacity 0.2s;
+      padding: 2px 4px;
+    }
+    .toast-bar--success .toast-close { color: #1e40af; }
+    .toast-bar--error   .toast-close { color: #be123c; }
+    .toast-close:hover { opacity: 1; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      padding: 108px 20px 40px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 11.5px; font-weight: 700; letter-spacing: 0.13em;
+      text-transform: uppercase; color: #2563eb; margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 6vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.035em;
+      color: #1d1d1f; line-height: 1.1; margin-bottom: 12px;
+    }
+
+    .hero-desc { font-size: 15px; color: #6e6e73; max-width: 480px; margin: 0 auto; line-height: 1.7; }
+
+    /* ============================================================
+       MAIN CARD
+    ============================================================ */
+    .verify-wrap {
+      flex: 1;
+      padding: 28px 16px 60px;
+    }
+
+    .verify-card {
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.055);
+      padding: 32px 24px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Input label */
+    .input-label {
+      display: block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #6e6e73; margin-bottom: 8px;
+    }
+
+    /* iOS-style input + button row */
+    .input-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cert-input {
+      width: 100%;
+      padding: 13px 16px;
+      font-family: 'Inter', monospace;
+      font-size: 15px; font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #1d1d1f;
+      background: #f5f5f7;
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .cert-input:focus {
+      background: #fff;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+    .cert-input::placeholder { color: #aeaeb2; font-weight: 400; letter-spacing: 0; }
+
+    .verify-btn {
+      width: 100%;
+      padding: 14px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 600;
+      color: #fff;
+      background: #2563eb;
+      border: none; border-radius: 12px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background 0.2s, transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+    }
+    .verify-btn:hover { background: #1d4ed8; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.36); }
+    .verify-btn:active { transform: scale(0.97); }
+    .verify-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+    /* Loading spinner */
+    .spinner {
+      width: 15px; height: 15px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 12px; color: #aeaeb2; line-height: 1.6;
+    }
+
+    /* Divider */
+    .divider {
+      border: none; border-top: 1px solid #f0f0f0;
+      margin: 24px 0;
+    }
+
+    /* ============================================================
+       RESULT DETAILS CARD (compact, shown below toast)
+    ============================================================ */
+    #resultArea { display: none; }
+
+    .cert-detail-card {
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .cert-detail-header {
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cert-detail-header--valid   { background: #eff6ff; border-bottom: 1px solid #bfdbfe; }
+    .cert-detail-header--invalid { background: #fff1f2; border-bottom: 1px solid #fecdd3; }
+
+    .cert-detail-icon { font-size: 18px; line-height: 1; }
+
+    .cert-detail-title { font-size: 14px; font-weight: 700; }
+    .cert-detail-header--valid   .cert-detail-title { color: #1e40af; }
+    .cert-detail-header--invalid .cert-detail-title { color: #be123c; }
+
+    .cert-detail-sub { font-size: 11.5px; color: #6e6e73; margin-top: 1px; }
+
+    .cert-detail-body { background: #fafafa; padding: 18px; }
+
+    .cert-rows { display: flex; flex-direction: column; gap: 10px; }
+
+    .cert-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cert-row-label {
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: #aeaeb2;
+    }
+
+    .cert-row-value {
+      font-size: 14px; font-weight: 500; color: #1d1d1f;
+    }
+
+    .cert-id-pill {
+      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 13px; font-weight: 600;
+      background: #eff6ff; color: #2563eb;
+      padding: 3px 10px; border-radius: 6px;
+      display: inline-block;
+    }
+
+    .status-dot {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 2px 10px; border-radius: 999px;
+      font-size: 12px; font-weight: 700;
+    }
+    .status-active  { background: #dcfce7; color: #15803d; }
+    .status-verified { background: #eff6ff; color: #1d4ed8; }
+    .status-expired { background: #fee2e2; color: #b91c1c; }
+    .status-other   { background: #fef9c3; color: #92400e; }
+
+    .cert-desc-text {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #e5e5ea;
+      font-size: 13px; color: #6e6e73; line-height: 1.7;
+      font-style: italic;
+    }
+
+    .invalid-detail-text { font-size: 14px; color: #6e6e73; line-height: 1.7; }
+    .invalid-detail-text a { color: #2563eb; font-weight: 500; }
+
+    /* ============================================================
+       INFO NOTE
+    ============================================================ */
+    .info-note {
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: #f5f5f7;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 12.5px; color: #6e6e73; line-height: 1.7;
+    }
+    .info-note a { color: #2563eb; font-weight: 500; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #1d1d1f;
+      padding: 48px 0 24px;
+      margin-top: auto;
+    }
+
+    .footer-container { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
+
+    .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .footer-logo-mark {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: #fff; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.05em; padding: 4px 8px; border-radius: 7px;
+    }
+    .footer-brand span { font-size: 14px; font-weight: 600; color: #f5f5f7; }
+    .footer-brand-desc { font-size: 13px; color: #aeaeb2; line-height: 1.65; margin-bottom: 16px; }
+
+    .footer-social { display: flex; gap: 14px; }
+    .footer-social a { font-size: 13px; font-weight: 500; color: #98989d; transition: color 0.2s; }
+    .footer-social a:hover { color: #f5f5f7; }
+
+    .footer-heading { font-size: 11px; font-weight: 700; color: #f5f5f7; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 14px; }
+
+    .footer-links { display: flex; flex-direction: column; gap: 9px; }
+    .footer-links li, .footer-links li a { font-size: 13px; color: #98989d; transition: color 0.2s; }
+    .footer-links li a:hover { color: #f5f5f7; }
+
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; text-align: center; }
+    .footer-bottom p { font-size: 12px; color: #636366; }
+
+    /* ============================================================
+       RESPONSIVE — Tablet 640px+
+    ============================================================ */
+    @media (min-width: 640px) {
+      .input-row { flex-direction: row; }
+      .cert-input { flex: 1; }
+      .verify-btn { width: auto; flex-shrink: 0; }
+
+      .cert-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; }
+      .cert-row--full { grid-column: 1 / -1; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — Desktop 900px+
+    ============================================================ */
+    @media (min-width: 900px) {
+      .nav-links  { display: flex; }
+      .hamburger  { display: none; }
+      .mobile-menu { display: none !important; }
+
+      .hero { padding-top: 120px; padding-bottom: 48px; }
+
+      .toast-inner { max-width: 700px; margin: 0 auto; border-radius: 0 0 12px 12px; padding: 11px 24px; }
+      .toast-bar--success .toast-inner { border-left: 1px solid #bfdbfe; border-right: 1px solid #bfdbfe; }
+      .toast-bar--error   .toast-inner { border-left: 1px solid #fecdd3; border-right: 1px solid #fecdd3; }
+
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img">
+        <div class="logo-text-group">
+          <span class="logo-text-hst">HST</span>
+          <span class="logo-text">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Toast Banner ── -->
+  <div class="toast-bar" id="toastBar" role="alert" aria-live="polite">
+    <div class="toast-inner">
+      <div class="toast-left">
+        <div class="toast-icon" id="toastIcon"></div>
+        <span class="toast-text" id="toastText"></span>
+        <span class="toast-sub"  id="toastSub"></span>
+      </div>
+      <button class="toast-close" id="toastClose" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <div class="hero-eyebrow">Certificate Verification</div>
+    <h1 class="hero-title">Verify HST Certificate</h1>
+    <p class="hero-desc">Confirm the authenticity of any certificate issued by High Schooler's Tool.</p>
+  </div>
+
+  <!-- ── Main verify card ── -->
+  <div class="verify-wrap">
+    <div class="verify-card">
+
+      <label class="input-label" for="certId">Certificate ID</label>
+      <div class="input-row">
+        <input
+          class="cert-input"
+          type="text"
+          id="certId"
+          placeholder="e.g. HST-AMB-2026-001"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button class="verify-btn" id="verifyBtn" onclick="verify()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Verify
+        </button>
+      </div>
+      <p class="hint">The Certificate ID is printed at the bottom of every HST certificate.</p>
+
+      <hr class="divider" />
+
+      <!-- Result details (below toast) -->
+      <div id="resultArea"></div>
+
+      <div class="info-note">
+        Certificates are issued by HST for Community Ambassadors, partner organizations, and program participants.
+        If you believe a certificate is fraudulent or have questions, contact us at
+        <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a>.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo-mark">HST</div>
+            <span>High Schooler's Tool</span>
+          </div>
+          <p class="footer-brand-desc">Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="mailto:highschoolertoolmm@gmail.com">Email</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li>High Schooler's Tool</li>
+            <li><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></li>
+            <li><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">facebook.com/HSTool</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 High Schooler's Tool. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="certificate.js"></script>
+  <script>
+    function esc(str) {
+      return String(str ?? '')
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function statusBadge(status) {
+      const s = (status || '').toLowerCase();
+      let cls = "status-other";
+      if (s === "active")   cls = "status-active";
+      if (s === "verified") cls = "status-verified";
+      if (s === "expired")  cls = "status-expired";
+      return `<span class="status-dot ${cls}">● ${esc(status)}</span>`;
+    }
+
+    let toastTimer = null;
+
+    function showToast(type, text, sub) {
+      const bar   = document.getElementById('toastBar');
+      const icon  = document.getElementById('toastIcon');
+      const txt   = document.getElementById('toastText');
+      const subEl = document.getElementById('toastSub');
+
+      bar.className = `toast-bar toast-bar--${type}`;
+      icon.textContent = type === 'success' ? '✓' : '✕';
+      txt.textContent  = text;
+      subEl.textContent = sub || '';
+
+      requestAnimationFrame(() => bar.classList.add('visible'));
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => hideToast(), 6000);
+    }
+
+    function hideToast() {
+      document.getElementById('toastBar').classList.remove('visible');
+    }
+
+    document.getElementById('toastClose').addEventListener('click', hideToast);
+
+    function verify() {
+      const id  = document.getElementById('certId').value.trim().toUpperCase();
+      const btn = document.getElementById('verifyBtn');
+      const resultArea = document.getElementById('resultArea');
+
+      if (!id) {
+        document.getElementById('certId').focus();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<div class="spinner"></div> Checking…';
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Verify';
+
+        const data = certificates[id];
+
+        if (data) {
+          let rows = '';
+          rows += `<div class="cert-row cert-row--full"><div class="cert-row-label">Certificate ID</div><div class="cert-row-value"><span class="cert-id-pill">${esc(id)}</span></div></div>`;
+          rows += `<div class="cert-row"><div class="cert-row-label">Type</div><div class="cert-row-value">${esc(data.type)}</div></div>`;
+          rows += `<div class="cert-row"><div class="cert-row-label">Issued To</div><div class="cert-row-value">${esc(data.name)}</div></div>`;
+          rows += `<div class="cert-row"><div class="cert-row-label">Status</div><div class="cert-row-value">${statusBadge(data.status)}</div></div>`;
+          if (data.partner)   rows += `<div class="cert-row"><div class="cert-row-label">Partner</div><div class="cert-row-value">${esc(data.partner)}</div></div>`;
+          if (data.program)   rows += `<div class="cert-row"><div class="cert-row-label">Program</div><div class="cert-row-value">${esc(data.program)}</div></div>`;
+          if (data.event)     rows += `<div class="cert-row"><div class="cert-row-label">Event</div><div class="cert-row-value">${esc(data.event)}</div></div>`;
+          if (data.role)      rows += `<div class="cert-row"><div class="cert-row-label">Role</div><div class="cert-row-value">${esc(data.role)}</div></div>`;
+          if (data.hours)     rows += `<div class="cert-row"><div class="cert-row-label">Duration</div><div class="cert-row-value">${esc(data.hours)}</div></div>`;
+          if (data.validFrom) rows += `<div class="cert-row"><div class="cert-row-label">Valid From</div><div class="cert-row-value">${esc(data.validFrom)}</div></div>`;
+          if (data.validUntil)rows += `<div class="cert-row"><div class="cert-row-label">Valid Until</div><div class="cert-row-value">${esc(data.validUntil)}</div></div>`;
+          if (data.term)      rows += `<div class="cert-row"><div class="cert-row-label">Term</div><div class="cert-row-value">${esc(data.term)}</div></div>`;
+          if (data.date)      rows += `<div class="cert-row"><div class="cert-row-label">Date Issued</div><div class="cert-row-value">${esc(data.date)}</div></div>`;
+
+          resultArea.style.display = 'block';
+          resultArea.innerHTML = `
+            <div class="cert-detail-card">
+              <div class="cert-detail-header cert-detail-header--valid">
+                <span class="cert-detail-icon">🎓</span>
+                <div>
+                  <div class="cert-detail-title">Certificate Verified</div>
+                  <div class="cert-detail-sub">Found in the HST registry — authentic.</div>
+                </div>
+              </div>
+              <div class="cert-detail-body">
+                <div class="cert-rows">${rows}</div>
+                <div class="cert-desc-text">${esc(data.description)}</div>
+              </div>
+            </div>`;
+
+          showToast('success', 'Certificate verified', '— record found in HST registry');
+
+        } else {
+          resultArea.style.display = 'block';
+          resultArea.innerHTML = `
+            <div class="cert-detail-card">
+              <div class="cert-detail-header cert-detail-header--invalid">
+                <span class="cert-detail-icon">⚠️</span>
+                <div>
+                  <div class="cert-detail-title">Certificate Not Found</div>
+                  <div class="cert-detail-sub">No matching record in the HST registry.</div>
+                </div>
+              </div>
+              <div class="cert-detail-body">
+                <p class="invalid-detail-text">
+                  The ID <strong>${esc(id)}</strong> could not be found. Please double-check the ID printed on the certificate and try again.<br><br>
+                  If you believe this certificate is genuine, contact us at
+                  <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a>
+                  with a photo of the certificate for manual verification.
+                </p>
+              </div>
+            </div>`;
+
+          showToast('error', 'Certificate not found', '— ID not in HST registry');
+        }
+
+        resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 600);
+    }
+
+    document.getElementById('certId').addEventListener('keydown', e => {
+      if (e.key === 'Enter') verify();
+    });
+
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const autoId = urlParams.get('id');
+    if (autoId) {
+      document.getElementById('certId').value = autoId;
+      verify();
+    }
+  </script>
+
+</body>
+</html>
