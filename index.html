@@ -1,0 +1,1297 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <title>High Schooler's Tool (HST) – 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #111827;
+      --soft-ink: #4b5563;
+      --muted: #7c8698;
+      --line: rgba(17, 24, 39, .08);
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --violet: #7c3aed;
+      --gold: #f5c842;
+      --surface: #f5f7fb;
+      --shadow-sm: 0 8px 26px rgba(15,23,42,.08);
+      --shadow-md: 0 22px 70px rgba(15,23,42,.12);
+      --font: 'Noto Sans Myanmar','Myanmar Text','Inter',system-ui,sans-serif;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font);
+      background: linear-gradient(180deg,#fff 0%,#f5f7fb 42%,#fff 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    /* ═══════════════════════════════════════════════════════════
+       INTRO OVERLAY
+    ═══════════════════════════════════════════════════════════ */
+    #intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(20px, 4vh, 36px);
+      cursor: pointer;
+      user-select: none;
+      background: #030712;
+      overflow: hidden;
+      transition: opacity .9s cubic-bezier(.22,1,.36,1);
+      /* safe area on notched phones */
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      /* iOS: dynamic viewport + reliable taps */
+      height: 100vh;
+      height: 100dvh;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    /* iOS: ensure inner content never swallows the tap */
+    #intro-overlay > *,
+    #intro-overlay .intro-phone-scene,
+    #intro-overlay .intro-phone-pivot,
+    #intro-overlay .intro-phone,
+    #intro-overlay .intro-phone-screen { pointer-events: none; }
+    #intro-overlay.fade-out { opacity: 0; pointer-events: none; }
+
+    /* Particle canvas fills the overlay */
+    #particle-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* Ambient glow blobs */
+    .intro-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: 0;
+      animation: blobIn 2s cubic-bezier(.22,1,.36,1) 0.2s both;
+    }
+    .intro-blob.b1 {
+      width: clamp(260px,60vw,480px);
+      height: clamp(260px,60vw,480px);
+      background: radial-gradient(circle, rgba(37,99,235,.28), transparent 70%);
+      top: -15%;
+      left: -10%;
+    }
+    .intro-blob.b2 {
+      width: clamp(200px,50vw,380px);
+      height: clamp(200px,50vw,380px);
+      background: radial-gradient(circle, rgba(124,58,237,.22), transparent 70%);
+      bottom: -10%;
+      right: -8%;
+    }
+    .intro-blob.b3 {
+      width: clamp(120px,30vw,220px);
+      height: clamp(120px,30vw,220px);
+      background: radial-gradient(circle, rgba(245,200,66,.12), transparent 70%);
+      bottom: 30%;
+      left: 15%;
+    }
+
+    /* Top brand strip */
+    .intro-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      animation: slideDown .9s cubic-bezier(.22,1,.36,1) .4s both;
+    }
+    .intro-brand-title {
+      font-size: clamp(.72rem, 2.6vw, 1rem);
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+      font-family: 'Inter', sans-serif;
+    }
+    .intro-brand-sub {
+      font-size: clamp(.6rem, 1.8vw, .78rem);
+      font-weight: 600;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .1em;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── 3-D PHONE CONTAINER ── */
+    .intro-phone-scene {
+      perspective: 900px;
+      position: relative;
+      animation: slideUp 1s cubic-bezier(.22,1,.36,1) .25s both;
+    }
+
+    .intro-phone-pivot {
+      transform-style: preserve-3d;
+      transform: rotateY(-18deg) rotateX(6deg);
+      animation: phoneFloat 7s ease-in-out 1.4s infinite;
+      transition: transform .9s cubic-bezier(.22,1,.36,1), filter .7s ease;
+      position: relative;
+    }
+    .intro-phone-pivot.opening {
+      transform: rotateY(0deg) rotateX(0deg) scale(1.07) translateY(-12px) !important;
+      animation-play-state: paused;
+      filter: drop-shadow(0 0 60px rgba(37,99,235,.55)) drop-shadow(0 0 30px rgba(124,58,237,.35));
+    }
+
+    .intro-phone {
+      width: clamp(170px, 44vw, 230px);
+      aspect-ratio: 9 / 19.5;
+      border-radius: clamp(30px, 8vw, 42px);
+      padding: clamp(7px, 1.8vw, 10px);
+      background: linear-gradient(160deg, #2a3142 0%, #0c0e1a 60%, #050816 100%);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.12),
+        0 40px 90px rgba(0,0,0,.85),
+        0 0 100px rgba(37,99,235,.12),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      position: relative;
+      overflow: visible;
+    }
+
+    /* Side button details */
+    .intro-phone::before {
+      content: '';
+      position: absolute;
+      top: 28%;
+      left: -3px;
+      width: 3px;
+      height: 11%;
+      border-radius: 2px 0 0 2px;
+      background: linear-gradient(to bottom, #1f2937, #374151);
+      box-shadow: 0 14px 0 #374151;
+    }
+    .intro-phone::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      right: -3px;
+      width: 3px;
+      height: 15%;
+      border-radius: 0 2px 2px 0;
+      background: #1f2937;
+    }
+
+    /* Shine sweep line */
+    .phone-shine {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .phone-shine::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 40%;
+      height: 300%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,.13) 50%, transparent);
+      animation: shineSwipe 4.5s ease-in-out 2s infinite;
+      transform: translateX(-160%) skewX(-12deg);
+    }
+
+    .intro-phone-screen {
+      height: 100%;
+      border-radius: clamp(22px, 6vw, 34px);
+      background: linear-gradient(175deg, #0b0f1c 0%, #0d1120 100%);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 1.5vh, 14px);
+      transition: background .55s ease;
+    }
+    .intro-phone-screen.unlocked {
+      background: linear-gradient(175deg, #f0f6ff 0%, #e8f0fe 100%);
+    }
+
+    /* Dynamic island */
+    .intro-di {
+      position: absolute;
+      top: clamp(7px, 1.8vw, 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(56px, 14vw, 76px);
+      height: clamp(16px, 4vw, 22px);
+      border-radius: 999px;
+      background: #000;
+      z-index: 3;
+      transition: width .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .intro-phone-screen.unlocked .intro-di {
+      width: clamp(42px, 10vw, 56px);
+    }
+
+    /* Lock screen content */
+    .lock-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(4px, 1vh, 8px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .lock-content.hidden { opacity: 0; transform: translateY(-10px); pointer-events: none; }
+
+    .intro-phone-time {
+      font-size: clamp(1.8rem, 9vw, 2.8rem);
+      font-weight: 200;
+      color: #fff;
+      letter-spacing: .04em;
+      font-family: 'Inter', sans-serif;
+      line-height: 1;
+    }
+    .intro-phone-date {
+      font-size: clamp(.54rem, 1.8vw, .72rem);
+      color: rgba(255,255,255,.5);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: .06em;
+    }
+
+    .intro-lock-icon {
+      width: clamp(26px, 6vw, 34px);
+      height: clamp(26px, 6vw, 34px);
+      color: rgba(255,255,255,.42);
+      margin-top: 4px;
+    }
+
+    /* Notification preview */
+    .lock-notif {
+      position: absolute;
+      bottom: clamp(40px, 9vw, 56px);
+      left: clamp(10px, 3vw, 14px);
+      right: clamp(10px, 3vw, 14px);
+      border-radius: 14px;
+      padding: clamp(8px, 2vw, 11px) clamp(10px, 2.5vw, 14px);
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.14);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .lock-notif.hidden { opacity: 0; transform: translateY(8px); }
+    .notif-icon {
+      width: clamp(24px, 6vw, 28px);
+      height: clamp(24px, 6vw, 28px);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: .65rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .notif-text strong {
+      display: block;
+      font-size: clamp(.55rem, 1.5vw, .68rem);
+      color: rgba(255,255,255,.88);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+    }
+    .notif-text span {
+      font-size: clamp(.48rem, 1.3vw, .6rem);
+      color: rgba(255,255,255,.46);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Swipe bar */
+    .intro-swipe {
+      position: absolute;
+      bottom: clamp(12px, 3vw, 16px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(36px, 9vw, 48px);
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.3);
+      animation: swipePulse 2.2s ease-in-out infinite;
+      transition: opacity .3s ease;
+    }
+    .intro-swipe.hidden { opacity: 0; }
+
+    /* Unlocked app grid (appears after unlock) */
+    .lock-app-grid {
+      position: absolute;
+      inset: clamp(36px, 9vw, 48px) clamp(10px,2.5vw,14px) clamp(32px,8vw,44px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: clamp(8px, 2vw, 12px);
+      align-items: center;
+      justify-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .5s ease .3s;
+    }
+    .lock-app-grid.show { opacity: 1; }
+    .app-icon {
+      width: clamp(30px, 8vw, 42px);
+      height: clamp(30px, 8vw, 42px);
+      border-radius: clamp(8px, 2vw, 11px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0) rotate(-10deg);
+    }
+    /* Animation fires only when parent grid becomes visible */
+    .lock-app-grid.show .app-icon {
+      animation: appIconPop .5s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    .app-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .app-icon .app-fallback {
+      font-size: clamp(.4rem, 1.2vw, .55rem);
+      font-weight: 900;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Tap hint */
+    .tap-hint {
+      font-size: clamp(.65rem, 2vw, .82rem);
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.25);
+      font-family: 'Inter', sans-serif;
+      animation: tapPulse 2.4s ease-in-out 2s infinite;
+      position: relative;
+    }
+    .tap-hint::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.32);
+      margin-right: 8px;
+      vertical-align: middle;
+      animation: dotBlink 2.4s ease-in-out 2s infinite;
+    }
+
+    /* Flash overlay on unlock */
+    #unlock-flash {
+      position: fixed;
+      inset: 0;
+      z-index: 10001;
+      background: radial-gradient(circle at center, rgba(255,255,255,.95), rgba(200,220,255,.6) 40%, transparent 70%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .12s ease;
+    }
+    #unlock-flash.flash { opacity: 1; }
+
+    /* ══════════════════════════
+       LOGO BURST LAYER
+    ══════════════════════════ */
+    #logo-burst {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .burst-logo {
+      position: absolute;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow:
+        0 8px 32px rgba(0,0,0,.28),
+        0 0 0 1px rgba(255,255,255,.18),
+        inset 0 1px 0 rgba(255,255,255,.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      will-change: transform, opacity;
+      overflow: hidden;
+    }
+    .burst-logo img { width: 78%; height: 78%; object-fit: contain; }
+    .burst-logo .logo-fallback {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--blue);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ══════════════════════════
+       MAIN PAGE
+    ══════════════════════════ */
+    .page {
+      position: relative;
+      min-height: 100vh;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(.22,1,.36,1);
+    }
+    .page.visible { opacity: 1; }
+
+    .page::before {
+      content: '';
+      position: fixed;
+      inset: -20% -10% auto -10%;
+      height: 620px;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(37,99,235,.16), transparent 30%),
+        radial-gradient(circle at 78% 16%, rgba(124,58,237,.13), transparent 28%),
+        radial-gradient(circle at 52% 36%, rgba(245,200,66,.14), transparent 26%);
+      pointer-events: none;
+      z-index: -2;
+    }
+    .page::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(17,24,39,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,24,39,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      width: min(1120px, calc(100% - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.78);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 18px 50px rgba(15,23,42,.1);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      animation: navDrop .65s cubic-bezier(.22,1,.36,1) both;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .nav-logo { width: 38px; height: 38px; border-radius: 14px; object-fit: cover; background: #fff; border: 1px solid var(--line); box-shadow: inset 0 1px 0 rgba(255,255,255,.9); }
+    .brand-copy { display: flex; flex-direction: column; line-height: 1.05; min-width: 0; }
+    .brand-title { font-size: 13px; font-weight: 900; letter-spacing: .08em; white-space: nowrap; }
+    .brand-sub { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 3px; }
+    .nav-links { display: none; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(245,247,251,.74); border: 1px solid rgba(17,24,39,.05); }
+    .nav-links a { font-size: 12px; font-weight: 700; color: #525b6b; padding: 9px 12px; border-radius: 999px; transition: background .2s, color .2s; }
+    .nav-links a:hover { background: #fff; color: var(--blue); box-shadow: 0 6px 18px rgba(15,23,42,.07); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 11px 16px; border: 0; border-radius: 999px; background: #111827; color: white; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: 0 12px 28px rgba(17,24,39,.2); transition: transform .2s, box-shadow .2s; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(17,24,39,.26); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; place-items: center; padding: 126px 20px 72px; position: relative; }
+    .hero-inner { width: min(1120px,100%); display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
+    .hero-copy { text-align: center; }
+    .badge { display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.8); border: 1px solid rgba(37,99,235,.12); color: var(--blue); font-size: 13px; font-weight: 800; box-shadow: var(--shadow-sm); animation: fadeUp .65s cubic-bezier(.22,1,.36,1) .06s both; }
+    .badge-dot { width: 8px; height: 8px; border-radius: 999px; background: #22c55e; box-shadow: 0 0 0 6px rgba(34,197,94,.12); }
+    .hero-title { margin: 22px auto 18px; max-width: 860px; font-size: clamp(2.4rem, 7vw, 6.4rem); line-height: .96; letter-spacing: -.072em; font-weight: 900; animation: fadeUp .65s cubic-bezier(.22,1,.36,1) .14s both; }
+    .hero-title .shine { display: inline-block; background: linear-gradient(115deg,#111827 0%,#2563eb 42%,#7c3aed 72%,#111827 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-desc { max-width: 780px; margin: 0 auto; color: var(--soft-ink); font-size: clamp(.95rem, 1.6vw, 1.15rem); line-height: 2; animation: fadeUp .65s cubic-bezier(.22,1,.36,1) .22s both; }
+    .hero-actions { margin-top: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; animation: fadeUp .65s cubic-bezier(.22,1,.36,1) .3s both; }
+    .btn-primary, .btn-secondary { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 999px; padding: 14px 22px; font-weight: 800; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; }
+    .btn-primary { border: 0; background: var(--blue); color: #fff; box-shadow: 0 16px 38px rgba(37,99,235,.28); }
+    .btn-primary:hover { transform: translateY(-2px); background: var(--blue-dark); box-shadow: 0 24px 55px rgba(37,99,235,.34); }
+    .btn-secondary { border: 1px solid rgba(17,24,39,.08); background: rgba(255,255,255,.76); color: #1f2937; box-shadow: var(--shadow-sm); }
+    .btn-secondary:hover { transform: translateY(-2px); background: #fff; box-shadow: var(--shadow-md); }
+
+    /* HERO PHONE */
+    .hero-visual { position: relative; min-height: 520px; display: grid; place-items: center; animation: fadeUp .75s cubic-bezier(.22,1,.36,1) .28s both; }
+
+    .phone-3d-scene { perspective: 1200px; }
+    .phone-shell {
+      width: min(340px, 80vw);
+      aspect-ratio: 9 / 18.7;
+      border-radius: 52px;
+      padding: 13px;
+      background: linear-gradient(145deg,#1f2937,#050816);
+      box-shadow:
+        0 45px 100px rgba(15,23,42,.28),
+        inset 0 0 0 1px rgba(255,255,255,.12);
+      transform: rotateY(-4deg) rotateX(2deg);
+      transition: box-shadow .8s ease, transform .8s cubic-bezier(.22,1,.36,1);
+      will-change: transform;
+    }
+    .phone-shell.premium-glow {
+      transform: rotateY(0deg) rotateX(0deg);
+      box-shadow:
+        0 50px 110px rgba(15,23,42,.3),
+        inset 0 0 0 1px rgba(255,255,255,.18),
+        0 0 80px rgba(37,99,235,.2),
+        0 0 40px rgba(124,58,237,.12);
+    }
+
+    .phone-screen { height: 100%; overflow: hidden; border-radius: 40px; background: linear-gradient(180deg,#f9fbff 0%,#edf4ff 100%); position: relative; }
+    .dynamic-island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 92px; height: 28px; border-radius: 999px; background: #0b0f1a; z-index: 2; }
+    .phone-content { padding: 56px 18px 18px; overflow: hidden; }
+    .phone-card-main { border-radius: 28px; padding: 22px 18px; color: #fff; background: radial-gradient(circle at 22% 14%, rgba(255,255,255,.32), transparent 24%), linear-gradient(135deg,#2563eb,#7c3aed); box-shadow: 0 24px 50px rgba(37,99,235,.28); }
+    .phone-chip { display: inline-flex; padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.18); font-size: 11px; font-weight: 800; }
+    .phone-card-main h3 { margin-top: 18px; font-size: 26px; line-height: 1.05; letter-spacing: -.04em; }
+    .phone-card-main p { margin-top: 10px; font-size: 11px; line-height: 1.6; color: rgba(255,255,255,.82); }
+
+    /* Uni logos in hero phone */
+    .phone-uni-logos { display: none; flex-wrap: wrap; gap: 6px; justify-content: center; padding: 10px 8px 0; }
+    .phone-uni-logos.show { display: flex; }
+    .phone-uni-logo-item {
+      width: 34px; height: 34px; border-radius: 10px; background: #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,.1); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      animation: logoPop .5s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    .phone-uni-logo-item img { width: 86%; height: 86%; object-fit: contain; }
+    .phone-uni-logo-item .logo-fallback-sm { font-size: .45rem; font-weight: 900; color: var(--blue); }
+
+    .phone-list { margin-top: 12px; display: grid; gap: 8px; }
+    .phone-row { display: flex; align-items: center; gap: 10px; border-radius: 18px; padding: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(17,24,39,.05); box-shadow: 0 10px 24px rgba(15,23,42,.06); }
+    .phone-icon { width: 34px; height: 34px; border-radius: 12px; display: grid; place-items: center; background: #eff6ff; color: var(--blue); font-weight: 900; font-size: .9rem; flex-shrink: 0; }
+    .phone-row strong { display: block; font-size: 11px; color: #111827; }
+    .phone-row span { display: block; margin-top: 2px; font-size: 10px; color: #7c8698; }
+
+    /* FLOATING CARDS */
+    .floating-card { position: absolute; border-radius: 24px; padding: 15px; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-md); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .floating-card.one { top: 58px; left: 0; width: 164px; animation: float 5s ease-in-out infinite; }
+    .floating-card.two { right: 0; bottom: 86px; width: 172px; animation: float 5.6s ease-in-out infinite reverse; }
+    .floating-card b { display: block; font-size: 22px; letter-spacing: -.04em; }
+    .floating-card span { display: block; margin-top: 4px; font-size: 11px; line-height: 1.45; color: var(--muted); font-weight: 600; }
+
+    /* SECTIONS */
+    .section { padding: 86px 20px; }
+    .section.alt { background: rgba(245,247,251,.74); }
+    .wrap { width: min(1120px,100%); margin: 0 auto; }
+    .section-kicker { text-align: center; margin-bottom: 10px; color: var(--blue); font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .section-heading { max-width: 760px; margin: 0 auto; text-align: center; font-size: clamp(1.7rem, 4.4vw, 3.55rem); line-height: 1.08; letter-spacing: -.052em; font-weight: 900; }
+    .section-sub { max-width: 640px; margin: 16px auto 42px; text-align: center; color: var(--soft-ink); font-size: 1rem; line-height: 1.9; }
+
+    .category-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .pill { display: inline-flex; align-items: center; gap: 9px; padding: 11px 14px; border-radius: 999px; background: rgba(255,255,255,.74); border: 1px solid rgba(17,24,39,.07); box-shadow: 0 8px 22px rgba(15,23,42,.06); color: #344055; font-weight: 700; font-size: 13px; transition: transform .2s, background .2s, box-shadow .2s, color .2s; }
+    .pill:hover { transform: translateY(-2px); background: #fff; color: var(--blue); box-shadow: var(--shadow-sm); }
+    .pill svg { width: 16px; height: 16px; color: var(--blue); }
+
+    .collage { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .shot { min-height: 240px; border-radius: 26px; overflow: hidden; position: relative; background: linear-gradient(135deg,#eaf1ff,#fff); border: 1px solid rgba(255,255,255,.84); box-shadow: var(--shadow-sm); transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease; }
+    .shot:hover { transform: translateY(-7px); box-shadow: var(--shadow-md); }
+    .shot img { width: 100%; height: 100%; min-height: 240px; object-fit: cover; display: block; transition: transform .5s ease; }
+    .shot:hover img { transform: scale(1.045); }
+    .shot figcaption { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 12px 14px; border-radius: 16px; color: #fff; font-size: 13px; font-weight: 800; background: rgba(17,24,39,.58); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+
+    .features-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .feature-card { position: relative; overflow: hidden; min-height: 230px; padding: 24px; border-radius: 28px; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.84); box-shadow: var(--shadow-sm); transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease, border-color .28s ease; }
+    .feature-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 10% 0%, rgba(37,99,235,.14), transparent 34%), radial-gradient(circle at 90% 15%, rgba(124,58,237,.1), transparent 30%); opacity: 0; transition: opacity .28s ease; }
+    .feature-card:hover { transform: translateY(-7px); border-color: rgba(37,99,235,.16); box-shadow: var(--shadow-md); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon, .feature-mm, .feature-en, .feature-desc { position: relative; }
+    .feature-icon { width: 52px; height: 52px; border-radius: 17px; display: grid; place-items: center; margin-bottom: 16px; color: var(--blue); background: linear-gradient(180deg,#fff,#eef4ff); border: 1px solid rgba(37,99,235,.1); box-shadow: 0 10px 24px rgba(37,99,235,.12); }
+    .feature-icon svg { width: 24px; height: 24px; }
+    .feature-mm { font-size: 1.18rem; line-height: 1.6; font-weight: 900; }
+    .feature-en { margin-top: 4px; color: var(--blue); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 900; }
+    .feature-desc { margin-top: 10px; color: var(--soft-ink); font-size: .92rem; line-height: 1.85; }
+
+    .cta-section { padding: 92px 20px; }
+    .cta-box { position: relative; overflow: hidden; max-width: 900px; margin: 0 auto; padding: clamp(40px,8vw,76px) 24px; border-radius: 42px; text-align: center; color: #fff; background: radial-gradient(circle at 18% 18%, rgba(255,255,255,.28), transparent 26%), linear-gradient(135deg,#111827 0%,#1d4ed8 58%,#7c3aed 100%); box-shadow: 0 34px 90px rgba(37,99,235,.28); }
+    .cta-box::after { content: ''; position: absolute; width: 360px; height: 360px; right: -170px; bottom: -190px; border-radius: 999px; background: rgba(255,255,255,.16); }
+    .cta-box h2, .cta-box p, .cta-box button { position: relative; z-index: 1; }
+    .cta-box h2 { font-size: clamp(1.7rem, 4.6vw, 3.6rem); line-height: 1.15; letter-spacing: -.052em; font-weight: 900; }
+    .cta-box p { max-width: 520px; margin: 16px auto 28px; color: rgba(255,255,255,.76); font-size: 1rem; line-height: 1.9; }
+    .btn-light { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; border: 0; border-radius: 999px; padding: 14px 26px; background: #fff; color: #111827; font-weight: 900; cursor: pointer; box-shadow: 0 20px 48px rgba(0,0,0,.18); transition: transform .2s, box-shadow .2s; }
+    .btn-light:hover { transform: translateY(-2px); box-shadow: 0 28px 62px rgba(0,0,0,.24); }
+    .footer { padding: 28px 20px 40px; text-align: center; color: var(--muted); font-size: 13px; font-weight: 600; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══════════════════════════════════════════════════════════
+       KEYFRAMES
+    ═══════════════════════════════════════════════════════════ */
+    @keyframes navDrop {
+      from { opacity:0; transform:translate(-50%,-16px); }
+      to   { opacity:1; transform:translate(-50%,0); }
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes float {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(-14px); }
+    }
+    @keyframes blobIn {
+      from { opacity:0; transform:scale(.7); }
+      to   { opacity:1; transform:scale(1); }
+    }
+    @keyframes slideDown {
+      from { opacity:0; transform:translateY(-20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes phoneFloat {
+      0%,100% { transform: rotateY(-18deg) rotateX(6deg) translateY(0); }
+      25%      { transform: rotateY(-8deg)  rotateX(2deg) translateY(-10px); }
+      50%      { transform: rotateY(-22deg) rotateX(8deg) translateY(-6px); }
+      75%      { transform: rotateY(-12deg) rotateX(4deg) translateY(-14px); }
+    }
+    @keyframes shineSwipe {
+      0%   { transform: translateX(-160%) skewX(-12deg); opacity:0; }
+      10%  { opacity:1; }
+      55%  { transform: translateX(340%) skewX(-12deg);  opacity:1; }
+      60%  { opacity:0; }
+      100% { transform: translateX(340%) skewX(-12deg);  opacity:0; }
+    }
+    @keyframes tapPulse {
+      0%,100% { opacity:.22; }
+      50%      { opacity:.62; }
+    }
+    @keyframes dotBlink {
+      0%,100% { opacity:.22; transform:scale(1); }
+      50%      { opacity:.8;  transform:scale(1.4); }
+    }
+    @keyframes swipePulse {
+      0%,100% { opacity:.3;  transform:translateX(-50%) scaleX(1); }
+      50%      { opacity:.7;  transform:translateX(-50%) scaleX(.72); }
+    }
+    @keyframes logoPop {
+      0%   { opacity:0; transform:scale(0) rotate(-14deg); }
+      65%  { transform:scale(1.22) rotate(4deg); }
+      100% { opacity:1; transform:scale(1) rotate(0); }
+    }
+    @keyframes appIconPop {
+      0%   { opacity:0; transform:scale(0) rotate(-10deg); }
+      70%  { transform:scale(1.15) rotate(3deg); }
+      100% { opacity:1; transform:scale(1) rotate(0); }
+    }
+    /* burstFly is driven by the Web Animations API in JS — no keyframe needed here */
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (min-width: 640px) {
+      .hero-actions { flex-direction: row; }
+      .collage { grid-template-columns: repeat(2,1fr); }
+      .features-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (min-width: 920px) {
+      .nav-links { display: flex; }
+      .hero-inner { grid-template-columns: 1.06fr .94fr; }
+      .hero-copy { text-align: left; }
+      .hero-title, .hero-desc { margin-left: 0; margin-right: 0; }
+      .hero-actions { justify-content: flex-start; }
+      .collage { grid-template-columns: repeat(3,1fr); }
+      .features-grid { grid-template-columns: repeat(4,1fr); }
+      .feature-card:nth-child(1), .feature-card:nth-child(4) { grid-column: span 2; }
+    }
+
+    /* ── Mobile-first intro adjustments ── */
+    @media (max-width: 480px) {
+      #intro-overlay { gap: clamp(16px, 3.5vh, 28px); }
+      .intro-brand-title { font-size: .72rem; }
+      .tap-hint { font-size: .62rem; letter-spacing: .12em; }
+    }
+    @media (max-width: 560px) {
+      .nav { top: 10px; width: calc(100% - 20px); }
+      .brand-sub { display: none; }
+      .nav-cta span { display: none; }
+      .hero { padding-top: 104px; }
+      .hero-visual { min-height: 400px; }
+      .floating-card { display: none; }
+      .phone-shell { width: min(290px, 84vw); transform: rotate(0); }
+      .section { padding: 60px 16px; }
+      .cta-section { padding: 66px 16px; }
+      .category-pills .pill { font-size: 12px; padding: 10px 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .intro-phone-pivot { animation: none; transform: rotateY(0) rotateX(0); }
+      .phone-shine::after { animation: none; }
+      .floating-card { animation: none; }
+      .reveal { transition: opacity .4s ease; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flash effect -->
+  <div id="unlock-flash"></div>
+
+  <!-- ░░░ INTRO OVERLAY ░░░ -->
+  <div id="intro-overlay" role="button" aria-label="Tap to enter" tabindex="0">
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Ambient blobs -->
+    <div class="intro-blob b1"></div>
+    <div class="intro-blob b2"></div>
+    <div class="intro-blob b3"></div>
+
+    <!-- Brand -->
+    <div class="intro-brand">
+      <div class="intro-brand-title">High Schooler's Tool</div>
+      <div class="intro-brand-sub">Myanmar University Guide · 2026</div>
+    </div>
+
+    <!-- 3D Phone -->
+    <div class="intro-phone-scene">
+      <div class="intro-phone-pivot" id="intro-pivot">
+        <div class="intro-phone" id="intro-phone">
+          <div class="phone-shine"></div>
+          <div class="intro-phone-screen" id="intro-screen">
+
+            <!-- Dynamic island -->
+            <div class="intro-di"></div>
+
+            <!-- Lock screen content -->
+            <div class="lock-content" id="lock-content">
+              <div class="intro-phone-time" id="intro-time">12:00</div>
+              <div class="intro-phone-date" id="intro-date">Monday, 20 April</div>
+              <svg class="intro-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="5" y="11" width="14" height="10" rx="2"/>
+                <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+              </svg>
+            </div>
+
+            <!-- HST notification on lock screen -->
+            <div class="lock-notif" id="lock-notif">
+              <div class="notif-icon">HST</div>
+              <div class="notif-text">
+                <strong>180+ Universities Ready</strong>
+                <span>Explore your future today</span>
+              </div>
+            </div>
+
+            <!-- App grid shown after unlock -->
+            <div class="lock-app-grid" id="app-grid">
+              <!-- uni1.png → uni8.png — drop your PNG files here -->
+              <div class="app-icon" style="background:#eff6ff;animation-delay:.04s"><img src="unnamed.png" alt="U1" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U1</span>';this.parentNode.style.background='linear-gradient(135deg,#2563eb,#7c3aed)'" /></div>
+              <div class="app-icon" style="background:#f0fdf4;animation-delay:.10s"><img src="umlogo.png" alt="U2" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U2</span>';this.parentNode.style.background='linear-gradient(135deg,#16a34a,#15803d)'" /></div>
+              <div class="app-icon" style="background:#fdf4ff;animation-delay:.16s"><img src="mtulogo.png" alt="U3" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U3</span>';this.parentNode.style.background='linear-gradient(135deg,#7c3aed,#6d28d9)'" /></div>
+              <div class="app-icon" style="background:#fff7ed;animation-delay:.22s"><img src="muflLogo.jpg" alt="U4" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U4</span>';this.parentNode.style.background='linear-gradient(135deg,#ea580c,#dc2626)'" /></div>
+              <div class="app-icon" style="background:#eff6ff;animation-delay:.28s"><img src="Pharmacy Man logo.jpg" alt="U5" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U5</span>';this.parentNode.style.background='linear-gradient(135deg,#0284c7,#0369a1)'" /></div>
+              <div class="app-icon" style="background:#fefce8;animation-delay:.34s"><img src="Tu wytu logo.jpg" alt="U6" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U6</span>';this.parentNode.style.background='linear-gradient(135deg,#ca8a04,#b45309)'" /></div>
+              <div class="app-icon" style="background:#fff1f2;animation-delay:.40s"><img src="vetlogo.jfif" alt="U7" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U7</span>';this.parentNode.style.background='linear-gradient(135deg,#e11d48,#be123c)'" /></div>
+              <div class="app-icon" style="background:#f0fdfa;animation-delay:.46s"><img src="maeu.jpg" alt="U8" onerror="this.parentNode.innerHTML='<span class=\'app-fallback\'>U8</span>';this.parentNode.style.background='linear-gradient(135deg,#0d9488,#0f766e)'" /></div>
+            </div>
+
+            <!-- Swipe indicator -->
+            <div class="intro-swipe" id="intro-swipe"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tap-hint">Tap anywhere to open</div>
+  </div>
+
+  <!-- ░░░ LOGO BURST LAYER ░░░ -->
+  <div id="logo-burst" aria-hidden="true"></div>
+
+  <!-- ░░░ MAIN PAGE ░░░ -->
+  <div class="page" id="main-page">
+    <nav class="nav">
+      <a href="hst.html" class="brand" aria-label="HST Home">
+        <img src="hstlogo.jpg" alt="HST logo" class="nav-logo" onerror="this.style.display='none'" />
+        <span class="brand-copy">
+          <span class="brand-title">HIGH SCHOOLER'S TOOL</span>
+          <span class="brand-sub">Myanmar student education guide</span>
+        </span>
+      </a>
+      <div class="nav-links" aria-label="Page sections">
+        <a href="#categories">Categories</a>
+        <a href="#universities">Universities</a>
+        <a href="#features">Features</a>
+      </div>
+      <button class="nav-cta" id="navEnter" type="button"><span>Enter</span> HST →</button>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="badge"><span class="badge-dot"></span> ၁၈၀+ Universities • Updated for 2026</div>
+            <h1 class="hero-title">Your Compass to <span class="shine">Higher Education.</span></h1>
+            <p class="hero-desc">HST Website တွင် မြန်မာနိုင်ငံအတွင်းရှိ တက္ကသိုလ်များ၏ ၀င်ခွင့်အမှတ်၊ သင်ယူနိုင်သောဘာသာရပ်၊ ရရှိမည့်ဘွဲ့အမျိုးအစား၊ သင်ကြားရမည့်နှစ်အရေအတွက်၊ တက္ကသိုလ်ပွဲများ၊ ပရောဂျက်များ၊ အလုပ်အကိုင်လမ်းကြောင်းများ နှင့် ခန့်မှန်းခြေလစာများကို လေ့လာနိုင်ပါသည်။</p>
+            <div class="hero-actions">
+              <button class="btn-primary" id="enterBtn" type="button">Enter HST Home →</button>
+              <a class="btn-secondary" href="#features">Explore Features</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="floating-card one"><b>180+</b><span>Universities and education paths</span></div>
+
+            <div class="phone-3d-scene">
+              <div class="phone-shell" id="hero-phone">
+                <div class="phone-screen">
+                  <div class="dynamic-island"></div>
+                  <div class="phone-content">
+                    <div class="phone-card-main">
+                      <span class="phone-chip">HST 2026</span>
+                      <h3>တက္ကသိုလ်လမ်းညွှန်</h3>
+                      <p>Compare universities, majors, entrance scores, careers and study paths with confidence.</p>
+                    </div>
+
+                    <!-- University logos inside hero phone -->
+                    <div class="phone-uni-logos" id="phone-uni-logos">
+                      <div class="phone-uni-logo-item" style="animation-delay:.05s"><img src="unnamed.png" alt="U1" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U1</span>'" /></div>
+                      <div class="phone-uni-logo-item" style="animation-delay:.12s"><img src="umlogo.png" alt="U2" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U2</span>'" /></div>
+                      <div class="phone-uni-logo-item" style="animation-delay:.19s"><img src="MTU logo.jpg" alt="U3" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U3</span>'" /></div>
+                      <div class="phone-uni-logo-item" style="animation-delay:.26s"><img src="muflLogo.jpg" alt="U4" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U4</span>'" /></div>
+                      <div class="phone-uni-logo-item" style="animation-delay:.33s"><img src="Pharmacy Man logo.jpg" alt="U5" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U5</span>'" /></div>
+                      <div class="phone-uni-logo-item" style="animation-delay:.40s"><img src="wyuLogo.jpg" alt="U6" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U6</span>'" /></div>
+                      <div class="phone-uni-logo-item" style="animation-delay:.47s"><img src="vetlogo.jfif" alt="U7" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U7</span>'" /></div>
+                      <div class="phone-uni-logo-item" style="animation-delay:.54s"><img src="maeulogo.jpg" alt="U8" onerror="this.parentNode.innerHTML='<span class=\'logo-fallback-sm\'>U8</span>'" /></div>
+                    </div>
+
+                    <div class="phone-list">
+                      <div class="phone-row"><div class="phone-icon">⌂</div><div><strong>Universities</strong><span>Find suitable schools</span></div></div>
+                      <div class="phone-row"><div class="phone-icon">☆</div><div><strong>Courses</strong><span>Learn extra skills</span></div></div>
+                      <div class="phone-row"><div class="phone-icon">◷</div><div><strong>Study Mode</strong><span>Stay focused daily</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating-card two"><b>hstmm.com</b><span>ကျောင်းသားတွေအတွက်လိုအပ်တဲ့ Website</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <section class="section categories reveal" id="categories">
+        <div class="wrap">
+          <p class="section-kicker">Explore by Category</p>
+          <h2 class="section-heading">ကိုယ်နှစ်သက်တဲ့ တက္ကသိုလ်အမျိုးအစားကို အလွယ်တကူရှာပါ။</h2>
+          <p class="section-sub">ကျောင်းအမျိုးအစားအလိုက် စနစ်တကျခွဲထားသောကြောင့် သင်လိုချင်သောလမ်းကြောင်းကို မြန်မြန်ရှာနိုင်ပါသည်။</p>
+          <div class="category-pills">
+            <a class="pill" href="#universities"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1M14 10h1M9 15h1M14 15h1"/></svg>နည်းပညာတက္ကသိုလ်များ</a>
+            <a class="pill" href="#universities"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>ဆေးတက္ကသိုလ်များ</a>
+            <a class="pill" href="#universities"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>ပညာရေးတက္ကသိုလ်များ</a>
+            <a class="pill" href="#universities"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>ဝိဇ္ဇာ၊ သိပ္ပံတက္ကသိုလ်များ</a>
+            <a class="pill" href="#universities"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg>IT ကျောင်းများ</a>
+            <a class="pill" href="#universities"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>စိုက်ပျိုးရေး တက္ကသိုလ်များ</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- UNIVERSITY GALLERY -->
+      <section class="section" id="universities">
+        <div class="wrap">
+          <p class="section-kicker reveal">University Gallery</p>
+          <h2 class="section-heading reveal">မြန်မာနိုင်ငံရှိ တက္ကသိုလ်များ</h2>
+          <p class="section-sub reveal">ကိုယ်နှစ်သက်သည့် တက္ကသိုလ်ကို ရွေးချယ်လေ့လာနိုင်ရန် ပုံများနှင့်တကွ ပြသထားသည်။</p>
+          <div class="collage">
+            <figure class="shot reveal"><img src="wytu.jpg" alt="နည်းပညာတက္ကသိုလ်" loading="lazy" /><figcaption>နည်းပညာတက္ကသိုလ်များ</figcaption></figure>
+            <figure class="shot reveal"><img src="um1.jpg" alt="ဆေးတက္ကသိုလ်" loading="lazy" /><figcaption>ဆေးတက္ကသိုလ်များ</figcaption></figure>
+            <figure class="shot reveal"><img src="beds.jpg" alt="ပညာရေးတက္ကသိုလ်" loading="lazy" /><figcaption>ပညာရေးတက္ကသိုလ်များ</figcaption></figure>
+            <figure class="shot reveal"><img src="UYangon.jpg" alt="ဝိဇ္ဇာ-သိပ္ပံတက္ကသိုလ်" loading="lazy" /><figcaption>ဝိဇ္ဇာ၊ သိပ္ပံတက္ကသိုလ်များ</figcaption></figure>
+            <figure class="shot reveal"><img src="uit3.jpg" alt="IT ကျောင်း" loading="lazy" /><figcaption>IT ကျောင်းများ</figcaption></figure>
+            <figure class="shot reveal"><img src="Yezin.jpg" alt="စိုက်ပျိုးရေးတက္ကသိုလ်" loading="lazy" /><figcaption>စိုက်ပျိုးရေး တက္ကသိုလ်များ</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="section alt" id="features">
+        <div class="wrap">
+          <p class="section-kicker reveal">HST Features</p>
+          <h2 class="section-heading reveal">လေ့လာနိုင်သည့် အချက်အလက်များ</h2>
+          <p class="section-sub reveal">တက္ကသိုလ်ရွေးချယ်ရာတွင် လိုအပ်သမျှ အချက်အလက်အားလုံးကို တစ်နေရာတည်းတွင် ကြည့်ရှုနိုင်သည်။</p>
+          <div class="features-grid">
+            <article class="feature-card reveal">
+              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+              <p class="feature-mm">ဝင်ခွင့်အမှတ်</p><p class="feature-en">Entrance Scores</p>
+              <p class="feature-desc">ယခင်နှစ်များ၏ ၀င်ခွင့်အမှတ်သတ်မှတ်ချက်များကို ကြည့်ရှုနိုင်ကာ ကိုယ်ရည်မှန်းသည့် တက္ကသိုလ်ကို ပိုမိုသေချာစွာ ရည်မှန်းနိုင်သည်။</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+              <p class="feature-mm">ဘာသာရပ်နှင့်ဘွဲ့</p><p class="feature-en">Majors & Degrees</p>
+              <p class="feature-desc">တက္ကသိုလ်တိုင်းတွင် သင်ကြားနိုင်သောဘာသာရပ်များနှင့် ရရှိမည့်ဘွဲ့အမျိုးအစားများကို ပြည့်စုံစွာကြည့်နိုင်သည်။</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <p class="feature-mm">သင်ကြားချိန်</p><p class="feature-en">Study Duration</p>
+              <p class="feature-desc">တက္ကသိုလ်တစ်ခုချင်းစီ၏ သင်ကြားချိန်နှစ်အရေအတွက်နှင့် သင်ကြားမှုပုံစံများကို ရှင်းလင်းစွာ ဖော်ပြထားသည်။</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+              <p class="feature-mm">အလုပ်အကိုင်</p><p class="feature-en">Career Paths</p>
+              <p class="feature-desc">ဘာသာရပ်တစ်ခုချင်းစီနှင့် ဆက်နွှယ်သောအလုပ်အကိုင်လမ်းကြောင်းများနှင့် ခန့်မှန်းခြေ လစာများကို ကြည့်ရှုနိုင်သည်။</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section">
+        <div class="cta-box reveal">
+          <h2>အိမ်မက်တစ်ခုအားရှာဖွေခြင်း</h2>
+          <p></p>
+          <button class="btn-light" id="ctaEnter" type="button">Enter HST →</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 High Schooler's Tool (HST) · Myanmar University Guide · hstmm.com</p>
+    </footer>
+  </div>
+
+  <script>
+  /* ═══════════════════════════════════════════════
+     PARTICLE BACKGROUND
+  ═══════════════════════════════════════════════ */
+  (function() {
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], raf;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    function makeParticle() {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.3,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.22,
+        a: Math.random() * 0.5 + 0.08,
+        drift: Math.random() * Math.PI * 2
+      };
+    }
+
+    function init() {
+      resize();
+      const count = Math.min(Math.floor(W * H / 7000), 110);
+      particles = Array.from({ length: count }, makeParticle);
+    }
+
+    function draw(ts) {
+      if (!document.getElementById('intro-overlay') ||
+          document.getElementById('intro-overlay').classList.contains('fade-out')) return;
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        p.drift += 0.008;
+        p.x += p.vx + Math.sin(p.drift) * 0.12;
+        p.y += p.vy + Math.cos(p.drift) * 0.08;
+        if (p.x < 0) p.x = W;
+        if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H;
+        if (p.y > H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,' + p.a + ')';
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+  })();
+
+  /* ═══════════════════════════════════════════════
+     CLOCK
+  ═══════════════════════════════════════════════ */
+  (function tick() {
+    const te = document.getElementById('intro-time');
+    const de = document.getElementById('intro-date');
+    if (!te) return;
+    const n = new Date();
+    const h = String(n.getHours()).padStart(2, '0');
+    const m = String(n.getMinutes()).padStart(2, '0');
+    te.textContent = h + ':' + m;
+    const days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    de.textContent = days[n.getDay()] + ', ' + n.getDate() + ' ' + months[n.getMonth()];
+    setTimeout(tick, 15000);
+  })();
+
+  /* ═══════════════════════════════════════════════
+     GYROSCOPE / POINTER TILT on intro phone
+  ═══════════════════════════════════════════════ */
+  const overlay = document.getElementById('intro-overlay');
+  const pivot = document.getElementById('intro-pivot');
+  let gyroActive = false;
+
+  function applyTilt(rx, ry) {
+    if (!pivot || pivot.classList.contains('opening')) return;
+    pivot.style.animation = 'none';
+    pivot.style.transform =
+      'rotateY(' + ry + 'deg) rotateX(' + rx + 'deg)';
+  }
+
+  function startGyro() {
+    window.addEventListener('deviceorientation', function(e) {
+      if (e.beta === null) return;
+      gyroActive = true;
+      var rx = Math.max(-12, Math.min(12, (e.beta  - 45) * 0.4));
+      var ry = Math.max(-20, Math.min(20,  e.gamma       * 0.45));
+      applyTilt(rx, ry);
+    }, { passive: true });
+  }
+
+  if (typeof DeviceOrientationEvent !== 'undefined') {
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+      /* iOS 13+ — request permission on first user gesture */
+      overlay.addEventListener('touchstart', function grantGyro() {
+        DeviceOrientationEvent.requestPermission()
+          .then(function(state) { if (state === 'granted') startGyro(); })
+          .catch(function() {});
+        overlay.removeEventListener('touchstart', grantGyro);
+      }, { passive: true, once: true });
+    } else {
+      startGyro();
+    }
+  }
+
+  /* Pointer parallax on desktop */
+  document.addEventListener('mousemove', function(e) {
+    if (gyroActive) return;
+    if (!pivot || pivot.classList.contains('opening')) return;
+    const cx = window.innerWidth  / 2;
+    const cy = window.innerHeight / 2;
+    const rx = -((e.clientY - cy) / cy) * 10;
+    const ry =  ((e.clientX - cx) / cx) * 18;
+    applyTilt(rx, ry);
+  });
+
+  /* ═══════════════════════════════════════════════
+     LOGO BURST
+  ═══════════════════════════════════════════════ */
+  const UNI_LOGOS = [
+    'uni1.png','uni2.png','uni3.png','uni4.png',
+    'uni5.png','uni6.png','uni7.png','uni8.png'
+  ];
+
+  function launchBurst(originEl) {
+    var burst = document.getElementById('logo-burst');
+    burst.innerHTML = '';
+    var rect = originEl.getBoundingClientRect();
+    var cx = rect.left + rect.width  / 2;
+    var cy = rect.top  + rect.height / 2;
+
+    UNI_LOGOS.forEach(function(file, i) {
+      var el  = document.createElement('div');
+      el.className = 'burst-logo';
+
+      var img = document.createElement('img');
+      img.src = file;
+      img.alt = 'Logo';
+      img.onerror = function() {
+        el.innerHTML = '<span class="logo-fallback">U' + (i + 1) + '</span>';
+      };
+      el.appendChild(img);
+
+      var angle = ((i / UNI_LOGOS.length) * 360 + Math.random() * 28 - 14) * Math.PI / 180;
+      var dist  = 140 + Math.random() * 240;
+      var dxF   = Math.cos(angle) * dist;
+      var dyF   = Math.sin(angle) * dist;
+      var r0    = (Math.random() - .5) * 50;
+      var rF    = r0 + (Math.random() - .5) * 130;
+      var size  = 52 + Math.random() * 34;
+      var delay = i * 50 + Math.random() * 30;
+      var dur   = 1000 + Math.random() * 350;
+
+      /* Position at phone centre */
+      el.style.position = 'absolute';
+      el.style.left     = (cx - size / 2) + 'px';
+      el.style.top      = (cy - size / 2) + 'px';
+      el.style.width    = size + 'px';
+      el.style.height   = size + 'px';
+      burst.appendChild(el);
+
+      /* Web Animations API — hardcoded values, no CSS var() issues */
+      el.animate(
+        [
+          { opacity: 0, transform: 'translate(0px, 0px) scale(0.12) rotate(' + r0 + 'deg)' },
+          { opacity: 1, transform: 'translate(' + (dxF * 0.25) + 'px, ' + (dyF * 0.25) + 'px) scale(1.1) rotate(' + (r0 * 0.5) + 'deg)', offset: 0.18 },
+          { opacity: 0.9, offset: 0.82 },
+          { opacity: 0, transform: 'translate(' + dxF + 'px, ' + dyF + 'px) scale(1.02) rotate(' + rF + 'deg)' }
+        ],
+        {
+          duration: dur,
+          delay:    delay,
+          fill:     'both',
+          easing:   'cubic-bezier(.2,.8,.4,1)'
+        }
+      );
+    });
+
+    setTimeout(function() { burst.innerHTML = ''; }, 2600);
+  }
+
+  /* ═══════════════════════════════════════════════
+     INTRO SEQUENCE
+  ═══════════════════════════════════════════════ */
+  let triggered = false;
+
+  function runIntro() {
+    if (triggered) return;
+    triggered = true;
+
+    const pivotEl   = document.getElementById('intro-pivot');
+    const phoneEl   = document.getElementById('intro-phone');
+    const screen    = document.getElementById('intro-screen');
+    const lockCont  = document.getElementById('lock-content');
+    const lockNotif = document.getElementById('lock-notif');
+    const swipe     = document.getElementById('intro-swipe');
+    const appGrid   = document.getElementById('app-grid');
+    const flash     = document.getElementById('unlock-flash');
+    const heroPhone = document.getElementById('hero-phone');
+    const mainPage  = document.getElementById('main-page');
+    const uniLogos  = document.getElementById('phone-uni-logos');
+
+    /* 1. Snap tilt to face-on with opening styles */
+    pivotEl.style.animation = 'none';
+    pivotEl.classList.add('opening');
+    /* Force transition by re-enabling it */
+    void pivotEl.offsetWidth;
+    pivotEl.style.transition = 'transform .9s cubic-bezier(.22,1,.36,1), filter .7s ease';
+
+    /* 2. Unlock the screen UI */
+    lockCont.classList.add('hidden');
+    lockNotif.classList.add('hidden');
+    swipe.classList.add('hidden');
+    screen.classList.add('unlocked');
+
+    /* 3. Flash */
+    setTimeout(function() {
+      flash.classList.add('flash');
+      setTimeout(function() { flash.classList.remove('flash'); }, 200);
+    }, 280);
+
+    /* 4. Show app grid inside phone */
+    setTimeout(function() {
+      appGrid.classList.add('show');
+    }, 380);
+
+    /* 5. Logo burst */
+    setTimeout(function() {
+      launchBurst(phoneEl);
+    }, 340);
+
+    /* 6. Overlay fades out */
+    setTimeout(function() {
+      overlay.classList.add('fade-out');
+    }, 680);
+
+    /* 7. Main page fades in */
+    setTimeout(function() {
+      overlay.style.display = 'none';
+      mainPage.classList.add('visible');
+      heroPhone.classList.add('premium-glow');
+    }, 1500);
+
+    /* 8. Uni logos pop into hero phone */
+    setTimeout(function() {
+      uniLogos.classList.add('show');
+    }, 2000);
+  }
+
+  /* Single guarded handler — pointerup fires reliably on iOS, Android, and desktop
+     with no double-fire and no preventDefault fighting other listeners. */
+  let introTriggered = false;
+  function triggerIntro() {
+    if (introTriggered) return;
+    introTriggered = true;
+    runIntro();
+  }
+  overlay.addEventListener('pointerup', triggerIntro);
+  overlay.addEventListener('click', triggerIntro);     /* fallback for very old Safari */
+  overlay.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') triggerIntro();
+  });
+
+  /* ═══════════════════════════════════════════════
+     NAVIGATION — Enter HST Home buttons
+  ═══════════════════════════════════════════════ */
+  function goHST() { window.location.href = 'hst.html'; }
+
+  var enterBtn  = document.getElementById('enterBtn');
+  var navEnter  = document.getElementById('navEnter');
+  var ctaEnter  = document.getElementById('ctaEnter');
+  if (enterBtn) enterBtn.addEventListener('click', goHST);
+  if (navEnter) navEnter.addEventListener('click', goHST);
+  if (ctaEnter) ctaEnter.addEventListener('click', goHST);
+
+  /* ═══════════════════════════════════════════════
+     HERO PHONE MOUSE TILT
+  ═══════════════════════════════════════════════ */
+  (function() {
+    const shell = document.getElementById('hero-phone');
+    if (!shell) return;
+    const parent = shell.closest('.hero-visual');
+    if (!parent) return;
+    parent.addEventListener('mousemove', function(e) {
+      var r  = shell.getBoundingClientRect();
+      var cx = r.left + r.width  / 2;
+      var cy = r.top  + r.height / 2;
+      var rx = -((e.clientY - cy) / (r.height / 2)) * 6;
+      var ry =  ((e.clientX - cx) / (r.width  / 2)) * 10;
+      shell.style.transition = 'box-shadow .8s ease, transform .08s ease';
+      shell.style.transform  = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+    });
+    parent.addEventListener('mouseleave', function() {
+      shell.style.transition = '';
+      shell.style.transform  = '';
+    });
+  })();
+
+  /* ═══════════════════════════════════════════════
+     SCROLL REVEAL
+  ═══════════════════════════════════════════════ */
+  const ro = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
+  </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+}
+</script>
+
+</body>
+</html>

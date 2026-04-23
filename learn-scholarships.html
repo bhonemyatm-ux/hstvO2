@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholarship Guide | High Schooler's Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="learn-scholarship.css">
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<div class="drawer-overlay" id="drawer">
+  <div class="drawer-panel">
+    <button class="drawer-close" onclick="closeDrawer()" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div id="drawer-items"></div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="stars" id="stars"></div>
+
+  <div class="hero-bar">
+    <div class="hero-logo">
+      <div class="hero-logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="rgba(255,255,255,0.9)"/></svg>
+      </div>
+      <div class="hero-logo-text">
+        <span class="name">HST</span>
+        <span class="sub">High Schooler's Tool</span>
+      </div>
+    </div>
+
+    <nav class="desktop-links">
+      <a href="hst.html">Home</a>
+      <a href="uni.html">Universities</a>
+      <a href="career-journey.html">Career Journey</a>
+      <a href="courses.html">Courses</a>
+      <a href="study-mode.html">Study Mode</a>
+      <a href="scholarships.html" class="active">Scholarships</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <button class="hamburger-btn" onclick="openDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-badge">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" fill="#e8b06a"/></svg>
+      Scholarship Guide for Myanmar Students
+    </div>
+    <span class="hero-emoji">🎓</span>
+    <h1>Your Scholarship Journey<br>Starts Here</h1>
+    <p class="hero-sub">We know it can feel overwhelming. Don't worry — we'll walk you through everything about scholarships, step by step.</p>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-cell">
+      <div class="stat-value">10–15</div>
+      <div class="stat-label">Scholarships to Apply</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value">$50M+</div>
+      <div class="stat-label">Available in Myanmar</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value">100%</div>
+      <div class="stat-label">Repayment Free</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value">40+</div>
+      <div class="stat-label">Countries Offering</div>
+    </div>
+  </div>
+</header>
+
+<nav class="sticky-nav">
+  <div class="sticky-nav-inner" id="secNav"></div>
+</nav>
+
+<main class="main">
+
+  <div class="quote-block">
+    <p class="quote-text">Education is the passport to the future, for tomorrow belongs to those who prepare for it today.</p>
+    <div class="quote-author">— Malcolm X</div>
+  </div>
+
+  <!-- SECTION 1: WHAT -->
+  <article class="section" id="sec-what">
+    <div class="section-header">
+      <div class="sec-icon">📚</div>
+      <div>
+        <div class="sec-eyebrow">Section 01</div>
+        <h2 class="sec-title">What is a Scholarship?</h2>
+      </div>
+    </div>
+
+    <div class="photo-hero">
+      <div class="photo-hero-bg"></div>
+      <div class="photo-overlay"></div>
+      <div class="photo-text">
+        <div class="photo-eyebrow">The Journey Begins</div>
+        <div class="photo-caption">Free Money for Your Education</div>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p><strong>A scholarship is FREE MONEY for your education.</strong> You never have to pay it back — it's a gift from governments, universities, or organisations to help talented, hardworking students like you pursue higher education.</p>
+
+      <div class="callout callout-amber">
+        <div class="callout-icon">💡</div>
+        <div>
+          <div class="callout-title">Think of it this way</div>
+          <p>"I see how smart and determined you are. I want to pay for your university education — tuition, books, housing, living expenses — everything. You just focus on learning!"</p>
+          <p class="callout-emphasis">That's exactly what a scholarship is.</p>
+        </div>
+      </div>
+
+      <p><strong>A scholarship typically covers:</strong></p>
+      <div class="covers-grid">
+        <div class="cover-item"><div class="cover-icon">🏫</div><div class="cover-label">Tuition Fees</div></div>
+        <div class="cover-item"><div class="cover-icon">🏠</div><div class="cover-label">Living Expenses</div></div>
+        <div class="cover-item"><div class="cover-icon">✈️</div><div class="cover-label">Flight Tickets</div></div>
+        <div class="cover-item"><div class="cover-icon">📖</div><div class="cover-label">Books &amp; Supplies</div></div>
+        <div class="cover-item"><div class="cover-icon">🏥</div><div class="cover-label">Health Insurance</div></div>
+        <div class="cover-item"><div class="cover-icon">💰</div><div class="cover-label">Monthly Allowance</div></div>
+      </div>
+
+      <div class="callout callout-sage">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <div class="callout-title">Real Example — ASEAN Scholarship (Singapore)</div>
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="mini-val">100%</div><div class="mini-lbl">Tuition Covered</div></div>
+            <div class="mini-stat"><div class="mini-val">SGD 500</div><div class="mini-lbl">Monthly Allowance</div></div>
+            <div class="mini-stat"><div class="mini-val">Included</div><div class="mini-lbl">Accommodation</div></div>
+            <div class="mini-stat"><div class="mini-val">Both Ways</div><div class="mini-lbl">Flight Tickets</div></div>
+          </div>
+          <p class="callout-emphasis" style="color: var(--sage);">Total value: ~50 million MMK over 4 years!</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SECTION 2: WHY -->
+  <article class="section" id="sec-why">
+    <div class="section-header">
+      <div class="sec-icon">🤝</div>
+      <div>
+        <div class="sec-eyebrow">Section 02</div>
+        <h2 class="sec-title">Why Do Countries Give Scholarships?</h2>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p><em>"Why would another country pay for MY education?" Great question — here's why:</em></p>
+
+      <div class="photo-pair">
+        <div class="photo-pair-item">
+          <div class="pair-bg" style="background: linear-gradient(135deg, #1a0a2e 0%, #4a2080 100%);"></div>
+          <div class="pair-caption">Building Bridges Between Nations</div>
+        </div>
+        <div class="photo-pair-item">
+          <div class="pair-bg" style="background: linear-gradient(135deg, #0a2010 0%, #1a6040 100%);"></div>
+          <div class="pair-caption">Shaping Tomorrow's Leaders</div>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-icon">🤝</div>
+          <div class="info-title">Building Friendships</div>
+          <div class="info-text">Countries invest in students to build long-term relationships. When you study there, you become a bridge between two nations.</div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🌟</div>
+          <div class="info-title">Attracting Talent</div>
+          <div class="info-text">Universities want the brightest students worldwide. Your perspective and determination make their campus richer.</div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">💼</div>
+          <div class="info-title">Future Leaders</div>
+          <div class="info-text">They invest in you today knowing you'll become a leader who drives positive change in your country tomorrow.</div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🌏</div>
+          <div class="info-title">Regional Growth</div>
+          <div class="info-text">ASEAN and Asian nations support each other's development through education and knowledge exchange.</div>
+        </div>
+      </div>
+
+      <div class="callout callout-plum">
+        <div class="callout-icon">🇲🇲</div>
+        <div>
+          <div class="callout-title">For Myanmar Students Specifically</div>
+          <p>Many countries recognise Myanmar's potential and want to help develop our nation's next leaders. When you return with a world-class education, you'll contribute to Myanmar's growth in medicine, technology, business, and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SECTION 3: TYPES -->
+  <article class="section" id="sec-types">
+    <div class="section-header">
+      <div class="sec-icon">📋</div>
+      <div>
+        <div class="sec-eyebrow">Section 03</div>
+        <h2 class="sec-title">Types of Scholarships</h2>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p>There are many types of scholarships. Here are the four main categories:</p>
+
+      <div class="type-cards">
+        <div class="type-card">
+          <div class="type-num">1</div>
+          <div>
+            <h4>Government Scholarships</h4>
+            <p>Funded by foreign governments to bring international students to their country. Usually fully funded.</p>
+            <div class="tags">
+              <span class="tag tag-plum">ASEAN (Singapore)</span>
+              <span class="tag tag-plum">Chevening (UK)</span>
+              <span class="tag tag-plum">DAAD (Germany)</span>
+              <span class="tag tag-plum">MEXT (Japan)</span>
+              <span class="tag tag-sage">Full Funding</span>
+            </div>
+          </div>
+        </div>
+        <div class="type-card">
+          <div class="type-num">2</div>
+          <div>
+            <h4>University Scholarships</h4>
+            <p>Offered directly by universities to attract talented students. Coverage varies.</p>
+            <div class="tags">
+              <span class="tag tag-plum">NUS Global Merit</span>
+              <span class="tag tag-plum">NTU Scholarship</span>
+              <span class="tag tag-plum">Harvard</span>
+              <span class="tag tag-amber">Partial–Full</span>
+            </div>
+          </div>
+        </div>
+        <div class="type-card">
+          <div class="type-num">3</div>
+          <div>
+            <h4>Organisation / Foundation Scholarships</h4>
+            <p>From non-profits, companies, or charitable foundations — often substantial.</p>
+            <div class="tags">
+              <span class="tag tag-plum">Fulbright (USA)</span>
+              <span class="tag tag-plum">MasterCard Foundation</span>
+              <span class="tag tag-plum">ADB-Japan</span>
+              <span class="tag tag-sage">Usually Full</span>
+            </div>
+          </div>
+        </div>
+        <div class="type-card">
+          <div class="type-num">4</div>
+          <div>
+            <h4>Regional Scholarships (ASEAN / Asia)</h4>
+            <p>Designed specifically for ASEAN or Asian students — culturally closer to Myanmar.</p>
+            <div class="tags">
+              <span class="tag tag-plum">ASEAN Scholarship</span>
+              <span class="tag tag-plum">Thai Gov. Scholarship</span>
+              <span class="tag tag-sage">Full Funding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-sage">
+        <div class="callout-icon">✨</div>
+        <div>
+          <div class="callout-title">Good News!</div>
+          <p>You can apply to <strong>multiple scholarships at the same time</strong> — there's no limit. Many successful students apply to 10–15 scholarships to maximise their chances!</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SECTION 4: CAN I APPLY -->
+  <article class="section" id="sec-who">
+    <div class="section-header">
+      <div class="sec-icon">💪</div>
+      <div>
+        <div class="sec-eyebrow">Section 04</div>
+        <h2 class="sec-title">Can I Really Apply?</h2>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p><strong>YES — if you're reading this, you can apply.</strong> Let's bust the common myths Myanmar students believe:</p>
+
+      <div class="photo-hero" style="height: 200px; margin-top: 20px;">
+        <div class="photo-hero-bg" style="background: linear-gradient(135deg, #1a1840 0%, #3a2870 50%, #6a4228 100%);"></div>
+        <div class="photo-overlay"></div>
+        <div class="photo-text">
+          <div class="photo-caption">Students from every corner of Myanmar have done it.</div>
+        </div>
+      </div>
+
+      <div class="myth-list">
+        <div class="myth-item">
+          <div class="myth-x">✕</div>
+          <div>
+            <div class="myth-q">"My English isn't perfect"</div>
+            <div class="myth-a">Many scholarships offer language prep courses! IELTS 6.0–6.5 is often enough to start.</div>
+          </div>
+        </div>
+        <div class="myth-item">
+          <div class="myth-x">✕</div>
+          <div>
+            <div class="myth-q">"My grades aren't straight As"</div>
+            <div class="myth-a">Many scholarships accept 70%+. Leadership, character, and your story matter just as much.</div>
+          </div>
+        </div>
+        <div class="myth-item">
+          <div class="myth-x">✕</div>
+          <div>
+            <div class="myth-q">"I'm from a small town, not Yangon"</div>
+            <div class="myth-a">Students from Taunggyi, Mawlamyine, and Myitkyina have won international scholarships!</div>
+          </div>
+        </div>
+        <div class="myth-item">
+          <div class="myth-x">✕</div>
+          <div>
+            <div class="myth-q">"My family can't afford application fees"</div>
+            <div class="myth-a">Most scholarships have ZERO application fees.</div>
+          </div>
+        </div>
+        <div class="myth-item">
+          <div class="myth-x">✕</div>
+          <div>
+            <div class="myth-q">"I don't know anyone who got a scholarship"</div>
+            <div class="myth-a">You could be the first in your community. Someone has to start — why not you?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-plum">
+        <div class="callout-icon">✅</div>
+        <div>
+          <div class="callout-title">Typical Requirements</div>
+          <div class="checklist">
+            <div class="check-row"><div class="check-icon">🎓</div><div class="check-text"><strong>Education:</strong> Completed or completing Grade 12</div></div>
+            <div class="check-row"><div class="check-icon">📊</div><div class="check-text"><strong>Grades:</strong> Generally 70%+ (varies by scholarship)</div></div>
+            <div class="check-row"><div class="check-icon">🗣️</div><div class="check-text"><strong>English:</strong> IELTS 6.0–7.0</div></div>
+            <div class="check-row"><div class="check-icon">📝</div><div class="check-text"><strong>Essays:</strong> Personal statement, motivation letter</div></div>
+            <div class="check-row"><div class="check-icon">👨‍🏫</div><div class="check-text"><strong>Recommendations:</strong> 2–3 letters from teachers</div></div>
+            <div class="check-row"><div class="check-icon">🎯</div><div class="check-text"><strong>Character:</strong> Leadership, community involvement</div></div>
+            <div class="check-row"><div class="check-icon">🇲🇲</div><div class="check-text"><strong>Citizenship:</strong> Myanmar citizen</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-sage">
+        <div class="callout-icon">💪</div>
+        <div>
+          <div class="callout-title">You ARE Qualified If…</div>
+          <div class="qualify-grid">
+            <div class="qualify-item"><span class="qualify-check">✓</span><span>You're hardworking and willing to grow</span></div>
+            <div class="qualify-item"><span class="qualify-check">✓</span><span>You have dreams and goals for your future</span></div>
+            <div class="qualify-item"><span class="qualify-check">✓</span><span>You want to make Myanmar proud</span></div>
+            <div class="qualify-item"><span class="qualify-check">✓</span><span>You're ready to step out of your comfort zone</span></div>
+            <div class="qualify-item"><span class="qualify-check">✓</span><span>You believe in yourself — and we believe in you too!</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SECTION 5: HOW -->
+  <article class="section" id="sec-how">
+    <div class="section-header">
+      <div class="sec-icon">🗺️</div>
+      <div>
+        <div class="sec-eyebrow">Section 05</div>
+        <h2 class="sec-title">How Do I Apply?</h2>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p>We'll guide you through every step. Here's the complete application process:</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-dot">1</div>
+          <div class="tl-connector"></div>
+          <div class="tl-body">
+            <div class="tl-step">Step 1 — 1–2 months</div>
+            <h4>Research &amp; Choose Scholarships</h4>
+            <ul>
+              <li>Browse our scholarship database on this website</li>
+              <li>Identify 10–15 scholarships matching your interests</li>
+              <li>Note all deadlines in a calendar</li>
+              <li>Read each scholarship's requirements carefully</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot">2</div>
+          <div class="tl-connector"></div>
+          <div class="tl-body">
+            <div class="tl-step">Step 2 — 2–3 months</div>
+            <h4>Prepare Your Documents</h4>
+            <ul>
+              <li>Get certified copies of your academic transcripts</li>
+              <li>Gather certificates and awards</li>
+              <li>Register for the IELTS / TOEFL exam</li>
+              <li>Request recommendation letters from teachers (at least 1 month early!)</li>
+              <li>Start drafting your personal statement</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot">3</div>
+          <div class="tl-connector"></div>
+          <div class="tl-body">
+            <div class="tl-step">Step 3 — 1–2 months</div>
+            <h4>Write Your Essays</h4>
+            <ul>
+              <li>Write YOUR unique story — not someone else's template</li>
+              <li>Explain your goals and how the scholarship helps achieve them</li>
+              <li>Connect your education to Myanmar's future</li>
+              <li>Have teachers or mentors review your drafts</li>
+              <li>Revise 3–5 times (that's completely normal!)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot">4</div>
+          <div class="tl-connector"></div>
+          <div class="tl-body">
+            <div class="tl-step">Step 4</div>
+            <h4>Submit Your Applications</h4>
+            <ul>
+              <li>Most scholarships accept online applications</li>
+              <li>Double-check every document before submitting</li>
+              <li>Submit at least 1 week before the deadline</li>
+              <li>Save screenshots and confirmation emails</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot">5</div>
+          <div class="tl-body">
+            <div class="tl-step">Step 5 — 2–6 months wait</div>
+            <h4>Wait for Results</h4>
+            <ul>
+              <li>Check your email regularly (including the spam folder!)</li>
+              <li>Prepare for possible interviews</li>
+              <li>Stay patient — selection takes time</li>
+              <li>Keep studying and applying to other scholarships</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-icon">⏰</div>
+        <div>
+          <div class="callout-title">Example Timeline (January Deadline)</div>
+          <div class="tl-grid">
+            <div class="tl-row"><span class="tl-month">July – Aug</span><span class="tl-desc">Research scholarships &amp; choose targets</span></div>
+            <div class="tl-row"><span class="tl-month">September</span><span class="tl-desc">Take IELTS, request recommendation letters</span></div>
+            <div class="tl-row"><span class="tl-month">Oct – Nov</span><span class="tl-desc">Write essays, gather documents</span></div>
+            <div class="tl-row"><span class="tl-month">December</span><span class="tl-desc">Final reviews &amp; submit applications</span></div>
+            <div class="tl-row"><span class="tl-month">January</span><span class="tl-desc">Deadline passes — wait for results</span></div>
+            <div class="tl-row"><span class="tl-month">March – June</span><span class="tl-desc">Results announced!</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SECTION 6: FAQ -->
+  <article class="section" id="sec-faq">
+    <div class="section-header">
+      <div class="sec-icon">💬</div>
+      <div>
+        <div class="sec-eyebrow">Section 06</div>
+        <h2 class="sec-title">Your Questions Answered</h2>
+      </div>
+    </div>
+    <div class="body-text">
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </article>
+
+  <div class="cta-block">
+    <div class="cta-inner">
+      <div class="cta-badge">Your future awaits</div>
+      <h2>Ready to Start Your Journey?</h2>
+      <p>You've learned the basics. Now let's find the perfect scholarship for you!</p>
+      <div class="cta-btns">
+        <a href="#" class="cta-btn cta-btn-solid">Browse Scholarships</a>
+        <a href="#" class="cta-btn cta-btn-outline">Plan Your Career Path</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon">🎓</div>
+          <div>
+            <div class="footer-logo-name">HST</div>
+            <div class="footer-logo-sub">High Schooler's Tool</div>
+          </div>
+        </div>
+        <p class="footer-desc">Empowering Myanmar high school students to achieve their dreams through education, scholarships, and career guidance.</p>
+      </div>
+      <div>
+        <div class="footer-col-head">Explore</div>
+        <a href="#" class="footer-link">Scholarships</a>
+        <a href="#" class="footer-link">Universities</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Study Mode</a>
+      </div>
+      <div>
+        <div class="footer-col-head">Resources</div>
+        <a href="#" class="footer-link">About Us</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">FAQ</a>
+        <a href="#" class="footer-link">Help Center</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 High Schooler's Tool · Made with love for Myanmar students</div>
+  </footer>
+
+</main>
+
+<script src="learn-scholarships.js"></script>
+</body>
+</html>
