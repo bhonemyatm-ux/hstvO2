@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAEU — Myanmar Aerospace Engineering University | HST</title>
+  
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hst.css" />
+  <link rel="stylesheet" href="appleucsy.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="u-hero" aria-label="University hero">
+    <div class="u-hero-bg" style="background-image:url('maeus.jpg')"></div>
+    <div class="u-hero-overlay"></div>
+    <div class="u-hero-noise"></div>
+    <div class="container u-hero-inner">
+      <nav class="u-breadcrumb" aria-label="Breadcrumb">
+        <a href="hst.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="uni.html">Universities</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>MAEU</span>
+      </nav>
+      <div class="u-hero-body">
+        <div class="u-logo-wrap">
+          <img src="maeulogo.jpg" alt="MAEU Logo" onerror="this.style.opacity='.15'">
+        </div>
+        <div class="u-hero-text">
+          <div class="u-hero-eyebrow">Myanmar's Only Aerospace Engineering University</div>
+          <h1 class="u-hero-title">Myanmar Aerospace<br class="desktop-br"> Engineering University</h1>
+          <p class="u-hero-subtitle">Training Aerospace Engineers, Avionic Specialists &amp; Space Systems Engineers Since 2002</p>
+          <div class="u-meta-row">
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Meiktila, Mandalay Region
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+              Government · Public
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Founded February 2002
+            </div>
+            <div class="u-meta-pill gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Only Aerospace Uni in Myanmar
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats Bar ── -->
+  <section class="u-stats" aria-label="Key statistics">
+    <div class="container">
+      <div class="u-stats-grid">
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">500+</div>
+            <div class="u-stat-label">Students</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">120+</div>
+            <div class="u-stat-label">Faculty Members</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">5+</div>
+            <div class="u-stat-label">B.E. Specialisations</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">6</div>
+            <div class="u-stat-label">Year B.E. Degree</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">45.5</div>
+            <div class="u-stat-label">Hectare Campus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <section class="u-body">
+    <div class="container">
+      <div class="u-layout">
+
+        <!-- ── Sidebar ── -->
+        <aside class="u-sidebar" aria-label="University sidebar">
+
+          <!-- Quick Info -->
+          <div class="u-card">
+            <div class="u-card-title">Quick Info</div>
+            <div class="u-info-list">
+              <div class="u-info-row">
+                <span class="u-info-key">Type</span>
+                <span class="u-info-val">Government / Public</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Location</span>
+                <span class="u-info-val">Mandalay Road, Meiktila, Mandalay Division</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Campus Size</span>
+                <span class="u-info-val">45.5 Hectares (215 Acres)</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Language</span>
+                <span class="u-info-val">Myanmar (primary)</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Founded</span>
+                <span class="u-info-val">February 2002</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Affiliation</span>
+                <span class="u-info-val">Ministry of Science and Technology</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Nearby</span>
+                <span class="u-info-val">Myanmar Air Force Ground Training Base, Meiktila</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entrance -->
+          <div class="u-card u-card-accent">
+            <div class="u-card-title">Entrance Requirements</div>
+            <div class="u-entrance-block">
+              <div class="u-entrance-score">
+                <div class="u-score-label">Minimum Marks</div>
+                <div class="u-score-num">400+</div>
+                <div class="u-score-sub">Very Competitive — High Marks Required</div>
+              </div>
+              <div class="u-entrance-subjects">
+                <div class="u-sub-label">Required Subjects</div>
+                <div class="u-sub-tags">
+                  <span class="u-tag blue">Science Stream</span>
+                  <span class="u-tag blue">Mathematics</span>
+                  <span class="u-tag blue">Physics</span>
+                  <span class="u-tag blue">English</span>
+                </div>
+              </div>
+              <div class="u-entrance-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Exact cutoff varies by intake year. MAEU is one of Myanmar's most selective science-and-technology universities — strong Maths and Physics results are essential.
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="u-card">
+            <div class="u-card-title">Key Milestones</div>
+            <div class="u-timeline">
+              <div class="u-tl-item">
+                <div class="u-tl-year">2002</div>
+                <div class="u-tl-text">Founded in <strong>February 2002</strong> as Myanmar's only dedicated aerospace engineering university — located in Meiktila, Mandalay Division</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2002+</div>
+                <div class="u-tl-text">Established 5 core <strong>B.E. specialisation tracks</strong> — Propulsion, Avionics, Electrical Systems, Fuel &amp; Propellant, and Space Systems Engineering</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">Ongoing</div>
+                <div class="u-tl-text"><strong>Department of UAV Research</strong> established — dedicated focus on unmanned aerial vehicle technology and aerospace research</div>
+              </div>
+              <div class="u-tl-item now">
+                <div class="u-tl-year">Present</div>
+                <div class="u-tl-text">Pursuing <strong>Washington Accord</strong> accreditation and ICAO collaboration — working toward internationally recognised engineering education standards</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="u-card u-card-contact">
+            <div class="u-card-title">Contact</div>
+            <div class="u-contact-list">
+              <a href="https://maeu.edu.mm" target="_blank" rel="noopener" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>maeu.edu.mm</span>
+              </a>
+              <a href="mailto:info@maeu.edu.mm" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <span>info@maeu.edu.mm</span>
+              </a>
+              <div class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <span>Mandalay Road, Meiktila, Mandalay Division</span>
+              </div>
+            </div>
+            <a href="mailto:info@maeu.edu.mm" class="u-contact-btn">Get in Touch</a>
+          </div>
+
+        </aside>
+
+        <!-- ── Main Panel ── -->
+        <main class="u-main" aria-label="University details">
+
+          <!-- Tabs -->
+          <div class="u-tabs" role="tablist" aria-label="University sections">
+            <button class="u-tab active" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview">Overview</button>
+            <button class="u-tab"        data-tab="majors"    role="tab" aria-selected="false" aria-controls="tab-majors">Programs</button>
+            <button class="u-tab"        data-tab="projects"  role="tab" aria-selected="false" aria-controls="tab-projects">Research</button>
+            <button class="u-tab"        data-tab="campus"    role="tab" aria-selected="false" aria-controls="tab-campus">Campus Life</button>
+            <button class="u-tab"        data-tab="careers"   role="tab" aria-selected="false" aria-controls="tab-careers">Career Paths</button>
+            <button class="u-tab"        data-tab="alumni"    role="tab" aria-selected="false" aria-controls="tab-alumni">Alumni</button>
+          </div>
+
+          <!-- ── Overview ── -->
+          <div class="u-panel active" id="tab-overview" role="tabpanel">
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">About the University</h2>
+              <div class="u-about-lang-toggle" role="group" aria-label="Language toggle">
+                <button class="u-lang-btn active" data-lang="en">English</button>
+                <button class="u-lang-btn" data-lang="mm">မြန်မာ</button>
+              </div>
+
+              <div class="u-about-text" data-lang-content="en">
+                <p><strong>Myanmar Aerospace Engineering University (MAEU)</strong> is Myanmar's only dedicated aerospace engineering institution, established in February 2002 in Meiktila, Mandalay Division. Located on the Yangon–Mandalay highway next to the Myanmar Air Force Ground Training Base, it is the country's sole pathway for students who wish to pursue a degree in aerospace, avionics, space systems, or propulsion engineering.</p>
+                <p>MAEU offers five 6-year Bachelor of Engineering (B.E.) specialisations — Propulsion and Flight Vehicles, Avionics, Electrical Systems and Instrumentation, Fuel and Propellant Engineering, and Space Systems Engineering — as well as a 1-year postgraduate Diploma in Airport Management (Dip.A.M.).</p>
+                <p>The university's vision is to become an internationally recognised aerospace and space-science institution. Its mission centres on internationally accredited engineering education under the Washington Accord and QMS standards, collaboration with ICAO, and partnerships with domestic and international aviation and aerospace organisations.</p>
+              </div>
+              <div class="u-about-text" data-lang-content="mm" hidden>
+                <p><strong>မြန်မာနိုင်ငံ လေကြောင်းနှင့်အာကာသပညာတက္ကသိုလ် (MAEU)</strong> သည် မန္တလေးတိုင်းဒေသကြီး၊ မိတ္ထီလာမြို့တွင် တည်ရှိသော လေကြောင်းနှင့် အာကာသအင်ဂျင်နီယာဘာသာရပ် အထူးပြု အစိုးရပိုင် တက္ကသိုလ်တစ်ခုဖြစ်ပြီး ၂၀၀၂ ခုနှစ် ဖေဖော်ဝါရီလတွင် စတင်တည်ထောင်ခဲ့သည်။</p>
+                <p>MAEU တွင် Propulsion and Flight Vehicles, Avionics, Electrical Systems and Instrumentation, Fuel and Propellant Engineering နှင့် Space Systems Engineering တို့ကို ၆ နှစ်ကြာ BE ဒီဂရီအဖြစ် သင်ကြားပေးပြီး Airport Management အတွက် တစ်နှစ်တာ Post‑Graduate Diploma လည်း ပေးအပ်သည်။</p>
+                <p>တက္ကသိုလ်၏ Vision သည် နိုင်ငံတကာအသိအမှတ်ပြု တက္ကသိုလ်တစ်ခု ဖြစ်လာရန်ဖြစ်ပြီး Mission တွင် Washington Accord နှင့် Quality Management System တို့အပေါ် အခြေခံသည့် နိုင်ငံတကာအတည်ပြု အင်ဂျင်နီယာပညာရေး ဖော်ဆောင်ရေး၊ ICAO နှင့် ပူးပေါင်းဆောင်ရွက်ရေး၊ ပြည်တွင်း/ပြည်ပ လေကြောင်းအဖွဲ့အစည်းများနှင့် ချိတ်ဆက်ရေးတို့ကို အဓိကထားသည်။</p>
+              </div>
+            </div>
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">Why Choose MAEU?</h2>
+              <div class="u-features-grid">
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  </div>
+                  <div>
+                    <h4>Aerospace Specialisation</h4>
+                    <p>Myanmar's <strong>only dedicated aerospace engineering university</strong> — no other institution offers these specialised programs. If you want to build aircraft, design satellites, or work with propulsion systems, MAEU is the single pathway.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+                  </div>
+                  <div>
+                    <h4>Meiktila Air Force Base — Direct Industry Link</h4>
+                    <p>Located right next to the Myanmar Air Force Ground Training Base — students gain direct exposure to operational aircraft, military aviation infrastructure, and real aerospace environments from their first year.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <h4>45.5-Hectare Specialised Campus</h4>
+                    <p>Extensive campus on the Yangon–Mandalay highway with specialised aerospace infrastructure, research facilities, labs, and space for UAV testing and development — unlike any other university campus in Myanmar.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </div>
+                  <div>
+                    <h4>Comprehensive 6-Year B.E. Programs</h4>
+                    <p>Five distinct Bachelor of Engineering tracks covering propulsion, avionics, electrical systems, fuel &amp; propellant, and space systems — one of the longest and most in-depth engineering degrees in Myanmar.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
+                  <div>
+                    <h4>UAV Research Department</h4>
+                    <p>Dedicated Unmanned Aerial Vehicle (UAV / drone) research department — one of the very few institutions in Myanmar with a formal drone-technology research programme, placing MAEU at the frontier of modern aerospace development.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </div>
+                  <div>
+                    <h4>Defense &amp; Aviation Career Pipeline</h4>
+                    <p>The primary institutional pipeline to careers in Myanmar Air Force, government aviation agencies, defense research, and the emerging domestic aerospace industry — MAEU graduates are in a unique position in a highly specialised field.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Gallery</h2>
+              <div class="u-gallery">
+                <div class="u-gallery-item span-2">
+                  <img src="maeus.jpg" alt="MAEU Main Campus" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">MAEU Campus, Meiktila</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="maeu1.jpg" alt="MAEU Facilities" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Engineering Facilities</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="maeu2.jpg" alt="MAEU Labs" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Aerospace Labs</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="maeu3.jpg" alt="MAEU Campus Grounds" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Campus Grounds</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── Programs ── -->
+          <div class="u-panel" id="tab-majors" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Available Programs</h2>
+              <p class="u-section-sub">Five 6-year Bachelor of Engineering specialisations plus a postgraduate diploma in Airport Management</p>
+
+              <div class="u-programs">
+
+                <div class="u-program-card featured">
+                  <div class="u-prog-badge">✈️ Flagship — Propulsion &amp; Flight Vehicles</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div>
+                      <h3>Propulsion and Flight Vehicles (PFV)</h3>
+                      <div class="u-prog-degree">B.E. · 6 Years</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focus on aircraft propulsion systems, flight vehicle design, aerodynamics, and structures — the core aerospace engineering specialisation covering the science of how aircraft and rockets are powered and how they fly.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">6 Years (B.E.)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Min. Marks</span><span class="u-dr-val highlight">High matriculation marks (400+)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Prerequisite</span><span class="u-dr-val">Science stream — strong Maths &amp; Physics</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Aircraft Propulsion System</span>
+                      <span>Fluid Mechanics</span>
+                      <span>Aerodynamics</span>
+                      <span>Aircraft Structure</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge teal-badge">B.E. Specialisation</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon teal">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+                    </div>
+                    <div>
+                      <h3>Avionics (AV)</h3>
+                      <div class="u-prog-degree teal-deg">B.E. · 6 Years</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focus on aircraft electronics, communication, navigation, and control systems — training engineers who design and maintain the electronic brains and senses of modern aircraft.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">6 Years (B.E.)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Career Paths</span><span class="u-dr-val">Avionics engineer, navigation systems specialist, military electronics officer</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Applied Electronic Engineering</span>
+                      <span>Modern Control Systems</span>
+                      <span>Electronic Communication Systems</span>
+                      <span>Navigation Systems</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge green-badge">B.E. Specialisation</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon green">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <div>
+                      <h3>Electrical Systems and Instrumentation (EI)</h3>
+                      <div class="u-prog-degree green-deg">B.E. · 6 Years</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focus on aircraft electrical power, sensors, measurement systems, and instrumentation design — engineers who ensure accurate data measurement, power distribution, and system monitoring on aircraft.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">6 Years (B.E.)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Career Paths</span><span class="u-dr-val">Electrical systems engineer, instrumentation specialist, sensor-design engineer</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Analysis &amp; Design of Measuring Devices</span>
+                      <span>Electro Mechanics</span>
+                      <span>Transducer Engineering</span>
+                      <span>Aircraft Instrument Systems</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge amber-badge">B.E. Specialisation</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon amber">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div>
+                      <h3>Fuel and Propellant Engineering (FPE)</h3>
+                      <div class="u-prog-degree amber-deg">B.E. · 6 Years</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focus on aerospace fuels, propellant technology, rocket fuel systems, explosives testing, and quality control — one of Myanmar's most unique engineering pathways, combining chemistry and aerospace engineering for rocket and aircraft fuel specialists.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">6 Years (B.E.)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Career Paths</span><span class="u-dr-val">Propellant engineer, fuel-systems specialist, defense chemical engineer</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Organic Chemistry</span>
+                      <span>Elements of Rocketry</span>
+                      <span>Aircraft Fuel Systems</span>
+                      <span>Explosives &amp; Propellant Technology</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge violet-badge">B.E. Specialisation</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon violet">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div>
+                      <h3>Space Systems Engineering (SSE)</h3>
+                      <div class="u-prog-degree violet-deg">B.E. · 6 Years</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focus on satellite and spacecraft systems, orbital mechanics, space mission analysis, remote sensing, and satellite communications — Myanmar's only space-engineering degree, training the next generation of specialists for the growing space-technology sector.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">6 Years (B.E.)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Career Paths</span><span class="u-dr-val">Satellite engineer, space mission analyst, remote-sensing specialist, GIS application developer</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Orbital Mechanics &amp; Dynamics</span>
+                      <span>Space Mission Analysis</span>
+                      <span>Remote Sensing &amp; GIS Application</span>
+                      <span>Satellite Communication &amp; Navigation</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card postgrad">
+                  <div class="u-prog-badge">Postgraduate Diploma</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                      <h3>Airport Management (Dip.A.M.)</h3>
+                      <div class="u-prog-degree">Postgraduate Diploma · 1 Year</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">A one-year postgraduate diploma for graduates entering airport operations and management roles — covering airport administration, aviation safety, ground operations, and regulatory compliance. The shortest and most direct pathway to a civil aviation management career.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">1 Year (Postgraduate Diploma)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Career Paths</span><span class="u-dr-val">Airport operations officer, aviation administration, ground-handling management</span></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Research ── -->
+          <div class="u-panel" id="tab-projects" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Research &amp; Projects</h2>
+              <p class="u-section-sub">Aerospace technology development at MAEU — UAV research and Air Force collaboration</p>
+
+              <div class="u-projects">
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Active</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type competition">UAV Research</div>
+                    <h3>Department of UAV Research — Drone Technology Development</h3>
+                    <p>MAEU has a dedicated <strong>Unmanned Aerial Vehicle (UAV) Research Department</strong> — one of the very few formal drone-technology research units at any university in Myanmar. The department focuses on aerospace technology development, UAV design, and flight systems research. Specific project outcomes are not publicly documented, but the unit represents MAEU's commitment to cutting-edge aerospace innovation.</p>
+                    <div class="u-proj-tags">
+                      <span>Drone Technology</span><span>UAV Design</span><span>Flight Systems</span><span>Aerospace Innovation</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type conference">Military Collaboration</div>
+                    <h3>Myanmar Air Force Ground Training Base — Partnership</h3>
+                    <p>Located directly next to the Myanmar Air Force Ground Training Base in Meiktila, MAEU maintains a close institutional partnership with the military aviation sector. This provides students with exposure to operational aircraft and real-world aerospace infrastructure — a practical advantage unavailable at any other university in Myanmar.</p>
+                    <div class="u-proj-tags">
+                      <span>Military Aviation</span><span>Operational Aircraft Exposure</span><span>Defense Research</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Pursuing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">International Accreditation</div>
+                    <h3>Washington Accord &amp; ICAO Alignment</h3>
+                    <p>MAEU is actively pursuing <strong>Washington Accord</strong> accreditation and collaboration with ICAO (International Civil Aviation Organisation) — aligning its engineering programs with internationally recognised standards and opening pathways for graduates to work in global aviation and aerospace industries.</p>
+                    <div class="u-proj-tags">
+                      <span>Washington Accord</span><span>ICAO Standards</span><span>International Recognition</span><span>QMS</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="u-campus-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Specific student project outcomes and research publications are not publicly documented online. For detailed research information, contact MAEU directly at <a href="mailto:info@maeu.edu.mm">info@maeu.edu.mm</a> or visit <a href="https://maeu.edu.mm" target="_blank" rel="noopener">maeu.edu.mm</a>.
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Campus Life ── -->
+          <div class="u-panel" id="tab-campus" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Life at MAEU Meiktila</h2>
+              <p class="u-section-sub">Specialised aerospace engineering campus on the Yangon–Mandalay highway</p>
+
+              <div class="u-campus-grid">
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="maeu4.jpg" alt="MAEU Campus" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>45.5-Hectare Aerospace Campus</h3>
+                    <p>Extensive specialised campus on the Yangon–Mandalay highway — with dedicated aerospace engineering labs, UAV research facilities, and infrastructure unlike any other university in Myanmar.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="maeu5.jpg" alt="Air Force Connection" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Military-Affiliated Environment</h3>
+                    <p>Located next to Myanmar Air Force Ground Training Base — students are exposed to operational military aviation, real aircraft, and defense-engineering environments throughout their studies.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="maeu.jpg" alt="Elite Student Body" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Highly Selective Student Body</h3>
+                    <p>MAEU admits only the highest-scoring science students — creating a focused, elite peer group of future aerospace engineers, avionics specialists, and space-systems engineers working together across a 6-year program.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-campus-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Campus is located on Mandalay Road, Meiktila, Mandalay Division — on the Yangon–Mandalay highway, directly adjacent to the Myanmar Air Force Ground Training Base. Residential facilities are available for students from outside Meiktila.
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Career Paths ── -->
+          <div class="u-panel" id="tab-careers" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Career Opportunities</h2>
+              <p class="u-section-sub">MAEU graduates entering Myanmar's aerospace, defense, and aviation sectors</p>
+
+              <div class="u-careers-grid">
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(37,99,235,.10); --ic-c: #2563eb;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  </div>
+                  <h3>Myanmar Air Force</h3>
+                  <p>The primary career destination for MAEU graduates — as aerospace engineers, avionics technicians, propulsion specialists, and instrumentation officers supporting Myanmar's military aviation fleet.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(220,38,38,.08); --ic-c: #dc2626;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  </div>
+                  <h3>Defense Research &amp; Development</h3>
+                  <p>Join government defense research institutes working on aerospace technology, propulsion systems, UAV development, and military-equipment engineering — applying specialised knowledge from all five B.E. tracks.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(245,158,11,.10); --ic-c: #d97706;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </div>
+                  <h3>Government Aviation Agencies</h3>
+                  <p>Work with the Department of Civil Aviation, Airports Authority, or Myanma Airways as technical engineers, airworthiness inspectors, or aviation safety officers — roles requiring exactly the specialised knowledge MAEU provides.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(20,184,166,.10); --ic-c: #0d9488;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
+                  <h3>UAV &amp; Drone Industry</h3>
+                  <p>Enter the fast-growing unmanned aerial vehicle sector — designing, testing, and operating drone systems for agriculture, surveillance, mapping, logistics, and defense applications.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(124,58,237,.10); --ic-c: #7c3aed;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                  </div>
+                  <h3>Space &amp; Satellite Technology</h3>
+                  <p>Specialise in satellite engineering, remote sensing, and space mission analysis for government agencies and international organisations — a growing field as Myanmar develops its space technology capabilities.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(16,185,129,.10); --ic-c: #059669;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </div>
+                  <h3>Airport Operations &amp; Management</h3>
+                  <p>Dip.A.M. holders step directly into airport operations, ground-handling management, and aviation administration — working at Yangon International Airport, Mandalay International Airport, and other facilities across Myanmar.</p>
+                </div>
+              </div>
+
+              <div class="u-employers">
+                <h4 class="u-employers-title">Primary Career Destinations</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip">Myanmar Air Force</div>
+                  <div class="u-emp-chip">Department of Civil Aviation</div>
+                  <div class="u-emp-chip">Defense Research Institutes</div>
+                  <div class="u-emp-chip">UAV Development Units</div>
+                  <div class="u-emp-chip">Airport Operations</div>
+                  <div class="u-emp-chip">Aerospace Industry</div>
+                  <div class="u-emp-chip">Space Technology Sector</div>
+                  <div class="u-emp-chip">International Aviation</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Alumni ── -->
+          <div class="u-panel" id="tab-alumni" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Alumni &amp; Graduate Outcomes</h2>
+              <p class="u-section-sub">MAEU graduates — Myanmar's only cohort of aerospace-trained engineers</p>
+
+              <div class="u-alumni-grid">
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Aerospace &amp; Avionics Engineers</h4>
+                    <span class="u-alumni-role">Myanmar Air Force &amp; Defense Sector</span>
+                    <p>MAEU graduates are the primary source of trained aerospace and avionics engineers for Myanmar's Air Force — serving as propulsion engineers, avionics officers, instrumentation specialists, and technical staff across the military aviation sector.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Government Aviation Officers</h4>
+                    <span class="u-alumni-role">Department of Civil Aviation</span>
+                    <p>Technical graduates working in airworthiness inspection, aviation safety oversight, and airport technical management — applying their 6-year B.E. training in Myanmar's growing civil aviation sector.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Space &amp; UAV Specialists</h4>
+                    <span class="u-alumni-role">Emerging Technology Sector</span>
+                    <p>Space Systems Engineering and UAV research graduates entering the fast-growing drone and satellite sectors — contributing to remote sensing, GIS, satellite communications, and drone-technology development in Myanmar and beyond.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Airport Management Professionals</h4>
+                    <span class="u-alumni-role">Dip.A.M. Graduates</span>
+                    <p>Postgraduate diploma holders managing airport operations, ground-handling services, and aviation administration at Myanmar's international and domestic airports — one of the most direct and practical career pathways MAEU offers.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-alumni-sectors">
+                <h4 class="u-employers-title">Alumni Active In</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip blue">Myanmar Air Force</div>
+                  <div class="u-emp-chip amber">Defense Research</div>
+                  <div class="u-emp-chip green">Government Aviation</div>
+                  <div class="u-emp-chip teal">UAV &amp; Drone Industry</div>
+                  <div class="u-emp-chip violet">Space Technology</div>
+                  <div class="u-emp-chip">Airport Operations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="u-cta" aria-label="Call to action">
+    <div class="u-cta-orb u-cta-orb-1" aria-hidden="true"></div>
+    <div class="u-cta-orb u-cta-orb-2" aria-hidden="true"></div>
+    <div class="container u-cta-inner">
+      <div class="u-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h2>Ready to Start Your Journey at MAEU?</h2>
+      <p>Explore more universities or reach out to MAEU admissions directly</p>
+      <div class="u-cta-btns">
+        <a href="uni.html" class="u-btn-ghost">Explore More Universities</a>
+        <a href="https://maeu.edu.mm" target="_blank" rel="noopener" class="u-btn-primary">Visit Official Site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="u-footer">
+    <div class="container">
+      <div class="u-footer-grid">
+        <div class="u-footer-brand">
+          <div class="u-footer-logo">HST</div>
+          <span>High Schooler's Tool</span>
+          <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+        </div>
+        <div class="u-footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="u-footer-col">
+          <h4>Contact HST</h4>
+          <p><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener">High Schooler's Tool ARP</a></p>
+        </div>
+      </div>
+      <div class="u-footer-footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    /* ── Hamburger ── */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks  = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ── Tabs ── */
+    var tabs   = document.querySelectorAll('.u-tab');
+    var panels = document.querySelectorAll('.u-panel');
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        panels.forEach(function (p) { p.classList.remove('active'); p.hidden = true; });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById('tab-' + id);
+        if (panel) { panel.classList.add('active'); panel.hidden = false; }
+      });
+    });
+
+    /* ── Language Toggle ── */
+    document.querySelectorAll('.u-lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.dataset.lang;
+        var card = btn.closest('.u-content-card');
+        card.querySelectorAll('.u-lang-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        card.querySelectorAll('[data-lang-content]').forEach(function (el) {
+          el.hidden = el.dataset.langContent !== lang;
+        });
+      });
+    });
+
+    /* ── Parallax hero bg ── */
+    var heroBg = document.querySelector('.u-hero-bg');
+    if (heroBg) {
+      window.addEventListener('scroll', function () {
+        heroBg.style.transform = 'scale(1.04) translateY(' + (window.scrollY * 0.22) + 'px)';
+      }, { passive: true });
+    }
+
+    /* ── Scroll reveal ── */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.u-stat, .u-feature, .u-program-card, .u-project-item, .u-career-card, .u-alumni-card').forEach(function (el) {
+      io.observe(el);
+    });
+  })();
+  </script>
+</body>
+</html>
