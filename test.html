@@ -1,0 +1,1764 @@
+<div
+  class="export-wrapper"
+  style="
+    width: 1440px;
+    min-height: 812px;
+    position: relative;
+    font-family: var(--font-family-body);
+    background-color: var(--background);
+  "
+>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>High Schooler's Tool — Myanmar University Guide</title>
+
+      <style id="css-reset">
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        .export-wrapper {
+          font-family: var(--font-family-body);
+          background-color: var(--background);
+          color: var(--foreground);
+          line-height: 1.5;
+          -webkit-font-smoothing: antialiased;
+        }
+      </style>
+
+      <style id="css-vars">
+        :root {
+          --background: #ffffff;
+          --foreground: #0f172a;
+          --muted: #f8fafc;
+          --muted-foreground: #475569;
+          --border: #e2e8f0;
+          --input: #e2e8f0;
+          --primary: #2563eb;
+          --primary-foreground: #ffffff;
+          --secondary: #f1f5f9;
+          --secondary-foreground: #0f172a;
+          --success: #10b981;
+          --success-foreground: #ffffff;
+          --accent: #f8fafc;
+          --accent-foreground: #0f172a;
+          --destructive: #ef4444;
+          --destructive-foreground: #ffffff;
+          --warning: #f59e0b;
+          --warning-foreground: #ffffff;
+          --card: #ffffff;
+          --card-foreground: #0f172a;
+          --sidebar: #f8fafc;
+          --sidebar-foreground: #0f172a;
+          --sidebar-primary: #2563eb;
+          --sidebar-primary-foreground: #ffffff;
+          --radius-sm: 6px;
+          --radius-md: 8px;
+          --radius-lg: 12px;
+          --radius-xl: 16px;
+          --font-family-body: "Inter", system-ui, -apple-system, sans-serif;
+        }
+      </style>
+
+      <style id="utility-styles">
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+        .nav-link {
+          color: var(--muted-foreground);
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          padding: 8px 12px;
+          border-radius: var(--radius-sm);
+        }
+        .nav-link.active {
+          color: var(--foreground);
+          background: var(--secondary);
+        }
+        .filter-chip {
+          background: var(--card);
+          border: 1px solid var(--border);
+          color: var(--secondary-foreground);
+          padding: 6px 16px;
+          border-radius: 999px;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Navigation Bar -->
+      <nav
+        style="
+          position: sticky;
+          top: 0;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(8px);
+          border-bottom: 1px solid var(--border);
+          z-index: 100;
+          height: 72px;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <div
+          class="container"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <!-- Logo -->
+          <div
+            data-media-type="banani-button"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              cursor: pointer;
+            "
+          >
+            <img
+              src="hstlogo.jpg"
+              alt="HST Logo"
+              style="
+                width: 36px;
+                height: 36px;
+                border-radius: var(--radius-sm);
+                object-fit: cover;
+                border: 1px solid var(--border);
+              "
+            />
+            <div style="display: flex; flex-direction: column">
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: 16px;
+                  color: var(--foreground);
+                  line-height: 1.2;
+                "
+                >HST</span
+              >
+              <span
+                style="
+                  font-size: 12px;
+                  color: var(--muted-foreground);
+                  font-weight: 500;
+                "
+                >High Schooler's Tool</span
+              >
+            </div>
+          </div>
+
+          <!-- Nav Links -->
+          <div style="display: flex; gap: 4px; align-items: center">
+            <div data-media-type="banani-button" class="nav-link active">
+              Home
+            </div>
+            <div data-media-type="banani-button" class="nav-link">
+              Universities
+            </div>
+            <div data-media-type="banani-button" class="nav-link">
+              Career Journey
+            </div>
+            <div data-media-type="banani-button" class="nav-link">Courses</div>
+            <div data-media-type="banani-button" class="nav-link">
+              Study Mode
+            </div>
+            <div data-media-type="banani-button" class="nav-link">
+              Scholarships
+            </div>
+            <div data-media-type="banani-button" class="nav-link">About</div>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <!-- Hero Section -->
+        <section
+          style="
+            padding: 100px 24px 80px;
+            text-align: center;
+            background: radial-gradient(
+              circle at center top,
+              var(--secondary) 0%,
+              var(--background) 100%
+            );
+          "
+        >
+          <div class="container">
+            <div style="max-width: 800px; margin: 0 auto">
+              <div
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  padding: 6px 16px;
+                  border-radius: 999px;
+                  background: var(--card);
+                  color: var(--primary);
+                  font-size: 13px;
+                  font-weight: 600;
+                  margin-bottom: 24px;
+                  border: 1px solid var(--border);
+                "
+              >
+                Orcaella Institute of Technology
+              </div>
+
+              <h1
+                style="
+                  font-size: 56px;
+                  font-weight: 800;
+                  line-height: 1.1;
+                  letter-spacing: -0.02em;
+                  margin-bottom: 24px;
+                  color: var(--foreground);
+                "
+              >
+                Find Your Perfect <br />
+                <span style="color: var(--primary)">University Path</span>
+              </h1>
+
+              <p
+                style="
+                  font-size: 18px;
+                  color: var(--muted-foreground);
+                  margin-bottom: 48px;
+                  line-height: 1.6;
+                  max-width: 600px;
+                  margin-left: auto;
+                  margin-right: auto;
+                "
+              >
+                A free, student‑built tool that helps Myanmar high schoolers
+                pick universities and courses, avoid common mistakes, and plan
+                their next steps.
+              </p>
+
+              <!-- Stats -->
+              <div
+                style="
+                  display: flex;
+                  gap: 40px;
+                  justify-content: center;
+                  margin-bottom: 56px;
+                "
+              >
+                <div style="text-align: center">
+                  <div
+                    style="
+                      font-size: 36px;
+                      font-weight: 800;
+                      color: var(--foreground);
+                      line-height: 1;
+                    "
+                  >
+                    180+
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      font-weight: 500;
+                      color: var(--muted-foreground);
+                      margin-top: 8px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    Universities
+                  </div>
+                </div>
+                <div style="width: 1px; background: var(--border)"></div>
+                <div style="text-align: center">
+                  <div
+                    style="
+                      font-size: 36px;
+                      font-weight: 800;
+                      color: var(--foreground);
+                      line-height: 1;
+                    "
+                  >
+                    500+
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      font-weight: 500;
+                      color: var(--muted-foreground);
+                      margin-top: 8px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    Majors
+                  </div>
+                </div>
+              </div>
+
+              <!-- Search Box -->
+              <div
+                style="
+                  background: var(--card);
+                  border: 1px solid var(--border);
+                  border-radius: var(--radius-lg);
+                  padding: 8px;
+                  display: flex;
+                  align-items: center;
+                  box-shadow:
+                    0 4px 6px -1px rgb(0 0 0 / 0.05),
+                    0 2px 4px -2px rgb(0 0 0 / 0.05);
+                  max-width: 680px;
+                  margin: 0 auto 32px;
+                "
+              >
+                <div
+                  style="
+                    padding: 0 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <div
+                    style="
+                      width: 20px;
+                      height: 20px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:search"
+                      style="font-size: 20px; color: var(--muted-foreground)"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search university, major, or location..."
+                  style="
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    font-size: 16px;
+                    font-family: var(--font-family-body);
+                    color: var(--foreground);
+                    background: transparent;
+                    padding: 12px 0;
+                  "
+                />
+                <div
+                  data-media-type="banani-button"
+                  style="
+                    background: var(--primary);
+                    color: var(--primary-foreground);
+                    padding: 12px 28px;
+                    border-radius: var(--radius-md);
+                    font-weight: 600;
+                    font-size: 15px;
+                    cursor: pointer;
+                  "
+                >
+                  Search
+                </div>
+              </div>
+
+              <!-- Quick Filters -->
+              <div
+                style="
+                  display: flex;
+                  gap: 12px;
+                  justify-content: center;
+                  align-items: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: var(--muted-foreground);
+                    font-weight: 500;
+                  "
+                  >Popular:</span
+                >
+                <div data-media-type="banani-button" class="filter-chip">
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:laptop"
+                      style="font-size: 16px; color: var(--muted-foreground)"
+                    ></iconify-icon>
+                  </div>
+                  Computer
+                </div>
+                <div data-media-type="banani-button" class="filter-chip">
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:settings"
+                      style="font-size: 16px; color: var(--muted-foreground)"
+                    ></iconify-icon>
+                  </div>
+                  Engineering
+                </div>
+                <div data-media-type="banani-button" class="filter-chip">
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:stethoscope"
+                      style="font-size: 16px; color: var(--muted-foreground)"
+                    ></iconify-icon>
+                  </div>
+                  Medicine
+                </div>
+                <div data-media-type="banani-button" class="filter-chip">
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:bar-chart-3"
+                      style="font-size: 16px; color: var(--muted-foreground)"
+                    ></iconify-icon>
+                  </div>
+                  Business
+                </div>
+              </div>
+            </div>
+
+            <!-- Promo Carousel -->
+            <div
+              class="hide-scrollbar"
+              style="
+                display: flex;
+                gap: 24px;
+                overflow-x: auto;
+                padding: 16px 4px 32px;
+                max-width: 1200px;
+                margin: 64px auto 0;
+                scroll-snap-type: x mandatory;
+              "
+            >
+              <div
+                style="
+                  min-width: 60%;
+                  flex-shrink: 0;
+                  border-radius: var(--radius-lg);
+                  overflow: hidden;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                  scroll-snap-align: center;
+                "
+              >
+                <img
+                  src="newbanner4.jpg"
+                  alt="Banner 1"
+                  style="
+                    width: 100%;
+                    aspect-ratio: 21/9;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+              <div
+                style="
+                  min-width: 60%;
+                  flex-shrink: 0;
+                  border-radius: var(--radius-lg);
+                  overflow: hidden;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                  scroll-snap-align: center;
+                "
+              >
+                <img
+                  src="hstbanner.jpg"
+                  alt="Banner 2"
+                  style="
+                    width: 100%;
+                    aspect-ratio: 21/9;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+              <div
+                style="
+                  min-width: 60%;
+                  flex-shrink: 0;
+                  border-radius: var(--radius-lg);
+                  overflow: hidden;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                  scroll-snap-align: center;
+                "
+              >
+                <img
+                  src="newbanner3.jpg"
+                  alt="Banner 3"
+                  style="
+                    width: 100%;
+                    aspect-ratio: 21/9;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+              <div
+                style="
+                  min-width: 60%;
+                  flex-shrink: 0;
+                  border-radius: var(--radius-lg);
+                  overflow: hidden;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                  scroll-snap-align: center;
+                "
+              >
+                <img
+                  src="hstbanner2.jpg"
+                  alt="Banner 4"
+                  style="
+                    width: 100%;
+                    aspect-ratio: 21/9;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+              <div
+                style="
+                  min-width: 60%;
+                  flex-shrink: 0;
+                  border-radius: var(--radius-lg);
+                  overflow: hidden;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                  scroll-snap-align: center;
+                "
+              >
+                <img
+                  src="hstbanner5.jpg"
+                  alt="Banner 5"
+                  style="
+                    width: 100%;
+                    aspect-ratio: 21/9;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+              <div
+                style="
+                  min-width: 60%;
+                  flex-shrink: 0;
+                  border-radius: var(--radius-lg);
+                  overflow: hidden;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                  scroll-snap-align: center;
+                "
+              >
+                <img
+                  src="hstbanner1.jpg"
+                  alt="Banner 6"
+                  style="
+                    width: 100%;
+                    aspect-ratio: 21/9;
+                    object-fit: cover;
+                    display: block;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section style="padding: 100px 24px; background: var(--background)">
+          <div class="container">
+            <div style="text-align: center; margin-bottom: 64px">
+              <div
+                style="
+                  color: var(--primary);
+                  font-weight: 700;
+                  font-size: 13px;
+                  margin-bottom: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                "
+              >
+                Everything you need
+              </div>
+              <h2
+                style="
+                  font-size: 36px;
+                  font-weight: 800;
+                  color: var(--foreground);
+                  margin-bottom: 16px;
+                  letter-spacing: -0.02em;
+                "
+              >
+                What You'll Discover
+              </h2>
+              <p
+                style="
+                  font-size: 18px;
+                  color: var(--muted-foreground);
+                  max-width: 600px;
+                  margin: 0 auto;
+                  line-height: 1.6;
+                "
+              >
+                All the tools a Myanmar student needs in one place — completely
+                free.
+              </p>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 24px;
+              "
+            >
+              <!-- Feature 1 -->
+              <div
+                data-media-type="banani-button"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  padding: 32px;
+                  border-radius: var(--radius-lg);
+                  border: 1px solid var(--border);
+                  background: var(--card);
+                  text-align: left;
+                  cursor: pointer;
+                "
+              >
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    border-radius: var(--radius-md);
+                    background: rgba(37, 99, 235, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:graduation-cap"
+                      style="font-size: 24px; color: var(--primary)"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <h3
+                  style="
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--foreground);
+                    margin-bottom: 12px;
+                  "
+                >
+                  All Universities
+                </h3>
+                <p
+                  style="
+                    font-size: 15px;
+                    color: var(--muted-foreground);
+                    line-height: 1.6;
+                    margin-bottom: 24px;
+                    flex-grow: 1;
+                  "
+                >
+                  Complete database of universities across all Myanmar regions
+                  with detailed profiles
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: var(--primary);
+                  "
+                >
+                  Explore
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:arrow-right"
+                      style="font-size: 16px; color: var(--primary)"
+                    ></iconify-icon>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 2 -->
+              <div
+                data-media-type="banani-button"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  padding: 32px;
+                  border-radius: var(--radius-lg);
+                  border: 1px solid var(--border);
+                  background: var(--card);
+                  text-align: left;
+                  cursor: pointer;
+                "
+              >
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    border-radius: var(--radius-md);
+                    background: rgba(139, 92, 246, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:book-open"
+                      style="font-size: 24px; color: #8b5cf6"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <h3
+                  style="
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--foreground);
+                    margin-bottom: 12px;
+                  "
+                >
+                  Major Information
+                </h3>
+                <p
+                  style="
+                    font-size: 15px;
+                    color: var(--muted-foreground);
+                    line-height: 1.6;
+                    margin-bottom: 24px;
+                    flex-grow: 1;
+                  "
+                >
+                  Explore majors, entrance requirements, and prerequisites for
+                  every program
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #8b5cf6;
+                  "
+                >
+                  Browse Majors
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:arrow-right"
+                      style="font-size: 16px; color: #8b5cf6"
+                    ></iconify-icon>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 3 -->
+              <div
+                data-media-type="banani-button"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  padding: 32px;
+                  border-radius: var(--radius-lg);
+                  border: 1px solid var(--border);
+                  background: var(--card);
+                  text-align: left;
+                  cursor: pointer;
+                "
+              >
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    border-radius: var(--radius-md);
+                    background: rgba(245, 158, 11, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:award"
+                      style="font-size: 24px; color: #f59e0b"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <h3
+                  style="
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--foreground);
+                    margin-bottom: 12px;
+                  "
+                >
+                  Scholarship Guide
+                </h3>
+                <p
+                  style="
+                    font-size: 15px;
+                    color: var(--muted-foreground);
+                    line-height: 1.6;
+                    margin-bottom: 24px;
+                    flex-grow: 1;
+                  "
+                >
+                  Discover available scholarships, eligibility criteria, and
+                  application deadlines
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #f59e0b;
+                  "
+                >
+                  Find Scholarships
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:arrow-right"
+                      style="font-size: 16px; color: #f59e0b"
+                    ></iconify-icon>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 4 -->
+              <div
+                data-media-type="banani-button"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  padding: 32px;
+                  border-radius: var(--radius-lg);
+                  border: 1px solid var(--border);
+                  background: var(--card);
+                  text-align: left;
+                  cursor: pointer;
+                "
+              >
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    border-radius: var(--radius-md);
+                    background: rgba(16, 185, 129, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:briefcase"
+                      style="font-size: 24px; color: #10b981"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <h3
+                  style="
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--foreground);
+                    margin-bottom: 12px;
+                  "
+                >
+                  Career Paths
+                </h3>
+                <p
+                  style="
+                    font-size: 15px;
+                    color: var(--muted-foreground);
+                    line-height: 1.6;
+                    margin-bottom: 24px;
+                    flex-grow: 1;
+                  "
+                >
+                  Learn about diverse careers beyond traditional doctor and
+                  engineer roles
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #10b981;
+                  "
+                >
+                  Explore Careers
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:arrow-right"
+                      style="font-size: 16px; color: #10b981"
+                    ></iconify-icon>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 5 -->
+              <div
+                data-media-type="banani-button"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  padding: 32px;
+                  border-radius: var(--radius-lg);
+                  border: 1px solid var(--border);
+                  background: var(--card);
+                  text-align: left;
+                  cursor: pointer;
+                "
+              >
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    border-radius: var(--radius-md);
+                    background: rgba(244, 63, 94, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:target"
+                      style="font-size: 24px; color: #f43f5e"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <h3
+                  style="
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--foreground);
+                    margin-bottom: 12px;
+                  "
+                >
+                  Free Courses
+                </h3>
+                <p
+                  style="
+                    font-size: 15px;
+                    color: var(--muted-foreground);
+                    line-height: 1.6;
+                    margin-bottom: 24px;
+                    flex-grow: 1;
+                  "
+                >
+                  Access free English, GED, and subject courses taught by expert
+                  Myanmar teachers
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #f43f5e;
+                  "
+                >
+                  View Courses
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:arrow-right"
+                      style="font-size: 16px; color: #f43f5e"
+                    ></iconify-icon>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 6 -->
+              <div
+                data-media-type="banani-button"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  padding: 32px;
+                  border-radius: var(--radius-lg);
+                  border: 1px solid var(--border);
+                  background: var(--card);
+                  text-align: left;
+                  cursor: pointer;
+                "
+              >
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    border-radius: var(--radius-md);
+                    background: rgba(6, 182, 212, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:timer"
+                      style="font-size: 24px; color: #06b6d4"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <h3
+                  style="
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--foreground);
+                    margin-bottom: 12px;
+                  "
+                >
+                  Study Mode
+                </h3>
+                <p
+                  style="
+                    font-size: 15px;
+                    color: var(--muted-foreground);
+                    line-height: 1.6;
+                    margin-bottom: 24px;
+                    flex-grow: 1;
+                  "
+                >
+                  Pomodoro timer, task manager, and focus music to supercharge
+                  your study sessions
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #06b6d4;
+                  "
+                >
+                  Start Studying
+                  <div
+                    style="
+                      width: 16px;
+                      height: 16px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <iconify-icon
+                      icon="lucide:arrow-right"
+                      style="font-size: 16px; color: #06b6d4"
+                    ></iconify-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section
+          style="
+            padding: 100px 24px;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            text-align: center;
+          "
+        >
+          <div class="container">
+            <div style="max-width: 800px; margin: 0 auto">
+              <div
+                style="
+                  display: inline-block;
+                  padding: 6px 16px;
+                  border-radius: 999px;
+                  background: rgba(255, 255, 255, 0.15);
+                  font-size: 14px;
+                  font-weight: 500;
+                  margin-bottom: 32px;
+                "
+              >
+                ပြောင်းလဲခြင်းကို
+                ရှောင်လွဲ၍မရ။သို့သော်တိုးတတ်ဖွံဖြိုးမှုသည်ကားရွေးချယ်မှုသာဖြစ်တော့သည်။
+              </div>
+              <h2
+                style="
+                  font-size: 40px;
+                  font-weight: 800;
+                  margin-bottom: 24px;
+                  letter-spacing: -0.02em;
+                "
+              >
+                Ready to Plan Your Future?
+              </h2>
+              <p
+                style="
+                  font-size: 18px;
+                  color: rgba(255, 255, 255, 0.9);
+                  margin-bottom: 40px;
+                  line-height: 1.6;
+                "
+              >
+                Join thousands of Myanmar students already using HST to find
+                their path.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  gap: 16px;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <div
+                  data-media-type="banani-button"
+                  style="
+                    background: var(--primary-foreground);
+                    color: var(--primary);
+                    padding: 14px 32px;
+                    border-radius: var(--radius-md);
+                    font-weight: 600;
+                    font-size: 16px;
+                    cursor: pointer;
+                  "
+                >
+                  Explore Universities
+                </div>
+                <div
+                  data-media-type="banani-button"
+                  style="
+                    background: transparent;
+                    border: 1.5px solid rgba(255, 255, 255, 0.3);
+                    color: var(--primary-foreground);
+                    padding: 14px 32px;
+                    border-radius: var(--radius-md);
+                    font-weight: 600;
+                    font-size: 16px;
+                    cursor: pointer;
+                  "
+                >
+                  View Courses
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        style="padding: 80px 24px 40px; background: #0f172a; color: #94a3b8"
+      >
+        <div class="container">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 2fr 1fr 1fr;
+              gap: 64px;
+              margin-bottom: 64px;
+            "
+          >
+            <!-- Brand -->
+            <div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  margin-bottom: 24px;
+                "
+              >
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    background: var(--primary);
+                    border-radius: var(--radius-sm);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: 700;
+                    font-size: 14px;
+                  "
+                >
+                  HST
+                </div>
+                <div style="font-size: 18px; font-weight: 700; color: white">
+                  High Schooler's Tool
+                </div>
+              </div>
+              <p
+                style="
+                  font-size: 15px;
+                  line-height: 1.6;
+                  margin-bottom: 32px;
+                  max-width: 360px;
+                "
+              >
+                Empowering Myanmar students to make informed university and
+                career choices.
+              </p>
+              <div style="display: flex; gap: 12px">
+                <div
+                  data-media-type="banani-button"
+                  style="
+                    padding: 8px 16px;
+                    border-radius: var(--radius-sm);
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 500;
+                    cursor: pointer;
+                  "
+                >
+                  Facebook
+                </div>
+                <div
+                  data-media-type="banani-button"
+                  style="
+                    padding: 8px 16px;
+                    border-radius: var(--radius-sm);
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 500;
+                    cursor: pointer;
+                  "
+                >
+                  Email
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+              <h4
+                style="
+                  font-size: 12px;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: rgba(255, 255, 255, 0.4);
+                  margin-bottom: 20px;
+                "
+              >
+                Quick Links
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <div
+                  data-media-type="banani-button"
+                  style="font-size: 14px; color: #94a3b8; cursor: pointer"
+                >
+                  Home
+                </div>
+                <div
+                  data-media-type="banani-button"
+                  style="font-size: 14px; color: #94a3b8; cursor: pointer"
+                >
+                  Universities
+                </div>
+                <div
+                  data-media-type="banani-button"
+                  style="font-size: 14px; color: #94a3b8; cursor: pointer"
+                >
+                  Career Journey
+                </div>
+                <div
+                  data-media-type="banani-button"
+                  style="font-size: 14px; color: #94a3b8; cursor: pointer"
+                >
+                  Courses
+                </div>
+                <div
+                  data-media-type="banani-button"
+                  style="font-size: 14px; color: #94a3b8; cursor: pointer"
+                >
+                  Study Mode
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+              <h4
+                style="
+                  font-size: 12px;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: rgba(255, 255, 255, 0.4);
+                  margin-bottom: 20px;
+                "
+              >
+                Contact
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <div style="font-size: 14px; color: #94a3b8">
+                  High Schooler's Tool
+                </div>
+                <div style="font-size: 14px; color: #94a3b8">
+                  highschoolertoolmm@gmail.com
+                </div>
+                <div style="font-size: 14px; color: #94a3b8">
+                  facebook.com/HSTool
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              border-top: 1px solid #1e293b;
+              padding-top: 32px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-size: 14px;
+            "
+          >
+            <div>© 2026 High Schooler's Tool</div>
+            <div>Built with ❤️ for Myanmar students</div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Floating Action Buttons -->
+      <div
+        style="
+          position: fixed;
+          bottom: 32px;
+          right: 32px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          z-index: 50;
+        "
+      >
+        <!-- Ambassador -->
+        <div
+          data-media-type="banani-button"
+          style="
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #6366f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+              0 10px 15px -3px rgb(0 0 0 / 0.1),
+              0 4px 6px -4px rgb(0 0 0 / 0.1);
+            cursor: pointer;
+          "
+          title="Become an Ambassador"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+
+        <!-- Report -->
+        <div
+          data-media-type="banani-button"
+          style="
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #f59e0b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+              0 10px 15px -3px rgb(0 0 0 / 0.1),
+              0 4px 6px -4px rgb(0 0 0 / 0.1);
+            cursor: pointer;
+          "
+          title="Report Data or Collaborate"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </div>
+
+        <!-- Verify -->
+        <div
+          data-media-type="banani-button"
+          style="
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+              0 10px 15px -3px rgb(0 0 0 / 0.1),
+              0 4px 6px -4px rgb(0 0 0 / 0.1);
+            cursor: pointer;
+          "
+          title="Verify Certificate"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Verify Modal (Hidden by default) -->
+      <div
+        id="hst-modal"
+        style="
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 23, 42, 0.8);
+          z-index: 1000;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div
+          style="
+            background: var(--card);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 400px;
+            padding: 32px;
+            text-align: center;
+            position: relative;
+          "
+        >
+          <div
+            data-media-type="banani-button"
+            style="
+              position: absolute;
+              top: 16px;
+              right: 16px;
+              width: 32px;
+              height: 32px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+            "
+          >
+            <div
+              style="
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <iconify-icon
+                icon="lucide:x"
+                style="font-size: 20px; color: var(--muted-foreground)"
+              ></iconify-icon>
+            </div>
+          </div>
+          <div
+            style="
+              width: 64px;
+              height: 64px;
+              border-radius: 50%;
+              background: var(--secondary);
+              margin: 0 auto 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <iconify-icon
+                icon="lucide:shield-check"
+                style="font-size: 32px; color: var(--primary)"
+              ></iconify-icon>
+            </div>
+          </div>
+          <h2
+            style="
+              font-size: 24px;
+              font-weight: 700;
+              color: var(--foreground);
+              margin-bottom: 12px;
+            "
+          >
+            Verify Certificate
+          </h2>
+          <p
+            style="
+              font-size: 15px;
+              color: var(--muted-foreground);
+              line-height: 1.6;
+              margin-bottom: 32px;
+            "
+          >
+            Scan the QR code or enter the Certificate ID to confirm its
+            authenticity.
+          </p>
+          <div
+            data-media-type="banani-button"
+            style="
+              display: block;
+              width: 100%;
+              padding: 14px;
+              background: var(--primary);
+              color: var(--primary-foreground);
+              border-radius: var(--radius-md);
+              font-weight: 600;
+              font-size: 15px;
+              cursor: pointer;
+            "
+          >
+            Go to Verification Page
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+  <style>
+    :root {
+      --background: #f8faff;
+      --foreground: #0f172a;
+      --border: #00000014;
+      --input: #ffffff;
+      --primary: #1e40af;
+      --primary-foreground: #ffffff;
+      --secondary: #eef2ff;
+      --secondary-foreground: #1e293b;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --success: #059669;
+      --success-foreground: #ffffff;
+      --accent: #8b5cf6;
+      --accent-foreground: #ffffff;
+      --destructive: #dc2626;
+      --destructive-foreground: #ffffff;
+      --warning: #f59e0b;
+      --warning-foreground: #1f2937;
+      --card: #ffffff;
+      --card-foreground: #0f172a;
+      --sidebar: #f1f5f9;
+      --sidebar-foreground: #0f172a;
+      --sidebar-primary: #e9eeff;
+      --sidebar-primary-foreground: #1e40af;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 20px;
+      --font-family-body: Inter;
+    }
+  </style>
+</div>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Schooler's Tool — Myanmar University Guide</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f7fb;
+      --surface: rgba(255,255,255,.78);
+      --surface-solid: #ffffff;
+      --text: #111827;
+      --text-soft: #526073;
+      --muted: #8b95a7;
+      --line: rgba(17,24,39,.08);
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --indigo: #4f46e5;
+      --violet: #7c3aed;
+      --green: #10b981;
+      --orange: #f97316;
+      --rose: #e11d48;
+      --cyan: #0891b2;
+      --shadow-sm: 0 8px 28px rgba(15,23,42,.08);
+      --shadow-md: 0 22px 70px rgba(15,23,42,.13);
+      --shadow-lg: 0 34px 110px rgba(37,99,235,.20);
+      --radius: 22px;
+      --radius-xl: 34px;
+      --font: 'Inter', 'Noto Sans Myanmar', 'Myanmar Text', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { min-height: 100vh; font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: -180px -120px auto -120px; height: 620px; background: radial-gradient(circle at 18% 20%, rgba(37,99,235,.18), transparent 32%), radial-gradient(circle at 76% 12%, rgba(124,58,237,.16), transparent 28%), radial-gradient(circle at 48% 38%, rgba(16,185,129,.10), transparent 28%); pointer-events: none; z-index: -2; }
+    body::after { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(17,24,39,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(17,24,39,.035) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 58%); pointer-events: none; z-index: -1; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .navbar { position: sticky; top: 0; z-index: 50; padding: 12px 0; }
+    .nav-card { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px 9px 12px; border: 1px solid rgba(255,255,255,.82); border-radius: 999px; background: rgba(255,255,255,.74); box-shadow: 0 16px 48px rgba(15,23,42,.10); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); }
+    .logo { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .logo-img { width: 42px; height: 42px; border-radius: 15px; object-fit: cover; background: #fff; border: 1px solid var(--line); }
+    .logo-text h2 { font-size: 15px; line-height: 1; font-weight: 900; letter-spacing: .08em; }
+    .logo-text span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 650; white-space: nowrap; }
+    .nav-links { display: none; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(245,247,251,.76); border: 1px solid rgba(17,24,39,.05); list-style: none; }
+    .nav-links a { display: block; padding: 9px 11px; border-radius: 999px; color: #546174; font-size: 12px; font-weight: 750; transition: background .2s, color .2s, box-shadow .2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { background: #fff; color: var(--blue); box-shadow: 0 7px 20px rgba(15,23,42,.07); }
+    .hamburger { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 999px; background: #111827; color: white; }
+    .hamburger-lines { width: 18px; display: grid; gap: 4px; }
+    .hamburger-lines span { height: 2px; border-radius: 999px; background: currentColor; transition: transform .25s, opacity .2s; }
+    .hamburger.open .hamburger-lines span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open .hamburger-lines span:nth-child(2) { opacity: 0; }
+    .hamburger.open .hamburger-lines span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-panel { display: none; margin-top: 10px; border: 1px solid rgba(255,255,255,.82); border-radius: 28px; background: rgba(255,255,255,.92); box-shadow: var(--shadow-md); overflow: hidden; backdrop-filter: blur(20px); }
+    .mobile-panel.open { display: block; }
+    .mobile-panel a { display: flex; align-items: center; justify-content: space-between; padding: 15px 18px; border-bottom: 1px solid rgba(17,24,39,.06); color: #344055; font-weight: 800; }
+    .mobile-panel a:last-child { border-bottom: 0; }
+    .hero { padding: 54px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 34px; align-items: center; }
+    .hero-copy { text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.82); color: var(--blue); border: 1px solid rgba(37,99,235,.12); box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 850; }
+    .eyebrow i { width: 8px; height: 8px; border-radius: 99px; background: #22c55e; box-shadow: 0 0 0 6px rgba(34,197,94,.12); }
+    h1 { margin: 20px auto 16px; max-width: 840px; font-size: clamp(2.55rem, 7.2vw, 6.1rem); line-height: .97; letter-spacing: -.07em; font-weight: 900; }
+    .gradient-text { background: linear-gradient(115deg, #111827 0%, #2563eb 42%, #7c3aed 78%, #111827 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-copy > p { max-width: 660px; margin: 0 auto; color: var(--text-soft); font-size: clamp(1rem, 2vw, 1.12rem); line-height: 1.85; }
+    .beginner-note { margin: 22px auto 0; max-width: 640px; display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 22px; text-align: left; background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-sm); }
+    .beginner-note svg { width: 22px; height: 22px; color: var(--green); flex: 0 0 auto; margin-top: 2px; }
+    .beginner-note strong { display: block; font-size: 14px; }
+    .beginner-note span { display: block; margin-top: 3px; color: var(--text-soft); font-size: 13px; line-height: 1.6; }
+    .hero-stats { margin: 26px auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 430px; }
+    .hero-stat { padding: 16px 14px; border-radius: 24px; background: rgba(255,255,255,.76); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-sm); }
+    .hero-stat strong { display: block; font-size: 28px; line-height: 1; font-weight: 900; letter-spacing: -.05em; }
+    .hero-stat span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .search-panel { margin: 28px auto 0; max-width: 720px; padding: 10px; border-radius: 30px; background: rgba(255,255,255,.74); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-md); backdrop-filter: blur(20px); }
+    .search-input-group { display: flex; align-items: center; gap: 8px; border-radius: 22px; background: #fff; border: 1px solid rgba(17,24,39,.07); padding: 8px; }
+    .search-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 16px; color: var(--blue); background: #eff6ff; }
+    .search-input-group input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 15px; padding: 11px 4px; }
+    .search-btn { min-height: 44px; border: 0; border-radius: 18px; padding: 0 18px; background: var(--blue); color: #fff; font-weight: 850; box-shadow: 0 12px 28px rgba(37,99,235,.26); transition: transform .2s, background .2s; }
+    .search-btn:hover { transform: translateY(-1px); background: var(--blue-dark); }
+    .search-help { margin: 10px 10px 2px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .quick-filters { margin-top: 13px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .filter-chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(17,24,39,.07); border-radius: 999px; padding: 9px 12px; background: rgba(255,255,255,.76); color: #344055; font-size: 13px; font-weight: 800; transition: transform .2s, background .2s, box-shadow .2s; }
+    .filter-chip:hover { transform: translateY(-1px); background: #fff; box-shadow: var(--shadow-sm); }
+    .hero-visual { position: relative; min-height: 420px; display: grid; place-items: center; }
+    .phone { width: min(328px, 82vw); aspect-ratio: 9/18.4; padding: 12px; border-radius: 50px; background: linear-gradient(145deg, #1f2937, #050816); box-shadow: 0 44px 100px rgba(15,23,42,.28), inset 0 0 0 1px rgba(255,255,255,.12); transform: rotate(3deg); }
+    .phone-screen { height: 100%; overflow: hidden; border-radius: 39px; background: linear-gradient(180deg, #f9fbff, #eef4ff); position: relative; }
+    .island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 92px; height: 27px; border-radius: 999px; background: #0b0f1a; z-index: 2; }
+    .phone-content { padding: 56px 17px 18px; }
+    .phone-hero { padding: 20px 17px; border-radius: 28px; color: #fff; background: radial-gradient(circle at 18% 10%, rgba(255,255,255,.30), transparent 26%), linear-gradient(135deg, #2563eb, #7c3aed); box-shadow: 0 22px 46px rgba(37,99,235,.26); }
+    .phone-hero small { display: inline-flex; padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.18); font-size: 10px; font-weight: 850; }
+    .phone-hero h3 { margin-top: 15px; font-size: 25px; line-height: 1.08; letter-spacing: -.05em; }
+    .phone-hero p { margin-top: 9px; color: rgba(255,255,255,.82); font-size: 11px; line-height: 1.55; }
+    .phone-list { display: grid; gap: 10px; margin-top: 14px; }
+    .phone-row { display: flex; align-items: center; gap: 10px; padding: 11px; border-radius: 18px; background: rgba(255,255,255,.78); border: 1px solid rgba(17,24,39,.05); box-shadow: 0 10px 24px rgba(15,23,42,.06); }
+    .phone-row-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 13px; color: var(--blue); background: #eff6ff; }
+    .phone-row svg { width: 18px; height: 18px; }
+    .phone-row strong { display: block; font-size: 12px; }
+    .phone-row span { display: block; margin-top: 1px; color: var(--muted); font-size: 10px; }
+    .floating-tip { position: absolute; border-radius: 24px; padding: 14px; background: rgba(255,255,255,.80); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-md); backdrop-filter: blur(20px); animation: float 5.6s ease-in-out infinite; }
+    .floating-tip.one { left: 0; top: 46px; width: 170px; }
+    .floating-tip.two { right: 0; bottom: 58px; width: 176px; animation-delay: -2s; }
+    .floating-tip b { display: block; font-size: 23px; letter-spacing: -.04em; }
+    .floating-tip span { display: block; margin-top: 4px; color: var(--text-soft); font-size: 12px; line-height: 1.45; font-weight: 650; }
+    .section { padding: 76px 0; }
+    .section.alt { background: rgba(255,255,255,.54); }
+    .section-header { text-align: center; margin-bottom: 38px; }
+    .section-eyebrow { color: var(--blue); font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+    .section-title { max-width: 720px; margin: 0 auto; font-size: clamp(1.85rem, 4.4vw, 3.35rem); line-height: 1.08; letter-spacing: -.052em; font-weight: 900; }
+    .section-sub { max-width: 620px; margin: 14px auto 0; color: var(--text-soft); font-size: 1rem; line-height: 1.8; }
+    .steps-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .step-card { display: flex; gap: 14px; padding: 18px; border-radius: 26px; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-sm); }
+    .step-number { flex: 0 0 auto; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 14px; background: #111827; color: #fff; font-weight: 900; }
+    .step-card h3 { font-size: 16px; margin-bottom: 5px; }
+    .step-card p { color: var(--text-soft); font-size: 14px; line-height: 1.65; }
+    .promo-wrap { position: relative; border-radius: 34px; overflow: hidden; background: #111827; border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-md); }
+    .promo-track { display: flex; transition: transform .45s cubic-bezier(.22,1,.36,1); }
+    .promo-slide { min-width: 100%; height: clamp(190px, 35vw, 360px); background: linear-gradient(135deg, #dbeafe, #f5f3ff); }
+    .promo-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .promo-empty { width: 100%; height: 100%; display: grid; place-items: center; text-align: center; padding: 24px; color: #fff; background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.22), transparent 28%), linear-gradient(135deg, #2563eb, #7c3aed); }
+    .promo-empty strong { display: block; font-size: clamp(1.5rem, 4vw, 2.8rem); line-height: 1.05; letter-spacing: -.05em; }
+    .promo-empty span { display: block; margin-top: 9px; color: rgba(255,255,255,.78); }
+    .promo-controls { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .promo-dots { display: flex; gap: 7px; padding: 8px 10px; border-radius: 999px; background: rgba(17,24,39,.38); backdrop-filter: blur(14px); }
+    .promo-dot { width: 7px; height: 7px; border: 0; border-radius: 99px; background: rgba(255,255,255,.45); }
+    .promo-dot.active { width: 20px; background: #fff; }
+    .promo-close { width: 36px; height: 36px; border: 0; border-radius: 999px; background: rgba(17,24,39,.46); color: #fff; font-size: 20px; backdrop-filter: blur(14px); }
+    .feature-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .feature-card { position: relative; overflow: hidden; min-height: 245px; display: flex; flex-direction: column; padding: 24px; border-radius: 30px; background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s; }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .feature-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 12% 0%, var(--tint, rgba(37,99,235,.14)), transparent 35%); opacity: .85; pointer-events: none; }
+    .feature-icon-wrap, .feature-card h3, .feature-card p, .feature-link { position: relative; }
+    .feature-icon-wrap { width: 56px; height: 56px; border-radius: 19px; display: grid; place-items: center; margin-bottom: 16px; color: var(--icon, var(--blue)); background: rgba(255,255,255,.78); border: 1px solid rgba(17,24,39,.06); box-shadow: 0 10px 24px rgba(15,23,42,.07); }
+    .feature-icon-wrap svg { width: 27px; height: 27px; }
+    .feature-card h3 { font-size: 18px; letter-spacing: -.02em; margin-bottom: 9px; }
+    .feature-card p { color: var(--text-soft); font-size: 14px; line-height: 1.7; flex: 1; }
+    .feature-link { margin-top: 18px; color: var(--icon, var(--blue)); font-size: 14px; font-weight: 900; }
+    .blue { --icon: #2563eb; --tint: rgba(37,99,235,.14); }
+    .violet { --icon: #7c3aed; --tint: rgba(124,58,237,.13); }
+    .amber { --icon: #d97706; --tint: rgba(245,158,11,.16); }
+    .emerald { --icon: #059669; --tint: rgba(16,185,129,.14); }
+    .rose { --icon: #e11d48; --tint: rgba(225,29,72,.12); }
+    .cyan { --icon: #0891b2; --tint: rgba(8,145,178,.13); }
+    .cta { padding: 80px 0; }
+    .cta-inner { position: relative; overflow: hidden; padding: clamp(34px, 7vw, 66px) 22px; border-radius: 38px; text-align: center; color: #fff; background: radial-gradient(circle at 18% 18%, rgba(255,255,255,.28), transparent 27%), linear-gradient(135deg, #111827 0%, #1d4ed8 58%, #7c3aed 100%); box-shadow: var(--shadow-lg); }
+    .cta-inner h2 { font-size: clamp(1.85rem, 4.5vw, 3.3rem); line-height: 1.12; letter-spacing: -.052em; font-weight: 900; }
+    .cta-inner p { max-width: 540px; margin: 14px auto 28px; color: rgba(255,255,255,.76); line-height: 1.75; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .cta-btn-primary, .cta-btn-ghost { width: 100%; max-width: 280px; min-height: 50px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; font-weight: 900; }
+    .cta-btn-primary { background: #fff; color: #111827; box-shadow: 0 18px 48px rgba(0,0,0,.18); }
+    .cta-btn-ghost { border: 1px solid rgba(255,255,255,.26); background: rgba(255,255,255,.12); color: #fff; }
+    .footer { padding: 58px 0 24px; background: #0f172a; color: rgba(255,255,255,.62); }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 34px; padding-bottom: 34px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 900; margin-bottom: 12px; }
+    .footer-logo-mark { width: 38px; height: 38px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(135deg, var(--blue), var(--violet)); font-size: 12px; }
+    .footer p, .footer a { color: rgba(255,255,255,.62); font-size: 14px; line-height: 1.7; }
+    .footer h4 { color: rgba(255,255,255,.38); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 13px; }
+    .footer ul { list-style: none; display: grid; gap: 9px; }
+    .footer a:hover { color: #fff; }
+    .footer-social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+    .social-link { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); }
+    .footer-bottom { padding-top: 20px; text-align: center; color: rgba(255,255,255,.36); font-size: 13px; }
+    .quick-help { position: fixed; right: 16px; bottom: 16px; z-index: 80; }
+    .help-mask { position: fixed; inset: 0; display: none; background: rgba(15,23,42,.18); backdrop-filter: blur(4px); z-index: -1; }
+    .quick-help.open .help-mask { display: block; }
+    .help-main { min-height: 56px; display: inline-flex; align-items: center; gap: 10px; padding: 0 18px; border: 0; border-radius: 999px; background: #111827; color: #fff; font-weight: 900; box-shadow: 0 20px 54px rgba(15,23,42,.28); }
+    .help-main svg { width: 22px; height: 22px; }
+    .help-panel { position: absolute; right: 0; bottom: 70px; width: min(340px, calc(100vw - 32px)); display: none; padding: 12px; border-radius: 28px; background: rgba(255,255,255,.92); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-md); backdrop-filter: blur(24px); }
+    .quick-help.open .help-panel { display: block; animation: panelUp .22s ease both; }
+    .help-title { padding: 8px 8px 12px; }
+    .help-title strong { display: block; font-size: 16px; }
+    .help-title span { display: block; margin-top: 4px; color: var(--text-soft); font-size: 13px; line-height: 1.5; }
+    .help-action { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px; border: 0; border-radius: 20px; background: transparent; text-align: left; color: var(--text); transition: background .2s; }
+    .help-action:hover { background: rgba(37,99,235,.07); }
+    .help-action-icon { width: 42px; height: 42px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 16px; color: #fff; }
+    .help-action svg { width: 22px; height: 22px; }
+    .help-action strong { display: block; font-size: 14px; }
+    .help-action span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; line-height: 1.4; }
+    .modal { position: fixed; inset: 0; z-index: 90; display: none; place-items: end center; padding: 18px; }
+    .modal.open { display: grid; }
+    .modal-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.36); backdrop-filter: blur(10px); }
+    .modal-card { position: relative; width: min(420px, 100%); padding: 20px; border-radius: 30px; background: rgba(255,255,255,.94); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-md); animation: panelUp .24s ease both; }
+    .modal-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 20px; color: #fff; margin-bottom: 13px; }
+    .modal-icon svg { width: 26px; height: 26px; }
+    .modal-card h3 { font-size: 20px; letter-spacing: -.02em; }
+    .modal-card p { margin-top: 8px; color: var(--text-soft); line-height: 1.65; }
+    .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+    .modal-actions button { min-height: 48px; border: 0; border-radius: 999px; font-weight: 900; }
+    .modal-cancel { background: #eef2f7; color: #334155; }
+    .modal-confirm { background: var(--blue); color: #fff; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+    @keyframes panelUp { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @media (min-width: 720px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } .feature-grid { grid-template-columns: repeat(2, 1fr); } .cta-actions { flex-direction: row; justify-content: center; } .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+    @media (min-width: 980px) { .nav-links { display: flex; } .hamburger { display: none; } .mobile-panel { display: none !important; } .hero-grid { grid-template-columns: 1.03fr .97fr; } .hero-copy { text-align: left; } h1, .hero-copy > p, .beginner-note, .search-panel, .hero-stats { margin-left: 0; margin-right: 0; } .quick-filters { justify-content: flex-start; } .feature-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 620px) { .container { width: min(100% - 24px, 1120px); } .navbar { padding-top: 8px; } .logo-text span { display: none; } .hero { padding-top: 34px; } .hero-visual { min-height: 360px; } .phone { width: min(292px, 82vw); transform: rotate(0); } .floating-tip { display: none; } .search-input-group { flex-wrap: wrap; } .search-input-group input { flex-basis: calc(100% - 46px); } .search-btn { width: 100%; } .section { padding: 60px 0; } .quick-help { right: 12px; bottom: 12px; } .help-main { padding: 0 15px; } .help-main span { display: none; } .modal { place-items: end center; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-card">
+        <a href="hst.html" class="logo" aria-label="HST Home">
+          <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'" />
+          <div class="logo-text"><h2>HST</h2><span>High Schooler's Tool</span></div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="hst.html" class="active">Home</a></li>
+          <li><a href="uni.html">Universities</a></li>
+          <li><a href="career-journey.html">Career</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="study-mode.html">Study Mode</a></li>
+          <li><a href="scholarships.html">Scholarships</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" type="button"><span class="hamburger-lines"><span></span><span></span><span></span></span></button>
+      </div>
+      <div class="mobile-panel" id="mobilePanel">
+        <a href="hst.html">Home <span>→</span></a>
+        <a href="uni.html">Universities <span>→</span></a>
+        <a href="career-journey.html">Career Journey <span>→</span></a>
+        <a href="courses.html">Courses <span>→</span></a>
+        <a href="study-mode.html">Study Mode <span>→</span></a>
+        <a href="scholarships.html">Scholarships <span>→</span></a>
+        <a href="about.html">About <span>→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><i></i> Free Myanmar student guide</div>
+          <h1>Find your perfect <span class="gradient-text">university path.</span></h1>
+          <p>A calm, simple place for Myanmar high school students to search universities, understand majors, find scholarships, and plan what to do next.</p>
+          <div class="beginner-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <div><strong>New to websites? No worries.</strong><span>Start by typing a university, major, or city. If you are not sure, tap one of the popular buttons below.</span></div>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>180+</strong><span>Universities</span></div>
+            <div class="hero-stat"><strong>500+</strong><span>Majors</span></div>
+          </div>
+          <div class="search-panel">
+            <form id="searchForm">
+              <div class="search-input-group">
+                <span class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+                <input type="text" id="homeSearch" placeholder="Try: Computer, Medical, Yangon, Engineering..." autocomplete="off" />
+                <button type="submit" class="search-btn">Search</button>
+              </div>
+            </form>
+            <p class="search-help">Tip: You can search in English or type a simple word. We will take you to the university page with your search.</p>
+            <div class="quick-filters">
+              <button type="button" class="filter-chip" data-search="Computer">💻 Computer</button>
+              <button type="button" class="filter-chip" data-search="Engineering">⚙️ Engineering</button>
+              <button type="button" class="filter-chip" data-search="Medical">⚕️ Medicine</button>
+              <button type="button" class="filter-chip" data-search="Business">📊 Business</button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="floating-tip one"><b>Step 1</b><span>Search what you are interested in.</span></div>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="island"></div>
+              <div class="phone-content">
+                <div class="phone-hero"><small>HST GUIDE</small><h3>Your future, organized.</h3><p>Universities, careers, courses and study tools in one friendly place.</p></div>
+                <div class="phone-list">
+                  <div class="phone-row"><span class="phone-row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg></span><div><strong>Universities</strong><span>Compare schools</span></div></div>
+                  <div class="phone-row"><span class="phone-row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span><div><strong>Career</strong><span>Plan after graduation</span></div></div>
+                  <div class="phone-row"><span class="phone-row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><strong>Study Mode</strong><span>Focus daily</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-tip two"><b>Step 2</b><span>Tap any card to continue safely.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-header reveal"><div class="section-eyebrow">Simple for everyone</div><h2 class="section-title">How to use HST without getting confused</h2><p class="section-sub">The page is designed for students and parents who may not use websites often.</p></div>
+        <div class="steps-grid">
+          <article class="step-card reveal"><div class="step-number">1</div><div><h3>Search or tap a shortcut</h3><p>Type one word, or tap Computer, Engineering, Medicine, or Business to begin.</p></div></article>
+          <article class="step-card reveal"><div class="step-number">2</div><div><h3>Read one card at a time</h3><p>Each card explains what it does. No need to understand everything at once.</p></div></article>
+          <article class="step-card reveal"><div class="step-number">3</div><div><h3>Use “Need help?” anytime</h3><p>The bottom help button gives tutorial, certificate, report, and ambassador actions with clear labels.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal"><div class="section-eyebrow">Announcements</div><h2 class="section-title">Latest from HST</h2><p class="section-sub">Banners and updates are shown here. You can close this section if you want a cleaner page.</p></div>
+        <div class="promo-wrap reveal" id="promoWrap">
+          <div class="promo-track" id="promoTrack">
+            <div class="promo-slide"><img src="newbanner4.jpg" alt="HST announcement banner" loading="lazy" onerror="showPromoFallback(this)"></div>
+            <div class="promo-slide"><img src="hstbanner.jpg" alt="HST announcement banner" loading="lazy" onerror="showPromoFallback(this)"></div>
+            <div class="promo-slide"><img src="newbanner3.jpg" alt="HST announcement banner" loading="lazy" onerror="showPromoFallback(this)"></div>
+            <div class="promo-slide"><img src="hsttrust.jpg" alt="HST trust banner" loading="lazy" onerror="showPromoFallback(this)"></div>
+          </div>
+          <div class="promo-controls"><div class="promo-dots" id="promoDots"></div><button class="promo-close" id="promoClose" type="button" aria-label="Close announcements">×</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="features">
+      <div class="container">
+        <div class="section-header reveal"><div class="section-eyebrow">Everything you need</div><h2 class="section-title">Choose what you want to do today</h2><p class="section-sub">Each button uses an icon that matches its meaning, so it is easier to understand before tapping.</p></div>
+        <div class="feature-grid">
+          <a href="uni.html" class="feature-card blue reveal"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1M14 10h1M9 15h1M14 15h1"/></svg></div><h3>All Universities</h3><p>Search universities across Myanmar and compare important information in one place.</p><span class="feature-link">Explore universities →</span></a>
+          <a href="uni.html" class="feature-card violet reveal"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>Major Information</h3><p>Understand majors, entrance requirements, and what you may study in each program.</p><span class="feature-link">Browse majors →</span></a>
+          <a href="scholarships.html" class="feature-card amber reveal"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><h3>Scholarship Guide</h3><p>Find scholarship opportunities, requirements, deadlines, and useful application links.</p><span class="feature-link">Find scholarships →</span></a>
+          <a href="career-journey.html" class="feature-card emerald reveal"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><h3>Career Paths</h3><p>Explore careers beyond the usual choices and see what your future job path could be.</p><span class="feature-link">Explore careers →</span></a>
+          <a href="courses.html" class="feature-card rose reveal"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M12 4v16"/><path d="M5 7h14"/><path d="M5 12h14"/><path d="M5 17h14"/></svg></div><h3>Free Courses</h3><p>Learn useful skills from free courses and resources made for Myanmar students.</p><span class="feature-link">View courses →</span></a>
+          <a href="study-mode.html" class="feature-card cyan reveal"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Study Mode</h3><p>Use focus timer, tasks, and calm study tools when you need to concentrate.</p><span class="feature-link">Start studying →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container"><div class="cta-inner reveal"><h2>Ready to plan your future?</h2><p>Start with one small step. Search a university, open a feature card, or use the help button if you are unsure.</p><div class="cta-actions"><a href="uni.html" class="cta-btn-primary">Explore Universities</a><a href="tutorial.html" class="cta-btn-ghost">Watch Tutorial</a></div></div></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand"><div class="footer-logo-mark">HST</div><span>High Schooler's Tool</span></div><p>Empowering Myanmar students to make informed university and career choices.</p><div class="footer-social"><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer" class="social-link">Facebook</a><a href="mailto:highschoolertoolmm@gmail.com" class="social-link">Email</a></div></div>
+        <div><h4>Quick Links</h4><ul><li><a href="hst.html">Home</a></li><li><a href="uni.html">Universities</a></li><li><a href="career-journey.html">Career Journey</a></li><li><a href="courses.html">Courses</a></li><li><a href="study-mode.html">Study Mode</a></li><li><a href="scholarships.html">Scholarships</a></li></ul></div>
+        <div><h4>Contact</h4><p>High Schooler's Tool</p><p><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p><p><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">facebook.com/HSTool</a></p></div>
+      </div>
+      <div class="footer-bottom">© 2026 High Schooler's Tool · Built for Myanmar students</div>
+    </div>
+  </footer>
+
+  <div class="quick-help" id="quickHelp">
+    <div class="help-mask" id="helpMask"></div>
+    <div class="help-panel" role="dialog" aria-label="HST quick help panel">
+      <div class="help-title"><strong>Need help?</strong><span>Choose what you want to do. Nothing scary will happen before confirmation.</span></div>
+      <button class="help-action" data-action="tutorial"><span class="help-action-icon" style="background:#10b981"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span><span><strong>Watch tutorial</strong><span>Learn how to use HST step by step</span></span></button>
+      <button class="help-action" data-action="verify"><span class="help-action-icon" style="background:#2563eb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><strong>Verify certificate</strong><span>Check if an HST certificate is real</span></span></button>
+      <button class="help-action" data-action="report"><span class="help-action-icon" style="background:#f97316"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span><span><strong>Report wrong data</strong><span>Tell us if information needs updating</span></span></button>
+      <button class="help-action" data-action="ambassador"><span class="help-action-icon" style="background:#7c3aed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><strong>Become ambassador</strong><span>Help share HST with other students</span></span></button>
+    </div>
+    <button class="help-main" id="helpMain" type="button" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 2-3 4"/><path d="M12 17h.01"/></svg><span>Need help?</span></button>
+  </div>
+
+  <div class="modal" id="confirmModal">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-card">
+      <div class="modal-icon" id="modalIcon"></div>
+      <h3 id="modalTitle">Continue?</h3>
+      <p id="modalMessage">You are about to open another page.</p>
+      <div class="modal-actions"><button class="modal-cancel" id="modalCancel" type="button">Stay here</button><button class="modal-confirm" id="modalConfirm" type="button">Continue</button></div>
+    </div>
+  </div>
+
+  <script>
+    const pages = {
+      tutorial: { path: 'tutorial.html', title: 'Open tutorial?', message: 'This will show a simple step-by-step guide for using HST.', color: '#10b981', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>' },
+      verify: { path: 'verify.html', title: 'Verify a certificate?', message: 'This will open the certificate verification page. You can come back anytime.', color: '#2563eb', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>' },
+      report: { path: 'report.html', title: 'Report wrong information?', message: 'Use this if you found outdated university data or want to collaborate with HST.', color: '#f97316', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>' },
+      ambassador: { path: 'ambassador.html', title: 'Become an HST Ambassador?', message: 'This page explains how students can help share HST with others.', color: '#7c3aed', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>' }
+    };
+
+    const hamburger = document.getElementById('hamburger');
+    const mobilePanel = document.getElementById('mobilePanel');
+    hamburger.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    const searchForm = document.getElementById('searchForm');
+    const homeSearch = document.getElementById('homeSearch');
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const query = homeSearch.value.trim();
+      window.location.href = query ? `uni.html?search=${encodeURIComponent(query)}` : 'uni.html';
+    });
+    document.querySelectorAll('.filter-chip').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        homeSearch.value = chip.dataset.search;
+        searchForm.dispatchEvent(new Event('submit'));
+      });
+    });
+
+    let promoIndex = 0;
+    const promoTrack = document.getElementById('promoTrack');
+    const promoSlides = Array.from(document.querySelectorAll('.promo-slide'));
+    const promoDots = document.getElementById('promoDots');
+    promoSlides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = `promo-dot${index === 0 ? ' active' : ''}`;
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Show banner ${index + 1}`);
+      dot.addEventListener('click', () => setPromo(index));
+      promoDots.appendChild(dot);
+    });
+    function setPromo(index) {
+      promoIndex = index;
+      promoTrack.style.transform = `translateX(-${promoIndex * 100}%)`;
+      document.querySelectorAll('.promo-dot').forEach((dot, i) => dot.classList.toggle('active', i === promoIndex));
+    }
+    setInterval(() => setPromo((promoIndex + 1) % promoSlides.length), 4200);
+    document.getElementById('promoClose').addEventListener('click', () => document.getElementById('promoWrap').style.display = 'none');
+    function showPromoFallback(img) {
+      const parent = img.parentElement;
+      img.remove();
+      parent.innerHTML = '<div class="promo-empty"><div><strong>HST Updates</strong><span>Add your banner image files beside this HTML file.</span></div></div>';
+    }
+
+    const quickHelp = document.getElementById('quickHelp');
+    const helpMain = document.getElementById('helpMain');
+    const helpMask = document.getElementById('helpMask');
+    helpMain.addEventListener('click', () => {
+      const open = quickHelp.classList.toggle('open');
+      helpMain.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    helpMask.addEventListener('click', closeHelp);
+    function closeHelp() {
+      quickHelp.classList.remove('open');
+      helpMain.setAttribute('aria-expanded', 'false');
+    }
+
+    let pendingPath = '';
+    const modal = document.getElementById('confirmModal');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
+    document.querySelectorAll('.help-action').forEach((button) => {
+      button.addEventListener('click', () => {
+        const data = pages[button.dataset.action];
+        pendingPath = data.path;
+        modalTitle.textContent = data.title;
+        modalMessage.textContent = data.message;
+        modalIcon.style.background = data.color;
+        modalIcon.innerHTML = data.icon;
+        closeHelp();
+        modal.classList.add('open');
+      });
+    });
+    document.getElementById('modalCancel').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', closeModal);
+    document.getElementById('modalConfirm').addEventListener('click', () => { if (pendingPath) window.location.href = pendingPath; });
+    function closeModal() {
+      modal.classList.remove('open');
+      pendingPath = '';
+    }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') { closeHelp(); closeModal(); }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>

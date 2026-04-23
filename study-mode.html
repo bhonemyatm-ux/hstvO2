@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Mode - Pomodoro Timer | High Schooler's Tool</title>
+    <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hst.css" />
+    <link rel="stylesheet" href="study-mode.css" />
+</head>
+
+<body>
+    <!-- Navigation Bar — controlled by hst.css, do not modify -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'" />
+                <div class="logo-text">
+                    <h2>HST</h2>
+                    <span>High Schooler's Tool</span>
+                </div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="hst.html">Home</a></li>
+                <li><a href="uni.html">Universities</a></li>
+                <li><a href="career-journey.html">Career Journey</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="study-mode.html" class="active">Study Mode</a></li>
+                <li><a href="scholarships.html">Scholarships</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" type="button"
+                    aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Study toolbar -->
+    <div class="study-toolbar">
+        <div class="toolbar-inner">
+            <div class="toolbar-brand">
+                <span class="toolbar-icon">📚</span>
+                <span class="toolbar-title">Study Mode</span>
+                <span class="toolbar-sub">Focus on your goals, one session at a time.</span>
+            </div>
+            <div class="toolbar-actions">
+                <button class="tool-btn" id="musicToggleNav" title="Toggle Music" type="button" aria-label="Toggle Music">
+                    <span class="tool-btn-icon">🎵</span>
+                </button>
+                <button class="tool-btn" id="themePickerBtn" title="Choose Theme" type="button" aria-label="Choose Theme">
+                    <span class="tool-btn-icon">🎨</span>
+                </button>
+                <button class="tool-btn" id="themeToggle" title="Toggle Dark Mode" type="button" aria-label="Toggle Dark Mode">
+                    <span class="tool-btn-icon">🌙</span>
+                </button>
+                <a href="hst.html" class="toolbar-back-btn">← Back to HST</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero strip -->
+    <div class="study-hero">
+        <div class="hero-inner">
+            <div class="hero-badge">Pomodoro Timer</div>
+            <h1 class="hero-title">Focus &amp; Flow</h1>
+            <p class="hero-sub">Stay focused, take breaks, achieve your goals.</p>
+        </div>
+    </div>
+
+    <!-- Main layout -->
+    <main class="study-main">
+
+        <!-- Left: Timer card -->
+        <section class="timer-card" aria-label="Pomodoro Timer">
+
+            <!-- Break suggestion banner -->
+            <div class="break-banner" id="breakSuggestions" hidden>
+                <div class="break-banner-header">
+                    <span class="break-title-icon">☕</span>
+                    <div>
+                        <h3>Break Time!</h3>
+                        <p>Here's something to do while you rest:</p>
+                    </div>
+                </div>
+                <div class="break-activity" id="breakActivity">
+                    <span class="break-activity-icon">💧</span>
+                    <div class="break-activity-body">
+                        <strong>Drink Water</strong>
+                        <p>Stay hydrated! Drink a glass of water to refresh your mind and body.</p>
+                    </div>
+                </div>
+                <button class="break-new-btn" id="newActivityBtn" type="button">🔄 Different Activity</button>
+            </div>
+
+            <!-- Mode pills -->
+            <div class="mode-pills" role="group" aria-label="Timer mode">
+                <button class="mode-pill active" type="button" data-mode="focus" data-time="25">
+                    🎯 Focus <em>25 min</em>
+                </button>
+                <button class="mode-pill" type="button" data-mode="short" data-time="5">
+                    ☕ Short Break <em>5 min</em>
+                </button>
+                <button class="mode-pill" type="button" data-mode="long" data-time="15">
+                    🌟 Long Break <em>15 min</em>
+                </button>
+            </div>
+
+            <!-- Ring timer -->
+            <div class="ring-wrap">
+                <div class="ring-glow" id="ringGlow"></div>
+                <div class="ring-circle" id="timerCircle">
+                    <svg class="ring-svg" viewBox="0 0 280 280" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="var(--accent-a)" />
+                                <stop offset="100%" stop-color="var(--accent-b)" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="ring-track" cx="140" cy="140" r="126" />
+                        <circle class="ring-bar"   cx="140" cy="140" r="126"
+                                id="progressBar"
+                                stroke="url(#ringGrad)"
+                                stroke-dasharray="791.7"
+                                stroke-dashoffset="0" />
+                    </svg>
+                    <div class="ring-inner">
+                        <div class="ring-time" id="timerDisplay" aria-live="polite" aria-atomic="true">25:00</div>
+                        <div class="ring-label">Focus Session</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="timer-controls">
+                <button class="ctrl-btn ctrl-primary" id="startBtn" type="button">▶ Start</button>
+                <button class="ctrl-btn ctrl-ghost"   id="resetBtn" type="button">↺ Reset</button>
+                <button class="ctrl-btn ctrl-ghost"   id="focusDisplayBtn" type="button">🖥 Focus Display</button>
+            </div>
+
+            <!-- Stats row -->
+            <div class="stats-row">
+                <div class="stat-tile">
+                    <span class="stat-emoji">🍅</span>
+                    <strong id="sessionsCompleted">0</strong>
+                    <small>Sessions</small>
+                </div>
+                <div class="stat-tile">
+                    <span class="stat-emoji">⏱</span>
+                    <strong id="totalMinutes">0</strong>
+                    <small>Minutes Studied</small>
+                </div>
+                <div class="stat-tile">
+                    <span class="stat-emoji">🔥</span>
+                    <strong id="currentStreak">0</strong>
+                    <small>Day Streak</small>
+                </div>
+            </div>
+
+            <!-- Keyboard hints -->
+            <p class="kbd-hints">
+                <span><kbd>Space</kbd> Start / Pause</span>
+                <span><kbd>Ctrl</kbd>+<kbd>R</kbd> Reset</span>
+            </p>
+        </section>
+
+        <!-- Right: Sidebar -->
+        <aside class="study-sidebar">
+
+            <!-- Quick-info cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-card-icon">📅</div>
+                    <div class="info-card-body">
+                        <h4>Today's Focus</h4>
+                        <p>Treat each session like a short, focused task.</p>
+                    </div>
+                    <button class="info-card-btn" type="button" onclick="document.getElementById('motivationModal').classList.add('active')">Motivate →</button>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">📖</div>
+                    <div class="info-card-body">
+                        <h4>Study Methods</h4>
+                        <p>Discover proven techniques to learn better &amp; faster.</p>
+                    </div>
+                    <button class="info-card-btn" type="button" onclick="document.getElementById('methodsModal').classList.add('active')">Explore →</button>
+                </div>
+            </div>
+
+            <!-- Tasks panel -->
+            <div class="panel" id="tasksPanel">
+                <div class="panel-header">
+                    <h2>Tasks <span class="badge" id="taskCounter">0</span></h2>
+                </div>
+                <div class="todo-input-row">
+                    <input class="todo-input" id="todoInput" type="text"
+                           placeholder="Add a task…" autocomplete="off" />
+                    <button class="todo-add" id="todoAddBtn" type="button" aria-label="Add task">+</button>
+                </div>
+                <div class="todo-list" id="todoList">
+                    <div class="todo-empty">No tasks yet. Add one to get started!</div>
+                </div>
+            </div>
+
+            <!-- Music panel -->
+            <div class="panel" id="musicPanel">
+                <div class="panel-header music-panel-header">
+                    <h2>Focus Music</h2>
+                    <span class="music-status" id="musicStatus">
+                        <span class="status-dot"></span>Stopped
+                    </span>
+                </div>
+                <div class="music-grid">
+                    <button class="music-tile" type="button" data-sound="lofi">
+                        <span class="music-tile-icon">🎼</span>
+                        <span>Lo-fi Beats</span>
+                    </button>
+                    <button class="music-tile" type="button" data-sound="rain">
+                        <span class="music-tile-icon">🌧</span>
+                        <span>Rain Sounds</span>
+                    </button>
+                    <button class="music-tile" type="button" data-sound="cafe">
+                        <span class="music-tile-icon">☕</span>
+                        <span>Coffee Shop</span>
+                    </button>
+                    <button class="music-tile" type="button" data-sound="nature">
+                        <span class="music-tile-icon">🌲</span>
+                        <span>Nature</span>
+                    </button>
+                    <button class="music-tile" type="button" data-sound="ocean">
+                        <span class="music-tile-icon">🌊</span>
+                        <span>Ocean Waves</span>
+                    </button>
+                    <button class="music-tile" type="button" data-sound="fire">
+                        <span class="music-tile-icon">🔥</span>
+                        <span>Fireplace</span>
+                    </button>
+                </div>
+                <div class="volume-row">
+                    <span class="volume-label">🔊 <span id="volumeValue">50%</span></span>
+                    <input class="volume-slider" id="volumeSlider" type="range"
+                           min="0" max="100" value="50" aria-label="Volume" />
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- FABs -->
+    <div class="fab-group" aria-label="Quick actions">
+        <button class="fab fab-methods" id="methodsBtn" type="button" aria-label="Study Methods">
+            📖
+            <span class="fab-tip">Methods</span>
+        </button>
+        <button class="fab fab-motivate" id="motivationBtn" type="button" aria-label="Get Motivated">
+            💪
+            <span class="fab-tip">Motivate</span>
+        </button>
+    </div>
+
+    <!-- Study Methods Modal -->
+    <div class="modal" id="methodsModal" role="dialog" aria-modal="true"
+         aria-labelledby="methodsModalTitle" aria-hidden="true">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h2 id="methodsModalTitle">📖 Study Methods</h2>
+                <button class="modal-close-btn" type="button" data-close-modal="methodsModal" aria-label="Close">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="method-card">
+                    <h3>🍅 Pomodoro Technique</h3>
+                    <p>The method you're using right now! Work in focused 25-minute intervals followed by short breaks.</p>
+                    <ul>
+                        <li>Choose a task to work on</li>
+                        <li>Set timer for 25 minutes (1 Pomodoro)</li>
+                        <li>Work with full focus until timer rings</li>
+                        <li>Take a 5-minute break</li>
+                        <li>After 4 Pomodoros, take a 15–30 minute break</li>
+                    </ul>
+                </div>
+                <div class="method-card">
+                    <h3>📝 Active Recall</h3>
+                    <p>Test yourself actively instead of passively re-reading notes. This strengthens memory significantly.</p>
+                    <ul>
+                        <li>Close your books and notes</li>
+                        <li>Write down everything you remember about the topic</li>
+                        <li>Check what you missed or got wrong</li>
+                        <li>Focus on the gaps in your knowledge</li>
+                        <li>Repeat the process regularly</li>
+                    </ul>
+                </div>
+                <div class="method-card">
+                    <h3>📅 Spaced Repetition</h3>
+                    <p>Review information at increasing intervals to move it into long-term memory.</p>
+                    <ul>
+                        <li>Day 1: Learn new material</li>
+                        <li>Day 2: Review</li>
+                        <li>Day 4: Review again</li>
+                        <li>Day 7: Review again</li>
+                        <li>Day 14, 30, 60: Continue reviewing</li>
+                    </ul>
+                </div>
+                <div class="method-card">
+                    <h3>🎯 Feynman Technique</h3>
+                    <p>Explain concepts in simple terms as if teaching someone else. Perfect for understanding complex topics.</p>
+                    <ul>
+                        <li>Choose a concept you want to learn</li>
+                        <li>Explain it in simple language (pretend teaching a child)</li>
+                        <li>Identify gaps in your explanation</li>
+                        <li>Go back to source material to fill gaps</li>
+                        <li>Simplify and use analogies</li>
+                    </ul>
+                </div>
+                <div class="method-card">
+                    <h3>🗺 Mind Mapping</h3>
+                    <p>Create visual diagrams connecting ideas and concepts for better understanding and memory.</p>
+                    <ul>
+                        <li>Start with main topic in the center</li>
+                        <li>Branch out with subtopics</li>
+                        <li>Use colors and images for memory</li>
+                        <li>Connect related concepts</li>
+                        <li>Review and expand your map</li>
+                    </ul>
+                </div>
+                <div class="method-card">
+                    <h3>📖 SQ3R Method</h3>
+                    <p>Structured reading approach: Survey, Question, Read, Recite, Review</p>
+                    <ul>
+                        <li><strong>Survey:</strong> Skim the chapter for overview</li>
+                        <li><strong>Question:</strong> Turn headings into questions</li>
+                        <li><strong>Read:</strong> Read actively to answer questions</li>
+                        <li><strong>Recite:</strong> Summarize in your own words</li>
+                        <li><strong>Review:</strong> Go over material regularly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Motivation Modal -->
+    <div class="modal" id="motivationModal" role="dialog" aria-modal="true"
+         aria-labelledby="motivationModalTitle" aria-hidden="true">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h2 id="motivationModalTitle">💪 Get Motivated</h2>
+                <button class="modal-close-btn" type="button" data-close-modal="motivationModal" aria-label="Close">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="quote-card" id="quoteCard">
+                    <div class="quote-decormark">"</div>
+                    <p class="quote-text" id="quoteText">"Education is the most powerful weapon which you can use to change the world."</p>
+                    <p class="quote-author" id="quoteAuthor">— Nelson Mandela</p>
+                    <button class="quote-refresh-btn" id="newQuoteBtn" type="button">✨ New Quote</button>
+                </div>
+                <div class="method-card">
+                    <h3>🎯 Remember Your Why</h3>
+                    <p>As a Myanmar student, you're not just studying for yourself. You're building a better future for your family, your community, and your country. Every hour of focused study is an investment in Myanmar's tomorrow.</p>
+                </div>
+                <div class="method-card">
+                    <h3>💪 Small Steps, Big Dreams</h3>
+                    <p>Every 25-minute Pomodoro session is progress. Every practice problem solved is growth. Don't worry about perfection — focus on consistent improvement. You've got this!</p>
+                </div>
+                <div class="method-card">
+                    <h3>🔥 Tips to Stay Motivated</h3>
+                    <ul>
+                        <li>Set specific, achievable daily goals</li>
+                        <li>Celebrate small wins</li>
+                        <li>Study with friends</li>
+                        <li>Visualize your success</li>
+                        <li>Take care of yourself</li>
+                        <li>Remember: Bad days happen — tomorrow is a fresh start</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Picker Modal -->
+    <div class="modal" id="themePickerModal" role="dialog" aria-modal="true"
+         aria-labelledby="themePickerModalTitle" aria-hidden="true">
+        <div class="modal-box modal-box--sm">
+            <div class="modal-head">
+                <h2 id="themePickerModalTitle">🎨 Choose Theme</h2>
+                <button class="modal-close-btn" type="button" data-close-modal="themePickerModal" aria-label="Close">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="theme-grid">
+                    <div class="theme-swatch theme-sw-default active" role="button" tabindex="0" data-theme="default">
+                        <span>💜</span><span>Default</span>
+                    </div>
+                    <div class="theme-swatch theme-sw-ocean"  role="button" tabindex="0" data-theme="ocean">
+                        <span>🌊</span><span>Ocean</span>
+                    </div>
+                    <div class="theme-swatch theme-sw-forest" role="button" tabindex="0" data-theme="forest">
+                        <span>🌲</span><span>Forest</span>
+                    </div>
+                    <div class="theme-swatch theme-sw-sunset" role="button" tabindex="0" data-theme="sunset">
+                        <span>🌅</span><span>Sunset</span>
+                    </div>
+                    <div class="theme-swatch theme-sw-cherry" role="button" tabindex="0" data-theme="cherry">
+                        <span>🌸</span><span>Cherry</span>
+                    </div>
+                    <div class="theme-swatch theme-sw-purple" role="button" tabindex="0" data-theme="purple">
+                        <span>🔮</span><span>Purple</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio element -->
+    <audio id="audioPlayer" loop></audio>
+
+    <!-- Focus Display overlay (flip clock) -->
+    <div class="focus-overlay" id="focusDisplay" aria-hidden="true">
+        <button class="focus-overlay-exit" id="focusExitBtn" type="button">Exit Focus</button>
+        <p class="focus-overlay-hint" id="rotateHint">Rotate your phone to landscape for the best view.</p>
+        <div class="flip-clock" id="focusClock" aria-label="Timer" aria-live="polite">
+            <div class="flip-card"><span class="flip-digit" data-digit>2</span><span class="flip-line"></span></div>
+            <div class="flip-card"><span class="flip-digit" data-digit>5</span><span class="flip-line"></span></div>
+            <div class="flip-sep" aria-hidden="true">:</div>
+            <div class="flip-card"><span class="flip-digit" data-digit>0</span><span class="flip-line"></span></div>
+            <div class="flip-card"><span class="flip-digit" data-digit>0</span><span class="flip-line"></span></div>
+        </div>
+        <p class="focus-overlay-label" id="focusSub">Focus</p>
+    </div>
+
+    <script src="study-mode.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var hamburger = document.getElementById('hamburger');
+        var navLinks  = document.getElementById('navLinks');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function () {
+                var open = navLinks.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', String(open));
+            });
+            navLinks.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    navLinks.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var id = btn.getAttribute('data-close-modal');
+                var modal = document.getElementById(id);
+                if (modal) {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        });
+
+        document.querySelectorAll('.modal').forEach(function (modal) {
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(function (modal) {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>
