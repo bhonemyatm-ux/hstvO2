@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UIT — University of Information Technology | HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="uit.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="u-hero" aria-label="University hero">
+    <div class="u-hero-bg" style="background-image:url('uit3.jpg')"></div>
+    <div class="u-hero-overlay"></div>
+    <div class="container u-hero-inner">
+      <nav class="u-breadcrumb" aria-label="Breadcrumb">
+        <a href="hst.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="uni.html">Universities</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>UIT</span>
+      </nav>
+      <div class="u-hero-body">
+        <div class="u-logo-wrap">
+          <img src="uit.png" alt="UIT Logo" onerror="this.style.opacity='.15'">
+        </div>
+        <div class="u-hero-text">
+          <div class="u-hero-eyebrow">Myanmar's Center of Excellence in ICT</div>
+          <h1 class="u-hero-title">University of Information<br class="desktop-br"> Technology</h1>
+          <p class="u-hero-subtitle">Advanced ICT Education &amp; Research in Yangon since 2012</p>
+          <div class="u-meta-row">
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hlaing, Yangon
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+              Government · Public
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Est. 2012
+            </div>
+            <div class="u-meta-pill gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Centre of Excellence
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats Bar ── -->
+  <section class="u-stats" aria-label="Key statistics">
+    <div class="container">
+      <div class="u-stats-grid">
+        <div class="u-stat">
+          <div class="u-stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">1000+</div>
+            <div class="u-stat-label">Students</div>
+          </div>
+        </div>
+        <div class="u-stat">
+          <div class="u-stat-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">10+</div>
+            <div class="u-stat-label">Programs</div>
+          </div>
+        </div>
+        <div class="u-stat">
+          <div class="u-stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">200</div>
+            <div class="u-stat-label">Intake / Year</div>
+          </div>
+        </div>
+        <div class="u-stat">
+          <div class="u-stat-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">2015</div>
+            <div class="u-stat-label">Year Renamed UIT</div>
+          </div>
+        </div>
+        <div class="u-stat">
+          <div class="u-stat-icon violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">475</div>
+            <div class="u-stat-label">Min. Matric Score</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Layout ── -->
+  <section class="u-main" aria-label="University details">
+    <div class="container u-layout">
+
+      <!-- ── Sidebar ── -->
+      <aside class="u-sidebar" aria-label="Quick information">
+
+        <div class="u-card">
+          <h3 class="u-card-title">Quick Info</h3>
+          <div class="u-info-list">
+            <div class="u-info-row"><span class="u-info-key">Type</span><span class="u-info-val">Government · Public</span></div>
+            <div class="u-info-row"><span class="u-info-key">Location</span><span class="u-info-val">Parami Rd, Hlaing, Yangon</span></div>
+            <div class="u-info-row"><span class="u-info-key">Language</span><span class="u-info-val">Myanmar · English</span></div>
+            <div class="u-info-row"><span class="u-info-key">Campus</span><span class="u-info-val">Hlaing Campus</span></div>
+            <div class="u-info-row"><span class="u-info-key">Focus</span><span class="u-info-val">ICT &amp; Engineering</span></div>
+            <div class="u-info-row"><span class="u-info-key">Website</span>
+              <a href="https://www.uit.edu.mm" target="_blank" rel="noopener" class="u-info-link">uit.edu.mm</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-card">
+          <h3 class="u-card-title">Entrance Requirements</h3>
+          <div class="u-req-box">
+            <div class="u-req-score">
+              <div class="u-req-score-num">475</div>
+              <div class="u-req-score-label">Minimum Matriculation Score</div>
+            </div>
+            <div class="u-req-subjects">
+              <div class="u-req-label">Required Subjects</div>
+              <div class="u-subject-tags">
+                <span class="u-tag">Mathematics</span>
+                <span class="u-tag">Physics</span>
+                <span class="u-tag">English</span>
+              </div>
+            </div>
+            <div class="u-req-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              ~200 students admitted nationwide per year
+            </div>
+          </div>
+        </div>
+
+        <div class="u-card">
+          <h3 class="u-card-title">Timeline</h3>
+          <div class="u-timeline">
+            <div class="u-tl-item">
+              <div class="u-tl-dot"></div>
+              <div class="u-tl-content">
+                <div class="u-tl-year">2012</div>
+                <div class="u-tl-desc">Founded as Center of Excellence in ICT (3 Dec 2012)</div>
+              </div>
+            </div>
+            <div class="u-tl-item">
+              <div class="u-tl-dot"></div>
+              <div class="u-tl-content">
+                <div class="u-tl-year">2015</div>
+                <div class="u-tl-desc">Officially renamed University of Information Technology (1 Apr 2015)</div>
+              </div>
+            </div>
+            <div class="u-tl-item">
+              <div class="u-tl-dot"></div>
+              <div class="u-tl-content">
+                <div class="u-tl-year">Now</div>
+                <div class="u-tl-desc">Myanmar's main center for ICT research &amp; advanced training</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-card u-contact-card">
+          <h3 class="u-card-title">Contact</h3>
+          <div class="u-contact-list">
+            <div class="u-contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              09 774152166
+            </div>
+            <div class="u-contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              hr.admin@uit.edu.mm
+            </div>
+            <div class="u-contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              www.uit.edu.mm
+            </div>
+          </div>
+          <a href="https://www.uit.edu.mm" target="_blank" rel="noopener" class="u-contact-btn">Visit Official Site</a>
+        </div>
+
+      </aside>
+
+      <!-- ── Main Tabs ── -->
+      <main class="u-content" aria-label="Tabs">
+
+        <div class="u-tabs" role="tablist">
+          <button class="u-tab active" data-tab="overview" role="tab" aria-selected="true">Overview</button>
+          <button class="u-tab" data-tab="majors" role="tab" aria-selected="false">Majors</button>
+          <button class="u-tab" data-tab="projects" role="tab" aria-selected="false">Projects</button>
+          <button class="u-tab" data-tab="campus" role="tab" aria-selected="false">Campus Life</button>
+          <button class="u-tab" data-tab="careers" role="tab" aria-selected="false">Career Paths</button>
+          <button class="u-tab" data-tab="alumni" role="tab" aria-selected="false">Alumni</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div class="u-panel active" id="overview" role="tabpanel">
+
+          <div class="u-content-card">
+            <div class="u-card-head-row">
+              <h2>About the University</h2>
+              <div class="u-lang-toggle" role="group" aria-label="Language toggle">
+                <button class="u-lang-btn active" data-lang="mm">မြန်မာ</button>
+                <button class="u-lang-btn" data-lang="en">English</button>
+              </div>
+            </div>
+            <div class="u-about-mm u-about-block">
+              <p>သတင်းအချက်အလက်နည်းပညာတက္ကသိုလ် (UIT) သည် ၂၀၁၂ ခုနှစ် ဒီဇင်ဘာ ၃ ရက်နေ့တွင် ICT ဆိုင်ရာ <strong>Center of Excellence</strong> အဖြစ် တည်ထောင်ခဲ့ပြီး ၂၀၁၅ ခုနှစ် ဧပြီ ၁ ရက်နေ့တွင် University of Information Technology (UIT) ဟု တရားဝင်အမည်ပြောင်းလဲခဲ့သည်။</p>
+              <p>UIT သည် မြန်မာနိုင်ငံ၏ ICT နယ်ပယ်တွင် အဓိကသုတေသနဗဟိုဌာနအဖြစ် ရပ်တည်ပြီး ဘွဲ့ကြိုမှ ဒေါက်တာအဆင့်အထိ ကျောင်းသားများကို ပညာသင်ကြားပေးနေသည်။ တစ်နှစ်လျှင် ဘွဲ့ကြိုကျောင်းသားပေါင်း ၂၀၀ ခန့် မြန်မာတစ်နိုင်ငံလုံးမှ ရွေးချယ်တင်မြောက်ကာ ခေတ်မီ ICT ပညာကို သင်ကြားပေးနေသည်။</p>
+              <p>ပညာသင်ကြားရေး ဘာသာရပ်များတွင် <strong>Software Engineering, Cyber Security, Embedded Systems, High-Performance Computing, Knowledge Engineering</strong> နှင့် <strong>Communication and Networking</strong> တို့ ပါဝင်သည်။ တက္ကသိုလ်၏ ရည်မှန်းချက်မှာ ICT နည်းပညာဖြင့် နိုင်ငံ့ဖွံ့ဖြိုးတိုးတက်ရေးကို ပံ့ပိုးကူညီရန် ဖြစ်သည်။</p>
+            </div>
+            <div class="u-about-en u-about-block" style="display:none">
+              <p>The University of Information Technology (UIT), Yangon, is a public ICT-focused university established on <strong>3 December 2012</strong> as a Center of Excellence in ICT, and officially renamed UIT on <strong>1 April 2015</strong>. It is located on Parami Road, Hlaing Campus, Hlaing Township, Yangon.</p>
+              <p>UIT serves as Myanmar's main center of research in ICT, offering programs from diploma to doctoral level. It admits approximately <strong>200 undergraduate students per year</strong> nationwide, selected through the national matriculation examination.</p>
+              <p>Specializations span <strong>Software Engineering, Cyber Security, Embedded Systems, High-Performance Computing, Knowledge Engineering, and Communication &amp; Networking</strong> — all aligned with modern technology careers and national development goals.</p>
+            </div>
+          </div>
+
+          <div class="u-content-card">
+            <h2>Why Choose UIT?</h2>
+            <div class="u-features">
+              <div class="u-feature-item">
+                <div class="u-feat-icon">🏛️</div>
+                <div>
+                  <h4>Center of Excellence in ICT</h4>
+                  <p>Established to develop high-level ICT professionals and specialists, UIT is Myanmar's nationally recognized institution for advanced IT education and research.</p>
+                </div>
+              </div>
+              <div class="u-feature-item">
+                <div class="u-feat-icon">🧩</div>
+                <div>
+                  <h4>Industry-Relevant Specializations</h4>
+                  <p>Study Software Engineering, Cyber Security, Embedded Systems, Networking, and High Performance Computing — all aligned with real technology careers.</p>
+                </div>
+              </div>
+              <div class="u-feature-item">
+                <div class="u-feat-icon">🔬</div>
+                <div>
+                  <h4>Research &amp; Innovation Culture</h4>
+                  <p>UIT emphasizes ICT research that supports national development, with programs spanning undergraduate to doctoral levels.</p>
+                </div>
+              </div>
+              <div class="u-feature-item">
+                <div class="u-feat-icon">🎓</div>
+                <div>
+                  <h4>Undergraduate to Ph.D. Pathway</h4>
+                  <p>Advance through Diploma, Bachelor's, Master's, and Doctoral study options within one focused, ICT-dedicated university.</p>
+                </div>
+              </div>
+              <div class="u-feature-item">
+                <div class="u-feat-icon">📍</div>
+                <div>
+                  <h4>Yangon Location — Hlaing Campus</h4>
+                  <p>Located on Parami Road, Hlaing Campus, close to Yangon's main academic zone with strong access to the tech industry.</p>
+                </div>
+              </div>
+              <div class="u-feature-item">
+                <div class="u-feat-icon">💼</div>
+                <div>
+                  <h4>Built for High-Impact Tech Careers</h4>
+                  <p>Graduate with skills for software development, cybersecurity, systems, and networks — backed by a curriculum designed for professional capability.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="u-content-card">
+            <h2>Campus Gallery</h2>
+            <div class="u-gallery">
+              <div class="u-gallery-item">
+                <img src="uit1.jpg" alt="UIT Campus">
+                <span>UIT Campus</span>
+              </div>
+              <div class="u-gallery-item">
+                <img src="uit2.jpg" alt="UIT Facilities">
+                <span>Facilities</span>
+              </div>
+              <div class="u-gallery-item">
+                <img src="uit3.jpg" alt="UIT Building">
+                <span>Main Building</span>
+              </div>
+              <div class="u-gallery-item">
+                <img src="uit4.jpg" alt="UIT Campus Life">
+                <span>Campus Life</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Majors Tab -->
+        <div class="u-panel" id="majors" role="tabpanel">
+          <div class="u-content-card">
+            <h2>Undergraduate Programs (B.C.Sc.)</h2>
+            <p class="u-panel-subtitle">4–5 year Bachelor of Computer Science programs</p>
+            <div class="u-programs">
+
+              <div class="u-program-card">
+                <div class="u-prog-icon blue">💻</div>
+                <div class="u-prog-body">
+                  <div class="u-prog-name">Software Engineering</div>
+                  <div class="u-prog-degree">B.C.Sc. — 4 years</div>
+                  <p>Design, develop, and maintain large-scale software systems. Covers programming, algorithms, system design, testing, and project management.</p>
+                  <div class="u-prog-tags">
+                    <span>Programming</span><span>System Design</span><span>Algorithms</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-program-card">
+                <div class="u-prog-icon teal">📊</div>
+                <div class="u-prog-body">
+                  <div class="u-prog-name">Business Information Systems</div>
+                  <div class="u-prog-degree">B.C.Sc. — 4 years</div>
+                  <p>Bridge technology and business — ERP systems, data analytics, IT management, and enterprise solutions for organizations.</p>
+                  <div class="u-prog-tags">
+                    <span>ERP</span><span>Analytics</span><span>IT Management</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-program-card">
+                <div class="u-prog-icon violet">🧠</div>
+                <div class="u-prog-body">
+                  <div class="u-prog-name">Knowledge Engineering</div>
+                  <div class="u-prog-degree">B.C.Sc. — 4 years</div>
+                  <p>AI, machine learning, expert systems, and knowledge representation. Prepares graduates for intelligent systems and data-driven roles.</p>
+                  <div class="u-prog-tags">
+                    <span>AI / ML</span><span>Expert Systems</span><span>Data Science</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-program-card">
+                <div class="u-prog-icon green">⚡</div>
+                <div class="u-prog-body">
+                  <div class="u-prog-name">High Performance Computing</div>
+                  <div class="u-prog-degree">B.C.Sc. — 4 years</div>
+                  <p>Parallel computing, GPU programming, distributed systems, and scientific computing for high-demand processing environments.</p>
+                  <div class="u-prog-tags">
+                    <span>Parallel Computing</span><span>GPU</span><span>Distributed Systems</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="u-content-card">
+            <h2>Postgraduate Programs</h2>
+            <p class="u-panel-subtitle">Master's and Doctoral level — advanced ICT specializations</p>
+            <div class="u-postgrad-list">
+              <div class="u-postgrad-item">
+                <div class="u-postgrad-icon">🔐</div>
+                <div>
+                  <div class="u-postgrad-name">Cybersecurity</div>
+                  <div class="u-postgrad-level">Diploma · Master's · Ph.D.</div>
+                </div>
+              </div>
+              <div class="u-postgrad-item">
+                <div class="u-postgrad-icon">🔌</div>
+                <div>
+                  <div class="u-postgrad-name">Embedded Systems</div>
+                  <div class="u-postgrad-level">Diploma · Master's · Ph.D.</div>
+                </div>
+              </div>
+              <div class="u-postgrad-item">
+                <div class="u-postgrad-icon">🌐</div>
+                <div>
+                  <div class="u-postgrad-name">Communication &amp; Networking</div>
+                  <div class="u-postgrad-level">Diploma · Master's · Ph.D.</div>
+                </div>
+              </div>
+              <div class="u-postgrad-item">
+                <div class="u-postgrad-icon">💻</div>
+                <div>
+                  <div class="u-postgrad-name">Software Engineering</div>
+                  <div class="u-postgrad-level">Master's · Ph.D.</div>
+                </div>
+              </div>
+              <div class="u-postgrad-item">
+                <div class="u-postgrad-icon">⚡</div>
+                <div>
+                  <div class="u-postgrad-name">High-Performance Computing</div>
+                  <div class="u-postgrad-level">Master's · Ph.D.</div>
+                </div>
+              </div>
+              <div class="u-postgrad-item">
+                <div class="u-postgrad-icon">🏢</div>
+                <div>
+                  <div class="u-postgrad-name">Business Information Systems</div>
+                  <div class="u-postgrad-level">Master's · Ph.D.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Tab -->
+        <div class="u-panel" id="projects" role="tabpanel">
+          <div class="u-content-card">
+            <h2>Research &amp; Projects</h2>
+            <p class="u-panel-subtitle">ICT research initiatives and student projects at UIT</p>
+            <div class="u-project-list">
+
+              <div class="u-project-item">
+                <div class="u-proj-meta">
+                  <span class="u-proj-tag blue">Cybersecurity</span>
+                  <span class="u-proj-year">Ongoing</span>
+                </div>
+                <h4>National Cybersecurity Research Initiative</h4>
+                <p>Research into threat detection, network vulnerability assessment, and security policy frameworks aligned with Myanmar's national digital infrastructure goals.</p>
+              </div>
+
+              <div class="u-project-item">
+                <div class="u-proj-meta">
+                  <span class="u-proj-tag teal">HPC</span>
+                  <span class="u-proj-year">Ongoing</span>
+                </div>
+                <h4>High-Performance Computing Lab</h4>
+                <p>Parallel processing research using cluster systems and GPU acceleration for data-intensive scientific and engineering computation tasks.</p>
+              </div>
+
+              <div class="u-project-item">
+                <div class="u-proj-meta">
+                  <span class="u-proj-tag violet">AI / ML</span>
+                  <span class="u-proj-year">Research</span>
+                </div>
+                <h4>Myanmar Language NLP Systems</h4>
+                <p>Knowledge engineering projects focusing on natural language processing tools for the Myanmar language — text recognition, translation, and speech interfaces.</p>
+              </div>
+
+              <div class="u-project-item">
+                <div class="u-proj-meta">
+                  <span class="u-proj-tag green">Embedded</span>
+                  <span class="u-proj-year">Active</span>
+                </div>
+                <h4>IoT &amp; Embedded Systems Development</h4>
+                <p>Student-led projects building IoT devices, microcontroller-based systems, and embedded applications for smart agriculture and infrastructure monitoring.</p>
+              </div>
+
+              <div class="u-project-item">
+                <div class="u-proj-meta">
+                  <span class="u-proj-tag amber">Industry</span>
+                  <span class="u-proj-year">Collaboration</span>
+                </div>
+                <h4>Industry Collaboration Programs</h4>
+                <p>Partnerships with Yangon-based tech companies, banks, and telecoms for internship pipelines, final-year projects, and joint research programs.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Campus Life Tab -->
+        <div class="u-panel" id="campus" role="tabpanel">
+          <div class="u-content-card">
+            <h2>Campus Life</h2>
+            <p class="u-panel-subtitle">Life at UIT's Hlaing Campus, Parami Road, Yangon</p>
+            <div class="u-campus-grid">
+
+              <div class="u-campus-card">
+                <div class="u-campus-icon">🖥️</div>
+                <h4>Computer Labs</h4>
+                <p>Modern ICT laboratories equipped for software development, networking, HPC experiments, and cybersecurity research training.</p>
+              </div>
+
+              <div class="u-campus-card">
+                <div class="u-campus-icon">📚</div>
+                <h4>Digital Library &amp; LMS</h4>
+                <p>Access to academic resources through UIT's official LMS (Moodle-based) and a physical library with ICT-focused collections.</p>
+              </div>
+
+              <div class="u-campus-card">
+                <div class="u-campus-icon">🤝</div>
+                <h4>Student Communities</h4>
+                <p>Active student networks via Facebook groups, batch chats, and department communities connecting current students and alumni.</p>
+              </div>
+
+              <div class="u-campus-card">
+                <div class="u-campus-icon">🏆</div>
+                <h4>Hackathons &amp; Competitions</h4>
+                <p>UIT students regularly participate in coding contests, hackathons, and ICT innovation competitions both locally and regionally.</p>
+              </div>
+
+              <div class="u-campus-card">
+                <div class="u-campus-icon">🔬</div>
+                <h4>Research Environment</h4>
+                <p>A research-first culture where students at all levels engage with faculty on ICT projects contributing to national tech development.</p>
+              </div>
+
+              <div class="u-campus-card">
+                <div class="u-campus-icon">🌐</div>
+                <h4>Industry Exposure</h4>
+                <p>Regular industry visits, guest lectures from tech professionals, and internship placements at Yangon's leading ICT companies.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Paths Tab -->
+        <div class="u-panel" id="careers" role="tabpanel">
+          <div class="u-content-card">
+            <h2>Career Paths</h2>
+            <p class="u-panel-subtitle">Where UIT graduates work and what they build</p>
+            <div class="u-career-list">
+
+              <div class="u-career-card">
+                <div class="u-career-icon">💻</div>
+                <div class="u-career-body">
+                  <h4>Software Engineer / Developer</h4>
+                  <p>Web, mobile, and enterprise software development at tech companies, banks, telecoms, and startups across Yangon and beyond.</p>
+                  <div class="u-career-tags">
+                    <span>React / Flutter</span><span>Backend APIs</span><span>Mobile Apps</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-career-card">
+                <div class="u-career-icon">🔐</div>
+                <div class="u-career-body">
+                  <h4>Cybersecurity Specialist</h4>
+                  <p>Network security, penetration testing, and security operations in government agencies, banks, and enterprise IT departments.</p>
+                  <div class="u-career-tags">
+                    <span>Network Security</span><span>Pentesting</span><span>SOC</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-career-card">
+                <div class="u-career-icon">🌐</div>
+                <div class="u-career-body">
+                  <h4>Network / Systems Engineer</h4>
+                  <p>Infrastructure design, server management, cloud platforms, and network operations for enterprise and government systems.</p>
+                  <div class="u-career-tags">
+                    <span>Cloud</span><span>Networking</span><span>Systems Admin</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-career-card">
+                <div class="u-career-icon">🧠</div>
+                <div class="u-career-body">
+                  <h4>AI / Data Science Roles</h4>
+                  <p>Machine learning engineering, data analytics, and intelligent systems development in research institutions and private tech firms.</p>
+                  <div class="u-career-tags">
+                    <span>ML Engineering</span><span>Data Analytics</span><span>NLP</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-career-card">
+                <div class="u-career-icon">🎓</div>
+                <div class="u-career-body">
+                  <h4>Teaching &amp; Research</h4>
+                  <p>Postgraduate graduates pursue lecturing at technical institutes, doctoral research, and ICT training center roles nationwide.</p>
+                  <div class="u-career-tags">
+                    <span>Academia</span><span>Research</span><span>Training</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Alumni Tab -->
+        <div class="u-panel" id="alumni" role="tabpanel">
+          <div class="u-content-card">
+            <h2>Alumni Network</h2>
+            <p class="u-panel-subtitle">UIT is a young university with a fast-growing, hands-on alumni community</p>
+
+            <div class="u-alumni-note">
+              <div class="u-alumni-note-icon">💡</div>
+              <div>
+                <strong>Growing Alumni Pool</strong>
+                <p>UIT is relatively young compared to UCSY, so its public notable alumni list is still developing — but graduates are building strong careers across Myanmar's ICT sector.</p>
+              </div>
+            </div>
+
+            <div class="u-alumni-stats">
+              <div class="u-alumni-stat">
+                <div class="u-alumni-stat-num">200+</div>
+                <div class="u-alumni-stat-label">Graduates per year</div>
+              </div>
+              <div class="u-alumni-stat">
+                <div class="u-alumni-stat-num">2015</div>
+                <div class="u-alumni-stat-label">First UIT graduates</div>
+              </div>
+              <div class="u-alumni-stat">
+                <div class="u-alumni-stat-num">Tech</div>
+                <div class="u-alumni-stat-label">Primary industry</div>
+              </div>
+            </div>
+
+            <h3 class="u-section-sub">Where Alumni Work</h3>
+            <div class="u-alumni-sectors">
+              <div class="u-sector-item">
+                <div class="u-sector-dot blue"></div>
+                <span>Private tech companies &amp; startups</span>
+              </div>
+              <div class="u-sector-item">
+                <div class="u-sector-dot teal"></div>
+                <span>Banks &amp; financial institutions</span>
+              </div>
+              <div class="u-sector-item">
+                <div class="u-sector-dot green"></div>
+                <span>Telecoms (MPT, Ooredoo, Mytel)</span>
+              </div>
+              <div class="u-sector-item">
+                <div class="u-sector-dot violet"></div>
+                <span>Government IT departments</span>
+              </div>
+              <div class="u-sector-item">
+                <div class="u-sector-dot amber"></div>
+                <span>Universities &amp; research institutes</span>
+              </div>
+              <div class="u-sector-item">
+                <div class="u-sector-dot pink"></div>
+                <span>Freelance &amp; international remote work</span>
+              </div>
+            </div>
+
+            <h3 class="u-section-sub">Connect with Alumni</h3>
+            <div class="u-connect-list">
+              <a href="https://mm.linkedin.com/company/uit-myanmar" target="_blank" rel="noopener" class="u-connect-item">
+                <span class="u-connect-icon">🔗</span>
+                <div>
+                  <div class="u-connect-name">LinkedIn</div>
+                  <div class="u-connect-hint">Search "University of Information Technology, Yangon"</div>
+                </div>
+              </a>
+              <a href="https://www.facebook.com/p/University-of-Information-Technology-UIT-100072159080533/" target="_blank" rel="noopener" class="u-connect-item">
+                <span class="u-connect-icon">📘</span>
+                <div>
+                  <div class="u-connect-name">Facebook Page</div>
+                  <div class="u-connect-hint">Official UIT Facebook — events, announcements, alumni posts</div>
+                </div>
+              </a>
+              <a href="https://www.uit.edu.mm" target="_blank" rel="noopener" class="u-connect-item">
+                <span class="u-connect-icon">🌐</span>
+                <div>
+                  <div class="u-connect-name">Official Website</div>
+                  <div class="u-connect-hint">uit.edu.mm — admissions, programs, academic calendar</div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="u-cta" aria-label="Call to action">
+    <div class="u-cta-orb u-cta-orb-1"></div>
+    <div class="u-cta-orb u-cta-orb-2"></div>
+    <div class="container u-cta-inner">
+      <div class="u-cta-badge">Ready to apply?</div>
+      <h2 class="u-cta-title">Start Your Journey at UIT</h2>
+      <p class="u-cta-body">Myanmar's Center of Excellence in ICT. Software Engineering, Cybersecurity, HPC, and more — from Diploma to Ph.D.</p>
+      <div class="u-cta-btns">
+        <a href="https://www.uit.edu.mm/admission/" target="_blank" rel="noopener" class="u-btn-primary">View Admissions</a>
+        <a href="uni.html" class="u-btn-ghost">← Back to Universities</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="u-footer">
+    <div class="container u-footer-inner">
+      <div class="u-footer-brand">
+        <span class="u-footer-logo">HST</span>
+        <span class="u-footer-tagline">High Schooler's Tool</span>
+      </div>
+      <div class="u-footer-note">UIT profile compiled from official sources for educational guidance.</div>
+      <div class="u-footer-links">
+        <a href="hst.html">Home</a>
+        <a href="uni.html">Universities</a>
+        <a href="career-journey.html">Career Journey</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Hamburger ── */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks  = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ── Hero parallax ── */
+    var heroBg = document.querySelector('.u-hero-bg');
+    if (heroBg) {
+      window.addEventListener('scroll', function () {
+        var y = window.scrollY;
+        heroBg.style.transform = 'scale(1.04) translateY(' + (y * 0.18) + 'px)';
+      }, { passive: true });
+    }
+
+    /* ── Tabs ── */
+    var tabs   = document.querySelectorAll('.u-tab');
+    var panels = document.querySelectorAll('.u-panel');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        panels.forEach(function (p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected','true');
+        var panel = document.getElementById(target);
+        if (panel) { panel.classList.add('active'); }
+      });
+    });
+
+    /* ── Language toggle ── */
+    var langBtns = document.querySelectorAll('.u-lang-btn');
+    langBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.dataset.lang;
+        langBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var mmBlock = document.querySelector('.u-about-mm');
+        var enBlock = document.querySelector('.u-about-en');
+        if (mmBlock && enBlock) {
+          mmBlock.style.display = lang === 'mm' ? '' : 'none';
+          enBlock.style.display = lang === 'en' ? '' : 'none';
+        }
+      });
+    });
+
+    /* ── Scroll reveal ── */
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('u-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.u-content-card,.u-stat,.u-program-card,.u-campus-card,.u-career-card').forEach(function (el) { io.observe(el); });
+    }
+
+  }());
+  </script>
+</body>
+</html>

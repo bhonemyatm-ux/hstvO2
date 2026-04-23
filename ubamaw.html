@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMWUI — Bamaw University | HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="ucstgi.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       NOTIFICATION + LETTER SHEET — Apple style
+   ══════════════════════════════════════════════════════════ -->
+
+  <div class="notify-overlay" id="notifyOverlay"></div>
+
+  <!-- Compact notification banner -->
+  <div class="notify-bar" id="notifyBar" role="alert" aria-live="polite">
+    <button class="notify-x" id="notifyDismiss" aria-label="Close">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M1 1l10 10M11 1L1 11"/>
+      </svg>
+    </button>
+    <div class="notify-row">
+      <div class="notify-icon">
+        <img src="hstlogo.jpg" alt="HST" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="notify-icon-fallback">HST</div>
+      </div>
+      <div class="notify-text">
+        <div class="notify-eyebrow">HST — Announcement</div>
+        <div class="notify-title">Bamaw University</div>
+        <div class="notify-body">
+          <span class="notify-body-text">Bamaw University continues to operate in Bhamo (Banmaw), Kachin State, amid ongoing education‑sector challenges in northern Myanmar.</span>
+          <button class="notify-more" id="notifyMore">more</button>
+        </div>
+      </div>
+      <button class="notify-action" id="notifyAction">Open</button>
+    </div>
+    <div class="notify-progress"><div class="notify-progress-fill" id="notifyProgress"></div></div>
+  </div>
+
+  <!-- Full letter sheet -->
+  <div class="letter-sheet" id="letterSheet" role="dialog" aria-modal="true" aria-label="Full announcement">
+    <div class="letter-handle"></div>
+    <div class="letter-head">
+      <div class="letter-from">
+        <div class="letter-avatar">
+          <img src="hstlogo.jpg" alt="HST" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="letter-avatar-fallback">HST</div>
+        </div>
+        <div class="letter-from-text">
+          <div class="letter-sender">High Schooler's Tool</div>
+          <div class="letter-date" id="letterDate"></div>
+        </div>
+      </div>
+      <button class="letter-close" id="letterClose" aria-label="Close">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M1 1l12 12M13 1L1 13"/>
+        </svg>
+      </button>
+    </div>
+    <div class="letter-divider"></div>
+    <div class="letter-body">
+      <h2 class="letter-subject">Bamaw University</h2>
+      <div class="letter-content">
+       <div class="uni-description">
+  <p><strong>Bamaw University</strong> is a public government university located in <strong>Bhamo, Kachin State, Myanmar</strong>. It offers undergraduate and postgraduate programs in arts and science subjects for local and regional students.</p>
+  <p>The university supports higher education in a border region, offering B.A., B.Sc., and advanced degree programs within a diverse cultural environment.</p>
+  <p>Bhamo is situated in a conflict-affected area where travel and access may be limited, so students should always check safety updates and university operations before planning to enroll or visit.</p>
+</div>
+      </div>
+    </div>
+    <div class="letter-footer">
+      <button class="letter-got-it" id="letterGotIt">Got it</button>
+    </div>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero Banner ── -->
+  <section class="uni-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-bg" style="background-image: url('photo_2025-12-30_1.jpg');"></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="hst.html">Home</a>
+        <span>/</span>
+        <a href="uni.html">Universities</a>
+        <span>/</span>
+        <span>Bamaw University</span>
+      </div>
+      <div class="uni-hero-content">
+        <div class="uni-logo">
+          <img src=".png" alt="Bamaw University Logo" onerror="this.style.display='none'">
+        </div>
+        <div class="uni-title">
+          <h1>Bamaw University</h1>
+          <p class="uni-subtitle">Arts & Science Education in Kachin State</p>
+          <div class="uni-meta">
+            <div class="uni-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Bhamo (Banmaw), Kachin State
+            </div>
+            <div class="uni-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              Government University
+            </div>
+            <div class="uni-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Founded early 2000s
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Quick Stats ── -->
+  <section class="quick-stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon-wrap blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="stat-info"><h3>500+</h3><p>Students</p></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="stat-info"><h3>4–6</h3><p>Programs</p></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-info"><h3>50+</h3><p>Faculty</p></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="stat-info"><h3>10+</h3><p>Departments</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <section class="profile-content">
+    <div class="container">
+      <div class="content-layout">
+
+        <!-- Sidebar -->
+        <aside class="profile-sidebar">
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Quick Info</div>
+            <div class="info-list">
+              <div class="info-item"><strong>Type</strong><span>Government</span></div>
+              <div class="info-item"><strong>Location</strong><span>Bhamo (Banmaw), Kachin State</span></div>
+              <div class="info-item"><strong>Campus</strong><span>Urban campus near Bhamo town</span></div>
+              <div class="info-item"><strong>Language</strong><span>Myanmar, English</span></div>
+              <div class="info-item"><strong>Founded</strong><span>Early 2000s</span></div>
+              <div class="info-item"><strong>Status</strong><span>Public arts & science university</span></div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Entrance Requirements</div>
+            <div class="requirement-box">
+              <div class="requirement-item">
+                <span class="req-label">Minimum Marks</span>
+                <span class="req-value">240+</span>
+              </div>
+              <div class="requirement-item">
+                <span class="req-label">Required Subjects</span>
+                <div class="subject-tags">
+                  <span class="subject-tag">Myanmar</span>
+                  <span class="subject-tag">English</span>
+                  <span class="subject-tag">Mathematics</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card contact-card">
+            <div class="sidebar-card-title">Contact</div>
+            <div class="contact-info">
+              <div class="contact-row">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 4.18 2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <span>Local university hotline (via Kachin)</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <span>bmwuni.edu.mm (via Ministry of Education portal)</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>www.bmwuni.edu.mm</span>
+              </div>
+            </div>
+            <button class="contact-btn">Get in Touch</button>
+          </div>
+
+        </aside>
+
+        <!-- Main Panel -->
+        <main class="profile-main">
+
+          <div class="profile-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="majors">Majors</button>
+            <button class="tab-btn" data-tab="campus">Campus Life</button>
+          </div>
+
+          <div class="tab-content">
+
+           <div class="tab-panel active" id="overview">
+
+                            <div class="content-card">
+                  <div class="card-head-row">
+                    <h2>About the University</h2>
+                    <div class="lang-toggle" role="group" aria-label="Language toggle">
+                      <button class="lang-btn active" data-lang="mm" type="button">မြန်မာ</button>
+                      <button class="lang-btn" data-lang="en" type="button">English</button>
+                    </div>
+                  </div>
+                <div class="about-mm about-block">
+                  <p>ဗန်းမော်(Bamaw)တက္ကသိုလ်သည် ကချင်ပြည်နယ်၊ ဗန်းမော်မြို့တွင် တည်ရှိသောအစိုးရကိုယ်ပိုင် တက္ကသိုလ်ဖြစ်ပြီး အတွေးအမြင်နှင့် သိပ္ပံဘာသာရပ်များ သင်ကြားပေးလျက်ရှိသည်။ အစောပိုင်း ၂၀၀၀ ခုနှစ်များတွင် စတင်တည်ထောင်ခဲ့ပြီး ဘာမော်မြို့နှင့် ပတ်ဝန်းကျင်ဒေသရှိ ကျောင်းသားများအတွက် အဆင့်မြင့်ပညာရေးကို ဖြည့်ဆည်းပေးနေသည်။</p>
+                  <p>တက္ကသိုလ်သည် ဘာသာစကား၊ သိပ္ပံ၊ လူမှုရေး နှင့် သမိုင်း စသည့် ဘာသာရပ်များကို ပို့ချပေးပြီး ဘွဲ့ကြို (B.A., B.Sc.) အဆင့်များ ပေးအပ်ပါသည်။</p>
+                  <p>ကချင်ပြည်နယ်၏ ပညာရေးနှင့် လူမှုဘဝ တိုးတက်ရေးအတွက် ဗန်းမော်တက္ကသိုလ်သည် အရေးပါသော ဗဟိုအဖွဲ့အစည်းတစ်ခုအဖြစ် ဆောင်ရွက်လျက်ရှိသည်။</p>
+                </div>
+                <div class="about-en about-block" style="display:none">
+                  <p><strong>Bamaw University</strong> is a public university located in Bhamo (Banmaw), Kachin State, Myanmar. It offers arts and science programs and serves students from Bhamo and surrounding areas.</p>
+                  <p>The university provides undergraduate degrees such as Bachelor of Arts (B.A.) and Bachelor of Science (B.Sc.) in a range of humanities and science disciplines.</p>
+                  <p>Bamaw University plays an important role in higher education and community development in Kachin State, while also operating in a region affected by ongoing conflict and political instability.</p>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <h2>Why Choose Bamaw University?</h2>
+                <div class="features-list">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H2v15h7c1.7 0 3 1.3 3 3V7c0-2.2-1.8-4-4-4z"/><path d="M16 3h6v15h-7c-1.7 0-3 1.3-3 3V7c0-2.2 1.8-4 4-4z"/></svg>
+                    </div>
+                    <div>
+                      <h4>Local Access to University</h4>
+                      <p>Students from small towns in Kachin State can attend university without moving far from home.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div>
+                      <h4>Experienced Faculty</h4>
+                      <p>Teachers with backgrounds in arts and sciences guide students through state‑syllabus programs.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <div>
+                      <h4>Community‑Focused Education</h4>
+                      <p>Strong links with local schools, government offices, and community organizations support student growth.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </div>
+                    <div>
+                      <h4>Pathway to Careers</h4>
+                      <p>Graduates can become teachers, civil servants, or continue to higher‑degree study at other universities.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <h2>Campus Gallery</h2>
+                <div class="gallery-grid">
+                  <div class="gallery-item"><img src="bamaw1.jpg" alt="Bamaw University Campus View" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="bamaw2.jpg" alt="Bamaw University Building" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="bamaw3.jpg" alt="Campus Grounds" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="bamaw4.jpg" alt="Classroom" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="bamaw5.jpg" alt="University Gate" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="bamaw6.jpg" alt="Student Gathering" onerror="this.style.opacity='.4'"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Majors Tab -->
+            <div class="tab-panel" id="majors">
+              <div class="content-card">
+                <h2>Available Programs</h2>
+                <p class="subtitle">Choose from arts and science streams</p>
+                <div class="majors-list">
+
+                  <div class="major-card">
+                    <div class="major-header">
+                      <div class="major-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                      </div>
+                      <div>
+                        <h3>Arts (B.A.)</h3>
+                        <span class="major-degree">Bachelor of Arts</span>
+                      </div>
+                    </div>
+                    <p class="major-desc">Focus on literature, history, political science, and social studies. Suitable for future teachers and government‑sector jobs.</p>
+                    <div class="major-details">
+                      <div class="detail-row"><strong>Duration</strong><span>4 Years</span></div>
+                      <div class="detail-row"><strong>Min. Marks</strong><span>-</span></div>
+                      <div class="detail-row"><strong>Prerequisites</strong><span>Myanmar, English, Math</span></div>
+                    </div>
+                    <div class="major-subjects">
+                      <span>Myanmar Literature</span><span>History</span><span>Political Science</span>
+                      <span>Geography</span><span>Sociology</span>
+                    </div>
+                  </div>
+
+                  <div class="major-card">
+                    <div class="major-header">
+                      <div class="major-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                      </div>
+                      <div>
+                        <h3>Science (B.Sc.)</h3>
+                        <span class="major-degree">Bachelor of Science</span>
+                      </div>
+                    </div>
+                    <p class="major-desc">Physics, chemistry, biology, and mathematics for students interested in teaching, research, or technical roles.</p>
+                    <div class="major-details">
+                      <div class="detail-row"><strong>Duration</strong><span>4 Years</span></div>
+                      <div class="detail-row"><strong>Min. Marks</strong><span>-</span></div>
+                      <div class="detail-row"><strong>Prerequisites</strong><span>Math, Physics, Chemistry</span></div>
+                    </div>
+                    <div class="major-subjects">
+                      <span>Physics</span><span>Chemistry</span><span>Biology</span>
+                      <span>Mathematics</span><span>Computer Basics</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Campus Life Tab -->
+            <div class="tab-panel" id="campus">
+              <div class="content-card">
+                <h2>Campus Life at Bamaw University</h2>
+                <p class="subtitle">Student life in Bhamo, Kachin State</p>
+                <div class="campus-features">
+                  <div class="campus-card">
+                    <div class="campus-img"><img src="bamaw_club.jpg" alt="Student Clubs" onerror="this.style.opacity='.3'"></div>
+                    <h3>Student Groups</h3>
+                    <p>Reading clubs, debate teams, and cultural groups help students build soft skills and leadership.</p>
+                  </div>
+                  <div class="campus-card">
+                    <div class="campus-img"><img src="bhamo_facility.jpg" alt="Library and Labs" onerror="this.style.opacity='.3'"></div>
+                    <h3>Facilities</h3>
+                    <p>Library, basic science labs, and computer rooms support core academic activities.</p>
+                  </div>
+                  <div class="campus-card">
+                    <div class="campus-img"><img src="bamaw_event.jpg" alt="Campus Events" onerror="this.style.opacity='.3'"></div>
+                    <h3>Events & Activities</h3>
+                    <p>Sports days, cultural festivals, and knowledge‑sharing events strengthen campus community.</p>
+                  </div>
+                </div>
+                <div class="testimonial-section">
+                  <h3>Student Voices</h3>
+                  <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                      <p>"Studying near home allows me to stay close to family while getting a proper university education."</p>
+                      <div class="testimonial-author">
+                        <strong>Student A</strong>
+                        <span>2nd Year B.A. Student</span>
+                      </div>
+                    </div>
+                    <div class="testimonial-card">
+                      <p>"Science classes here prepare us well for teaching or further study at bigger universities."</p>
+                      <div class="testimonial-author">
+                        <strong>Student B</strong>
+                        <span>3rd Year B.Sc. Student</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-profile">
+    <div class="container">
+      <h2>Ready to Start Your Journey at Bamaw University?</h2>
+      <p>Explore more universities or contact the Ministry of Education for admission details.</p>
+      <div class="cta-buttons">
+        <a href="uni.html" class="btn-secondary">Explore More Universities</a>
+        <a href="error.html" class="btn-primary">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-brand">
+            <div class="footer-logo-mark">HST</div>
+            <span class="footer-brand-name">High Schooler's Tool</span>
+          </div>
+          <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>High Schooler's Tool</p>
+          <p>Email: <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p>Facebook: <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">High Schooler's Tool ARP</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── NOTIFICATION ── */
+    (function () {
+      var AUTO_MS = 9000;
+      var bar      = document.getElementById('notifyBar');
+      var overlay  = document.getElementById('notifyOverlay');
+      var xBtn     = document.getElementById('notifyDismiss');
+      var actionBtn= document.getElementById('notifyAction');
+      var moreBtn  = document.getElementById('notifyMore');
+      var progress = document.getElementById('notifyProgress');
+      var sheet    = document.getElementById('letterSheet');
+      var closeBtn = document.getElementById('letterClose');
+      var gotItBtn = document.getElementById('letterGotIt');
+
+      var d = new Date();
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      document.getElementById('letterDate').textContent = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+      var timer;
+
+      function showBar() {
+        bar.classList.add('notify-visible');
+        overlay.classList.add('notify-visible');
+        if (AUTO_MS > 0 && progress) {
+          progress.style.transition = 'transform ' + AUTO_MS + 'ms linear';
+          progress.getBoundingClientRect();
+          progress.style.transform = 'scaleX(0)';
+          timer = setTimeout(dismissBar, AUTO_MS);
+        }
+      }
+
+      function dismissBar() {
+        clearTimeout(timer);
+        bar.classList.remove('notify-visible');
+        bar.classList.add('notify-out');
+        overlay.classList.remove('notify-visible');
+        bar.addEventListener('transitionend', function done() {
+          bar.classList.remove('notify-out');
+          bar.removeEventListener('transitionend', done);
+        });
+      }
+
+      function openLetter() {
+        clearTimeout(timer);
+        bar.classList.remove('notify-visible');
+        bar.classList.add('notify-out');
+        bar.addEventListener('transitionend', function done() {
+          bar.classList.remove('notify-out');
+          bar.removeEventListener('transitionend', done);
+        });
+        overlay.classList.add('notify-visible', 'letter-open');
+        sheet.classList.add('letter-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLetter() {
+        sheet.classList.remove('letter-open');
+        overlay.classList.remove('letter-open');
+        overlay.classList.remove('notify-visible');
+        document.body.style.overflow = '';
+      }
+
+      xBtn.addEventListener('click', dismissBar);
+      overlay.addEventListener('click', function () {
+        if (sheet.classList.contains('letter-open')) closeLetter();
+        else dismissBar();
+      });
+      actionBtn.addEventListener('click', openLetter);
+      moreBtn.addEventListener('click', openLetter);
+      closeBtn.addEventListener('click', closeLetter);
+      gotItBtn.addEventListener('click', closeLetter);
+
+      setTimeout(showBar, 700);
+    })();
+
+    /* ── HAMBURGER ── */
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks  = document.getElementById('navLinks');
+      hamburger.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+        });
+      });
+    })();
+
+    /* ── TABS ── */
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = btn.dataset.lang;
+          document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          document.querySelector('.about-mm').style.display = lang === 'mm' ? '' : 'none';
+          document.querySelector('.about-en').style.display = lang === 'en' ? '' : 'none';
+        });
+      });
+
+      document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

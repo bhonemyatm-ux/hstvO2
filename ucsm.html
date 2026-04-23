@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Profile - High Schooler's Tool</title>
+  <link rel="stylesheet" href="hst.css">
+  <link rel="stylesheet" href="ucstgi.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img">
+        <div class="logo-text">
+          <h2>HST</h2>
+          <span>High Schooler's Tool</span>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="uni-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-bg" style="background-image: url('ucsm.jpg');"></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / 
+        <a href="universities.html">Universities</a> / 
+        <span>University of Computer Studies, Mandalay</span>
+      </div>
+      <div class="uni-hero-content">
+        <div class="uni-logo">
+          <img src="ucsm.jfif" alt="UCSM Logo">
+        </div>
+        <div class="uni-title">
+          <h1>University of Computer Studies - Mandalay</h1>
+          <p class="uni-subtitle">Leading Technology Education in Mandalay Region</p>
+          <div class="uni-meta">
+            <span><i>📍</i> Mandalay</span>
+            <span><i>🏛️</i> Computer University</span>
+            <span><i>📅</i> Founded 1997</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats Bar -->
+  <section class="quick-stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon">🎓</div>
+          <div class="stat-info">
+            <h3>900+</h3>
+            <p>Students</p>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">📚</div>
+          <div class="stat-info">
+            <h3>10+</h3>
+            <p>Programs</p>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">👨‍🏫</div>
+          <div class="stat-info">
+            <h3>90+</h3>
+            <p>Faculty</p>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-info">
+            <h3>30+</h3>
+            <p>Projects</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="profile-content">
+    <div class="container">
+      <div class="content-layout">
+        <!-- Sidebar -->
+        <aside class="profile-sidebar">
+          <div class="sidebar-card">
+            <h3>Quick Info</h3>
+            <div class="info-list">
+              <div class="info-item">
+                <strong>Type</strong>
+                <span>Government</span>
+              </div>
+              <div class="info-item">
+                <strong>Location</strong>
+                <span>Mandalay, Mandalay Region</span>
+              </div>
+              <div class="info-item">
+                <strong>Campus Size</strong>
+                <span>200 Acres</span>
+              </div>
+              <div class="info-item">
+                <strong>Language</strong>
+                <span>Myanmar, English</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Entrance Requirements</h3>
+            <div class="requirement-box">
+              <div class="requirement-item">
+                <span class="req-label">Minimum Marks</span>
+                <span class="req-value">410</span>
+              </div>
+              <div class="requirement-item">
+                <span class="req-label">Required Subjects</span>
+                <div class="subject-tags">
+                  <span class="subject-tag">Mathematics</span>
+                  <span class="subject-tag">Physics</span>
+                  <span class="subject-tag">English</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card contact-card">
+            <h3>Contact</h3>
+            <div class="contact-info">
+              <p><i>📞</i> 09 783338665</p>
+              <p><i>📧</i> rectoroffice.ucsm@gmail.com</p>
+              <p><i>🌐</i> www.ucsm.edu.mm</p>
+            </div>
+            <button class="contact-btn">Get in Touch</button>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="profile-main">
+          <!-- Navigation Tabs -->
+          <div class="profile-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="majors">Majors</button>
+            <button class="tab-btn" data-tab="projects">Projects</button>
+            <button class="tab-btn" data-tab="campus">Campus Life</button>
+            <button class="tab-btn" data-tab="careers">Career Paths</button>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="tab-content">
+            <!-- Overview Tab -->
+            <div class="tab-panel active" id="overview">
+              <div class="content-card">
+                <div class="card-head-row">
+                  <h2>About the University</h2>
+                  <div class="lang-toggle" role="group" aria-label="Language toggle">
+                    <button class="lang-btn active" data-lang="mm" type="button">မြန်မာ</button>
+                    <button class="lang-btn" data-lang="en" type="button">English</button>
+                  </div>
+                </div>
+
+                <div class="about-mm about-block">
+                  <p>မန္တလေးကွန်ပျူတာတက္ကသိုလ် (UCSM) ကို ၁၉၉၇ ခုနှစ်၊ စက်တင်ဘာလတွင် စတင်တည်ထောင်ခဲ့ပြီး မြန်မာနိုင်ငံ အထက်ပိုင်းဒေသအတွက် ကွန်ပျူတာသိပ္ပံနှင့် နည်းပညာရပ်များကို အထူးပြုသင်ကြားပေးသော အဆင့်မြင့်တက္ကသိုလ်တစ်ခု ဖြစ်ပါသည်။ ၂၀၁၂-၂၀၁၃ ပညာသင်နှစ်တွင် Centre of Excellence (CoE) အဖြစ် အသိအမှတ်ပြု ချီးမြှင့်ခံခဲ့ရပါသည်။</p>
+                  <p>UCSM တွင် B.C.Sc., B.C.Tech., Master, နှင့် Ph.D. သင်တန်းများအပြင် နိုင်ငံတကာတက္ကသိုလ်များနှင့် ပူးပေါင်းသည့် Master Double Degree ပရိုဂရမ်များလည်း ရှိပါသည်။</p>
+                  <p>၂၀၁၄ ခုနှစ်ကတည်းက LMS ကို အသုံးပြု၍ Digital Learning ကို ဆောင်ရွက်လျက်ရှိပြီး English ကို သင်ကြားရေးဘာသာစကားအဖြစ် အဓိကအသုံးပြုပါသည်။</p>
+                </div>
+
+                <div class="about-en about-block" style="display:none">
+                  <p>The University of Computer Studies, Mandalay (UCSM) was established in September 1997 as a higher education institution specializing in computer science and technology for upper Myanmar. It was recognized as a Centre of Excellence (CoE) in the 2012–2013 academic year.</p>
+                  <p>UCSM offers B.C.Sc., B.C.Tech., Master, and Ph.D. programs, along with Master Double Degree programs in collaboration with international universities.</p>
+                  <p>It has used LMS-based digital learning since 2014, and English is the primary language of instruction.</p>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <h2>Why Choose UCSM?</h2>
+                <div class="features-list">
+                  <div class="feature-item">
+                    <div class="feature-icon">💻</div>
+                    <div>
+                      <h4>Computing-Focused Education</h4>
+                      <p>Learn in a computer science and IT-centered environment with programs designed around modern digital skills.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">🧪</div>
+                    <div>
+                      <h4>Hands-On Labs & Projects</h4>
+                      <p>Build real experience through lab work, assignments, and team projects that strengthen problem-solving and coding ability.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">🧠</div>
+                    <div>
+                      <h4>Strong Technical Foundation</h4>
+                      <p>Develop core skills in programming, databases, networks, and systems that support many tech career paths.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">🚀</div>
+                    <div>
+                      <h4>Innovation Mindset</h4>
+                      <p>Explore software development and emerging technologies with a builder’s mindset.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <div>
+                      <h4>Collaborative Learning Culture</h4>
+                      <p>Grow through peer learning, teamwork, and mentoring that mirrors how real tech teams work.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">🧳</div>
+                    <div>
+                      <h4>Pathways to Tech Careers</h4>
+                      <p>Prepare for roles in software, IT support, networking, data, and cybersecurity with skills that transfer across industries.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Majors Tab -->
+            <div class="tab-panel" id="majors">
+              <div class="content-card">
+                <h2>Available Programs</h2>
+                <p class="subtitle">Choose from our comprehensive technology programs</p>
+                <div class="majors-list">
+                  <div class="major-card">
+                    <div class="major-header">
+                      <div class="major-icon">💻</div>
+                      <div>
+                        <h3>Computer Science (CS)</h3>
+                        <span class="major-degree">B.C.Sc / M.C.Sc</span>
+                      </div>
+                    </div>
+                    <p class="major-desc">Core computer science principles, algorithms, software development, and system design.</p>
+                    <div class="major-details">
+                      <div class="detail-row"><strong>Duration:</strong><span>4 Years (Bachelor)</span></div>
+                      <div class="detail-row"><strong>Min. Marks:</strong><span>410</span></div>
+                      <div class="detail-row"><strong>Prerequisites:</strong><span>Math, Physics, English</span></div>
+                    </div>
+                    <div class="major-subjects">
+                      <strong>Core Majors:</strong>
+                      <span>Knowledge Engineering</span>
+                      <span>Software Engineering</span>
+                      <span>High Performance Computing</span>
+                      <span>Business Information Systems</span>
+                    </div>
+                  </div>
+
+                  <div class="major-card">
+                    <div class="major-header">
+                      <div class="major-icon">🌐</div>
+                      <div>
+                        <h3>Computer Technology (CT)</h3>
+                        <span class="major-degree">B.C.Tech</span>
+                      </div>
+                    </div>
+                    <p class="major-desc">Focus on hardware, networking, system administration, and technical infrastructure.</p>
+                    <div class="major-details">
+                      <div class="detail-row"><strong>Duration:</strong><span>4 Years</span></div>
+                      <div class="detail-row"><strong>Min. Marks:</strong><span>410</span></div>
+                      <div class="detail-row"><strong>Prerequisites:</strong><span>Math, Physics, English</span></div>
+                    </div>
+                    <div class="major-subjects">
+                      <strong>Core Majors:</strong>
+                      <span>Computer Communication and Networks</span>
+                      <span>Embedded Systems</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div class="tab-panel" id="projects">
+              <div class="content-card">
+                <h2>University Projects & Achievements</h2>
+                <p class="subtitle">Showcasing innovation and excellence</p>
+                <div class="projects-timeline">
+                  <div class="project-item">
+                    <div class="project-year">2025</div>
+                    <div class="project-content">
+                      <div class="project-badge">Research</div>
+                      <h3>Student Project Showcase — Science Festival 2025</h3>
+                      <p>UCSM students presented systems including a Smart Education System, Real-Time Myanmar Alphabetical Hand Gesture Recognition, and Real-Time Facial Expression Recognition at Science Festival 2025.</p>
+                      <div class="project-tags">
+                        <span>AI/ML</span>
+                        <span>Computer Vision</span>
+                        <span>Student Showcase</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="project-item">
+                    <div class="project-year">2019</div>
+                    <div class="project-content">
+                      <div class="project-badge award">Award</div>
+                      <h3>Application Contest for University Students</h3>
+                      <p>Recognized under UCSM student awards in collaboration with the KDDI Foundation.</p>
+                      <div class="project-tags">
+                        <span>Student Awards</span>
+                        <span>Competition</span>
+                        <span>KDDI Foundation</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="project-item">
+                    <div class="project-year">2018</div>
+                    <div class="project-content">
+                      <div class="project-badge">Achievement</div>
+                      <h3>Science and Technology Fair</h3>
+                      <p>UCSM students participated in the Science and Technology Fair and related exhibition activities.</p>
+                      <div class="project-tags">
+                        <span>Student Awards</span>
+                        <span>STEM</span>
+                        <span>Exhibition</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campus Life Tab -->
+            <div class="tab-panel" id="campus">
+              <div class="content-card">
+                <h2>Campus Life at UCSM (Mandalay)</h2>
+                <p class="subtitle">Facilities, services, and student activities on campus</p>
+                <div class="campus-features">
+                  <div class="campus-card">
+                    <div class="campus-img">
+                      <img src="hstlogo.jpg" alt="Student Clubs">
+                    </div>
+                    <h3>Sports & Student Activities</h3>
+                    <p>UCSM includes sports and student activities such as football, table tennis, and badminton.</p>
+                  </div>
+
+                  <div class="campus-card">
+                    <div class="campus-img">
+                      <img src="hstlogo.jpg" alt="Facilities">
+                    </div>
+                    <h3>Modern Facilities</h3>
+                    <p>Facilities include a library, Wi-Fi, ATM, canteen, and football field. The ATM area includes KBZ Bank and AYA Bank access.</p>
+                  </div>
+
+                  <div class="campus-card">
+                    <div class="campus-img">
+                      <img src="hstlogo.jpg" alt="Events">
+                    </div>
+                    <h3>Campus Environment</h3>
+                    <p>Technology-aided classrooms, smart machine rooms, recreational areas, and an indoor stadium support campus life.</p>
+                  </div>
+                </div>
+
+                <div class="testimonial-section">
+                  <h3>Student Voices</h3>
+                  <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                      <p>Official campus-life pages do not publish named student testimonials for reuse on external websites.</p>
+                      <div class="testimonial-author">
+                        <strong>— Editorial Note</strong>
+                        <span>Public UCSM sources</span>
+                      </div>
+                    </div>
+                    <div class="testimonial-card">
+                      <p>If approved student quotes become available, this section can be updated with authentic testimonials and attribution.</p>
+                      <div class="testimonial-author">
+                        <strong>— Editorial Note</strong>
+                        <span>Website editor</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Career Paths Tab -->
+            <div class="tab-panel" id="careers">
+              <div class="content-card">
+                <h2>Career Opportunities</h2>
+                <p class="subtitle">Where can you go after UCSM?</p>
+                <div class="career-paths">
+                  <div class="career-card">
+                    <div class="career-icon">👨‍💻</div>
+                    <h3>Software Developer</h3>
+                    <p>Build applications, websites, and software systems for local and international companies.</p>
+                    <span class="salary-range">Average: 400,000 - 1,500,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon">🔒</div>
+                    <h3>Cybersecurity Specialist</h3>
+                    <p>Protect systems and networks from cyber threats in banking, government, and tech sectors.</p>
+                    <span class="salary-range">Average: 500,000 - 2,000,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon">📊</div>
+                    <h3>Data Analyst</h3>
+                    <p>Analyze data to drive business decisions in telecommunications, e-commerce, and finance.</p>
+                    <span class="salary-range">Average: 450,000 - 1,800,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon">🌐</div>
+                    <h3>Network Engineer</h3>
+                    <p>Design and maintain network infrastructure for ISPs, enterprises, and government.</p>
+                    <span class="salary-range">Average: 400,000 - 1,600,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon">📱</div>
+                    <h3>Mobile App Developer</h3>
+                    <p>Create iOS and Android applications for startups and established companies.</p>
+                    <span class="salary-range">Average: 500,000 - 2,500,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon">🎓</div>
+                    <h3>IT Educator</h3>
+                    <p>Teach computer science at schools, universities, or training institutions.</p>
+                    <span class="salary-range">Average: 300,000 - 800,000 MMK/month</span>
+                  </div>
+                </div>
+
+                <div class="employer-logos">
+                  <h4>Our Graduates Work At:</h4>
+                  <div class="logo-grid">
+                    <div class="employer-logo">Wave Money</div>
+                    <div class="employer-logo">KBZ Bank</div>
+                    <div class="employer-logo">Ooredoo</div>
+                    <div class="employer-logo">Telenor</div>
+                    <div class="employer-logo">Government IT</div>
+                    <div class="employer-logo">Tech Startups</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-profile">
+    <div class="container">
+      <h2>Ready to Start Your Journey at UCSM?</h2>
+      <p>Explore more universities or get in touch with admissions</p>
+      <div class="cta-buttons">
+        <a href="uni.html" class="btn-secondary">Explore More Universities</a>
+        <a href="error.html" class="btn-primary">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>High Schooler’s Tool</h3>
+          <p>Empowering Myanmar students to make informed university choices.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>High Schooler’s Tool</p>
+          <p>Email: <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p>Facebook: <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">High Schooler’s Tool ARP</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 High Schooler’s Tool. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="ucsy.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (hamburger && navLinks) {
+        hamburger.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+          hamburger.classList.toggle("active");
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+          });
+        });
+      }
+
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+          btn.classList.add("active");
+          document.getElementById(btn.dataset.tab).classList.add("active");
+        });
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lang = btn.dataset.lang;
+          document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          document.querySelector(".about-mm").style.display = lang === "mm" ? "" : "none";
+          document.querySelector(".about-en").style.display = lang === "en" ? "" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCSTgi — University of Computer Studies, Taunggyi | HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="ucstgi.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       NOTIFICATION + LETTER SHEET — Apple style
+  ══════════════════════════════════════════════════════════ -->
+
+  <div class="notify-overlay" id="notifyOverlay"></div>
+
+  <!-- Compact notification banner -->
+  <div class="notify-bar" id="notifyBar" role="alert" aria-live="polite">
+    <button class="notify-x" id="notifyDismiss" aria-label="Close">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M1 1l10 10M11 1L1 11"/>
+      </svg>
+    </button>
+    <div class="notify-row">
+      <div class="notify-icon">
+        <img src="hstlogo.jpg" alt="HST" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="notify-icon-fallback">HST</div>
+      </div>
+      <div class="notify-text">
+        <div class="notify-eyebrow">HST — Announcement</div>
+        <div class="notify-title">Polytechnic University Taunggyi</div>
+        <div class="notify-body">
+          <span class="notify-body-text">ကွန်ပျူတာတက္ကသိုလ်တောင်ကြီး သည် ၂၀၂၆-၂၀၂၇ ပညာသင်နှစ်တွင် Polytechnic University Taunggyi ဖြစ်လာနိုင်ချေရှိသည်။</span><button class="notify-more" id="notifyMore">more</button>
+        </div>
+      </div>
+      <button class="notify-action" id="notifyAction">Open</button>
+    </div>
+    <div class="notify-progress"><div class="notify-progress-fill" id="notifyProgress"></div></div>
+  </div>
+
+  <!-- Full letter sheet -->
+  <div class="letter-sheet" id="letterSheet" role="dialog" aria-modal="true" aria-label="Full announcement">
+    <div class="letter-handle"></div>
+    <div class="letter-head">
+      <div class="letter-from">
+        <div class="letter-avatar">
+          <img src="hstlogo.jpg" alt="HST" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="letter-avatar-fallback">HST</div>
+        </div>
+        <div class="letter-from-text">
+          <div class="letter-sender">High Schooler's Tool</div>
+          <div class="letter-date" id="letterDate"></div>
+        </div>
+      </div>
+      <button class="letter-close" id="letterClose" aria-label="Close">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M1 1l12 12M13 1L1 13"/>
+        </svg>
+      </button>
+    </div>
+    <div class="letter-divider"></div>
+    <div class="letter-body">
+      <h2 class="letter-subject">Polytechnic University Taunggyi</h2>
+      <div class="letter-content">
+        <p>ကွန်ပျူတာတက္ကသိုလ်တောင်ကြီး (UCSTgi) သည် ၂၀၂၆-၂၀၂၇ ပညာသင်နှစ်တွင် <strong>Polytechnic University Taunggyi</strong> ဖြစ်လာနိုင်ချေရှိသည်ဟု ဆိုပါသည်။</p>
+        <p>ဤပြောင်းလဲမှုသည် ရှမ်းပြည်နယ်ရှိ နည်းပညာပညာရေးကို ပိုမိုကျယ်ပြန့်စေကာ CU TU ကျောင်းသားများအကြား နည်းပညာဆိုင်ရာပူးပေါင်းဆောင်ရွှက်မှုဆန်းသစ်တီထွင်မှုများနှင့်အတူ ကျောင်းသားများအတွက် ပိုမိုကောင်းမွန်သော အနာဂတ်ကို ဖော်ဆောင်ပေးမည်ဟု မျှော်လင့်ရသည်။</p>
+        <p>This change is expected to bring broader academic programs, improved infrastructure, and new opportunities for students across Shan State. The university's core focus on computer science and technology will remain.</p>
+        <p>More official information will be released by the Ministry of Education. Stay tuned to the HST platform for updates.</p>
+      </div>
+    </div>
+    <div class="letter-footer">
+      <button class="letter-got-it" id="letterGotIt">Got it</button>
+    </div>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero Banner ── -->
+  <section class="uni-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-bg" style="background-image: url('photo_2025-12-30_15-17-21.jpg');"></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="hst.html">Home</a>
+        <span>/</span>
+        <a href="uni.html">Universities</a>
+        <span>/</span>
+        <span>University of Computer Studies, Taunggyi</span>
+      </div>
+      <div class="uni-hero-content">
+        <div class="uni-logo">
+          <img src="unnamed.png" alt="UCSTgi University Logo" onerror="this.style.display='none'">
+        </div>
+        <div class="uni-title">
+          <h1>University of Computer Studies, Taunggyi</h1>
+          <p class="uni-subtitle">Leading Technology Education in Shan State</p>
+          <div class="uni-meta">
+            <div class="uni-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Taunggyi, Shan State
+            </div>
+            <div class="uni-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+              Computer University
+            </div>
+            <div class="uni-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Founded 2000
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Quick Stats ── -->
+  <section class="quick-stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon-wrap blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="stat-info"><h3>700+</h3><p>Students</p></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="stat-info"><h3>4–5</h3><p>Programs</p></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-info"><h3>60+</h3><p>Faculty</p></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="stat-info"><h3>15+</h3><p>Projects</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <section class="profile-content">
+    <div class="container">
+      <div class="content-layout">
+
+        <!-- Sidebar -->
+        <aside class="profile-sidebar">
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Quick Info</div>
+            <div class="info-list">
+              <div class="info-item"><strong>Type</strong><span>Government</span></div>
+              <div class="info-item"><strong>Location</strong><span>Taunggyi, Shan State</span></div>
+              <div class="info-item"><strong>Campus Size</strong><span>215 Acres</span></div>
+              <div class="info-item"><strong>Language</strong><span>Myanmar, English</span></div>
+              <div class="info-item"><strong>Founded</strong><span>2000 (as GCC)</span></div>
+              <div class="info-item"><strong>University</strong><span>Since 2007</span></div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="sidebar-card-title">Entrance Requirements</div>
+            <div class="requirement-box">
+              <div class="requirement-item">
+                <span class="req-label">Minimum Marks</span>
+                <span class="req-value">350+</span>
+              </div>
+              <div class="requirement-item">
+                <span class="req-label">Required Subjects</span>
+                <div class="subject-tags">
+                  <span class="subject-tag">Mathematics</span>
+                  <span class="subject-tag">Physics</span>
+                  <span class="subject-tag">English</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card contact-card">
+            <div class="sidebar-card-title">Contact</div>
+            <div class="contact-info">
+              <div class="contact-row">
+                <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 4.18 2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                09 662 598205
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+                info@ucstgi.edu.mm
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                www.ucstgi.edu.mm
+              </div>
+            </div>
+            <button class="contact-btn">Get in Touch</button>
+          </div>
+
+        </aside>
+
+        <!-- Main Panel -->
+        <main class="profile-main">
+
+          <div class="profile-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="majors">Majors</button>
+            <button class="tab-btn" data-tab="projects">Projects</button>
+            <button class="tab-btn" data-tab="campus">Campus Life</button>
+            <button class="tab-btn" data-tab="careers">Career Paths</button>
+          </div>
+
+          <div class="tab-content">
+
+            <!-- Overview Tab -->
+            <div class="tab-panel active" id="overview">
+
+                            <div class="content-card">
+                  <div class="card-head-row">
+                    <h2>About the University</h2>
+                    <div class="lang-toggle" role="group" aria-label="Language toggle">
+                      <button class="lang-btn active" data-lang="mm" type="button">မြန်မာ</button>
+                      <button class="lang-btn" data-lang="en" type="button">English</button>
+                    </div>
+                  </div>
+                  <div class="about-mm about-block">
+                    <p>တောင်ကြီးကွန်ပျူတာတက္ကသိုလ် (UCSTGI) ကို ရှမ်းပြည်နယ်၏ ICT ကဏ္ဍ ဖွံ့ဖြိုးတိုးတက်စေရန် ရည်ရွယ်၍ ၂၀၀၀ ပြည့်နှစ်၊ ဩဂုတ်လ ၁၅ ရက်နေ့တွင် အစိုးရကွန်ပျူတာကောလိပ် (GCC) အဖြစ် စတင်တည်ထောင်ခဲ့ပါသည်။ ၂၀၀၇ ခုနှစ်တွင် တက္ကသိုလ်အဆင့်သို့ ရောက်ရှိခဲ့ပါသည်။</p>
+                    <p>သင်ကြားရေးပိုင်းတွင် တောင်ကြီးကွန်ပျူတာတက္ကသိုလ်သည် ကွန်ပျူတာသိပ္ပံ (B.C.Sc.) နှင့် ကွန်ပျူတာနည်းပညာ (B.C.Tech.) ဘွဲ့ကြိုသင်တန်းများအပြင် မဟာဘွဲ့သင်တန်းများဖြစ်သော M.C.Sc. နှင့် M.C.Tech. တို့ကိုလည်း ပေးအပ်ပါသည်။</p>
+                    <p>ခေတ်မီကွန်ပျူတာလက်တွေ့ခန်းများ၊ အတွေ့အကြုံရှိ ဆရာ/ဆရာမများ၊ နှင့် စက်မှုလုပ်ငန်းဆိုင်ရာ ပူးပေါင်းဆောင်ရွက်မှုများကြောင့် UCSTGI သည် ယနေ့နည်းပညာလုပ်ငန်းအတွက် လိုအပ်သော သီအိုရီဗဟုသုတနှင့် လက်တွေ့ကျွမ်းကျင်မှုများကို ကျောင်းသားများအား ပံ့ပိုးပေးပါသည်။</p>
+                  </div>
+                  <div class="about-en about-block" style="display:none">
+                    <p>The University of Computer Science, Taunggyi (UCSTGI) was established on August 15, 2000, as the Government Computer College (GCC) with the aim of developing and advancing the ICT sector in Shan State. It attained university status in 2007.</p>
+                    <p>In terms of education, the University of Computer Science, Taunggyi offers undergraduate programs such as Bachelor of Computer Science (B.C.Sc.) and Bachelor of Computer Technology (B.C.Tech.), as well as postgraduate programs including M.C.Sc. and M.C.Tech.</p>
+                    <p>With state-of-the-art computer labs, experienced faculty, and strong industry partnerships, UCSTGI provides students with both theoretical knowledge and practical skills needed in today's tech industry.</p>
+                  </div>
+                </div>
+
+  <div class="content-card">
+                <h2>Why Choose UCSTgi?</h2>
+                <div class="features-list">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H2v15h7c1.7 0 3 1.3 3 3V7c0-2.2-1.8-4-4-4z"/><path d="M16 3h6v15h-7c-1.7 0-3 1.3-3 3V7c0-2.2 1.8-4 4-4z"/></svg>
+                    </div>
+                    <div>
+                      <h4>Beautiful Campus</h4>
+                      <p>215 acres of peaceful mountain scenery in the heart of Shan State — a calm, focused environment for study.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div>
+                      <h4>Experienced Faculty</h4>
+                      <p>Learn from industry experts and PhD holders dedicated to your academic and professional growth.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <div>
+                      <h4>Strong Alumni Network</h4>
+                      <p>Connect with successful graduates working across Myanmar's technology sector and beyond.</p>
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </div>
+                    <div>
+                      <h4>Innovation Hub</h4>
+                      <p>Active research culture and student-led projects including the HST ARP initiative.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <h2>Campus Gallery</h2>
+                <div class="gallery-grid">
+                  <div class="gallery-item"><img src="ucstgi.jpg"  alt="UCSTgi Campus View" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="ucstgi1.jpg" alt="UCSTgi Campus" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="ucstgi2.jpg" alt="UCSTgi Main Hall" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="ucstgi3.jpg" alt="UCSTgi Campus Ground" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="ucstgi4.jpg" alt="UCSTgi Campus" onerror="this.style.opacity='.4'"></div>
+                  <div class="gallery-item"><img src="ucstgi6.jpg" alt="UCSTgi Campus" onerror="this.style.opacity='.4'"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Majors Tab -->
+            <div class="tab-panel" id="majors">
+              <div class="content-card">
+                <h2>Available Programs</h2>
+                <p class="subtitle">Choose from our comprehensive technology programs</p>
+                <div class="majors-list">
+
+                  <div class="major-card">
+                    <div class="major-header">
+                      <div class="major-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                      </div>
+                      <div>
+                        <h3>Computer Science (CS)</h3>
+                        <span class="major-degree">B.C.Sc / M.C.Sc</span>
+                      </div>
+                    </div>
+                    <p class="major-desc">Core computer science principles, algorithms, software development, and system design. Prepares graduates for roles in software engineering and research.</p>
+                    <div class="major-details">
+                      <div class="detail-row"><strong>Duration</strong><span>4 Years (Bachelor)</span></div>
+                      <div class="detail-row"><strong>Min. Marks</strong><span>380</span></div>
+                      <div class="detail-row"><strong>Prerequisites</strong><span>Math, Physics, English</span></div>
+                    </div>
+                    <div class="major-subjects">
+                      <span>Data Structures</span><span>Algorithms</span><span>Java / C++</span>
+                      <span>Database Systems</span><span>Software Engineering</span>
+                    </div>
+                  </div>
+
+                  <div class="major-card">
+                    <div class="major-header">
+                      <div class="major-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                      </div>
+                      <div>
+                        <h3>Computer Technology (CT)</h3>
+                        <span class="major-degree">B.C.Tech / M.C.Tech</span>
+                      </div>
+                    </div>
+                    <p class="major-desc">Focus on hardware, networking, system administration, and technical infrastructure. Ideal for students interested in IT infrastructure and operations.</p>
+                    <div class="major-details">
+                      <div class="detail-row"><strong>Duration</strong><span>4 Years</span></div>
+                      <div class="detail-row"><strong>Min. Marks</strong><span>360</span></div>
+                      <div class="detail-row"><strong>Prerequisites</strong><span>Math, Physics</span></div>
+                    </div>
+                    <div class="major-subjects">
+                      <span>Networking</span><span>Hardware</span><span>System Admin</span><span>Cloud Computing</span>
+                    </div>
+                  </div>
+
+                  <div class="major-card">
+                    <div class="major-header">
+                      <div class="major-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                      </div>
+                      <div>
+                        <h3>Computer Science Diploma</h3>
+                        <span class="major-degree">D.C.Sc</span>
+                      </div>
+                    </div>
+                    <p class="major-desc">A part-time evening program designed for working professionals who want to upgrade their computer science knowledge without pausing their careers.</p>
+                    <div class="major-details">
+                      <div class="detail-row"><strong>Duration</strong><span>2 Years (Part-time)</span></div>
+                      <div class="detail-row"><strong>Min. Marks</strong><span>350</span></div>
+                      <div class="detail-row"><strong>Format</strong><span>Evening Classes</span></div>
+                    </div>
+                    <div class="major-subjects">
+                      <span>Programming</span><span>Databases</span><span>Web Development</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div class="tab-panel" id="projects">
+              <div class="content-card">
+                <h2>Projects &amp; Research</h2>
+                <p class="subtitle">University research initiatives and student achievements</p>
+                <div class="no-data-section">
+                  <h3>Limited Public Data Available</h3>
+                  <p><strong>Official Status:</strong> UCS Taunggyi focuses on practical IT projects, but specific student achievements are not yet publicly documented online.</p>
+                  <div class="known-facts">
+                    <h4>Known Research Areas</h4>
+                    <ul>
+                      <li>Software development projects</li>
+                      <li>Networking &amp; system administration</li>
+                      <li>Database management systems</li>
+                      <li>Local industry collaboration</li>
+                      <li>Emerging AI &amp; machine learning research</li>
+                    </ul>
+                  </div>
+                  <div class="project-item hst-project">
+                    <div class="project-year">2025</div>
+                    <div class="project-content">
+                      <div class="project-badge hst">HST Featured</div>
+                      <h3>High Schooler's Tool University Portal</h3>
+                      <p>UCST Taunggyi featured in the HST platform, showcasing Shan State IT education. Developed by student collaborators as part of the HST ARP initiative.</p>
+                      <div class="project-tags">
+                        <span>Web Development</span><span>HST Platform</span><span>Shan State IT</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="contact-research">
+                    <p><strong>For project details:</strong> Contact UCST Taunggyi at <a href="mailto:info@ucstgi.edu.mm">info@ucstgi.edu.mm</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campus Life Tab -->
+            <div class="tab-panel" id="campus">
+              <div class="content-card">
+                <h2>Campus Life at UCSTgi</h2>
+                <p class="subtitle">ရှမ်းပြည်မှ CU ကျောင်းသားဘဝ — Life at the heart of Shan State</p>
+                <div class="campus-features">
+                  <div class="campus-card">
+                    <div class="campus-img"><img src="School Club logos.png" alt="Student Clubs" onerror="this.style.opacity='.3'"></div>
+                    <h3>Student Organizations</h3>
+                    <p>Programming Club, Web Development Society, annual coding competitions, and hands-on tech workshops.</p>
+                  </div>
+                  <div class="campus-card">
+                    <div class="campus-img"><img src="images/facilities.jpg" alt="Computer Labs" onerror="this.style.opacity='.3'"></div>
+                    <h3>Modern Facilities</h3>
+                    <p>Multiple computer labs with 100+ PCs, high-speed internet, air-conditioned classrooms, and campus-wide WiFi.</p>
+                  </div>
+                  <div class="campus-card">
+                    <div class="campus-img"><img src="images/events.jpg" alt="Tech Events" onerror="this.style.opacity='.3'"></div>
+                    <h3>Events &amp; Activities</h3>
+                    <p>Tech fests, Matric result workshops, career fairs, and guest lectures from Yangon and Mandalay IT companies.</p>
+                  </div>
+                </div>
+                <div class="testimonial-section">
+                  <h3>Student Voices</h3>
+                  <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                      <p>"The campus environment here is truly unique — surrounded by mountains and a quiet, focused atmosphere that makes studying enjoyable."</p>
+                      <div class="testimonial-author">
+                        <strong>Bhone Myat Min</strong>
+                        <span>3rd Year CS Student</span>
+                      </div>
+                    </div>
+                    <div class="testimonial-card">
+                      <p>"UCSTgi gave me hands-on experience with real projects. The faculty are supportive and always ready to help students grow."</p>
+                      <div class="testimonial-author">
+                        <strong>Sai Kyaw Kyaw Aung</strong>
+                        <span>2nd Year CS Student</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Career Paths Tab -->
+            <div class="tab-panel" id="careers">
+              <div class="content-card">
+                <h2>Career Opportunities</h2>
+                <p class="subtitle">Where can you go after UCSTgi?</p>
+                <div class="career-paths">
+
+                  <div class="career-card">
+                    <div class="career-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Software Developer</h3>
+                    <p>Build applications, websites, and software systems for local and international companies.</p>
+                    <span class="salary-range">400,000 – 1,500,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3>Cybersecurity Specialist</h3>
+                    <p>Protect systems and networks from cyber threats in banking, government, and tech sectors.</p>
+                    <span class="salary-range">500,000 – 2,000,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    </div>
+                    <h3>Data Analyst</h3>
+                    <p>Analyze data to drive business decisions in telecommunications, e-commerce, and finance.</p>
+                    <span class="salary-range">450,000 – 1,800,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                    </div>
+                    <h3>Network Engineer</h3>
+                    <p>Design and maintain network infrastructure for ISPs, enterprises, and government agencies.</p>
+                    <span class="salary-range">400,000 – 1,600,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <h3>Mobile App Developer</h3>
+                    <p>Create iOS and Android applications for startups and established companies.</p>
+                    <span class="salary-range">500,000 – 2,500,000 MMK/month</span>
+                  </div>
+
+                  <div class="career-card">
+                    <div class="career-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <h3>IT Educator</h3>
+                    <p>Teach computer science at schools, universities, or professional training institutions.</p>
+                    <span class="salary-range">300,000 – 800,000 MMK/month</span>
+                  </div>
+
+                </div>
+
+                <div class="employer-logos">
+                  <h4>Our Graduates Work At</h4>
+                  <div class="logo-grid">
+                    <div class="employer-logo">Wave Money</div>
+                    <div class="employer-logo">KBZ Bank</div>
+                    <div class="employer-logo">Ooredoo</div>
+                    <div class="employer-logo">Telenor</div>
+                    <div class="employer-logo">Government IT</div>
+                    <div class="employer-logo">Tech Startups</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-profile">
+    <div class="container">
+      <h2>Ready to Start Your Journey at UCSTgi?</h2>
+      <p>Explore more universities or contact admissions directly</p>
+      <div class="cta-buttons">
+        <a href="uni.html"   class="btn-secondary">Explore More Universities</a>
+        <a href="error.html" class="btn-primary">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-brand">
+            <div class="footer-logo-mark">HST</div>
+            <span class="footer-brand-name">High Schooler's Tool</span>
+          </div>
+          <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>High Schooler's Tool</p>
+          <p>Email: <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p>Facebook: <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">High Schooler's Tool ARP</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── NOTIFICATION ── */
+    (function () {
+      var AUTO_MS = 9000;
+      var bar      = document.getElementById('notifyBar');
+      var overlay  = document.getElementById('notifyOverlay');
+      var xBtn     = document.getElementById('notifyDismiss');
+      var actionBtn= document.getElementById('notifyAction');
+      var moreBtn  = document.getElementById('notifyMore');
+      var progress = document.getElementById('notifyProgress');
+      var sheet    = document.getElementById('letterSheet');
+      var closeBtn = document.getElementById('letterClose');
+      var gotItBtn = document.getElementById('letterGotIt');
+
+      var d = new Date();
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      document.getElementById('letterDate').textContent = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+      var timer;
+
+      function showBar() {
+        bar.classList.add('notify-visible');
+        overlay.classList.add('notify-visible');
+        if (AUTO_MS > 0 && progress) {
+          progress.style.transition = 'transform ' + AUTO_MS + 'ms linear';
+          progress.getBoundingClientRect();
+          progress.style.transform = 'scaleX(0)';
+          timer = setTimeout(dismissBar, AUTO_MS);
+        }
+      }
+
+      function dismissBar() {
+        clearTimeout(timer);
+        bar.classList.remove('notify-visible');
+        bar.classList.add('notify-out');
+        overlay.classList.remove('notify-visible');
+        bar.addEventListener('transitionend', function done() {
+          bar.classList.remove('notify-out');
+          bar.removeEventListener('transitionend', done);
+        });
+      }
+
+      function openLetter() {
+        clearTimeout(timer);
+        bar.classList.remove('notify-visible');
+        bar.classList.add('notify-out');
+        bar.addEventListener('transitionend', function done() {
+          bar.classList.remove('notify-out');
+          bar.removeEventListener('transitionend', done);
+        });
+        overlay.classList.add('notify-visible', 'letter-open');
+        sheet.classList.add('letter-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLetter() {
+        sheet.classList.remove('letter-open');
+        overlay.classList.remove('letter-open');
+        overlay.classList.remove('notify-visible');
+        document.body.style.overflow = '';
+      }
+
+      xBtn.addEventListener('click', dismissBar);
+      overlay.addEventListener('click', function () {
+        if (sheet.classList.contains('letter-open')) closeLetter();
+        else dismissBar();
+      });
+      actionBtn.addEventListener('click', openLetter);
+      moreBtn.addEventListener('click', openLetter);
+      closeBtn.addEventListener('click', closeLetter);
+      gotItBtn.addEventListener('click', closeLetter);
+
+      setTimeout(showBar, 700);
+    })();
+
+    /* ── HAMBURGER ── */
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks  = document.getElementById('navLinks');
+      hamburger.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+        });
+      });
+    })();
+
+    /* ── TABS ── */
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = btn.dataset.lang;
+          document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          document.querySelector('.about-mm').style.display = lang === 'mm' ? '' : 'none';
+          document.querySelector('.about-en').style.display = lang === 'en' ? '' : 'none';
+        });
+      });
+
+      document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

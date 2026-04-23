@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UFES — University of Forestry and Environmental Science, Yezin | HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hst.css" />
+  <link rel="stylesheet" href="appleucsy.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="u-hero" aria-label="University hero">
+    <div class="u-hero-bg" style="background-image:url('ufes.webp')"></div>
+    <div class="u-hero-overlay"></div>
+    <div class="u-hero-noise"></div>
+    <div class="container u-hero-inner">
+      <nav class="u-breadcrumb" aria-label="Breadcrumb">
+        <a href="hst.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="uni.html">Universities</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>UFES Yezin</span>
+      </nav>
+      <div class="u-hero-body">
+        <div class="u-logo-wrap">
+          <img src="ufeslogo.webp" alt="UFES Logo" onerror="this.style.opacity='.15'">
+        </div>
+        <div class="u-hero-text">
+          <div class="u-hero-eyebrow">Myanmar's Specialized Forestry &amp; Environment University</div>
+          <h1 class="u-hero-title">University of Forestry and<br class="desktop-br"> Environmental Science, Yezin</h1>
+          <p class="u-hero-subtitle">Training Forest Officers, Environmental Scientists &amp; Conservation Leaders Since 1923</p>
+          <div class="u-meta-row">
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Yezin, Zeyar Thiri Township, Nay Pyi Taw
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+              Government · Public
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Forestry Edu. Since 1923 · UFES 2017
+            </div>
+            <div class="u-meta-pill gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Myanmar's Only Forestry University
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats Bar ── -->
+  <section class="u-stats" aria-label="Key statistics">
+    <div class="container">
+      <div class="u-stats-grid">
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">5</div>
+            <div class="u-stat-label">Year Undergraduate Degree</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">~100</div>
+            <div class="u-stat-label">Students per Intake</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">100+</div>
+            <div class="u-stat-label">Years of Forestry Education</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">2</div>
+            <div class="u-stat-label">Core Disciplines (Forestry + Environment)</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">Yezin</div>
+            <div class="u-stat-label">Academic Zone Hub</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <section class="u-body">
+    <div class="container">
+      <div class="u-layout">
+
+        <!-- ── Sidebar ── -->
+        <aside class="u-sidebar" aria-label="University sidebar">
+
+          <!-- Quick Info -->
+          <div class="u-card">
+            <div class="u-card-title">Quick Info</div>
+            <div class="u-info-list">
+              <div class="u-info-row">
+                <span class="u-info-key">Type</span>
+                <span class="u-info-val">Government / Public</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Ministry</span>
+                <span class="u-info-val">Natural Resources &amp; Environmental Conservation</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Location</span>
+                <span class="u-info-val">Yezin, Zeyar Thiri Township</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Region</span>
+                <span class="u-info-val">Nay Pyi Taw Union Territory</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Focus</span>
+                <span class="u-info-val">Forestry, Biodiversity &amp; Environmental Science</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Nearby</span>
+                <span class="u-info-val">YAU, UVS, DAR &amp; Forest Research Depts</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Founded</span>
+                <span class="u-info-val">1923 (Forestry Edu.) · 1992 (Independent) · 2003 (University) · 2017 (UFES)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entrance -->
+          <div class="u-card u-card-accent">
+            <div class="u-card-title">Entrance Requirements</div>
+            <div class="u-entrance-block">
+              <div class="u-entrance-score">
+                <div class="u-score-label">Stream Required</div>
+                <div class="u-score-num" style="font-size:1.4rem;">Biology</div>
+                <div class="u-score-sub">Competitive — check yearly cutoffs</div>
+              </div>
+              <div class="u-entrance-subjects">
+                <div class="u-sub-label">Required Subjects</div>
+                <div class="u-sub-tags">
+                  <span class="u-tag blue">Science Stream</span>
+                  <span class="u-tag blue">Biology</span>
+                  <span class="u-tag blue">Chemistry</span>
+                  <span class="u-tag blue">Physics / Maths</span>
+                </div>
+              </div>
+              <div class="u-entrance-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Physical fitness test required — field study is a core part of the program. Admission rules may change yearly; always confirm on the official UFES website.
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="u-card">
+            <div class="u-card-title">Key Milestones</div>
+            <div class="u-timeline">
+              <div class="u-tl-item">
+                <div class="u-tl-year">1923</div>
+                <div class="u-tl-text">Forestry education introduced under Yangon University — Myanmar's earliest formal forest training</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">1985</div>
+                <div class="u-tl-text">Campus relocated to <strong>Yezin</strong> — expanded space for field-based forestry training</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">1992</div>
+                <div class="u-tl-text">Established as an <strong>independent institute</strong> on 16 July — separate from Yangon University</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">1995</div>
+                <div class="u-tl-text">5-year study period introduced — standardising the undergraduate forestry degree duration</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2003</div>
+                <div class="u-tl-text">Upgraded to <strong>University of Forestry</strong> — full university status with organised academic departments</div>
+              </div>
+              <div class="u-tl-item now">
+                <div class="u-tl-year">2017</div>
+                <div class="u-tl-text">Renamed <strong>University of Forestry and Environmental Science (UFES)</strong> on 10 October — expanded scope to include environmental science</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="u-card u-card-contact">
+            <div class="u-card-title">Contact</div>
+            <div class="u-contact-list">
+              <a href="https://ufes.edu.mm" target="_blank" rel="noopener" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>ufes.edu.mm</span>
+              </a>
+              <a href="https://ufesmyanmar.org" target="_blank" rel="noopener" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>ufesmyanmar.org</span>
+              </a>
+              <div class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <span>Yezin, Zeyar Thiri Township, Nay Pyi Taw</span>
+              </div>
+            </div>
+            <a href="https://ufes.edu.mm" target="_blank" rel="noopener" class="u-contact-btn">Visit Official Site</a>
+          </div>
+
+        </aside>
+
+        <!-- ── Main Panel ── -->
+        <main class="u-main" aria-label="University details">
+
+          <!-- Tabs -->
+          <div class="u-tabs" role="tablist" aria-label="University sections">
+            <button class="u-tab active" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview">Overview</button>
+            <button class="u-tab"        data-tab="majors"    role="tab" aria-selected="false" aria-controls="tab-majors">Programs</button>
+            <button class="u-tab"        data-tab="projects"  role="tab" aria-selected="false" aria-controls="tab-projects">Research</button>
+            <button class="u-tab"        data-tab="campus"    role="tab" aria-selected="false" aria-controls="tab-campus">Campus Life</button>
+            <button class="u-tab"        data-tab="careers"   role="tab" aria-selected="false" aria-controls="tab-careers">Career Paths</button>
+            <button class="u-tab"        data-tab="alumni"    role="tab" aria-selected="false" aria-controls="tab-alumni">Alumni</button>
+          </div>
+
+          <!-- ── Overview ── -->
+          <div class="u-panel active" id="tab-overview" role="tabpanel">
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">About the University</h2>
+              <div class="u-about-lang-toggle" role="group" aria-label="Language toggle">
+                <button class="u-lang-btn active" data-lang="en">English</button>
+                <button class="u-lang-btn" data-lang="mm">မြန်မာ</button>
+              </div>
+
+              <div class="u-about-text" data-lang-content="en">
+                <p>The <strong>University of Forestry and Environmental Science (UFES), Yezin</strong> is Myanmar's only specialised university for forestry, biodiversity, and environmental science. It traces its roots to forestry education introduced under Yangon University around 1923, making it one of the oldest natural-science education traditions in the country.</p>
+                <p>The institution moved to Yezin in 1985, became an independent institute on 16 July 1992, was elevated to the <strong>University of Forestry</strong> in 2003, and was renamed the <strong>University of Forestry and Environmental Science</strong> on 10 October 2017 — expanding its academic scope to cover environmental policy, pollution control, and natural-resource management alongside its core forestry curriculum.</p>
+                <p>UFES sits within the <strong>Yezin Academic Zone</strong> alongside the Yezin Agricultural University (YAU) and the University of Veterinary Science (UVS), and is near the national Forest Research and Survey Department — giving students access to a unique concentration of natural-science institutions and government research bodies.</p>
+              </div>
+              <div class="u-about-text" data-lang-content="mm" hidden>
+                <p><strong>သစ်တောနှင့်ပတ်ဝန်းကျင်ဆိုင်ရာ တက္ကသိုလ် (ရေဆင်း) (UFES)၊</strong> သည် မြန်မာနိုင်ငံ၏ တစ်ခုတည်းသော သစ်တောနှင့် ပတ်ဝန်းကျင်သိပ္ပံဘာသာရပ်တွင် အထူးပြု ပြုလုပ်ထားသော တက္ကသိုလ်ဖြစ်ပါသည်။ ၁၉၂၃ ခုနှစ်မှ စတင်ကာ ရန်ကုန်တက္ကသိုလ်အောက်တွင် သစ်တောပညာရေး ပေးနေခဲ့ပြီး ၁၉၉၂ ခုနှစ်တွင် သီးခြား ကောလိပ်တစ်ခုအဖြစ် ခွဲထွက်ခဲ့ကာ ၂၀၀၃ ခုနှစ်တွင် တက္ကသိုလ်အဖြစ် အဆင့်မြှင့်တင်ခဲ့သည်။</p>
+                <p>၂၀၁၇ ခုနှစ်တွင် <strong>သစ်တောနှင့်ပတ်ဝန်းကျင်ဆိုင်ရာ တက္ကသိုလ် (ရေဆင်း) (UFES)</strong> အဖြစ် ပြောင်းလဲမည်ဖြင့် ပတ်ဝန်းကျင်ဆိုင်ရာ မူဝါဒ၊ ညစ်ညမ်းမှုထိန်းချုပ်ခြင်းနှင့် သဘာဝသယံဇာတစီမံခန့်ခွဲမှုဘာသာရပ်များပါ ထည့်သွင်း ဖောင်ဒေးရှင်းများ တိုးချဲ့ခဲ့သည်။</p>
+                <p>ရေဆင်းတွင် YAU, UVS နှင့် နိုင်ငံတော် သစ်တောသုတေသနနှင့် စစ်တမ်းဌာနများနှင့် အနီးအနားတွင် တည်ရှိပြီး သဘာဝသိပ္ပံနှင့် ပတ်ဝန်းကျင်ပညာရေး ဗဟိုဌာနတစ်ခု ဖြစ်လာသည်။</p>
+              </div>
+            </div>
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">Why Choose UFES?</h2>
+              <div class="u-features-grid">
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </div>
+                  <div>
+                    <h4>Myanmar's Only Forestry &amp; Environment University</h4>
+                    <p>UFES is the sole institution in Myanmar dedicated to forestry, biodiversity, and environmental science — making it the only path for students who want a nationally recognised degree in these fields.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  </div>
+                  <div>
+                    <h4>Field-Based Learning</h4>
+                    <p>Forestry education at UFES is built around outdoor, hands-on practice — students spend significant time in the field conducting forest surveys, species identification, and ecological assessments, not just in classrooms.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  </div>
+                  <div>
+                    <h4>Dual Scope — Forestry + Environment</h4>
+                    <p>The 2017 expansion to include environmental science means UFES now covers pollution control, environmental policy, and natural-resource management alongside core forestry — creating versatile graduates suited to both government and NGO roles.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  </div>
+                  <div>
+                    <h4>Postgraduate Research Pathways</h4>
+                    <p>UFES offers postgraduate programs (Master's and PhD) in forestry, conservation, environmental management, and climate and ecosystems — supporting students who want to pursue research or academic careers.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <h4>Yezin Academic Zone Advantage</h4>
+                    <p>UFES is co-located in the Yezin zone with YAU, UVS, and national research departments — giving students rare cross-disciplinary exposure to agriculture, veterinary science, and forestry research all in one area.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </div>
+                  <div>
+                    <h4>Direct Career Pathways</h4>
+                    <p>UFES graduates are the primary source of trained forestry officers for Myanmar's Forest Department, conservation organisations, and environmental agencies — strong, clear employment pathways from the moment you graduate.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Gallery</h2>
+              <div class="u-gallery">
+                <div class="u-gallery-item span-2">
+                  <img src="ufes1.jpg" alt="UFES Main Campus" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">UFES Main Campus, Yezin</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="ufes2.jpg" alt="Forest Field Training" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Forest Field Training</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="ufes3.jpg" alt="Environmental Lab" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Environmental Science Lab</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="ufes4.jpg" alt="Wildlife and Biodiversity" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Wildlife &amp; Biodiversity Study</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── Programs ── -->
+          <div class="u-panel" id="tab-majors" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Available Programs</h2>
+              <p class="u-section-sub">Core forestry and environmental science pathways — verify current offerings on the official UFES website</p>
+
+              <div class="u-programs">
+
+                <div class="u-program-card featured">
+                  <div class="u-prog-badge">🌟 Flagship — B.Sc. Forestry</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon green">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 19c-1.04 1.43-2.1 2-2.82 2 0-6 3-10 8-12 0-4-1-6 0-8 3 0 5 2 5 4s-1 2-1 4c3 0 5-2 5-5 4 2 5 5 5 8z"/></svg>
+                    </div>
+                    <div>
+                      <h3>Forestry — B.Sc. (5-Year)</h3>
+                      <div class="u-prog-degree">Undergraduate · 5 Years</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">UFES's core program — a comprehensive 5-year forestry degree covering sustainable forest management, forest ecology, soils, water, climate, and biodiversity. Strong field-study components throughout, with the 5-year duration standardised since 1995.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">5 Years (since 1995)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Stream</span><span class="u-dr-val highlight">Science Matriculation (Science Stream)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Style</span><span class="u-dr-val">Field study + lab + practical training</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Physical Test</span><span class="u-dr-val">Required — field-fitness assessment at admission</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Forest Ecology</span>
+                      <span>Soil, Water &amp; Climate</span>
+                      <span>Forest Management</span>
+                      <span>Wildlife &amp; Biodiversity</span>
+                      <span>Sustainable Forestry</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge teal-badge">Expanded Scope</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon teal">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div>
+                      <h3>Environmental Science</h3>
+                      <div class="u-prog-degree teal-deg">Undergraduate · Interdisciplinary</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Added under the 2017 UFES rename — environmental policy, pollution control, natural resource management, and environmental economics are now core parts of UFES's academic scope, extending the university's reach beyond pure forestry into broader sustainability topics.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Style</span><span class="u-dr-val">Lab + policy analysis + field assessment</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Since</span><span class="u-dr-val">2017 (UFES rename)</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Key Areas</div>
+                    <div class="u-track-tags">
+                      <span>Pollution Control</span>
+                      <span>Natural Resource Mgmt</span>
+                      <span>Environmental Policy</span>
+                      <span>Environmental Economics</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card postgrad">
+                  <div class="u-prog-badge violet-badge">Postgraduate</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon violet">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                      <h3>Postgraduate Programs</h3>
+                      <div class="u-prog-degree violet-deg">Master's · PhD</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">UFES offers postgraduate research pathways for graduates wishing to specialise in forestry science, conservation, environmental management, and climate and ecosystem studies. Exact availability depends on the academic year — confirm current offerings on the official UFES website.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Master's</span><span class="u-dr-val">Forestry Research · Conservation · Environmental Management</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">PhD</span><span class="u-dr-val">Climate &amp; Ecosystems · Sustainable Forest Management</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Research Themes</div>
+                    <div class="u-track-tags">
+                      <span>Forestry Research</span>
+                      <span>Conservation</span>
+                      <span>Environmental Management</span>
+                      <span>Climate &amp; Ecosystems</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Research ── -->
+          <div class="u-panel" id="tab-projects" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Research &amp; Projects</h2>
+              <p class="u-section-sub">Forestry and environmental initiatives at UFES Yezin</p>
+
+              <div class="u-projects">
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type competition">Forestry Research</div>
+                    <h3>Sustainable Forestry &amp; Forest Ecology</h3>
+                    <p>UFES's academic scope centres on sustainable forestry and forest ecology — supporting long-term research and training programs for sustainable forest management, ecosystem health, and responsible use of Myanmar's forest resources.</p>
+                    <div class="u-proj-tags">
+                      <span>Sustainable Forestry</span><span>Forest Ecology</span><span>Ecosystem Management</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type conference">Conservation</div>
+                    <h3>Biodiversity &amp; Wildlife Conservation</h3>
+                    <p>UFES's forestry and environmental focus supports biodiversity and wildlife conservation learning and related research activities across Myanmar's diverse forest landscapes — from tropical lowland forests to highland ecosystems.</p>
+                    <div class="u-proj-tags">
+                      <span>Biodiversity</span><span>Wildlife Monitoring</span><span>Protected Areas</span><span>Conservation Science</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">Environmental Science</div>
+                    <h3>Pollution Control &amp; Environmental Management</h3>
+                    <p>Following the 2017 scope expansion, UFES teaches and researches pollution-control strategies and natural-resource management — building practical skills for environmental protection, sustainability, and policy advisory roles in government and NGO sectors.</p>
+                    <div class="u-proj-tags">
+                      <span>Pollution Control</span><span>Environmental Mgmt</span><span>Policy Research</span><span>Resource Management</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Active</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">Field Training</div>
+                    <h3>Field Surveys &amp; Forest Assessments</h3>
+                    <p>A core part of the UFES curriculum involves regular field surveys — students conduct forest inventories, species assessments, and ecological mapping as part of their degree, gaining the practical field skills Myanmar's Forest Department and conservation organisations need most.</p>
+                    <div class="u-proj-tags">
+                      <span>Forest Inventory</span><span>Species Assessment</span><span>Ecological Mapping</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Campus Life ── -->
+          <div class="u-panel" id="tab-campus" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Life at UFES Yezin</h2>
+              <p class="u-section-sub">Field training and nature-based learning in Myanmar's Yezin Academic Zone</p>
+
+              <div class="u-campus-grid">
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="ufes5.jpg" alt="Field Training" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8C8 10 5.9 16.17 3.82 19c-1.04 1.43-2.1 2-2.82 2 0-6 3-10 8-12 0-4-1-6 0-8 3 0 5 2 5 4s-1 2-1 4c3 0 5-2 5-5 4 2 5 5 5 8z"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Field Training Culture</h3>
+                    <p>Forestry education at UFES emphasises outdoor, applied learning — students spend significant time in the field conducting surveys, assessments, and practical exercises in real forest environments.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="ufes6.jpg" alt="Environmental Lab" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v4m8-4v4M3 10h18M5 21h14a2 2 0 0 0 2-2v-7H3v7a2 2 0 0 0 2 2z"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Lab &amp; Research Learning</h3>
+                    <p>Environmental science and forestry topics combine laboratory work, data analysis, and field observation — building the research skills needed for roles in conservation, environmental management, and postgraduate study.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="ufes.webp" alt="Yezin Academic Zone" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Yezin Academic Zone</h3>
+                    <p>UFES is co-located with YAU, UVS, and national research departments in the Yezin zone — giving students access to a unique concentration of natural and agricultural science institutions, collaborations, and government research bodies.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-campus-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                A physical fitness test is required at admission — students should be comfortable with extended field work, including forest treks, outdoor surveys, and practical environmental assessments as a regular part of their degree.
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Career Paths ── -->
+          <div class="u-panel" id="tab-careers" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Career Opportunities</h2>
+              <p class="u-section-sub">Forestry, conservation, environment, and natural-resource careers for UFES graduates</p>
+
+              <div class="u-careers-grid">
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(22,163,74,.10); --ic-c: #16a34a;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 19c-1.04 1.43-2.1 2-2.82 2 0-6 3-10 8-12 0-4-1-6 0-8 3 0 5 2 5 4s-1 2-1 4c3 0 5-2 5-5 4 2 5 5 5 8z"/></svg>
+                  </div>
+                  <h3>Forestry Officer</h3>
+                  <p>Join Myanmar's Forest Department as a trained officer — managing forest reserves, conducting surveys, enforcing forestry law, and planning sustainable harvesting and replanting programs.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(245,158,11,.10); --ic-c: #d97706;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </div>
+                  <h3>Conservation Specialist</h3>
+                  <p>Work in biodiversity conservation, wildlife monitoring, and protected-area management at conservation NGOs, national parks, and international organisations such as WWF, WCS, or IUCN Myanmar programs.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(20,184,166,.10); --ic-c: #0d9488;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
+                  <h3>Environmental Manager</h3>
+                  <p>Conduct environmental impact assessments, manage pollution-control programs, and develop sustainability strategies for government agencies, development projects, and private companies.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(37,99,235,.10); --ic-c: #2563eb;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  </div>
+                  <h3>Researcher &amp; Lecturer</h3>
+                  <p>Pursue postgraduate study (Master's or PhD) and join research institutes, UFES itself, or other agricultural and science universities as a lecturer or research lead — contributing to Myanmar's natural-science knowledge base.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(124,58,237,.10); --ic-c: #7c3aed;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <h3>NGO &amp; Development Projects</h3>
+                  <p>Environmental and forestry expertise is in high demand at development organisations, UN agencies, and international conservation NGOs working on Myanmar's forests, climate adaptation, and rural livelihoods.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(220,38,38,.08); --ic-c: #dc2626;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  </div>
+                  <h3>Environmental Policy Advisor</h3>
+                  <p>Advise government ministries and environmental agencies on forest policy, land-use planning, and natural-resource regulation — a growing role as Myanmar develops its environmental governance frameworks.</p>
+                </div>
+              </div>
+
+              <div class="u-employers">
+                <h4 class="u-employers-title">Where Graduates Work</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip">Myanmar Forest Department</div>
+                  <div class="u-emp-chip">Environmental Agencies</div>
+                  <div class="u-emp-chip">NGOs &amp; Conservation Orgs</div>
+                  <div class="u-emp-chip">Research Institutes</div>
+                  <div class="u-emp-chip">Development Projects</div>
+                  <div class="u-emp-chip">National Parks</div>
+                  <div class="u-emp-chip">UN Agencies (FAO, UNEP)</div>
+                  <div class="u-emp-chip">Postgraduate &amp; Academia</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Alumni ── -->
+          <div class="u-panel" id="tab-alumni" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Alumni &amp; Graduate Outcomes</h2>
+              <p class="u-section-sub">UFES graduates at the forefront of Myanmar's forestry, conservation, and environmental sector</p>
+
+              <div class="u-alumni-grid">
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Forest Department Officers</h4>
+                    <span class="u-alumni-role">Myanmar Forest Department — Nationwide</span>
+                    <p>The majority of professional forestry officers in Myanmar's Forest Department hold UFES (or predecessor institution) degrees — managing forest reserves, conducting national forest inventories, and overseeing conservation zones across the country.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Conservation &amp; Wildlife Specialists</h4>
+                    <span class="u-alumni-role">WWF, WCS, IUCN &amp; National Parks</span>
+                    <p>UFES graduates work across Myanmar's protected areas and with international conservation organisations — leading biodiversity surveys, wildlife-monitoring programs, and community-conservation initiatives.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Environmental &amp; Development Sector</h4>
+                    <span class="u-alumni-role">NGOs, UN Agencies &amp; Development Projects</span>
+                    <p>Former UFES students hold technical and advisory roles at national and international NGOs, UN agencies (FAO, UNEP), and development projects focused on forest conservation, climate adaptation, and rural livelihoods.</p>
+                  </div>
+                </div>
+                <div class="u-alumni-card">
+                  <div class="u-alumni-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                  </div>
+                  <div class="u-alumni-info">
+                    <h4>Researchers &amp; Academics</h4>
+                    <span class="u-alumni-role">UFES, Research Institutes &amp; Universities</span>
+                    <p>Postgraduate alumni lead research in forest ecology, biodiversity, environmental management, and climate science — contributing to Myanmar's scientific knowledge base and teaching the next generation of forestry professionals.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-alumni-sectors">
+                <h4 class="u-employers-title">Alumni Active In</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip green">Forest Department</div>
+                  <div class="u-emp-chip teal">Conservation &amp; Wildlife</div>
+                  <div class="u-emp-chip amber">Environmental Agencies</div>
+                  <div class="u-emp-chip blue">Research &amp; Academia</div>
+                  <div class="u-emp-chip violet">NGOs &amp; Development</div>
+                  <div class="u-emp-chip">UN &amp; International Orgs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="u-cta" aria-label="Call to action">
+    <div class="u-cta-orb u-cta-orb-1" aria-hidden="true"></div>
+    <div class="u-cta-orb u-cta-orb-2" aria-hidden="true"></div>
+    <div class="container u-cta-inner">
+      <div class="u-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8C8 10 5.9 16.17 3.82 19c-1.04 1.43-2.1 2-2.82 2 0-6 3-10 8-12 0-4-1-6 0-8 3 0 5 2 5 4s-1 2-1 4c3 0 5-2 5-5 4 2 5 5 5 8z"/></svg>
+      </div>
+      <h2>Ready to Start Your Journey at UFES Yezin?</h2>
+      <p>Explore more universities or visit the official UFES website for admissions information</p>
+      <div class="u-cta-btns">
+        <a href="uni.html" class="u-btn-ghost">Explore More Universities</a>
+        <a href="https://ufes.edu.mm" target="_blank" rel="noopener" class="u-btn-primary">Visit Official Site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="u-footer">
+    <div class="container">
+      <div class="u-footer-grid">
+        <div class="u-footer-brand">
+          <div class="u-footer-logo">HST</div>
+          <span>High Schooler's Tool</span>
+          <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+        </div>
+        <div class="u-footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="u-footer-col">
+          <h4>Contact HST</h4>
+          <p><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener">High Schooler's Tool ARP</a></p>
+        </div>
+      </div>
+      <div class="u-footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    /* ── Hamburger ── */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks  = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ── Tabs ── */
+    var tabs   = document.querySelectorAll('.u-tab');
+    var panels = document.querySelectorAll('.u-panel');
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        panels.forEach(function (p) { p.classList.remove('active'); p.hidden = true; });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById('tab-' + id);
+        if (panel) { panel.classList.add('active'); panel.hidden = false; }
+      });
+    });
+
+    /* ── Language Toggle ── */
+    document.querySelectorAll('.u-lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.dataset.lang;
+        var card = btn.closest('.u-content-card');
+        card.querySelectorAll('.u-lang-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        card.querySelectorAll('[data-lang-content]').forEach(function (el) {
+          el.hidden = el.dataset.langContent !== lang;
+        });
+      });
+    });
+
+    /* ── Parallax hero bg on scroll ── */
+    var heroBg = document.querySelector('.u-hero-bg');
+    if (heroBg) {
+      window.addEventListener('scroll', function () {
+        heroBg.style.transform = 'scale(1.04) translateY(' + (window.scrollY * 0.22) + 'px)';
+      }, { passive: true });
+    }
+
+    /* ── Intersection Observer — reveal on scroll ── */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.u-stat, .u-feature, .u-program-card, .u-project-item, .u-career-card, .u-alumni-card').forEach(function (el) {
+      io.observe(el);
+    });
+  })();
+  </script>
+</body>
+</html>

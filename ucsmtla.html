@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCSMTLA — University of Computer Studies, Meiktila | HST</title>
+  <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hst.css" />
+  <link rel="stylesheet" href="appleucsy.css" />
+</head>
+<body>
+
+  <!-- ── Navigation (hst.css controls this — do not modify) ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="hst.html" class="nav-logo">
+        <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <span class="logo-hst">HST</span>
+          <span class="logo-sub">High Schooler's Tool</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="hst.html">Home</a></li>
+        <li><a href="uni.html" class="active">Universities</a></li>
+        <li><a href="career-journey.html">Career Journey</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="study-mode.html">Study Mode</a></li>
+        <li><a href="scholarships.html">Scholarships</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="u-hero" aria-label="University hero">
+    <div class="u-hero-bg" style="background-image:url('ucsmtla.jpg')"></div>
+    <div class="u-hero-overlay"></div>
+    <div class="u-hero-noise"></div>
+    <div class="container u-hero-inner">
+      <nav class="u-breadcrumb" aria-label="Breadcrumb">
+        <a href="hst.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="uni.html">Universities</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>UCSMTLA</span>
+      </nav>
+      <div class="u-hero-body">
+        <div class="u-logo-wrap">
+          <img src="ucsmtla.png" alt="UCSMTLA Logo" onerror="this.style.opacity='.15'">
+        </div>
+        <div class="u-hero-text">
+          <div class="u-hero-eyebrow">Central Myanmar's Computer University</div>
+          <h1 class="u-hero-title">University of Computer Studies,<br class="desktop-br"> Meiktila</h1>
+          <p class="u-hero-subtitle">Leading Technology Education in Mandalay Region</p>
+          <div class="u-meta-row">
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Meiktila, Mandalay
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+              Government · Public
+            </div>
+            <div class="u-meta-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Est. 2001
+            </div>
+            <div class="u-meta-pill gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Regional Hub
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats Bar ── -->
+  <section class="u-stats" aria-label="Key statistics">
+    <div class="container">
+      <div class="u-stats-grid">
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num" data-count="500">500+</div>
+            <div class="u-stat-label">Students</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">3-4</div>
+            <div class="u-stat-label">Programs</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">70+</div>
+            <div class="u-stat-label">Faculty</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">23</div>
+            <div class="u-stat-label">Years of Excellence</div>
+          </div>
+        </div>
+        <div class="u-stat" role="figure">
+          <div class="u-stat-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="u-stat-body">
+            <div class="u-stat-num">15+</div>
+            <div class="u-stat-label">Projects</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ── -->
+  <section class="u-body">
+    <div class="container">
+      <div class="u-layout">
+
+        <!-- ── Sidebar ── -->
+        <aside class="u-sidebar" aria-label="University sidebar">
+
+          <!-- Quick Info -->
+          <div class="u-card">
+            <div class="u-card-title">Quick Info</div>
+            <div class="u-info-list">
+              <div class="u-info-row">
+                <span class="u-info-key">Type</span>
+                <span class="u-info-val">Public Government</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Ministry</span>
+                <span class="u-info-val">Science &amp; Technology</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Location</span>
+                <span class="u-info-val">Meiktila, Mandalay</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Township</span>
+                <span class="u-info-val">Meiktila</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Language</span>
+                <span class="u-info-val">Myanmar, English</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">Founded</span>
+                <span class="u-info-val">2001 (as College)</span>
+              </div>
+              <div class="u-info-row">
+                <span class="u-info-key">University since</span>
+                <span class="u-info-val">2007</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entrance -->
+          <div class="u-card u-card-accent">
+            <div class="u-card-title">Entrance Requirements</div>
+            <div class="u-entrance-block">
+              <div class="u-entrance-score">
+                <div class="u-score-label">Minimum Marks</div>
+                <div class="u-score-num">380</div>
+                <div class="u-score-sub">Out of 600</div>
+              </div>
+              <div class="u-entrance-subjects">
+                <div class="u-sub-label">Required Subjects</div>
+                <div class="u-sub-tags">
+                  <span class="u-tag blue">Mathematics</span>
+                  <span class="u-tag blue">Physics</span>
+                  <span class="u-tag blue">English</span>
+                </div>
+              </div>
+              <div class="u-entrance-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Regional selection serving students from Central Myanmar and nearby regions.
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="u-card">
+            <div class="u-card-title">Key Milestones</div>
+            <div class="u-timeline">
+              <div class="u-tl-item">
+                <div class="u-tl-year">2001</div>
+                <div class="u-tl-text">Founded as Computer College, Meiktila</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2007</div>
+                <div class="u-tl-text">Upgraded to University of Computer Studies, Meiktila</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2010</div>
+                <div class="u-tl-text">Expanded facilities and computer labs</div>
+              </div>
+              <div class="u-tl-item">
+                <div class="u-tl-year">2015</div>
+                <div class="u-tl-text">Introduced advanced specialization tracks</div>
+              </div>
+              <div class="u-tl-item now">
+                <div class="u-tl-year">Now</div>
+                <div class="u-tl-text">Continues advancing computer education in Central Myanmar</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="u-card u-card-contact">
+            <div class="u-card-title">Contact</div>
+            <div class="u-contact-list">
+              <a href="tel:09976315121" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 4.18 2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <span>09 976 315 121</span>
+              </a>
+              <a href="mailto:contact@ucsmtla.edu.mm" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <span>contact@ucsmtla.edu.mm</span>
+              </a>
+              <a href="https://www.ucsmtla.edu.mm" target="_blank" rel="noopener" class="u-contact-row">
+                <div class="u-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>www.ucsmtla.edu.mm</span>
+              </a>
+            </div>
+            <a href="mailto:contact@ucsmtla.edu.mm" class="u-contact-btn">Get in Touch</a>
+          </div>
+
+        </aside>
+
+        <!-- ── Main Panel ── -->
+        <main class="u-main" aria-label="University details">
+
+          <!-- Tabs -->
+          <div class="u-tabs" role="tablist" aria-label="University sections">
+            <button class="u-tab active" data-tab="overview"  role="tab" aria-selected="true"  aria-controls="tab-overview">Overview</button>
+            <button class="u-tab"        data-tab="majors"    role="tab" aria-selected="false" aria-controls="tab-majors">Majors</button>
+            <button class="u-tab"        data-tab="projects"  role="tab" aria-selected="false" aria-controls="tab-projects">Projects</button>
+            <button class="u-tab"        data-tab="campus"    role="tab" aria-selected="false" aria-controls="tab-campus">Campus Life</button>
+            <button class="u-tab"        data-tab="careers"   role="tab" aria-selected="false" aria-controls="tab-careers">Career Paths</button>
+          </div>
+
+          <!-- ── Overview ── -->
+          <div class="u-panel active" id="tab-overview" role="tabpanel">
+
+            <!-- About bilingual -->
+            <div class="u-content-card">
+              <h2 class="u-section-h">About the University</h2>
+              <div class="u-about-lang-toggle" role="group" aria-label="Language toggle">
+                <button class="u-lang-btn active" data-lang="en">English</button>
+                <button class="u-lang-btn" data-lang="mm">မြန်မာ</button>
+              </div>
+
+              <div class="u-about-text" data-lang-content="en">
+                <p>The <strong>University of Computer Studies, Meiktila (UCSMTLA)</strong> is a government university located in Meiktila, Mandalay Region, Myanmar. Established in 2001 as a Computer College and upgraded to university status in 2007, it serves as a key hub for technology education in Central Myanmar.</p>
+                <p>Operating under the Ministry of Science and Technology, UCSMTLA offers four-year undergraduate programs including B.C.Sc. (Computer Science) and B.C.Tech. (Computer Technology). These programs train students in Software Engineering, Artificial Intelligence (AI), and network infrastructure.</p>
+                <p>The university's mission is "Quality Education for Peace, Progress and Change" — developing graduates who are technically skilled and capable of contributing to national modernization. With student-centered teaching, modern computer laboratories, and curricula covering Cybersecurity, Data Mining, and Mobile Development, UCSMTLA bridges academic learning with private sector technology needs.</p>
+              </div>
+              <div class="u-about-text" data-lang-content="mm" hidden>
+                <p>မြန်မာနိုင်ငံ၊ မန္တလေးတိုင်းဒေသကြီးတွင် တည်ရှိသော <strong>ကွန်ပျူတာတက္ကသိုလ်, မိတ္ထီလာ (UCSMTLA)</strong> သည် မြန်မာနိုင်ငံ၏ သတင်းအချက်အလက်နည်းပညာ ကဏ္ဍတိုးတက်စေရန် ရည်ရွယ်၍ ဖွင့်လှစ်ထားသော အထူးပြုအစိုးရတက္ကသိုလ်တစ်ခု ဖြစ်ပါသည်။</p>
+                <p>၂၀၀၁ ခုနှစ်တွင် ကွန်ပျူတာကောလိပ်အဖြစ် စတင်တည်ထောင်ခဲ့ပြီး ၂၀၀၇ ခုနှစ်တွင် တက္ကသိုလ်အဆင့်သို့ တိုးမြှင့်ခဲ့သည်။ ဤတက္ကသိုလ်သည် အလယ်ပိုင်းဒေသရှိ နည်းပညာပညာရေးအတွက် အဓိကဗဟိုချက်ဖြစ်ပြီး ကွန်ပျူတာသိပ္ပံဘွဲ့ (B.C.Sc.) နှင့် ကွန်ပျူတာနည်းပညာဘွဲ့ (B.C.Tech.) ဟူသော (၄) နှစ်သင်တန်းများကို အဓိကထား သင်ကြားပေးပါသည်။</p>
+                <p>တက္ကသိုလ်၏ ရည်မှန်းချက်မှာ "ငြိမ်းချမ်းရေး၊ တိုးတက်ရေးနှင့် ပြောင်းလဲမှုအတွက် အရည်အသွေးရှိသော ပညာရေး" ဖြစ်ပြီး နည်းပညာပိုင်းတွင် ကျွမ်းကျင်ရုံသာမက နိုင်ငံတော်ခေတ်မီဖွံ့ဖြိုးတိုးတက်ရေးတွင် အထောက်အကူပြုနိုင်မည့် ဘွဲ့ရပညာရှင်များ ပေါ်ထွက်လာစေရန် ရည်ရွယ်ပါသည်။</p>
+              </div>
+            </div>
+
+            <!-- Why UCSMTLA -->
+            <div class="u-content-card">
+              <h2 class="u-section-h">Why Choose UCS (Meiktila)?</h2>
+              <div class="u-features-grid">
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                  </div>
+                  <div>
+                    <h4>Computing-Focused Education</h4>
+                    <p>Learn in a computer science and IT-centered environment with programs designed around modern digital skills.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                  </div>
+                  <div>
+                    <h4>Hands-On Labs &amp; Projects</h4>
+                    <p>Build real experience through lab work, assignments, and team projects that strengthen problem-solving and coding ability.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7.05 11.5 7.35 11.76a1 1 0 0 0 1.3 0C13 21.5 20 15.4 20 10a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                  </div>
+                  <div>
+                    <h4>Strong Technical Foundation</h4>
+                    <p>Develop core skills in programming, databases, networks, and systems that support many tech career paths.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                  </div>
+                  <div>
+                    <h4>Innovation Mindset</h4>
+                    <p>Explore software development and emerging technologies with a builder's mindset — create, test, and improve ideas.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div>
+                    <h4>Collaborative Learning Culture</h4>
+                    <p>Grow through peer learning, teamwork, and mentoring that mirrors how real tech teams work.</p>
+                  </div>
+                </div>
+                <div class="u-feature">
+                  <div class="u-feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  </div>
+                  <div>
+                    <h4>Pathways to Tech Careers</h4>
+                    <p>Prepare for roles in software, IT support, networking, data, and cybersecurity with skills that transfer across industries.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery -->
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Gallery</h2>
+              <div class="u-gallery">
+                <div class="u-gallery-item span-2">
+                  <img src="images/ucsmtla-lab.jpg" alt="Computer Lab" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Computer Lab</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/ucsmtla-library.jpg" alt="Library" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Library</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/ucsmtla-hall.jpg" alt="Main Hall" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Main Hall</div>
+                </div>
+                <div class="u-gallery-item">
+                  <img src="images/ucsmtla-ground.jpg" alt="Campus Ground" onerror="this.parentElement.classList.add('empty')">
+                  <div class="u-gallery-label">Campus Ground</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── Majors ── -->
+          <div class="u-panel" id="tab-majors" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Available Programs</h2>
+              <p class="u-section-sub">Choose from our comprehensive technology programs</p>
+
+              <div class="u-programs">
+
+                <div class="u-program-card featured">
+                  <div class="u-prog-badge">Undergraduate</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon blue">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                    <div>
+                      <h3>Computer Science (CS)</h3>
+                      <div class="u-prog-degree">B.C.Sc &nbsp;/&nbsp; M.C.Sc</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Core computer science principles — algorithms, data structures, software development, and system design.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">4 Years (Bachelor)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Min. Marks</span><span class="u-dr-val highlight">380 / 600</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Prerequisites</span><span class="u-dr-val">Mathematics, Physics, English</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Intake</span><span class="u-dr-val">Annual — regional</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Core Subjects</div>
+                    <div class="u-track-tags">
+                      <span>Data Structures</span>
+                      <span>Algorithms</span>
+                      <span>Java/C++</span>
+                      <span>Database</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-program-card">
+                  <div class="u-prog-badge violet-badge">Undergraduate</div>
+                  <div class="u-prog-header">
+                    <div class="u-prog-icon violet">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div>
+                      <h3>Computer Technology (CT)</h3>
+                      <div class="u-prog-degree violet-deg">B.C.Tech</div>
+                    </div>
+                  </div>
+                  <p class="u-prog-desc">Focus on hardware, networking, system administration, and technical infrastructure.</p>
+                  <div class="u-prog-details">
+                    <div class="u-detail-row"><span class="u-dr-label">Duration</span><span class="u-dr-val">4 Years (Bachelor)</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Min. Marks</span><span class="u-dr-val highlight">380 / 600</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Prerequisites</span><span class="u-dr-val">Mathematics, Physics, English</span></div>
+                    <div class="u-detail-row"><span class="u-dr-label">Intake</span><span class="u-dr-val">Annual — regional</span></div>
+                  </div>
+                  <div class="u-prog-tracks">
+                    <div class="u-track-label">Core Subjects</div>
+                    <div class="u-track-tags violet-tracks">
+                      <span>Networking</span>
+                      <span>Hardware</span>
+                      <span>System Admin</span>
+                      <span>Cloud Computing</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Projects ── -->
+          <div class="u-panel" id="tab-projects" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Projects &amp; Achievements</h2>
+              <p class="u-section-sub">Showcasing innovation and excellence</p>
+
+              <div class="u-projects">
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">2023</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type competition">Research</div>
+                    <h3>Smart Agriculture Monitoring System</h3>
+                    <p>Students developed an IoT-based smart agriculture monitoring system to help local farmers track soil moisture, temperature, and crop health in real-time.</p>
+                    <div class="u-proj-tags">
+                      <span>IoT</span><span>Agriculture Tech</span><span>Student Project</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">2022</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type competition">Competition</div>
+                    <h3>National Programming Contest Participation</h3>
+                    <p>UCSMTLA students represented the university in national coding competitions, demonstrating strong algorithmic problem-solving skills.</p>
+                    <div class="u-proj-tags">
+                      <span>Programming</span><span>Competition</span><span>National Level</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">2021</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type conference">Conference</div>
+                    <h3>Regional Computer Science Symposium</h3>
+                    <p>UCSMTLA hosted a regional symposium bringing together faculty and students from Central Myanmar to discuss emerging technologies and research.</p>
+                    <div class="u-proj-tags">
+                      <span>Academic Conference</span><span>Research</span><span>Regional</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-project-item">
+                  <div class="u-proj-year">Ongoing</div>
+                  <div class="u-proj-body">
+                    <div class="u-proj-type activities">Student Activities</div>
+                    <h3>Community Tech Workshops</h3>
+                    <p>Regular workshops and training sessions for local community members on basic computer skills, digital literacy, and internet safety.</p>
+                    <div class="u-proj-tags">
+                      <span>Community Service</span><span>Digital Literacy</span><span>Outreach</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Campus Life ── -->
+          <div class="u-panel" id="tab-campus" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Campus Life at UCSMTLA</h2>
+              <p class="u-section-sub">Student activities, facilities, and campus experiences</p>
+
+              <div class="u-campus-grid">
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/ucsmtla-activities.jpg" alt="Student Activities" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Student Activities</h3>
+                    <p>From sports events to cultural celebrations — students participate in various extracurricular activities that build teamwork and leadership skills.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/ucsmtla-labs.jpg" alt="Computer Labs" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Computer Labs</h3>
+                    <p>Modern computer laboratories equipped with essential hardware and software for practical coursework in programming, networking, and system design.</p>
+                  </div>
+                </div>
+                <div class="u-campus-card">
+                  <div class="u-campus-img" aria-hidden="true">
+                    <img src="images/ucsmtla-dorm.jpg" alt="Student Dormitories" onerror="this.parentElement.classList.add('empty')">
+                    <div class="u-campus-icon-fallback">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+                    </div>
+                  </div>
+                  <div class="u-campus-body">
+                    <h3>Student Dormitories</h3>
+                    <p>On-campus accommodation available for students from distant regions, providing a safe and convenient living environment close to classes.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-campus-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Additional campus details and student testimonials will be updated as official information becomes available from UCSMTLA.
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Career Paths ── -->
+          <div class="u-panel" id="tab-careers" role="tabpanel" hidden>
+            <div class="u-content-card">
+              <h2 class="u-section-h">Career Opportunities</h2>
+              <p class="u-section-sub">Typical pathways for UCSMTLA graduates</p>
+
+              <div class="u-careers-grid">
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(37,99,235,.10); --ic-c: #2563eb;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  </div>
+                  <h3>Software Developer</h3>
+                  <p>Build applications, web services, and enterprise software for organisations and startups.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(220,38,38,.08); --ic-c: #dc2626;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  </div>
+                  <h3>IT Support Specialist</h3>
+                  <p>Provide technical support, troubleshoot systems, and maintain IT infrastructure for businesses.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(16,185,129,.10); --ic-c: #059669;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  </div>
+                  <h3>Data Analyst</h3>
+                  <p>Transform raw data into insights supporting business strategy and decision-making.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(245,158,11,.10); --ic-c: #d97706;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+                  </div>
+                  <h3>Network Administrator</h3>
+                  <p>Design, deploy, and manage enterprise networks and telecommunications systems.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(124,58,237,.10); --ic-c: #7c3aed;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                  <h3>Cybersecurity Analyst</h3>
+                  <p>Protect digital infrastructure and assess vulnerabilities for organisations.</p>
+                </div>
+                <div class="u-career-card">
+                  <div class="u-career-icon" style="--ic: rgba(20,184,166,.10); --ic-c: #0d9488;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </div>
+                  <h3>IT Educator</h3>
+                  <p>Pursue teaching and academic roles at schools, colleges, and training institutions.</p>
+                </div>
+              </div>
+
+              <div class="u-employers">
+                <h4 class="u-employers-title">Sectors Where Graduates Excel</h4>
+                <div class="u-employer-chips">
+                  <div class="u-emp-chip">Government IT</div>
+                  <div class="u-emp-chip">Banking &amp; Finance</div>
+                  <div class="u-emp-chip">Telecommunications</div>
+                  <div class="u-emp-chip">Software Companies</div>
+                  <div class="u-emp-chip">Education</div>
+                  <div class="u-emp-chip">E-Commerce</div>
+                  <div class="u-emp-chip">Regional IT Services</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="u-cta" aria-label="Call to action">
+    <div class="u-cta-orb u-cta-orb-1" aria-hidden="true"></div>
+    <div class="u-cta-orb u-cta-orb-2" aria-hidden="true"></div>
+    <div class="container u-cta-inner">
+      <div class="u-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <h2>Ready to Start Your Journey at UCSMTLA?</h2>
+      <p>Explore more universities or reach out to UCSMTLA admissions directly</p>
+      <div class="u-cta-btns">
+        <a href="uni.html"   class="u-btn-ghost">Explore More Universities</a>
+        <a href="https://www.ucsmtla.edu.mm" target="_blank" rel="noopener" class="u-btn-primary">Visit Official Site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="u-footer">
+    <div class="container">
+      <div class="u-footer-grid">
+        <div class="u-footer-brand">
+          <div class="u-footer-logo">HST</div>
+          <span>High Schooler's Tool</span>
+          <p>Empowering Myanmar students to make informed university choices and build a brighter future.</p>
+        </div>
+        <div class="u-footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="hst.html">Home</a></li>
+            <li><a href="uni.html">Universities</a></li>
+            <li><a href="career-journey.html">Career Journey</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="study-mode.html">Study Mode</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="u-footer-col">
+          <h4>Contact HST</h4>
+          <p><a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+          <p><a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener">High Schooler's Tool ARP</a></p>
+        </div>
+      </div>
+      <div class="u-footer-bottom">© 2026 High Schooler's Tool. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    /* ── Hamburger ── */
+    var hamburger = document.getElementById('hamburger');
+    var navLinks  = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ── Tabs ── */
+    var tabs   = document.querySelectorAll('.u-tab');
+    var panels = document.querySelectorAll('.u-panel');
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        panels.forEach(function (p) { p.classList.remove('active'); p.hidden = true; });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById('tab-' + id);
+        if (panel) { panel.classList.add('active'); panel.hidden = false; }
+      });
+    });
+
+    /* ── Language Toggle ── */
+    document.querySelectorAll('.u-lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.dataset.lang;
+        var card = btn.closest('.u-content-card');
+        card.querySelectorAll('.u-lang-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        card.querySelectorAll('[data-lang-content]').forEach(function (el) {
+          el.hidden = el.dataset.langContent !== lang;
+        });
+      });
+    });
+
+    /* ── Parallax hero bg on scroll ── */
+    var heroBg = document.querySelector('.u-hero-bg');
+    if (heroBg) {
+      window.addEventListener('scroll', function () {
+        heroBg.style.transform = 'scale(1.04) translateY(' + (window.scrollY * 0.22) + 'px)';
+      }, { passive: true });
+    }
+
+    /* ── Intersection Observer — reveal stats ── */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.u-stat, .u-feature, .u-program-card, .u-project-item, .u-career-card').forEach(function (el) {
+      io.observe(el);
+    });
+  })();
+  </script>
+</body>
+</html>
