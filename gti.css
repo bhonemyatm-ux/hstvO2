@@ -1,0 +1,230 @@
+/* =============================================
+   GTI — Government Technical Institute
+   Custom overrides on top of hst.css + ucs.css
+   ============================================= */
+
+/* Accent colour — industrial steel blue */
+:root {
+    --gti-primary:   #1a3a5c;
+    --gti-secondary: #2e6da4;
+    --gti-accent:    #e87722;
+    --gti-light:     #eaf2fb;
+    --gti-border:    #c8dff4;
+}
+
+/* ---- Hero tint ---- */
+.uni-hero .hero-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(26, 58, 92, 0.82) 0%,
+        rgba(46, 109, 164, 0.60) 100%
+    );
+}
+
+/* ---- Stat bar ---- */
+.quick-stats {
+    background: var(--gti-primary);
+}
+
+.stat-item h3 {
+    color: var(--gti-accent);
+}
+
+/* ---- Sidebar headings ---- */
+.sidebar-card h3 {
+    border-left: 4px solid var(--gti-secondary);
+    padding-left: 10px;
+}
+
+/* ---- Tab active state ---- */
+.tab-btn.active,
+.tab-btn:hover {
+    background: var(--gti-secondary);
+    color: #fff;
+    border-color: var(--gti-secondary);
+}
+
+/* ---- Content card headings ---- */
+.content-card h2 {
+    color: var(--gti-primary);
+    border-bottom: 3px solid var(--gti-accent);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/* ---- Feature icons ---- */
+.feature-icon {
+    background: var(--gti-light);
+    border: 2px solid var(--gti-border);
+    color: var(--gti-secondary);
+}
+
+/* ---- Major cards ---- */
+.major-card {
+    border-left: 5px solid var(--gti-secondary);
+}
+
+.major-card:hover {
+    border-left-color: var(--gti-accent);
+    box-shadow: 0 6px 24px rgba(46, 109, 164, 0.15);
+}
+
+.major-card .major-degree {
+    background: var(--gti-light);
+    color: var(--gti-secondary);
+    border: 1px solid var(--gti-border);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.major-subjects span {
+    background: var(--gti-light);
+    color: var(--gti-primary);
+    border: 1px solid var(--gti-border);
+}
+
+/* ---- Project / timeline items ---- */
+.project-item.gti-project {
+    border-left: 4px solid var(--gti-secondary);
+    background: #f7fbff;
+}
+
+.project-year {
+    background: var(--gti-primary);
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-width: 80px;
+    text-align: center;
+    align-self: flex-start;
+}
+
+/* ---- Notice banner ---- */
+.notice-banner {
+    background: #fff8f0;
+    border: 2px dashed var(--gti-accent);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.notice-banner .notice-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.notice-banner h4 {
+    margin: 0 0 6px;
+    color: var(--gti-accent);
+    font-size: 1rem;
+}
+
+.notice-banner p {
+    margin: 0;
+    color: #555;
+    font-size: 0.93rem;
+    line-height: 1.6;
+}
+
+.notice-banner a {
+    color: var(--gti-secondary);
+    font-weight: 600;
+}
+
+/* ---- Career cards ---- */
+.career-card .career-icon {
+    background: var(--gti-light);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.salary-range {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--gti-light);
+    color: var(--gti-secondary);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* ---- Employer logo tiles ---- */
+.employer-logo {
+    border: 2px solid var(--gti-border);
+    color: var(--gti-primary);
+    font-weight: 600;
+}
+
+.employer-logo:hover {
+    background: var(--gti-secondary);
+    color: #fff;
+    border-color: var(--gti-secondary);
+}
+
+/* ---- CTA section ---- */
+.cta-profile {
+    background: linear-gradient(135deg, var(--gti-primary) 0%, var(--gti-secondary) 100%);
+}
+
+.btn-primary {
+    background: var(--gti-accent);
+    border-color: var(--gti-accent);
+}
+
+.btn-primary:hover {
+    background: #c5641a;
+    border-color: #c5641a;
+}
+
+/* ---- Subject tags ---- */
+.subject-tag {
+    background: var(--gti-light);
+    color: var(--gti-primary);
+    border: 1px solid var(--gti-border);
+}
+
+/* ---- Contact button ---- */
+.contact-btn {
+    background: var(--gti-secondary);
+    border: none;
+}
+
+.contact-btn:hover {
+    background: var(--gti-primary);
+}
+
+/* ---- Known-facts block ---- */
+.known-facts {
+    background: var(--gti-light);
+    border-left: 4px solid var(--gti-secondary);
+    border-radius: 0 10px 10px 0;
+}
+
+.known-facts h4 {
+    color: var(--gti-primary);
+}
+
+/* ---- Campus cards ---- */
+.campus-card h3 {
+    color: var(--gti-primary);
+}
+
+/* ---- Uni badge on hero ---- */
+.uni-badge {
+    background: var(--gti-accent);
+}

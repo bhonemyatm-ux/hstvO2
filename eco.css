@@ -1,0 +1,354 @@
+/* =============================================
+   MUE — Monywa University of Economics
+   Economics / Finance theme
+   Palette: Deep Navy · Emerald Growth · Gold Accent
+   ============================================= */
+
+:root {
+    --mue-navy:      #0f2044;
+    --mue-navy-mid:  #1a3a7a;
+    --mue-emerald:   #0d7a5f;
+    --mue-emerald-light: #148f70;
+    --mue-gold:      #c99a1a;
+    --mue-gold-light: #f0c44a;
+    --mue-light:     #eef4f0;
+    --mue-border:    #b8d8cc;
+    --mue-bg:        #f5f7f4;
+}
+
+/* ── Body background ── */
+body {
+    background: var(--mue-bg);
+}
+
+/* ── Hero overlay ── */
+.uni-hero .hero-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(15, 32, 68, 0.88) 0%,
+        rgba(13, 122, 95, 0.55) 100%
+    );
+}
+
+/* ── Stat bar ── */
+.quick-stats {
+    background: linear-gradient(90deg, var(--mue-navy) 0%, var(--mue-navy-mid) 100%);
+}
+
+.stat-item h3 {
+    color: var(--mue-gold-light);
+}
+
+/* ── Sidebar headings ── */
+.sidebar-card h3 {
+    border-left: 4px solid var(--mue-emerald);
+    padding-left: 10px;
+    color: var(--mue-navy);
+}
+
+/* ── Content card h2 ── */
+.content-card h2 {
+    color: var(--mue-navy);
+    border-bottom: 3px solid var(--mue-gold);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/* ── Tab buttons ── */
+.tab-btn.active,
+.tab-btn:hover {
+    background: var(--mue-emerald);
+    color: #fff;
+    border-color: var(--mue-emerald);
+}
+
+/* ── Major cards ── */
+.major-card {
+    border-left: 5px solid var(--mue-emerald);
+}
+
+.major-card:hover {
+    border-left-color: var(--mue-gold);
+    box-shadow: 0 6px 24px rgba(13, 122, 95, 0.13);
+}
+
+.major-card .major-degree {
+    background: var(--mue-light);
+    color: var(--mue-emerald);
+    border: 1px solid var(--mue-border);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.major-subjects span {
+    background: var(--mue-light);
+    color: var(--mue-navy);
+    border: 1px solid var(--mue-border);
+}
+
+/* ── Feature icons ── */
+.feature-icon {
+    background: var(--mue-light);
+    border: 2px solid var(--mue-border);
+    color: var(--mue-emerald);
+}
+
+/* ── Career cards ── */
+.career-card .career-icon,
+.career-card > span.career-icon {
+    background: var(--mue-light);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+/* ── Employer / sector tiles ── */
+.employer-logo {
+    border: 2px solid var(--mue-border);
+    color: var(--mue-navy);
+    font-weight: 600;
+    transition: all 0.18s;
+}
+
+.employer-logo:hover {
+    background: var(--mue-emerald);
+    color: #fff;
+    border-color: var(--mue-emerald);
+}
+
+/* ── Timeline milestone items ── */
+.timeline-item {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    border: 1.5px solid #e2ecdf;
+    border-left: 5px solid var(--mue-emerald);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: box-shadow 0.18s;
+}
+
+.timeline-item:hover {
+    box-shadow: 0 6px 20px rgba(13, 122, 95, 0.10);
+}
+
+.timeline-year {
+    background: var(--mue-navy);
+    color: var(--mue-gold-light);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    min-width: 64px;
+    text-align: center;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.timeline-body h4 {
+    margin: 0 0 6px;
+    color: var(--mue-navy);
+    font-size: 1rem;
+}
+
+.timeline-body p {
+    margin: 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ── Degree level badges ── */
+.degree-section {
+    margin-top: 28px;
+}
+
+.degree-section h3 {
+    color: var(--mue-navy);
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--mue-border);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.degree-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93rem;
+}
+
+.degree-table th {
+    background: var(--mue-navy);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.degree-table th:first-child { border-radius: 8px 0 0 0; }
+.degree-table th:last-child  { border-radius: 0 8px 0 0; }
+
+.degree-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2ecdf;
+    color: #2d3748;
+}
+
+.degree-table tr:nth-child(even) td { background: var(--mue-light); }
+.degree-table tr:last-child td { border-bottom: none; }
+
+.degree-table td:first-child { font-weight: 600; color: var(--mue-navy); }
+
+.badge-first {
+    display: inline-block;
+    background: #fff8dc;
+    color: #8a6000;
+    border: 1px solid var(--mue-gold);
+    border-radius: 20px;
+    padding: 1px 9px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+/* ── Update / news cards ── */
+.update-card {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    border: 1.5px solid #e2ecdf;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.18s;
+}
+
+.update-card:hover {
+    box-shadow: 0 6px 20px rgba(13, 122, 95, 0.10);
+}
+
+.update-card.emerald { border-left: 5px solid var(--mue-emerald); }
+.update-card.navy    { border-left: 5px solid var(--mue-navy); }
+.update-card.gold    { border-left: 5px solid var(--mue-gold); }
+
+.update-label {
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    min-width: 70px;
+    text-align: center;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.update-label.emerald { background: var(--mue-emerald); color: #fff; }
+.update-label.navy    { background: var(--mue-navy);    color: #fff; }
+.update-label.gold    { background: var(--mue-gold);    color: #fff; }
+
+.update-body h3 {
+    margin: 0 0 8px;
+    color: var(--mue-navy);
+    font-size: 1rem;
+}
+
+.update-body p {
+    margin: 0;
+    color: #4a5568;
+    font-size: 0.91rem;
+    line-height: 1.7;
+}
+
+.update-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.update-tag {
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.update-tag.emerald { background: #d4f0e8; color: var(--mue-emerald); }
+.update-tag.navy    { background: #dbeafe; color: var(--mue-navy-mid); }
+.update-tag.gold    { background: #fef9c3; color: #7a5a00; }
+
+/* ── Known facts box ── */
+.known-facts {
+    background: var(--mue-light);
+    border-left: 4px solid var(--mue-emerald);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin-top: 20px;
+}
+
+.known-facts h4 {
+    margin: 0 0 10px;
+    color: var(--mue-navy);
+    font-size: 0.97rem;
+}
+
+.known-facts ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #374151;
+    font-size: 0.92rem;
+    line-height: 1.8;
+}
+
+/* ── Subject tags ── */
+.subject-tag {
+    background: var(--mue-light);
+    color: var(--mue-navy);
+    border: 1px solid var(--mue-border);
+}
+
+/* ── Contact button ── */
+.contact-btn {
+    background: var(--mue-emerald);
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.18s;
+}
+
+.contact-btn:hover { background: var(--mue-navy); }
+
+/* ── CTA section ── */
+.cta-profile {
+    background: linear-gradient(135deg, var(--mue-navy) 0%, var(--mue-navy-mid) 60%, var(--mue-emerald) 100%);
+}
+
+.btn-primary {
+    background: var(--mue-gold);
+    border-color: var(--mue-gold);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #a07c10;
+    border-color: #a07c10;
+}
+
+/* ── Campus cards ── */
+.campus-card h3 {
+    color: var(--mue-navy);
+}
