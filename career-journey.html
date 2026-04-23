@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Journey | High Schooler's Tool</title>
+    <link rel="icon" href="hstlogo.png" type="image/png" sizes="40x40">
+    <link rel="stylesheet" href="hst.css" />
+    <link rel="stylesheet" href="career-journey.css" />
+</head>
+
+<body>
+    <!-- Navigation Bar (DO NOT MODIFY — controlled by hst.css) -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="hstlogo.jpg" alt="HST Logo" class="logo-img" />
+                <div class="logo-text">
+                    <h2>HST</h2>
+                    <span>High Schooler's Tool</span>
+                </div>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="hst.html">Home</a></li>
+                <li><a href="uni.html">Universities</a></li>
+                <li><a href="career-journey.html" class="active">Career journey</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="study-mode.html">Study mode</a></li>
+                <li><a href="scholarships.html">Scholarships</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" type="button"
+                    aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Floating cards layer (decorative) -->
+    <div id="floatingCardsLayer" aria-hidden="true"></div>
+
+    <!-- Aurora orbs background -->
+    <div class="aurora" aria-hidden="true">
+        <div class="aurora-orb aurora-orb-1"></div>
+        <div class="aurora-orb aurora-orb-2"></div>
+        <div class="aurora-orb aurora-orb-3"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="journey-container">
+
+        <!-- Hero -->
+        <header class="journey-hero">
+            <div class="journey-hero-badge">🌸 Career Journey</div>
+            <h1 class="journey-hero-title">Your Path to Success</h1>
+            <p class="journey-hero-sub">Click each milestone to unlock career advice and guidance tailored just for you 💫</p>
+        </header>
+
+        <!-- Role Picker -->
+        <section class="aspiration-card" aria-label="Set your career goal">
+            <div class="aspiration-card-inner">
+                <div class="aspiration-card-left">
+                    <h2 class="aspiration-title">What do you want to be?</h2>
+                    <p class="aspiration-hint">Type a career (doctor, engineer, teacher…) and we'll match relevant advice and universities for you.</p>
+
+                    <form class="aspiration-form" id="roleForm" novalidate>
+                        <label for="roleInput" class="sr-only">Career role</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">🎯</span>
+                            <input id="roleInput" name="role" type="text" list="roleSuggestions"
+                                   class="aspiration-input"
+                                   placeholder="doctor, engineer, teacher…"
+                                   autocomplete="off" />
+                        </div>
+                        <datalist id="roleSuggestions">
+                            <option value="Doctor"></option>
+                            <option value="Nurse"></option>
+                            <option value="Engineer"></option>
+                            <option value="Software Engineer"></option>
+                            <option value="Programmer"></option>
+                            <option value="Teacher"></option>
+                            <option value="Lawyer"></option>
+                            <option value="Accountant"></option>
+                            <option value="Designer"></option>
+                            <option value="Architect"></option>
+                            <option value="Farmer"></option>
+                            <option value="Scientist"></option>
+                            <option value="Pilot"></option>
+                            <option value="Chef"></option>
+                            <option value="Police"></option>
+                            <option value="Soldier"></option>
+                            <option value="Journalist"></option>
+                        </datalist>
+                        <div class="aspiration-btns">
+                            <button class="cj-btn cj-btn-primary" type="submit">Set Goal</button>
+                            <button class="cj-btn cj-btn-ghost" type="button" id="clearRoleBtn">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="role-chip" aria-live="polite" aria-label="Current career goal">
+                    <div class="role-chip-emoji" id="roleEmoji">✨</div>
+                    <div class="role-chip-text" id="roleText">Not set yet</div>
+                    <div class="role-chip-label">Your Goal</div>
+                </div>
+            </div>
+        </section>
+
+      
+
+        <!-- Journey Nodes -->
+        <section class="journey-path" aria-label="Career journey milestones">
+            <div class="path-connector" aria-hidden="true">
+                <svg class="path-svg" viewBox="0 0 4 1200" preserveAspectRatio="none" aria-hidden="true">
+                    <line x1="2" y1="0" x2="2" y2="1200"
+                          stroke="url(#pathGrad)" stroke-width="4"
+                          stroke-dasharray="12 8" />
+                    <defs>
+                        <linearGradient id="pathGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%"   stop-color="#667eea" stop-opacity="0.8"/>
+                            <stop offset="50%"  stop-color="#a78bfa" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#f472b6" stop-opacity="0.4"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="career-levels">
+
+                <div class="level-node-wrap" data-key="g10">
+                    <div class="node-done-badge" aria-label="Completed" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Done
+                    </div>
+                    <button class="level-node" type="button" data-advice="g10">
+                        <div class="level-platform">
+                            <div class="platform-ring"></div>
+                            <div class="platform-glow"></div>
+                            <div class="character" aria-hidden="true">🎒</div>
+                            <div class="sparkles" aria-hidden="true">
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                            </div>
+                        </div>
+                        <div class="level-card">
+                            <div class="level-step-badge">Step 01</div>
+                            <div class="level-grade">Grade 10</div>
+                            <div class="level-title">Foundation Building</div>
+                            <div class="level-description">Build strong academic foundation and explore your interests</div>
+                            <div class="level-cta" aria-hidden="true">
+                                <span>Explore advice</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="node-complete-btn" type="button" data-complete="g10" aria-label="Mark Grade 10 as complete">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="ncb-label">Mark complete</span>
+                    </button>
+                </div>
+
+                <div class="level-node-wrap" data-key="g11">
+                    <div class="node-done-badge" aria-label="Completed" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Done
+                    </div>
+                    <button class="level-node" type="button" data-advice="g11">
+                        <div class="level-platform">
+                            <div class="platform-ring"></div>
+                            <div class="platform-glow"></div>
+                            <div class="character" aria-hidden="true">📚</div>
+                            <div class="sparkles" aria-hidden="true">
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                            </div>
+                        </div>
+                        <div class="level-card">
+                            <div class="level-step-badge">Step 02</div>
+                            <div class="level-grade">Grade 11</div>
+                            <div class="level-title">Skill Development</div>
+                            <div class="level-description">Focus on key subjects and develop specialized skills</div>
+                            <div class="level-cta" aria-hidden="true">
+                                <span>Explore advice</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="node-complete-btn" type="button" data-complete="g11" aria-label="Mark Grade 11 as complete">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="ncb-label">Mark complete</span>
+                    </button>
+                </div>
+
+                <div class="level-node-wrap" data-key="g12">
+                    <div class="node-done-badge" aria-label="Completed" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Done
+                    </div>
+                    <button class="level-node" type="button" data-advice="g12">
+                        <div class="level-platform">
+                            <div class="platform-ring"></div>
+                            <div class="platform-glow"></div>
+                            <div class="character" aria-hidden="true">🎯</div>
+                            <div class="sparkles" aria-hidden="true">
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                            </div>
+                        </div>
+                        <div class="level-card">
+                            <div class="level-step-badge">Step 03</div>
+                            <div class="level-grade">Grade 12</div>
+                            <div class="level-title">University Preparation</div>
+                            <div class="level-description">Excel in exams and prepare your university applications</div>
+                            <div class="level-cta" aria-hidden="true">
+                                <span>Explore advice</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="node-complete-btn" type="button" data-complete="g12" aria-label="Mark Grade 12 as complete">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="ncb-label">Mark complete</span>
+                    </button>
+                </div>
+
+                <div class="level-node-wrap" data-key="university">
+                    <div class="node-done-badge" aria-label="Completed" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Done
+                    </div>
+                    <button class="level-node" type="button" data-advice="university">
+                        <div class="level-platform">
+                            <div class="platform-ring"></div>
+                            <div class="platform-glow"></div>
+                            <div class="character" aria-hidden="true">🎓</div>
+                            <div class="sparkles" aria-hidden="true">
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                            </div>
+                        </div>
+                        <div class="level-card">
+                            <div class="level-step-badge">Step 04</div>
+                            <div class="level-grade">University</div>
+                            <div class="level-title">Higher Education</div>
+                            <div class="level-description">Pursue your degree and gain deep expertise in your field</div>
+                            <div class="level-cta" aria-hidden="true">
+                                <span>Explore advice</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="node-complete-btn" type="button" data-complete="university" aria-label="Mark University as complete">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="ncb-label">Mark complete</span>
+                    </button>
+                </div>
+
+                <div class="level-node-wrap" data-key="graduate">
+                    <div class="node-done-badge" aria-label="Completed" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Done
+                    </div>
+                    <button class="level-node" type="button" data-advice="graduate">
+                        <div class="level-platform">
+                            <div class="platform-ring"></div>
+                            <div class="platform-glow"></div>
+                            <div class="character" aria-hidden="true">👨‍🎓</div>
+                            <div class="sparkles" aria-hidden="true">
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                            </div>
+                        </div>
+                        <div class="level-card">
+                            <div class="level-step-badge">Step 05</div>
+                            <div class="level-grade">Graduate</div>
+                            <div class="level-title">Professional Start</div>
+                            <div class="level-description">Enter the job market and launch your career with confidence</div>
+                            <div class="level-cta" aria-hidden="true">
+                                <span>Explore advice</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="node-complete-btn" type="button" data-complete="graduate" aria-label="Mark Graduate as complete">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="ncb-label">Mark complete</span>
+                    </button>
+                </div>
+
+                <div class="level-node-wrap" data-key="career">
+                    <div class="node-done-badge" aria-label="Completed" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Done
+                    </div>
+                    <button class="level-node" type="button" data-advice="career">
+                        <div class="level-platform">
+                            <div class="platform-ring"></div>
+                            <div class="platform-glow"></div>
+                            <div class="character" aria-hidden="true">💼</div>
+                            <div class="sparkles" aria-hidden="true">
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                                <div class="sparkle"></div><div class="sparkle"></div>
+                            </div>
+                        </div>
+                        <div class="level-card">
+                            <div class="level-step-badge">Step 06</div>
+                            <div class="level-grade">Career Success</div>
+                            <div class="level-title">Professional Growth</div>
+                            <div class="level-description">Build a successful career, make an impact, and give back</div>
+                            <div class="level-cta" aria-hidden="true">
+                                <span>Explore advice</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="node-complete-btn" type="button" data-complete="career" aria-label="Mark Career Success as complete">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="ncb-label">Mark complete</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Ambassador Space Modal -->
+    <div class="amb-modal" id="ambModal"
+         role="dialog" aria-modal="true"
+         aria-labelledby="ambModalTitle"
+         aria-hidden="true">
+        <div class="amb-modal-backdrop"></div>
+        <div class="amb-modal-sheet" tabindex="-1">
+
+            <!-- Step 1: Confirm -->
+            <div class="amb-step" id="ambStep1">
+                <div class="amb-modal-icon">🛡️</div>
+                <h2 class="amb-modal-title" id="ambModalTitle">Ambassador Space</h2>
+                <p class="amb-modal-desc">A private space for verified HST Ambassadors. You'll need your unique Ambassador ID to continue.</p>
+                <div class="amb-modal-actions">
+                    <button class="cj-btn cj-btn-ghost amb-cancel-btn" type="button" id="ambCancelBtn">Cancel</button>
+                    <button class="cj-btn amb-confirm-btn" type="button" id="ambConfirmBtn">
+                        Continue
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: ID Entry -->
+            <div class="amb-step" id="ambStep2" hidden>
+                <button class="amb-back-btn" type="button" id="ambBackBtn" aria-label="Go back">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                    Back
+                </button>
+                <div class="amb-modal-icon">🔑</div>
+                <h2 class="amb-modal-title">Enter Your ID</h2>
+                <p class="amb-modal-desc">Type your unique Ambassador ID exactly as provided.</p>
+                <form id="ambForm" novalidate>
+                    <div class="amb-input-wrap" id="ambInputWrap">
+                        <input type="text" id="ambIdInput" class="amb-input"
+                               placeholder="e.g. HST-AMB-001"
+                               autocomplete="off" spellcheck="false" />
+                        <div class="amb-input-icon" aria-hidden="true">🔐</div>
+                    </div>
+                    <div class="amb-error-msg" id="ambErrorMsg" role="alert" aria-live="assertive" hidden>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <span id="ambErrorText">Invalid ID. Please try again.</span>
+                    </div>
+                    <button class="cj-btn amb-confirm-btn" type="submit" id="ambSubmitBtn" style="width:100%;margin-top:.2rem;">
+                        Verify &amp; Enter
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Step 3: Success -->
+            <div class="amb-step" id="ambStep3" hidden>
+                <div class="amb-success-ring">
+                    <div class="amb-success-icon" aria-hidden="true">✓</div>
+                </div>
+                <h2 class="amb-modal-title amb-success-title">Welcome, Ambassador!</h2>
+                <p class="amb-modal-desc">Your ID has been verified. Redirecting you to Ambassador Space…</p>
+                <div class="amb-success-bar">
+                    <div class="amb-success-bar-fill" id="ambSuccessBarFill"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Advice Modal -->
+    <div class="advice-modal" id="adviceModal"
+         role="dialog" aria-modal="true"
+         aria-labelledby="modalTitle" aria-describedby="modalSubtitle"
+         aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content" tabindex="-1">
+            <button class="modal-close" type="button" aria-label="Close modal" data-close>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="modal-header">
+                <div class="modal-grade-tag" id="modalGrade"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-subtitle" id="modalSubtitle"></p>
+            </div>
+            <div id="modalAdviceContent"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="cj-footer">
+        <div class="cj-footer-inner">
+            <div class="cj-footer-grid">
+                <div class="cj-footer-col">
+                    <h3>High Schooler's Tool</h3>
+                    <p>Empowering Myanmar students to make informed university and career choices.</p>
+                </div>
+                <div class="cj-footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="hst.html">Home</a></li>
+                        <li><a href="uni.html">Universities</a></li>
+                        <li><a href="career-journey.html">Career Journey</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="study-mode.html">Study Mode</a></li>
+                        <li><a href="scholarships.html">Scholarships</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="cj-footer-col">
+                    <h4>Contact</h4>
+                    <p>High Schooler's Tool</p>
+                    <p>Email: <a href="mailto:highschoolertoolmm@gmail.com">highschoolertoolmm@gmail.com</a></p>
+                    <p>Facebook: <a href="https://www.facebook.com/share/17isKhcumg/" target="_blank" rel="noopener noreferrer">High Schooler's Tool ARP</a></p>
+                </div>
+            </div>
+            <div class="cj-footer-bottom">
+                <p>&copy; 2026 High Schooler's Tool. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="career-journey.js"></script>
+</body>
+</html>
