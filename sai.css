@@ -1,0 +1,221 @@
+/* =============================================
+   SAI — State Agricultural Institute
+   Custom overrides on top of hst.css + ucs.css
+   ============================================= */
+
+:root {
+    --sai-primary:   #1b4332;
+    --sai-secondary: #2d6a4f;
+    --sai-accent:    #f4a226;
+    --sai-light:     #eaf4ee;
+    --sai-border:    #b7dfc4;
+}
+
+/* ---- Hero tint ---- */
+.uni-hero .hero-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(27, 67, 50, 0.84) 0%,
+        rgba(45, 106, 79, 0.62) 100%
+    );
+}
+
+/* ---- Stat bar ---- */
+.quick-stats {
+    background: var(--sai-primary);
+}
+
+.stat-item h3 {
+    color: var(--sai-accent);
+}
+
+/* ---- Sidebar headings ---- */
+.sidebar-card h3 {
+    border-left: 4px solid var(--sai-secondary);
+    padding-left: 10px;
+}
+
+/* ---- Tab active state ---- */
+.tab-btn.active,
+.tab-btn:hover {
+    background: var(--sai-secondary);
+    color: #fff;
+    border-color: var(--sai-secondary);
+}
+
+/* ---- Content card headings ---- */
+.content-card h2 {
+    color: var(--sai-primary);
+    border-bottom: 3px solid var(--sai-accent);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/* ---- Feature icons ---- */
+.feature-icon {
+    background: var(--sai-light);
+    border: 2px solid var(--sai-border);
+    color: var(--sai-secondary);
+}
+
+/* ---- Major cards ---- */
+.major-card {
+    border-left: 5px solid var(--sai-secondary);
+}
+
+.major-card:hover {
+    border-left-color: var(--sai-accent);
+    box-shadow: 0 6px 24px rgba(45, 106, 79, 0.15);
+}
+
+.major-card .major-degree {
+    background: var(--sai-light);
+    color: var(--sai-secondary);
+    border: 1px solid var(--sai-border);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.major-subjects span {
+    background: var(--sai-light);
+    color: var(--sai-primary);
+    border: 1px solid var(--sai-border);
+}
+
+/* ---- Project / timeline items ---- */
+.project-item.sai-project {
+    border-left: 4px solid var(--sai-secondary);
+    background: #f4faf6;
+}
+
+.project-year {
+    background: var(--sai-primary);
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-width: 80px;
+    text-align: center;
+    align-self: flex-start;
+}
+
+/* ---- Notice banner ---- */
+.notice-banner {
+    background: #fffbf0;
+    border: 2px dashed var(--sai-accent);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.notice-banner .notice-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.notice-banner h4 {
+    margin: 0 0 6px;
+    color: var(--sai-accent);
+    font-size: 1rem;
+}
+
+.notice-banner p {
+    margin: 0;
+    color: #555;
+    font-size: 0.93rem;
+    line-height: 1.6;
+}
+
+.notice-banner a {
+    color: var(--sai-secondary);
+    font-weight: 600;
+}
+
+/* ---- Career icon bubbles ---- */
+.career-card .career-icon {
+    background: var(--sai-light);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.salary-range {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--sai-light);
+    color: var(--sai-secondary);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* ---- Employer / sector tiles ---- */
+.employer-logo {
+    border: 2px solid var(--sai-border);
+    color: var(--sai-primary);
+    font-weight: 600;
+}
+
+.employer-logo:hover {
+    background: var(--sai-secondary);
+    color: #fff;
+    border-color: var(--sai-secondary);
+}
+
+/* ---- CTA ---- */
+.cta-profile {
+    background: linear-gradient(135deg, var(--sai-primary) 0%, var(--sai-secondary) 100%);
+}
+
+.btn-primary {
+    background: var(--sai-accent);
+    border-color: var(--sai-accent);
+}
+
+.btn-primary:hover {
+    background: #c8831a;
+    border-color: #c8831a;
+}
+
+/* ---- Misc ---- */
+.subject-tag {
+    background: var(--sai-light);
+    color: var(--sai-primary);
+    border: 1px solid var(--sai-border);
+}
+
+.contact-btn {
+    background: var(--sai-secondary);
+    border: none;
+}
+
+.contact-btn:hover {
+    background: var(--sai-primary);
+}
+
+.known-facts {
+    background: var(--sai-light);
+    border-left: 4px solid var(--sai-secondary);
+    border-radius: 0 10px 10px 0;
+}
+
+.known-facts h4 {
+    color: var(--sai-primary);
+}
+
+.campus-card h3 {
+    color: var(--sai-primary);
+}

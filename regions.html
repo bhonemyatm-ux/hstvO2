@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Regions - High Schooler's Tool</title>
+    <link rel="stylesheet" href="hst.css">
+    <style>
+        /* Regions Page - STUNNING UI */
+        .regions-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .regions-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .regions-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .regions-hero p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Regions Content */
+        .regions-content {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        /* Region Card - LARGE with Unique Vibes */
+        .region-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin-bottom: 60px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+        }
+
+        .region-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        }
+
+        .region-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
+
+        .region-layout.reverse {
+            direction: rtl;
+        }
+
+        .region-layout.reverse > * {
+            direction: ltr;
+        }
+
+        /* Image Side with Overlay Theme */
+        .region-visual {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .region-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s;
+        }
+
+        .region-card:hover .region-bg {
+            transform: scale(1.1);
+        }
+
+        /* Vibe Overlays - Different for each region */
+        .vibe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        /* Shan State - Cherry Blossom Vibe 🌸 */
+        .vibe-cherry {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.2));
+        }
+
+        .vibe-cherry::before {
+            content: '🌸';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 20%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .vibe-cherry::after {
+            content: '🌸';
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.1;
+            bottom: 15%;
+            left: 15%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Yangon - Urban Skyline Vibe 🏙️ */
+        .vibe-urban {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.2));
+        }
+
+        .vibe-urban::before {
+            content: '🏙️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            bottom: 10%;
+            right: 10%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        /* Mandalay - Cultural Heritage Vibe 🏛️ */
+        .vibe-heritage {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(255, 152, 0, 0.2));
+        }
+
+        .vibe-heritage::before {
+            content: '🏛️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 15%;
+            left: 10%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        /* Kachin - Mountain Vibe 🏔️ */
+        .vibe-mountain {
+            background: linear-gradient(135deg, rgba(100, 181, 246, 0.3), rgba(3, 169, 244, 0.2));
+        }
+
+        .vibe-mountain::before {
+            content: '🏔️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 20%;
+            right: 15%;
+            animation: float 6s ease-in-out infinite;
+        }
+        /* Mon State - Coastal Serenity Vibe 🌊 */
+        .vibe-coastal {
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.3), rgba(64, 196, 255, 0.2));
+        }
+
+        .vibe-coastal::before {
+            content: '🌊';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            bottom: 10%;
+            left: 10%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        /* Kayah - Hill Station Vibe 🏞️ */
+        .vibe-hills {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(56, 142, 60, 0.2));
+        }
+
+        .vibe-hills::before {
+            content: '🏞️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 15%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Kayin - Border Gateway Vibe 🌉 */
+        .vibe-gateway {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.3), rgba(255, 111, 0, 0.2));
+        }
+
+        .vibe-gateway::before {
+            content: '🌉';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 20%;
+            left: 15%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Rakhine - Beach Vibe 🏖️ */
+        .vibe-beach {
+            background: linear-gradient(135deg, rgba(255, 235, 59, 0.3), rgba(255, 193, 7, 0.2));
+        }
+
+        .vibe-beach::before {
+            content: '🏖️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            bottom: 15%;
+            right: 10%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        /* Chin - Mountain Peaks Vibe ⛰️ */
+        .vibe-peaks {
+            background: linear-gradient(135deg, rgba(158, 158, 158, 0.3), rgba(117, 117, 117, 0.2));
+        }
+
+        .vibe-peaks::before {
+            content: '⛰️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 10%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Sagaing - Spiritual Vibe 🛕 */
+        .vibe-spiritual {
+            background: linear-gradient(135deg, rgba(186, 104, 200, 0.3), rgba(156, 39, 176, 0.2));
+        }
+
+        .vibe-spiritual::before {
+            content: '🛕';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Magway - Agriculture Vibe 🌾 */
+        .vibe-agriculture {
+            background: linear-gradient(135deg, rgba(205, 220, 57, 0.3), rgba(175, 180, 43, 0.2));
+        }
+
+        .vibe-agriculture::before {
+            content: '🌾';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            bottom: 10%;
+            right: 15%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        /* Bago - Historic Vibe 🏰 */
+        .vibe-historic {
+            background: linear-gradient(135deg, rgba(141, 110, 99, 0.3), rgba(121, 85, 72, 0.2));
+        }
+
+        .vibe-historic::before {
+            content: '🏰';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 15%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Ayeyarwady - Delta Vibe 🚤 */
+        .vibe-delta {
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.3), rgba(0, 151, 167, 0.2));
+        }
+
+        .vibe-delta::before {
+            content: '🚤';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 20%;
+            left: 10%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        /* Tanintharyi - Tropical Paradise Vibe 🏝️ */
+        .vibe-tropical {
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.3), rgba(0, 200, 83, 0.2));
+        }
+
+        .vibe-tropical::before {
+            content: '🏝️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            bottom: 10%;
+            left: 15%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Naypyitaw - Capital Vibe 🏛️ */
+        .vibe-capital {
+            background: linear-gradient(135deg, rgba(63, 81, 181, 0.3), rgba(48, 63, 159, 0.2));
+        }
+
+        .vibe-capital::before {
+            content: '🏛️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            bottom: 15%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Content Side */
+        .region-content {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+            position: relative;
+        }
+
+        .region-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            width: fit-content;
+            letter-spacing: 1px;
+        }
+
+        .region-content h2 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .region-tagline {
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .region-description {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Region Stats */
+        .region-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+        }
+
+        .stat-info h4 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .stat-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Region Highlights */
+        .region-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .highlight-tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            color: #667eea;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* CTA Button */
+        .explore-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            width: fit-content;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Decorative Element */
+        .region-decoration {
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .decoration-top-right {
+            top: -50px;
+            right: -50px;
+        }
+
+        .decoration-bottom-left {
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .region-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .region-layout.reverse {
+                direction: ltr;
+            }
+
+            .region-visual {
+                min-height: 400px;
+            }
+
+            .region-content {
+                padding: 40px 30px;
+            }
+
+            .region-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .regions-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .region-highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h2>HST</h2>
+                <span>High Schooler's Tool</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hst.html">Home</a></li>
+                <li><a href="uni.html">Universities</a></li>
+                <li><a href="regions.html" class="active">Regions</a></li>
+                <li><a href="scholarships.html">Scholarships</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="regions-hero">
+        <div class="container">
+            <h1>🗺️ Explore Myanmar by Region</h1>
+            <p>Discover the unique character and universities of each state and region</p>
+        </div>
+    </section>
+
+    <!-- Regions Content -->
+    <section class="regions-content">
+        <div class="container">
+
+            <!-- SHAN STATE - Cherry Blossom Vibe 🌸 -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('kalaw.jpg');"></div>
+                        <div class="vibe-overlay vibe-cherry"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">🌸</span>
+                        <div class="region-badge">HIGHLAND PARADISE</div>
+                        <h2>Shan State</h2>
+                        <p class="region-tagline">"Where Cherry Blossoms Meet Education"</p>
+                        <p class="region-description">
+                            Experience university life in Myanmar's scenic highland region. Cool climate, vibrant culture, and peaceful campus environments make Shan State perfect for focused studies and personal growth.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>8</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌡️</span>
+                                <div class="stat-info">
+                                    <h4>18°C</h4>
+                                    <p>Avg. Temp</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>💻</span> Computer Science
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🎓</span> Education
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌸</span> Peaceful Campus
+                            </div>
+                            <div class="highlight-tag">
+                                <span>⛰️</span> Cool Climate
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=shan" class="explore-btn">Explore Shan Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YANGON REGION - Urban Skyline Vibe 🏙️ -->
+            <div class="region-card">
+                <div class="region-layout reverse">
+                    <div class="region-content">
+                        <span class="region-decoration decoration-bottom-left">🏙️</span>
+                        <div class="region-badge">ECONOMIC HUB</div>
+                        <h2>Yangon Region</h2>
+                        <p class="region-tagline">"Where Opportunities Meet Excellence"</p>
+                        <p class="region-description">
+                            Study in Myanmar's largest city and economic center. Access to top universities, internship opportunities, international exposure, and vibrant student life. The gateway to your global career starts here.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>15</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🏢</span>
+                                <div class="stat-info">
+                                    <h4>100+</h4>
+                                    <p>Companies</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌐</span>
+                                <div class="stat-info">
+                                    <h4>Global</h4>
+                                    <p>Exposure</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>⚙️</span> Engineering
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏥</span> Medical
+                            </div>
+                            <div class="highlight-tag">
+                                <span>💼</span> Business
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🚀</span> Internships
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=yangon" class="explore-btn">Explore Yangon Universities →</a>
+                    </div>
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('Yangon.jpg');"></div>
+                        <div class="vibe-overlay vibe-urban"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MANDALAY REGION - Cultural Heritage Vibe 🏛️ -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('mdy.jpg');"></div>
+                        <div class="vibe-overlay vibe-heritage"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">🏛️</span>
+                        <div class="region-badge">CULTURAL CAPITAL</div>
+                        <h2>Mandalay Region</h2>
+                        <p class="region-tagline">"Tradition Meets Innovation"</p>
+                        <p class="region-description">
+                            Learn in Myanmar's cultural heart. Rich history, affordable living, strong engineering programs, and warm community. Mandalay offers a perfect blend of academic excellence and cultural heritage.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>12</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">✈️</span>
+                                <div class="stat-info">
+                                    <h4>#1</h4>
+                                    <p>Aerospace</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Medium</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>✈️</span> Aerospace Eng.
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🤖</span> Mechatronics
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏭</span> Industrial Eng.
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🎭</span> Rich Culture
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=mandalay" class="explore-btn">Explore Mandalay Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KACHIN STATE - Mountain Vibe 🏔️ -->
+            <div class="region-card">
+                <div class="region-layout reverse">
+                    <div class="region-content">
+                        <span class="region-decoration decoration-bottom-left">🏔️</span>
+                        <div class="region-badge">NORTHERN FRONTIER</div>
+                        <h2>Kachin State</h2>
+                        <p class="region-tagline">"Adventure and Academic Excellence"</p>
+                        <p class="region-description">
+                            Study surrounded by breathtaking mountains and pristine nature. Kachin State offers unique educational experiences with focus on environmental studies, sustainable development, and close-knit academic communities.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>5</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌲</span>
+                                <div class="stat-info">
+                                    <h4>Green</h4>
+                                    <p>Campus</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🌱</span> Environmental Studies
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🎓</span> Education
+                            </div>
+                            <div class="highlight-tag">
+                                <span>⛰️</span> Nature Campus
+                            </div>
+                            <div class="highlight-tag">
+                                <span>❄️</span> Cool Climate
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=kachin" class="explore-btn">Explore Kachin Universities →</a>
+                    </div>
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('kachin.jpg');"></div>
+                        <div class="vibe-overlay vibe-mountain"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more regions following the same pattern... -->
+            <!-- MON STATE - Coastal Serenity Vibe 🌊 -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/mon-coast.jpg');"></div>
+                        <div class="vibe-overlay vibe-coastal"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">🌊</span>
+                        <div class="region-badge">COASTAL BEAUTY</div>
+                        <h2>Mon State</h2>
+                        <p class="region-tagline">"Learn by the Sea"</p>
+                        <p class="region-description">
+                            Study in coastal tranquility with stunning beaches and rich Mon heritage. Perfect blend of peaceful learning environment and access to maritime industries. Experience education with ocean breeze.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>4</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌊</span>
+                                <div class="stat-info">
+                                    <h4>Coastal</h4>
+                                    <p>Location</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Medium</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🎓</span> Arts & Science
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏖️</span> Beach Campus
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏛️</span> Mon Culture
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌴</span> Tropical Climate
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=mon" class="explore-btn">Explore Mon Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KAYAH STATE - Hill Station Vibe 🏞️ -->
+            <div class="region-card">
+                <div class="region-layout reverse">
+                    <div class="region-content">
+                        <span class="region-decoration decoration-bottom-left">🏞️</span>
+                        <div class="region-badge">SCENIC HIGHLANDS</div>
+                        <h2>Kayah State</h2>
+                        <p class="region-tagline">"Small State, Big Dreams"</p>
+                        <p class="region-description">
+                            Myanmar's smallest state with intimate campus communities. Breathtaking landscapes, unique cultural identity, and focused learning environment. Where everyone knows your name and supports your journey.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>2</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">👥</span>
+                                <div class="stat-info">
+                                    <h4>Close</h4>
+                                    <p>Community</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🎓</span> Liberal Arts
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌄</span> Scenic Views
+                            </div>
+                            <div class="highlight-tag">
+                                <span>👨‍👩‍👧</span> Family Feel
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🎨</span> Cultural Arts
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=kayah" class="explore-btn">Explore Kayah Universities →</a>
+                    </div>
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/kayah-hills.jpg');"></div>
+                        <div class="vibe-overlay vibe-hills"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KAYIN STATE - Border Gateway Vibe 🌉 -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/kayin-bridge.jpg');"></div>
+                        <div class="vibe-overlay vibe-gateway"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">🌉</span>
+                        <div class="region-badge">BORDER REGION</div>
+                        <h2>Kayin State</h2>
+                        <p class="region-tagline">"Gateway to New Horizons"</p>
+                        <p class="region-description">
+                            Strategic border location with cross-cultural experiences. Growing education sector with focus on development and sustainability. Bridge between tradition and modern education.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>5</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌐</span>
+                                <div class="stat-info">
+                                    <h4>Diverse</h4>
+                                    <p>Culture</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🎓</span> Development Studies
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌍</span> Cross-Cultural
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌱</span> Sustainability
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏞️</span> Natural Beauty
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=kayin" class="explore-btn">Explore Kayin Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RAKHINE STATE - Coastal Heritage Vibe 🏖️ -->
+            <div class="region-card">
+                <div class="region-layout reverse">
+                    <div class="region-content">
+                        <span class="region-decoration decoration-bottom-left">🏖️</span>
+                        <div class="region-badge">WESTERN COAST</div>
+                        <h2>Rakhine State</h2>
+                        <p class="region-tagline">"Ancient Kingdoms, Modern Education"</p>
+                        <p class="region-description">
+                            Study in the land of ancient Rakhine kingdoms. Pristine beaches, archaeological wonders, and emerging educational opportunities. Experience history while building your future.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>6</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🏖️</span>
+                                <div class="stat-info">
+                                    <h4>Beach</h4>
+                                    <p>Campus</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🏛️</span> Archaeology
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌊</span> Marine Studies
+                            </div>
+                            <div class="highlight-tag">
+                                <span>📚</span> History & Culture
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏝️</span> Island Life
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=rakhine" class="explore-btn">Explore Rakhine Universities →</a>
+                    </div>
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/rakhine-beach.jpg');"></div>
+                        <div class="vibe-overlay vibe-beach"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHIN STATE - Mountain Majesty Vibe ⛰️ -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/chin-peaks.jpg');"></div>
+                        <div class="vibe-overlay vibe-peaks"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">⛰️</span>
+                        <div class="region-badge">HIGHEST PEAKS</div>
+                        <h2>Chin State</h2>
+                        <p class="region-tagline">"Reach New Heights"</p>
+                        <p class="region-description">
+                            Myanmar's mountain region with cool climate and stunning vistas. Small, supportive academic communities focused on development, education, and preserving cultural heritage while embracing modern learning.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>3</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">⛰️</span>
+                                <div class="stat-info">
+                                    <h4>Cool</h4>
+                                    <p>Climate</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🎓</span> Education
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌲</span> Eco-Tourism
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏔️</span> Adventure
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🎨</span> Cultural Arts
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=chin" class="explore-btn">Explore Chin Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAGAING REGION - Spiritual Center Vibe 🛕 -->
+            <div class="region-card">
+                <div class="region-layout reverse">
+                    <div class="region-content">
+                        <span class="region-decoration decoration-bottom-left">🛕</span>
+                        <div class="region-badge">SPIRITUAL HEART</div>
+                        <h2>Sagaing Region</h2>
+                        <p class="region-tagline">"Peace and Knowledge"</p>
+                        <p class="region-description">
+                            Study in Myanmar's spiritual center with countless pagodas and monasteries. Peaceful environment perfect for focused learning, strong teacher education programs, and affordable living costs.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>7</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🕊️</span>
+                                <div class="stat-info">
+                                    <h4>Peaceful</h4>
+                                    <p>Campus</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🎓</span> Teacher Training
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🛕</span> Buddhist Studies
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🕊️</span> Meditation
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌾</span> Agriculture
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=sagaing" class="explore-btn">Explore Sagaing Universities →</a>
+                    </div>
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/sagaing-pagodas.jpg');"></div>
+                        <div class="vibe-overlay vibe-spiritual"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAGWAY REGION - Agricultural Hub Vibe 🌾 -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/magway-fields.jpg');"></div>
+                        <div class="vibe-overlay vibe-agriculture"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">🌾</span>
+                        <div class="region-badge">DRY ZONE</div>
+                        <h2>Magway Region</h2>
+                        <p class="region-tagline">"Roots of Learning"</p>
+                        <p class="region-description">
+                            Central Myanmar's agricultural heartland with focus on agricultural sciences, rural development, and traditional industries. Practical learning environment with strong community values.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>5</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌾</span>
+                                <div class="stat-info">
+                                    <h4>Agri</h4>
+                                    <p>Focus</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Very Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🌾</span> Agriculture
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🛢️</span> Petroleum Studies
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🎓</span> Education
+                            </div>
+                            <div class="highlight-tag">
+                                <span>💰</span> Affordable
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=magway" class="explore-btn">Explore Magway Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAGO REGION - Historical Hub Vibe 🏰 -->
+            <div class="region-card">
+                <div class="region-layout reverse">
+                    <div class="region-content">
+                        <span class="region-decoration decoration-bottom-left">🏰</span>
+                        <div class="region-badge">HISTORICAL CENTER</div>
+                        <h2>Bago Region</h2>
+                        <p class="region-tagline">"Heritage and Progress"</p>
+                        <p class="region-description">
+                            Former capital of Myanmar with rich historical significance. Close to Yangon but more affordable. Growing educational institutions with diverse programs and cultural heritage preservation focus.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>8</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🚄</span>
+                                <div class="stat-info">
+                                    <h4>Near YGN</h4>
+                                    <p>Accessible</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Medium</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🎓</span> All Majors
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏛️</span> History & Culture
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🚄</span> Well Connected
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏰</span> Historic Sites
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=bago" class="explore-btn">Explore Bago Universities →</a>
+                    </div>
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/bago-palace.jpg');"></div>
+                        <div class="vibe-overlay vibe-historic"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AYEYARWADY REGION - Delta Life Vibe 🌊🌾 -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/ayeyarwady-delta.jpg');"></div>
+                        <div class="vibe-overlay vibe-delta"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">🚤</span>
+                        <div class="region-badge">RICE BOWL</div>
+                        <h2>Ayeyarwady Region</h2>
+                        <p class="region-tagline">"Life Flows Here"</p>
+                        <p class="region-description">
+                            Myanmar's rice bowl and delta region. Unique riverine life, agricultural focus, maritime studies, and strong educational communities. Experience campus life intertwined with delta culture.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>9</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🌊</span>
+                                <div class="stat-info">
+                                    <h4>Delta</h4>
+                                    <p>Region</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Low</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🌾</span> Agriculture
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🐟</span> Fisheries
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🚤</span> Delta Life
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌴</span> Tropical Campus
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=ayeyarwady" class="explore-btn">Explore Ayeyarwady Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TANINTHARYI REGION - Southern Paradise Vibe 🏝️ -->
+            <div class="region-card">
+                <div class="region-layout reverse">
+                    <div class="region-content">
+                        <span class="region-decoration decoration-bottom-left">🏝️</span>
+                        <div class="region-badge">SOUTHERN FRONTIER</div>
+                        <h2>Tanintharyi Region</h2>
+                        <p class="region-tagline">"Paradise Education"</p>
+                        <p class="region-description">
+                            Myanmar's southern tip with pristine archipelagos and tropical rainforests. Emerging education sector with focus on marine biology, environmental sciences, and eco-tourism. Study in paradise.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>4</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🏝️</span>
+                                <div class="stat-info">
+                                    <h4>Island</h4>
+                                    <p>Nearby</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Medium</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>🌊</span> Marine Biology
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌴</span> Eco-Tourism
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏝️</span> Beach Life
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🐠</span> Diving Paradise
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=tanintharyi" class="explore-btn">Explore Tanintharyi Universities →</a>
+                    </div>
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/tanintharyi-islands.jpg');"></div>
+                        <div class="vibe-overlay vibe-tropical"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NAYPYITAW - Capital City Vibe 🏛️🏢 -->
+            <div class="region-card">
+                <div class="region-layout">
+                    <div class="region-visual">
+                        <div class="region-bg" style="background-image: url('images/naypyitaw-govt.jpg');"></div>
+                        <div class="vibe-overlay vibe-capital"></div>
+                    </div>
+                    <div class="region-content">
+                        <span class="region-decoration decoration-top-right">🏛️</span>
+                        <div class="region-badge">CAPITAL CITY</div>
+                        <h2>Naypyitaw</h2>
+                        <p class="region-tagline">"Center of Power and Learning"</p>
+                        <p class="region-description">
+                            Myanmar's modern capital with planned city layout and government institutions. Spacious campuses, modern infrastructure, strong focus on law, political science, and public administration programs.
+                        </p>
+
+                        <div class="region-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🎓</span>
+                                <div class="stat-info">
+                                    <h4>6</h4>
+                                    <p>Universities</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🏛️</span>
+                                <div class="stat-info">
+                                    <h4>Capital</h4>
+                                    <p>City</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <div class="stat-info">
+                                    <h4>Medium</h4>
+                                    <p>Living Cost</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="region-highlights">
+                            <div class="highlight-tag">
+                                <span>⚖️</span> Law & Politics
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏢</span> Public Admin
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🌳</span> Green City
+                            </div>
+                            <div class="highlight-tag">
+                                <span>🏛️</span> Modern Campus
+                            </div>
+                        </div>
+
+                        <a href="uni.html?region=naypyitaw" class="explore-btn">Explore Naypyitaw Universities →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>High Schooler's Tool</h3>
+                    <p>Empowering Myanmar students to make informed university choices</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="uni.html">Universities</a></li>
+                        <li><a href="regions.html">Regions</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@hst.edu.mm</p>
+                    <p>Taunggyi, Shan State</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 High Schooler's Tool. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
