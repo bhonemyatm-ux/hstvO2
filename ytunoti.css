@@ -1,0 +1,370 @@
+/* ============================================================
+   ytunoti.css — Apple-style Notification + Letter Sheet
+   For pages that use hst.css (navbar z-index ~1000).
+   All notification layers are set ABOVE 1000.
+   ============================================================ */
+
+/* ── Blur Overlay ─────────────────────────────────────────── */
+.notify-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;                        /* above navbar */
+  background: rgba(0, 0, 0, 0.20);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.notify-overlay.notify-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.notify-overlay.letter-open {
+  background: rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+/* ── Notification Bar ─────────────────────────────────────── */
+.notify-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-130%);
+  z-index: 1200;                        /* above overlay */
+  width: calc(100% - 32px);
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: saturate(200%) blur(28px);
+  -webkit-backdrop-filter: saturate(200%) blur(28px);
+  border-radius: 0 0 22px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-top: none;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.22),
+    0 6px 20px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  overflow: hidden;
+  transition: transform 0.56s cubic-bezier(0.34, 1.26, 0.64, 1);
+  will-change: transform;
+}
+.notify-bar.notify-visible {
+  transform: translateX(-50%) translateY(0);
+}
+.notify-bar.notify-out {
+  transform: translateX(-50%) translateY(-130%);
+  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Dismiss (×) Button ───────────────────────────────────── */
+.notify-x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.07);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.18s, transform 0.15s;
+  z-index: 1;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.notify-x:hover  { background: rgba(0, 0, 0, 0.14); }
+.notify-x:active { transform: scale(0.9); }
+.notify-x svg { width: 10px; height: 10px; color: #636366; }
+
+/* ── Content Row ──────────────────────────────────────────── */
+.notify-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 44px 18px 16px;
+}
+
+/* App icon */
+.notify-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #2563eb, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.38);
+  overflow: hidden;
+}
+.notify-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.notify-icon-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.03em;
+  width: 100%;
+  height: 100%;
+}
+
+/* Text */
+.notify-text { flex: 1; min-width: 0; }
+.notify-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aeaeb2;
+  margin-bottom: 2px;
+}
+.notify-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notify-body {
+  font-size: 12.5px;
+  color: #6e6e73;
+  line-height: 1.48;
+}
+.notify-body-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Open button */
+.notify-action {
+  flex-shrink: 0;
+  background: #e5e5ea;
+  color: #2563eb;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition: background 0.18s, transform 0.15s;
+  white-space: nowrap;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.notify-action:hover  { background: #d1d1d6; transform: scale(1.03); }
+.notify-action:active { transform: scale(0.97); }
+
+/* "more" inline */
+.notify-more {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0 0 0 3px;
+  margin: 0;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #2563eb;
+  cursor: pointer;
+  vertical-align: baseline;
+  letter-spacing: 0;
+  line-height: inherit;
+  transition: opacity 0.15s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.notify-more:hover { opacity: 0.72; }
+
+/* Progress line */
+.notify-progress {
+  height: 2.5px;
+  background: rgba(37, 99, 235, 0.10);
+  overflow: hidden;
+}
+.notify-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* ── Letter Sheet ─────────────────────────────────────────── */
+.letter-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1300;                        /* highest layer */
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: saturate(200%) blur(40px);
+  -webkit-backdrop-filter: saturate(200%) blur(40px);
+  border-radius: 20px 20px 0 0;
+  box-shadow:
+    0 -8px 40px rgba(0, 0, 0, 0.18),
+    0 -2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(110%);
+  transition: transform 0.52s cubic-bezier(0.34, 1.18, 0.64, 1);
+  will-change: transform;
+}
+.letter-sheet.letter-open {
+  transform: translateY(0);
+}
+
+/* Drag handle */
+.letter-handle {
+  width: 36px;
+  height: 5px;
+  background: #d1d1d6;
+  border-radius: 3px;
+  margin: 12px auto 0;
+  flex-shrink: 0;
+}
+
+/* Header */
+.letter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  flex-shrink: 0;
+}
+.letter-from {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.letter-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2563eb, #1d4ed8);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.letter-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.letter-avatar-fallback {
+  display: none;
+  font-size: 10px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.02em;
+}
+.letter-sender {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d1d1f;
+  line-height: 1.2;
+}
+.letter-date {
+  font-size: 12px;
+  color: #aeaeb2;
+  margin-top: 2px;
+}
+
+/* Close button */
+.letter-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f2f2f7;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.18s, transform 0.15s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.letter-close:hover  { background: #e5e5ea; }
+.letter-close:active { transform: scale(0.9); }
+.letter-close svg { width: 12px; height: 12px; color: #636366; }
+
+/* Divider */
+.letter-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e5e5ea 20%, #e5e5ea 80%, transparent);
+  margin: 0 20px;
+  flex-shrink: 0;
+}
+
+/* Scrollable body */
+.letter-body {
+  padding: 22px 24px 10px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+.letter-subject {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1d1d1f;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0 0 20px;
+}
+.letter-content p {
+  font-size: 15px;
+  color: #3c3c43;
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+.letter-content p:last-child { margin-bottom: 0; }
+.letter-content strong { color: #1d1d1f; font-weight: 700; }
+
+/* Footer */
+.letter-footer {
+  padding: 16px 24px 28px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.letter-got-it {
+  width: 100%;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 15px 20px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.38);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.letter-got-it:hover  { background: #1d4ed8; box-shadow: 0 6px 22px rgba(37, 99, 235, 0.46); transform: translateY(-1px); }
+.letter-got-it:active { transform: scale(0.98); }
