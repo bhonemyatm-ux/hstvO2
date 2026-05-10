@@ -1,38 +1,151 @@
+/* HST Certificate Registry 
+  Project: ECH-MAEU English Chat Hours
+  Last Updated: May 10, 2026
+*/
+
 const certificates = {
-  "HST-AMB-2026-001": {
-    status: "Active",
-    type: "HST Community Ambassador",
-    name: "Myat Noe Phyu",
-    partner: "-",
-    validFrom: "20 April 2026",
-    validUntil: "20 October 2026",
-    description: "Officially recognized HST Community Ambassador."
-  },
-  "HST-COMP-2026-001": {
-    status: "Verified",
-    type: "Certificate of Completion",
-    name: "Su Su",
-    program: "University Choice Workshop 2026",
-    date: "15 March 2026",
-    hours: "4 hours",
-    description: "Successfully completed the University Choice Workshop organized by HST."
-  },
-  "HST-APP-2026-001": {
+ 
+
+  // ECH-MAEU Specific Certificates
+  "ECHMAEU-ACT-2026-001": {
     status: "Verified",
     type: "Certificate of Appreciation",
-    name: "Kyaw Zayar",
-    event: "Youth Project Competition 2026",
-    role: "Guest Speaker",
-    date: "10 February 2026",
-    description: "Recognized for valuable contribution as a guest speaker at HST's Youth Project Competition."
+    name: "Paing Zwel Swam Yee",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member",
+    term: "Academic Year [2025-2026]",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program at MAEU, supported by HST Myanmar."
   },
-  "HST-LEAD-2026-001": {
+  "ECHMAEU-ACT-2026-002": {
     status: "Verified",
-    type: "Excellence in Leadership Award",
-    name: "Nyein Chan",
-    partner: "Irrawaddy Youth",
-    term: "April 2026 - September 2026",
-    date: "1 October 2026",
-    description: "Awarded for exceptional leadership and outstanding impact as an HST Community Ambassador."
+    type: "Certificate of Appreciation",
+    name: "Mg Mang Hong Phongram",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (2nd Year FP)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-003": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Ma Phyo Honey",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (2nd Year AV)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-004": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Lin Thant Aung",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (2nd Year AV)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-005": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Ma Ingyin Myint",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (2nd Year PV)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-006": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Kaung Khant Min",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (2nd Year PV)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-007": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Khaing Zaw Lwin",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (2nd Year PV)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-008": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Shin Khent Ko Ko",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (1st Year)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-009": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Sai Pyae Phyo Maung",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (1st Year)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-010": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Nyan Min Htet",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (1st Year)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-011": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Ahti Ye Zaw",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (1st Year)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-012": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Lin Khant Kyaw",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (1st Year)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-013": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Nyan Htet Oo",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (1st Year)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
+  },
+  "ECHMAEU-ACT-2026-014": {
+    status: "Verified",
+    type: "Certificate of Appreciation",
+    name: "Mg Arkar Moe Min",
+    partner: "Myanmar Aerospace Engineering University",
+    program: "ECH English Chat Hours",
+    role: "Active Member (1st Year)",
+    date: "10 May 2026",
+    description: "Recognized for active participation and valuable contribution to the English Chat Hours program."
   }
 };
