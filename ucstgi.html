@@ -9,6 +9,144 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="ucstgi.css" />
+  <style>
+    /* Private Student Voices unlock sheet — scoped so the existing page styles stay untouched. */
+    .private-voices-cover {
+      position: relative;
+      min-height: 148px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(120, 128, 145, .18);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(245, 247, 251, .96), rgba(232, 236, 244, .82));
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .private-voices-cover::before {
+      content: "";
+      position: absolute;
+      inset: -35%;
+      background: radial-gradient(circle, rgba(255,255,255,.82) 0 7%, transparent 8% 100%);
+      background-size: 23px 23px;
+      opacity: .42;
+      filter: blur(1px);
+    }
+    .private-voices-cover:hover,
+    .private-voices-cover:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(30, 42, 64, .12);
+      outline: none;
+    }
+    .private-voices-cover:focus-visible {
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, .2), 0 12px 30px rgba(30, 42, 64, .12);
+    }
+    .private-voices-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+      padding: 22px;
+      color: #536174;
+      text-align: center;
+    }
+    .private-voices-lock {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: #68778d;
+      box-shadow: 0 5px 13px rgba(58, 70, 89, .2);
+    }
+    .private-voices-lock svg { width: 18px; height: 18px; }
+    .private-voices-content strong { color: #263348; font-size: .98rem; }
+    .private-voices-content span { font-size: .82rem; }
+    /* Keep the two private comments hidden even if the external stylesheet sets a grid display value. */
+    #testimonialGrid[hidden] { display: none !important; }
+    .private-voices-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(16, 24, 38, .34);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .22s ease, visibility .22s ease;
+    }
+    .private-voices-modal.open { opacity: 1; visibility: visible; }
+    .private-voices-dialog {
+      width: min(100%, 360px);
+      padding: 28px 24px 22px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 25px;
+      background: rgba(250, 251, 253, .9);
+      box-shadow: 0 24px 70px rgba(11, 20, 36, .28);
+      text-align: center;
+      transform: translateY(12px) scale(.97);
+      transition: transform .25s cubic-bezier(.2,.8,.2,1);
+    }
+    .private-voices-modal.open .private-voices-dialog { transform: translateY(0) scale(1); }
+    .private-voices-dialog .modal-lock {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      border-radius: 15px;
+      color: #fff;
+      background: linear-gradient(145deg, #8b98aa, #5e6c80);
+    }
+    .private-voices-dialog h4 { margin: 0; color: #1e2a3c; font-size: 1.18rem; }
+    .private-voices-dialog p { margin: 8px 0 18px; color: #687588; font-size: .88rem; }
+    .private-voices-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 15px;
+      border: 1px solid #d9dee7;
+      border-radius: 13px;
+      outline: none;
+      color: #263348;
+      background: rgba(255,255,255,.8);
+      font: inherit;
+      text-align: center;
+      letter-spacing: .16em;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .private-voices-input:focus {
+      border-color: #1683ff;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, .14);
+    }
+    .private-voices-error {
+      min-height: 18px;
+      margin: 8px 0 2px;
+      color: #d44848;
+      font-size: .78rem;
+    }
+    .private-voices-actions { display: flex; gap: 9px; margin-top: 8px; }
+    .private-voices-actions button {
+      flex: 1;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 10px;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .private-voices-cancel { color: #56657a; background: #e9edf3; }
+    .private-voices-submit { color: #fff; background: #087df5; box-shadow: 0 5px 12px rgba(8, 125, 245, .22); }
+    @media (max-width: 480px) {
+      .private-voices-dialog { padding: 25px 18px 19px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -458,7 +596,16 @@
                 </div>
                 <div class="testimonial-section">
                   <h3>Student Voices</h3>
-                  <div class="testimonial-grid">
+                   <div class="private-voices-cover" id="privateVoicesCover" role="button" tabindex="0" aria-label="Unlock private student voices">
+                     <div class="private-voices-content">
+                       <div class="private-voices-lock" aria-hidden="true">
+                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                       </div>
+                       <strong>This comment is private</strong>
+                       <span>Tap to enter the password</span>
+                     </div>
+                   </div>
+                    <div class="testimonial-grid" id="testimonialGrid" hidden aria-hidden="true">
                     <div class="testimonial-card">
                       <p>"သဘောကျနေပြီလား"</p>
                       <div class="testimonial-author">
@@ -608,6 +755,66 @@
   </footer>
 
   <script>
+    /* ── PRIVATE STUDENT VOICES ── */
+    (function () {
+      var PASSWORD = '133859hn';
+      var cover = document.getElementById('privateVoicesCover');
+      var grid = document.getElementById('testimonialGrid');
+      var modal = document.createElement('div');
+      modal.className = 'private-voices-modal';
+      modal.setAttribute('aria-hidden', 'true');
+      modal.innerHTML =
+        '<div class="private-voices-dialog" role="dialog" aria-modal="true" aria-labelledby="privateVoicesTitle">' +
+          '<div class="modal-lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>' +
+          '<h4 id="privateVoicesTitle">Private comment</h4>' +
+          '<p>Enter the password to view the student voices.</p>' +
+          '<form id="privateVoicesForm">' +
+            '<input class="private-voices-input" id="privateVoicesPassword" type="password" placeholder="Password" autocomplete="off" aria-label="Password">' +
+            '<div class="private-voices-error" id="privateVoicesError" role="alert"></div>' +
+            '<div class="private-voices-actions"><button type="button" class="private-voices-cancel" id="privateVoicesCancel">Cancel</button><button type="submit" class="private-voices-submit">Unlock</button></div>' +
+          '</form>' +
+        '</div>';
+      document.body.appendChild(modal);
+      var form = document.getElementById('privateVoicesForm');
+      var input = document.getElementById('privateVoicesPassword');
+      var error = document.getElementById('privateVoicesError');
+
+      function openModal() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { input.focus(); }, 80);
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        input.value = '';
+        error.textContent = '';
+        document.body.style.overflow = '';
+        cover.focus();
+      }
+      function unlock(event) {
+        event.preventDefault();
+        if (input.value === PASSWORD) {
+          grid.hidden = false;
+          grid.setAttribute('aria-hidden', 'false');
+          cover.remove();
+          closeModal();
+        } else {
+          error.textContent = 'That password is not correct.';
+          input.select();
+        }
+      }
+      cover.addEventListener('click', openModal);
+      cover.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openModal(); }
+      });
+      form.addEventListener('submit', unlock);
+      document.getElementById('privateVoicesCancel').addEventListener('click', closeModal);
+      modal.addEventListener('click', function (event) { if (event.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    })();
+
     /* ── NOTIFICATION ── */
     (function () {
       var AUTO_MS = 9000;
